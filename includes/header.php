@@ -48,11 +48,11 @@
                     <div class="col-lg-6 col-md-6">
                         <div class="top-right">
                             <ul class="social-icons">
-                                <li><a href="#" target="_blank" title="Visit our Facebook page"><i class="fab fa-facebook-f"></i></a></li>
-                                <li><a href="#" target="_blank" title="Visit our Twitter page"><i class="fab fa-twitter"></i></a></li>
-                                <li><a href="#" target="_blank" title="Visit our Linkedin page"><i class="fab fa-linkedin-in"></i></a></li>
-                                <li><a href="#" target="_blank" title="Visit our Youtube page"><i class="fab fa-youtube"></i></a></li>
-                                <li><a href="#" target="_blank" title="Visit our Instagram page"><i class="fab fa-instagram"></i></a></li>
+                                <li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                                <li><a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
+                                <li><a href="#" target="_blank"><i class="fab fa-youtube"></i></a></li>
+                                <li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
                             </ul>
                         </div>
                     </div>
@@ -67,12 +67,12 @@
                     <div class="col-lg-3 col-md-3">
                         <div class="logo">
                             <a href="index.php">
-                                <img src="assets/images/logo.png" alt="MedStudy Global" class="img-fluid">
+                                <img src="assets/images/logo.png" alt="MedStudy Global">
                             </a>
                             <span class="tagline">Study Abroad Consultants</span>
                         </div>
                     </div>
-                    <div class="col-lg-6 col-md-6">
+                    <div class="col-lg-7 col-md-7">
                         <nav class="main-nav">
                             <ul>
                                 <li><a href="index.php" class="active">Home</a></li>
@@ -85,7 +85,7 @@
                             </ul>
                         </nav>
                     </div>
-                    <div class="col-lg-3 col-md-3">
+                    <div class="col-lg-2 col-md-2">
                         <div class="header-actions">
                             <ul>
                                 <li>
@@ -102,7 +102,7 @@
                                 </li>
                                 <li>
                                     <a href="apply-online.php" class="apply-btn">
-                                        <i class="fas fa-graduation-cap"></i> Apply Now
+                                        APPLY<br>NOW
                                     </a>
                                 </li>
                             </ul>
