@@ -336,6 +336,70 @@ $(document).on('keydown', function(e) {
                 });
             }
         });
+
+        // Hero Carousel
+        const heroCarousel = document.querySelector('.hero-carousel');
+        
+        if (heroCarousel) {
+            const slides = document.querySelectorAll('.hero-slide');
+            const dots = document.querySelectorAll('.hero-dot');
+            let currentSlide = 0;
+            let slideInterval;
+            
+            // Initialize carousel
+            function initCarousel() {
+                // Set first slide as active
+                slides[0].classList.add('active');
+                
+                // Start autoplay
+                startAutoplay();
+                
+                // Add click event to dots
+                dots.forEach((dot, index) => {
+                    dot.addEventListener('click', () => {
+                        goToSlide(index);
+                        resetAutoplay();
+                    });
+                });
+            }
+            
+            // Go to specific slide
+            function goToSlide(slideIndex) {
+                // Remove active class from all slides and dots
+                slides.forEach(slide => slide.classList.remove('active'));
+                dots.forEach(dot => dot.classList.remove('active'));
+                
+                // Add active class to current slide and dot
+                slides[slideIndex].classList.add('active');
+                dots[slideIndex].classList.add('active');
+                
+                // Update current slide index
+                currentSlide = slideIndex;
+            }
+            
+            // Go to next slide
+            function nextSlide() {
+                let nextIndex = currentSlide + 1;
+                if (nextIndex >= slides.length) {
+                    nextIndex = 0;
+                }
+                goToSlide(nextIndex);
+            }
+            
+            // Start autoplay
+            function startAutoplay() {
+                slideInterval = setInterval(nextSlide, 5000);
+            }
+            
+            // Reset autoplay
+            function resetAutoplay() {
+                clearInterval(slideInterval);
+                startAutoplay();
+            }
+            
+            // Initialize carousel
+            initCarousel();
+        }
     });
     
 })(jQuery); 

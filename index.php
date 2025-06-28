@@ -3,18 +3,118 @@ include('includes/header.php');
 ?>
 
 <!-- Hero Section -->
-<section class="hero-section" style="background-image: url('assets/images/hero-bg.jpg');">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-md-8">
-                <div class="hero-content">
-                    <span class="subtitle">DISCOVER THE BENEFITS OF</span>
-                    <h2>Studying MBBS Abroad</h2>
-                    <p class="mb-4">Begin your journey to becoming a successful doctor with world-class medical education from prestigious universities.</p>
-                    <a href="contact.php" class="btn btn-light">Register Now</a>
-                    <a href="about.php" class="btn btn-outline-light ml-2">Learn More</a>
+<section class="hero-section">
+    <div class="hero-carousel">
+        <!-- Slide 1 -->
+        <div class="hero-slide active">
+            <img src="assets/images/media/home-page/hero-section/first-banner.jpg" alt="Medical Education Abroad" class="hero-slide-bg">
+            <div class="hero-container">
+                <div class="hero-content-wrapper">
+                    <div class="hero-form-wrapper">
+                        <h3 class="hero-form-title">Begin Your Medical Journey</h3>
+                        <form class="hero-form" action="process-form.php" method="post">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="name" placeholder="Full Name*" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control" name="email" placeholder="Email Address*" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="tel" class="form-control" name="phone" placeholder="Phone Number*" required>
+                            </div>
+                            <div class="form-group">
+                                <select class="form-control" name="country" required>
+                                    <option value="">Select Preferred Country*</option>
+                                    <option value="Russia">Russia</option>
+                                    <option value="Ukraine">Ukraine</option>
+                                    <option value="Kazakhstan">Kazakhstan</option>
+                                    <option value="Georgia">Georgia</option>
+                                    <option value="Philippines">Philippines</option>
+                                    <option value="Kyrgyzstan">Kyrgyzstan</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit Application</button>
+                        </form>
+                    </div>
                 </div>
             </div>
+        </div>
+        
+        <!-- Slide 2 -->
+        <div class="hero-slide">
+            <img src="assets/images/media/home-page/hero-section/second-banner.jpg" alt="MBBS Admission Guidance" class="hero-slide-bg">
+            <div class="hero-container">
+                <div class="hero-content-wrapper">
+                    <div class="hero-form-wrapper">
+                        <h3 class="hero-form-title">Request Free Counselling</h3>
+                        <form class="hero-form" action="process-form.php" method="post">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="name" placeholder="Full Name*" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control" name="email" placeholder="Email Address*" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="tel" class="form-control" name="phone" placeholder="Phone Number*" required>
+                            </div>
+                            <div class="form-group">
+                                <select class="form-control" name="country" required>
+                                    <option value="">Select Preferred Country*</option>
+                                    <option value="Russia">Russia</option>
+                                    <option value="Ukraine">Ukraine</option>
+                                    <option value="Kazakhstan">Kazakhstan</option>
+                                    <option value="Georgia">Georgia</option>
+                                    <option value="Philippines">Philippines</option>
+                                    <option value="Kyrgyzstan">Kyrgyzstan</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit Application</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Slide 3 -->
+        <div class="hero-slide">
+            <img src="assets/images/media/home-page/hero-section/third-banner.jpg" alt="Medical Education Consultancy" class="hero-slide-bg">
+            <div class="hero-container">
+                <div class="hero-content-wrapper">
+                    <div class="hero-form-wrapper">
+                        <h3 class="hero-form-title">Start Your Application</h3>
+                        <form class="hero-form" action="process-form.php" method="post">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="name" placeholder="Full Name*" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control" name="email" placeholder="Email Address*" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="tel" class="form-control" name="phone" placeholder="Phone Number*" required>
+                            </div>
+                            <div class="form-group">
+                                <select class="form-control" name="country" required>
+                                    <option value="">Select Preferred Country*</option>
+                                    <option value="Russia">Russia</option>
+                                    <option value="Ukraine">Ukraine</option>
+                                    <option value="Kazakhstan">Kazakhstan</option>
+                                    <option value="Georgia">Georgia</option>
+                                    <option value="Philippines">Philippines</option>
+                                    <option value="Kyrgyzstan">Kyrgyzstan</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit Application</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Carousel Dots -->
+        <div class="hero-carousel-dots">
+            <span class="hero-dot active" data-slide="0"></span>
+            <span class="hero-dot" data-slide="1"></span>
+            <span class="hero-dot" data-slide="2"></span>
         </div>
     </div>
 </section>
@@ -22,87 +122,53 @@ include('includes/header.php');
 <!-- Feature Tabs -->
 <section class="feature-tabs">
     <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <ul class="nav nav-tabs feature-nav" role="tablist">
+        <div class="card">
+            <div class="card-body p-0">
+                <!-- Tab Navigation -->
+                <ul class="nav nav-tabs feature-nav" id="featureTabs" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link active" data-toggle="tab" href="#program" role="tab">
-                            <img src="assets/images/icons/mbbs-program.png" alt="MBBS Programs">
-                            <span>MBBS Programs</span>
+                        <a class="nav-link active" id="universities-tab" data-toggle="tab" href="#universities" role="tab" aria-controls="universities" aria-selected="true">
+                            <img src="assets/images/icons/university.png" alt="Universities">
+                            <span>Top Universities</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#universities" role="tab">
-                            <img src="assets/images/icons/universities.png" alt="Universities">
-                            <span>Universities</span>
+                        <a class="nav-link" id="countries-tab" data-toggle="tab" href="#countries" role="tab" aria-controls="countries" aria-selected="false">
+                            <img src="assets/images/icons/globe.png" alt="Countries">
+                            <span>Study Destinations</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#destinations" role="tab">
-                            <img src="assets/images/icons/destinations.png" alt="Destinations">
-                            <span>Destinations</span>
+                        <a class="nav-link" id="admission-tab" data-toggle="tab" href="#admission" role="tab" aria-controls="admission" aria-selected="false">
+                            <img src="assets/images/icons/admission.png" alt="Admission">
+                            <span>Admission Process</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#experts" role="tab">
-                            <img src="assets/images/icons/our-team.png" alt="Our Experts">
-                            <span>Our Experts</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#events" role="tab">
-                            <img src="assets/images/icons/events.png" alt="Upcoming Events">
-                            <span>Upcoming Events</span>
+                        <a class="nav-link" id="scholarship-tab" data-toggle="tab" href="#scholarship" role="tab" aria-controls="scholarship" aria-selected="false">
+                            <img src="assets/images/icons/scholarship.png" alt="Scholarship">
+                            <span>Scholarships</span>
                         </a>
                     </li>
                 </ul>
                 
-                <div class="tab-content mt-4">
-                    <div class="tab-pane fade show active" id="program" role="tabpanel">
-                        <ul class="feature-list">
-                            <li>6-Year MBBS Program (Including 1 Year Preparatory)</li>
-                            <li>English Medium Instruction</li>
-                            <li>WHO & Medical Council Recognized Degrees</li>
-                            <li>Affordable Tuition Fees Compared to Private Medical Colleges</li>
-                            <li>World-Class Infrastructure and Clinical Exposure</li>
-                        </ul>
+                <!-- Tab Content -->
+                <div class="tab-content p-4" id="featureTabsContent">
+                    <div class="tab-pane fade show active" id="universities" role="tabpanel" aria-labelledby="universities-tab">
+                        <div class="feature-content">
+                            <h3>Top Medical Universities</h3>
+                            <p>We partner with the best medical universities around the world that offer quality education at affordable fees.</p>
+                            <ul class="feature-list">
+                                <li><i class="fas fa-check-circle"></i> MCI/NMC approved universities</li>
+                                <li><i class="fas fa-check-circle"></i> Modern infrastructure and facilities</li>
+                                <li><i class="fas fa-check-circle"></i> Experienced faculty and international exposure</li>
+                                <li><i class="fas fa-check-circle"></i> Affordable tuition fees with scholarship options</li>
+                            </ul>
+                            <a href="universities.php" class="btn btn-primary mt-3">View All Universities</a>
+                        </div>
                     </div>
-                    <div class="tab-pane fade" id="universities" role="tabpanel">
-                        <ul class="feature-list">
-                            <li>Top Government Medical Universities</li>
-                            <li>100+ Years of Academic Excellence</li>
-                            <li>Advanced Research Facilities</li>
-                            <li>International Student Support Services</li>
-                            <li>Global Alumni Network</li>
-                        </ul>
-                    </div>
-                    <div class="tab-pane fade" id="destinations" role="tabpanel">
-                        <ul class="feature-list">
-                            <li>Russia - 30+ Top Medical Universities</li>
-                            <li>Ukraine - Quality Education at Affordable Costs</li>
-                            <li>Kazakhstan - Emerging Hub for Medical Education</li>
-                            <li>Georgia - European Standards of Medical Training</li>
-                            <li>Kyrgyzstan - Budget-Friendly Medical Programs</li>
-                        </ul>
-                    </div>
-                    <div class="tab-pane fade" id="experts" role="tabpanel">
-                        <ul class="feature-list">
-                            <li>Experienced Education Counselors</li>
-                            <li>Dedicated Visa Assistance Team</li>
-                            <li>University Representatives</li>
-                            <li>Student Welfare Officers</li>
-                            <li>Alumni Mentors</li>
-                        </ul>
-                    </div>
-                    <div class="tab-pane fade" id="events" role="tabpanel">
-                        <ul class="feature-list">
-                            <li>Education Fair - July 2024 (Multiple Cities)</li>
-                            <li>Online Webinar - MBBS Abroad Opportunities - Every Saturday</li>
-                            <li>Parent-Student Counseling Sessions - Daily</li>
-                            <li>University Delegates Visit - August 2024</li>
-                            <li>Pre-Departure Orientation - September 2024</li>
-                        </ul>
-                    </div>
+                    
+                    <!-- Additional tab content would go here -->
                 </div>
             </div>
         </div>
