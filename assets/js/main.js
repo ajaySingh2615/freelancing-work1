@@ -30,26 +30,16 @@
             $('body').removeClass('menu-open');
         });
         
-        // Search Popup
-        $('#search-btn').on('click', function (e) {
-            e.preventDefault();
-            $('.header-search').addClass('active');
-            setTimeout(function() {
-                $('.search-form input').focus();
-            }, 300);
-        });
-        
-        $('.close-search').on('click', function (e) {
-            e.preventDefault();
-            $('.header-search').removeClass('active');
-        });
-        
-        // Close Search on ESC key
-        $(document).on('keydown', function(e) {
-            if (e.keyCode === 27) {
-                $('.header-search').removeClass('active');
-            }
-        });
+        // ESC key functionality for other components
+$(document).on('keydown', function(e) {
+    if (e.keyCode === 27) {
+        // Close mobile menu if open
+        if ($('.mobile-menu').hasClass('active')) {
+            $('.mobile-menu').removeClass('active');
+            $('body').removeClass('menu-open');
+        }
+    }
+});
         
         // Back to Top Button
         $(window).on('scroll', function () {

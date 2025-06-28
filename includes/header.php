@@ -89,11 +89,6 @@
                         <div class="header-actions">
                             <ul>
                                 <li>
-                                    <a href="#header-search" id="search-btn" class="search-toggle">
-                                        <i class="fas fa-search"></i>
-                                    </a>
-                                </li>
-                                <li>
                                     <button class="hamburger-btn" id="mobile-menu-toggle">
                                         <span></span>
                                         <span></span>
@@ -101,8 +96,8 @@
                                     </button>
                                 </li>
                                 <li>
-                                    <a href="apply-online.php" class="apply-btn">
-                                        APPLY<br>NOW
+                                    <a href="apply-online.php" class="apply-btn-small">
+                                        APPLY NOW
                                     </a>
                                 </li>
                             </ul>
@@ -112,19 +107,6 @@
             </div>
         </div>
     </header>
-    
-    <!-- Search Popup -->
-    <div id="header-search" class="header-search">
-        <div class="container">
-            <div class="search-form">
-                <form action="search.php" method="get">
-                    <input type="text" name="q" placeholder="Search here...">
-                    <button type="submit"><i class="fas fa-search"></i></button>
-                </form>
-                <a href="#" class="close-search"><i class="fas fa-times"></i></a>
-            </div>
-        </div>
-    </div>
     
     <!-- Mobile Menu -->
     <div class="mobile-menu">
