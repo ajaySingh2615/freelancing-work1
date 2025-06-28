@@ -1,0 +1,351 @@
+/**
+ * MedStudy Global - MBBS Abroad Consultancy
+ * Main JavaScript File
+ */
+
+(function ($) {
+    'use strict';
+    
+    // Window Load Function
+    $(window).on('load', function () {
+        // Preloader
+        setTimeout(function () {
+            $('.preloader').fadeOut();
+        }, 200);
+    });
+
+    // Document Ready Function
+    $(document).ready(function () {
+        
+        // Mobile Menu
+        $('#mobile-menu-toggle').on('click', function () {
+            $(this).toggleClass('active');
+            $('.mobile-menu').toggleClass('active');
+            $('body').toggleClass('menu-open');
+        });
+        
+        $('.close-menu, .menu-overlay').on('click', function () {
+            $('#mobile-menu-toggle').removeClass('active');
+            $('.mobile-menu').removeClass('active');
+            $('body').removeClass('menu-open');
+        });
+        
+        // Search Popup
+        $('#search-btn').on('click', function (e) {
+            e.preventDefault();
+            $('.header-search').addClass('active');
+            setTimeout(function() {
+                $('.search-form input').focus();
+            }, 300);
+        });
+        
+        $('.close-search').on('click', function (e) {
+            e.preventDefault();
+            $('.header-search').removeClass('active');
+        });
+        
+        // Close Search on ESC key
+        $(document).on('keydown', function(e) {
+            if (e.keyCode === 27) {
+                $('.header-search').removeClass('active');
+            }
+        });
+        
+        // Back to Top Button
+        $(window).on('scroll', function () {
+            if ($(this).scrollTop() > 200) {
+                $('.back-to-top').addClass('active');
+            } else {
+                $('.back-to-top').removeClass('active');
+            }
+        });
+        
+        $('.back-to-top').on('click', function (e) {
+            e.preventDefault();
+            $('html, body').animate({
+                scrollTop: 0
+            }, 800);
+        });
+        
+        // Sticky Header
+        $(window).on('scroll', function () {
+            if ($(this).scrollTop() > 100) {
+                $('.main-header').addClass('sticky');
+            } else {
+                $('.main-header').removeClass('sticky');
+            }
+        });
+        
+        // Navigation Hover Effect
+        $('.main-nav ul li a').on('mouseenter', function() {
+            var width = $(this).width();
+            $(this).css('width', width + 'px');
+            $(this).find('after').css('width', '100%');
+        }).on('mouseleave', function() {
+            if (!$(this).hasClass('active')) {
+                $(this).find('after').css('width', '0');
+            }
+        });
+        
+        // Dropdown Menu
+        $('.main-nav li.has-dropdown').on('mouseenter', function () {
+            $(this).find('.dropdown').fadeIn();
+        }).on('mouseleave', function () {
+            $(this).find('.dropdown').fadeOut();
+        });
+        
+        // Counter Animation
+        $('.counter').each(function () {
+            $(this).prop('Counter', 0).animate({
+                Counter: $(this).text()
+            }, {
+                duration: 3000,
+                easing: 'swing',
+                step: function (now) {
+                    $(this).text(Math.ceil(now));
+                }
+            });
+        });
+        
+        // Testimonial Slider
+        if ($('.testimonial-slider').length) {
+            $('.testimonial-slider').slick({
+                dots: true,
+                arrows: false,
+                infinite: true,
+                speed: 500,
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 5000
+            });
+        }
+        
+        // Partner Slider
+        if ($('.partner-slider').length) {
+            $('.partner-slider').slick({
+                dots: false,
+                arrows: false,
+                infinite: true,
+                speed: 500,
+                slidesToShow: 5,
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 3000,
+                responsive: [{
+                    breakpoint: 992,
+                    settings: {
+                        slidesToShow: 4
+                    }
+                }, {
+                    breakpoint: 768,
+                    settings: {
+                        slidesToShow: 3
+                    }
+                }, {
+                    breakpoint: 576,
+                    settings: {
+                        slidesToShow: 2
+                    }
+                }]
+            });
+        }
+        
+        // Popup Video
+        if ($.fn.magnificPopup) {
+            $('.video-link').magnificPopup({
+                type: 'iframe',
+                mainClass: 'mfp-fade',
+                removalDelay: 160,
+                preloader: false,
+                fixedContentPos: false
+            });
+        }
+        
+        // Form Validation
+        $('#application-form').on('submit', function (e) {
+            var form = $(this);
+            var formData = form.serialize();
+            
+            if (form[0].checkValidity() === false) {
+                e.preventDefault();
+                e.stopPropagation();
+            } else {
+                e.preventDefault();
+                
+                $.ajax({
+                    type: 'POST',
+                    url: form.attr('action'),
+                    data: formData,
+                    success: function (response) {
+                        $('#applyModal').modal('hide');
+                        alert('Thank you for your application! Our counselors will contact you soon.');
+                        form[0].reset();
+                    },
+                    error: function (error) {
+                        alert('There was an error submitting your application. Please try again later.');
+                    }
+                });
+            }
+            
+            form.addClass('was-validated');
+        });
+        
+        // Initialize AOS (Animate on Scroll) if available
+        if (typeof AOS !== 'undefined') {
+            AOS.init({
+                duration: 1000,
+                once: true,
+                offset: 100
+            });
+        }
+        
+        // Tabs functionality with smooth transition
+        $('.feature-nav .nav-link').on('click', function(e) {
+            e.preventDefault();
+            $(this).tab('show');
+        });
+        
+        // Card hover effects
+        $('.university-card, .blog-card, .news-card').hover(
+            function() {
+                $(this).css('transform', 'translateY(-0.3125rem)');
+                $(this).css('box-shadow', '0 0.5rem 1.25rem rgba(0, 0, 0, 0.15)');
+            },
+            function() {
+                $(this).css('transform', 'translateY(0)');
+                $(this).css('box-shadow', '0 0.25rem 0.625rem rgba(0, 0, 0, 0.1)');
+            }
+        );
+        
+        // WhatsApp button hover effect
+        $('.whatsapp-btn, .whatsapp-float').hover(
+            function() {
+                $(this).css('transform', 'scale(1.1)');
+            },
+            function() {
+                $(this).css('transform', 'scale(1)');
+            }
+        );
+        
+        // Contact form validation
+        $('#contact-form').on('submit', function(e) {
+            var form = $(this);
+            
+            if (form[0].checkValidity() === false) {
+                e.preventDefault();
+                e.stopPropagation();
+            } else {
+                e.preventDefault();
+                
+                $.ajax({
+                    type: 'POST',
+                    url: form.attr('action'),
+                    data: form.serialize(),
+                    success: function(response) {
+                        $('#contact-success').fadeIn().delay(3000).fadeOut();
+                        form[0].reset();
+                    },
+                    error: function(error) {
+                        $('#contact-error').fadeIn().delay(3000).fadeOut();
+                    }
+                });
+            }
+            
+            form.addClass('was-validated');
+        });
+        
+        // State and City Dropdown Population
+        var states = {
+            'INDIA': [
+                'Andhra Pradesh',
+                'Arunachal Pradesh',
+                'Assam',
+                'Bihar',
+                'Chhattisgarh',
+                'Goa',
+                'Gujarat',
+                'Haryana',
+                'Himachal Pradesh',
+                'Jharkhand',
+                'Karnataka',
+                'Kerala',
+                'Madhya Pradesh',
+                'Maharashtra',
+                'Manipur',
+                'Meghalaya',
+                'Mizoram',
+                'Nagaland',
+                'Odisha',
+                'Punjab',
+                'Rajasthan',
+                'Sikkim',
+                'Tamil Nadu',
+                'Telangana',
+                'Tripura',
+                'Uttar Pradesh',
+                'Uttarakhand',
+                'West Bengal',
+                'Delhi'
+            ]
+        };
+        
+        var cities = {
+            'Delhi': ['New Delhi', 'North Delhi', 'South Delhi', 'East Delhi', 'West Delhi'],
+            'Maharashtra': ['Mumbai', 'Pune', 'Nagpur', 'Thane', 'Nashik'],
+            'Karnataka': ['Bengaluru', 'Mysuru', 'Hubli', 'Mangalore', 'Belgaum'],
+            'Tamil Nadu': ['Chennai', 'Coimbatore', 'Madurai', 'Tiruchirappalli', 'Salem']
+            // Add more cities as needed
+        };
+        
+        $('#country').on('change', function () {
+            var country = $(this).val();
+            var stateOptions = '<option value="">Select Your State</option>';
+            
+            if (country && states[country]) {
+                for (var i = 0; i < states[country].length; i++) {
+                    stateOptions += '<option value="' + states[country][i] + '">' + states[country][i] + '</option>';
+                }
+            }
+            
+            $('#state').html(stateOptions);
+            $('#city').html('<option value="">Select Your City</option>');
+        });
+        
+        $('#state').on('change', function () {
+            var state = $(this).val();
+            var cityOptions = '<option value="">Select Your City</option>';
+            
+            if (state && cities[state]) {
+                for (var i = 0; i < cities[state].length; i++) {
+                    cityOptions += '<option value="' + cities[state][i] + '">' + cities[state][i] + '</option>';
+                }
+            }
+            
+            $('#city').html(cityOptions);
+        });
+        
+        // Newsletter subscription
+        $('.newsletter-form').on('submit', function(e) {
+            e.preventDefault();
+            var email = $(this).find('input[type="email"]').val();
+            
+            if (email) {
+                // Send the email to server
+                $.ajax({
+                    type: 'POST',
+                    url: 'subscribe.php',
+                    data: {email: email},
+                    success: function(response) {
+                        alert('Thank you for subscribing to our newsletter!');
+                        $('.newsletter-form').find('input[type="email"]').val('');
+                    },
+                    error: function(error) {
+                        alert('There was an error with your subscription. Please try again later.');
+                    }
+                });
+            }
+        });
+    });
+    
+})(jQuery); 

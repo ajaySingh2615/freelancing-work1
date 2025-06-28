@@ -1,0 +1,272 @@
+/* 
+* MedStudy Global - MBBS Abroad Consultancy
+* Footer Stylesheet
+*/
+
+/* ===== FOOTER STYLES ===== */
+.footer-area {
+    background-color: var(--text-color);
+    color: var(--white);
+    padding: 3.75rem 0 0;
+    position: relative;
+}
+
+.footer-widget {
+    margin-bottom: 2.5rem;
+}
+
+.footer-logo {
+    margin-bottom: 1.25rem;
+}
+
+.footer-logo img {
+    max-height: 3.75rem;
+}
+
+.about-text {
+    color: #cccccc;
+    margin-bottom: 1.25rem;
+}
+
+.footer-widget .social-icons {
+    margin-bottom: 1.25rem;
+}
+
+.footer-widget .social-icons li {
+    margin-left: 0;
+    margin-right: 0.625rem;
+}
+
+.footer-widget .social-icons li a {
+    width: 2.1875rem;
+    height: 2.1875rem;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.footer-widget .social-icons li a:hover {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+.widget-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+    color: var(--white);
+    position: relative;
+    padding-bottom: 0.625rem;
+}
+
+.widget-title:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 1.875rem;
+    height: 0.125rem;
+    background-color: var(--primary-color);
+}
+
+.footer-links li {
+    margin-bottom: 0.625rem;
+}
+
+.footer-links li a {
+    color: #cccccc;
+    transition: var(--transition);
+}
+
+.footer-links li a:hover {
+    color: var(--white);
+    padding-left: 0.3125rem;
+}
+
+.contact-info li {
+    margin-bottom: 0.9375rem;
+    color: #cccccc;
+}
+
+.contact-info li i {
+    margin-right: 0.625rem;
+    color: var(--primary-color);
+}
+
+.contact-info li a {
+    color: #cccccc;
+    transition: var(--transition);
+}
+
+.contact-info li a:hover {
+    color: var(--white);
+}
+
+.newsletter h5 {
+    font-size: 1.125rem;
+    margin-bottom: 0.9375rem;
+    color: var(--white);
+}
+
+.newsletter-form {
+    position: relative;
+    margin-top: 0.9375rem;
+}
+
+.newsletter-form input {
+    width: 100%;
+    height: 2.8125rem;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 3.125rem;
+    padding: 0 3.125rem 0 1.25rem;
+    color: var(--white);
+}
+
+.newsletter-form button {
+    position: absolute;
+    right: 0.3125rem;
+    top: 0.3125rem;
+    height: 2.1875rem;
+    width: 2.1875rem;
+    background-color: var(--primary-color);
+    border: none;
+    border-radius: 50%;
+    color: var(--white);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.newsletter-form button:hover {
+    background-color: var(--primary-dark);
+}
+
+.copyright {
+    padding: 1.25rem 0;
+    margin-top: 2.5rem;
+    border-top: 0.0625rem solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+    color: #999999;
+    font-size: 0.875rem;
+}
+
+.copyright p {
+    margin-bottom: 0;
+}
+
+.copyright a {
+    color: var(--white);
+    transition: var(--transition);
+}
+
+.copyright a:hover {
+    color: var(--primary-color);
+}
+
+/* ===== FLOATING ELEMENTS ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.875rem;
+    right: 1.875rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: var(--primary-color);
+    color: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 99;
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition);
+    box-shadow: 0 0.25rem 0.625rem rgba(0, 0, 0, 0.2);
+}
+
+.back-to-top.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background-color: var(--primary-dark);
+    color: var(--white);
+}
+
+.whatsapp-btn {
+    position: fixed;
+    bottom: 1.875rem;
+    right: 5rem;
+    width: 3.75rem;
+    height: 3.75rem;
+    background-color: #25D366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 99;
+    transition: var(--transition);
+    box-shadow: 0 0.25rem 0.9375rem rgba(0, 0, 0, 0.2);
+}
+
+.whatsapp-btn img {
+    width: 2.25rem;
+    height: 2.25rem;
+}
+
+.whatsapp-btn:hover {
+    transform: scale(1.1);
+}
+
+.consultation-btn {
+    position: fixed;
+    left: 1.875rem;
+    bottom: 1.875rem;
+    padding: 0.75rem 1.25rem;
+    background-color: var(--secondary-color);
+    color: var(--white);
+    border: none;
+    border-radius: 3.125rem;
+    font-weight: 500;
+    z-index: 99;
+    transition: var(--transition);
+    box-shadow: 0 0.25rem 0.9375rem rgba(0, 0, 0, 0.2);
+}
+
+.consultation-btn:hover {
+    background-color: var(--secondary-dark);
+}
+
+/* ===== RESPONSIVE STYLES FOR FOOTER ===== */
+@media (max-width: 62rem) {
+    .footer-widget {
+        margin-bottom: 1.875rem;
+    }
+}
+
+@media (max-width: 48rem) {
+    .footer-area {
+        padding: 2.5rem 0 0;
+    }
+    
+    .footer-widget {
+        text-align: center;
+    }
+    
+    .widget-title:after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    .footer-widget .social-icons {
+        justify-content: center;
+    }
+    
+    .consultation-btn {
+        display: none;
+    }
+}
+
+@media (max-width: 36rem) {
+    .copyright {
+        padding: 0.9375rem 0;
+    }
+} 

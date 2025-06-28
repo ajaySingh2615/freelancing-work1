@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedStudy Global - Study MBBS Abroad</title>
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- CSS files were split for better organization -->
+</head>
+<body>
+
+    <!-- Skip to Content Link -->
+    <a href="#content" class="skip-link">Skip to content</a>
+    
+    <!-- Header Area -->
+    <header id="header" class="header-area">
+        <!-- Top Header (Contact Bar) -->
+        <div class="top-header">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 col-md-6">
+                        <div class="top-contact">
+                            <ul>
+                                <li>
+                                    <a href="tel:1800-123-4567">
+                                        <i class="fas fa-phone-alt"></i> Student Helpline: 1800-123-4567
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="mailto:info@medstudy.global">
+                                        <i class="fas fa-envelope"></i> E-mail: info@medstudy.global
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="top-right">
+                            <ul class="social-icons">
+                                <li><a href="#" target="_blank" title="Visit our Facebook page"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="#" target="_blank" title="Visit our Twitter page"><i class="fab fa-twitter"></i></a></li>
+                                <li><a href="#" target="_blank" title="Visit our Linkedin page"><i class="fab fa-linkedin-in"></i></a></li>
+                                <li><a href="#" target="_blank" title="Visit our Youtube page"><i class="fab fa-youtube"></i></a></li>
+                                <li><a href="#" target="_blank" title="Visit our Instagram page"><i class="fab fa-instagram"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Main Header (Navigation Bar) -->
+        <div class="main-header">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-3 col-md-3">
+                        <div class="logo">
+                            <a href="index.php">
+                                <img src="assets/images/logo.png" alt="MedStudy Global" class="img-fluid">
+                            </a>
+                            <span class="tagline">Study Abroad Consultants</span>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <nav class="main-nav">
+                            <ul>
+                                <li><a href="index.php" class="active">Home</a></li>
+                                <li><a href="about.php">About Us</a></li>
+                                <li><a href="universities.php">Universities</a></li>
+                                <li><a href="countries.php">Countries</a></li>
+                                <li><a href="resources.php">Resources</a></li>
+                                <li><a href="gallery.php">Gallery</a></li>
+                                <li><a href="contact.php">Contact Us</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="col-lg-3 col-md-3">
+                        <div class="header-actions">
+                            <ul>
+                                <li>
+                                    <a href="#header-search" id="search-btn" class="search-toggle">
+                                        <i class="fas fa-search"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <button class="hamburger-btn" id="mobile-menu-toggle">
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                    </button>
+                                </li>
+                                <li>
+                                    <a href="apply-online.php" class="apply-btn">
+                                        <i class="fas fa-graduation-cap"></i> Apply Now
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Search Popup -->
+    <div id="header-search" class="header-search">
+        <div class="container">
+            <div class="search-form">
+                <form action="search.php" method="get">
+                    <input type="text" name="q" placeholder="Search here...">
+                    <button type="submit"><i class="fas fa-search"></i></button>
+                </form>
+                <a href="#" class="close-search"><i class="fas fa-times"></i></a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <div class="menu-overlay"></div>
+        <div class="menu-content">
+            <div class="menu-header">
+                <a href="index.php">
+                    <img src="assets/images/logo.png" alt="MedStudy Global" class="img-fluid">
+                </a>
+                <button class="close-menu"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="menu-body">
+                <ul class="nav-menu">
+                    <li><a href="index.php">Home</a></li>
+                    <li><a href="about.php">About Us</a></li>
+                    <li><a href="universities.php">Universities</a></li>
+                    <li><a href="countries.php">Countries</a></li>
+                    <li><a href="resources.php">Resources</a></li>
+                    <li><a href="gallery.php">Gallery</a></li>
+                    <li><a href="contact.php">Contact Us</a></li>
+                </ul>
+                <div class="menu-contact">
+                    <h4>Contact Info</h4>
+                    <ul>
+                        <li><a href="tel:1800-123-4567"><i class="fas fa-phone-alt"></i> 1800-123-4567</a></li>
+                        <li><a href="mailto:info@medstudy.global"><i class="fas fa-envelope"></i> info@medstudy.global</a></li>
+                    </ul>
+                </div>
+                <div class="menu-social">
+                    <h4>Follow Us</h4>
+                    <ul class="social-icons">
+                        <li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
+                        <li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Book Consultation Button -->
+    <button class="consultation-btn" data-toggle="modal" data-target="#applyModal">
+        Book Free Consultation Now
+    </button>
+    
+    <!-- WhatsApp Button -->
+    <a href="https://api.whatsapp.com/send?phone=123456789" class="whatsapp-btn" target="_blank">
+        <img src="assets/images/whatsapp-icon.png" alt="WhatsApp">
+    </a>
+    
+    <!-- Main Content Area -->
+    <main id="content" class="main-content"> 
