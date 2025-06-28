@@ -336,7 +336,7 @@ ul, ol {
     box-shadow: 0 0.5rem 1.25rem rgba(0, 0, 0, 0.15);
     margin-top: 0;
     margin-bottom: 0;
-    margin-right: 2rem;
+    margin-right: 7rem;
     height: auto;
 }
 
@@ -524,7 +524,7 @@ ul, ol {
     .hero-form-wrapper {
         flex: 0 0 50%;
         max-width: 50%;
-        margin-right: 2rem;
+        margin-right: 5.5rem;
     }
     
     .hero-section {
@@ -558,7 +558,7 @@ ul, ol {
     .hero-form-wrapper {
         flex: 0 0 60%;
         max-width: 60%;
-        margin-right: 1.5rem;
+        margin-right: 4rem;
     }
 }
 
