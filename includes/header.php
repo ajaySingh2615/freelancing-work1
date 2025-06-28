@@ -34,12 +34,12 @@
                             <ul>
                                 <li>
                                     <a href="tel:1800-123-4567">
-                                        <i class="fas fa-phone-alt"></i> Student Helpline: 1800-123-4567
+                                        <i class="fas fa-phone-alt pulse"></i> Student Helpline: 1800-123-4567
                                     </a>
                                 </li>
                                 <li>
                                     <a href="mailto:info@medstudy.global">
-                                        <i class="fas fa-envelope"></i> E-mail: info@medstudy.global
+                                        <i class="fas fa-envelope pulse"></i> E-mail: info@medstudy.global
                                     </a>
                                 </li>
                             </ul>
@@ -48,11 +48,11 @@
                     <div class="col-lg-6 col-md-6">
                         <div class="top-right">
                             <ul class="social-icons">
-                                <li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-                                <li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
-                                <li><a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
-                                <li><a href="#" target="_blank"><i class="fab fa-youtube"></i></a></li>
-                                <li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                                <li><a href="#" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="#" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a></li>
+                                <li><a href="#" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a></li>
+                                <li><a href="#" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a></li>
+                                <li><a href="#" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a></li>
                             </ul>
                         </div>
                     </div>
@@ -64,15 +64,15 @@
         <div class="main-header">
             <div class="container">
                 <div class="row align-items-center">
-                    <div class="col-lg-3 col-md-3">
+                    <div class="col-lg-2 col-md-3">
                         <div class="logo">
-                            <a href="index.php">
+                            <a href="index.php" class="logo-link">
                                 <img src="assets/images/logo.png" alt="MedStudy Global">
+                                <span class="tagline">Study Abroad Consultants</span>
                             </a>
-                            <span class="tagline">Study Abroad Consultants</span>
                         </div>
                     </div>
-                    <div class="col-lg-7 col-md-7">
+                    <div class="col-lg-8 col-md-7">
                         <nav class="main-nav">
                             <ul>
                                 <li><a href="index.php" class="active">Home</a></li>
@@ -89,7 +89,7 @@
                         <div class="header-actions">
                             <ul>
                                 <li>
-                                    <button class="hamburger-btn" id="mobile-menu-toggle">
+                                    <button class="hamburger-btn" id="mobile-menu-toggle" aria-label="Open mobile menu">
                                         <span></span>
                                         <span></span>
                                         <span></span>
@@ -116,7 +116,7 @@
                 <a href="index.php">
                     <img src="assets/images/logo.png" alt="MedStudy Global" class="img-fluid">
                 </a>
-                <button class="close-menu"><i class="fas fa-times"></i></button>
+                <button class="close-menu" aria-label="Close mobile menu"><i class="fas fa-times"></i></button>
             </div>
             <div class="menu-body">
                 <ul class="nav-menu">
