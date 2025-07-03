@@ -155,58 +155,101 @@ include('includes/header.php');
     </div>
 </section>
 
-<!-- Feature Tabs -->
-<section class="feature-tabs">
-    <div class="container">
-        <div class="card">
-            <div class="card-body p-0">
-                <!-- Tab Navigation -->
-                <ul class="nav nav-tabs feature-nav" id="featureTabs" role="tablist">
-                    <li class="nav-item">
-                        <a class="nav-link active" id="universities-tab" data-toggle="tab" href="#universities" role="tab" aria-controls="universities" aria-selected="true">
-                            <img src="assets/images/icons/university.png" alt="Universities">
-                            <span>Top Universities</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="countries-tab" data-toggle="tab" href="#countries" role="tab" aria-controls="countries" aria-selected="false">
-                            <img src="assets/images/icons/globe.png" alt="Countries">
-                            <span>Study Destinations</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="admission-tab" data-toggle="tab" href="#admission" role="tab" aria-controls="admission" aria-selected="false">
-                            <img src="assets/images/icons/admission.png" alt="Admission">
-                            <span>Admission Process</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="scholarship-tab" data-toggle="tab" href="#scholarship" role="tab" aria-controls="scholarship" aria-selected="false">
-                            <img src="assets/images/icons/scholarship.png" alt="Scholarship">
-                            <span>Scholarships</span>
-                        </a>
-                    </li>
-                </ul>
-                
-                <!-- Tab Content -->
-                <div class="tab-content p-4" id="featureTabsContent">
-                    <div class="tab-pane fade show active" id="universities" role="tabpanel" aria-labelledby="universities-tab">
-                        <div class="feature-content">
-                            <h3>Top Medical Universities</h3>
-                            <p>We partner with the best medical universities around the world that offer quality education at affordable fees.</p>
-                            <ul class="feature-list">
-                                <li><i class="fas fa-check-circle"></i> MCI/NMC approved universities</li>
-                                <li><i class="fas fa-check-circle"></i> Modern infrastructure and facilities</li>
-                                <li><i class="fas fa-check-circle"></i> Experienced faculty and international exposure</li>
-                                <li><i class="fas fa-check-circle"></i> Affordable tuition fees with scholarship options</li>
-                            </ul>
-                            <a href="universities.php" class="btn btn-primary mt-3">View All Universities</a>
-                        </div>
-                    </div>
-                    
-                    <!-- Additional tab content would go here -->
+<!-- Study Destinations Section -->
+<section class="study-destinations-section">
+    <div class="destinations-container">
+        <h2 class="destinations-question">Where would you <span class="highlight-text">like to study?</span></h2>
+        
+        <div class="destinations-grid">
+            <div class="destination-item">
+                <div class="flag-circle">
+                    <img src="https://cdn-icons-png.flaticon.com/128/206/206724.png" alt="Russia" class="flag-img">
                 </div>
+                <span class="country-label">Russia</span>
             </div>
+            
+            <div class="destination-item">
+                <div class="flag-circle">
+                    <img src="https://cdn-icons-png.flaticon.com/128/206/206606.png" alt="Georgia" class="flag-img">
+                </div>
+                <span class="country-label">Georgia</span>
+            </div>
+            
+            <div class="destination-item">
+                <div class="flag-circle">
+                    <img src="https://cdn-icons-png.flaticon.com/128/206/206619.png" alt="Kazakhstan" class="flag-img">
+                </div>
+                <span class="country-label">Kazakhstan</span>
+            </div>
+            
+            <div class="destination-item">
+                <div class="flag-circle">
+                    <img src="https://cdn-icons-png.flaticon.com/128/206/206853.png" alt="Egypt" class="flag-img">
+                </div>
+                <span class="country-label">Egypt</span>
+            </div>
+            
+            <div class="destination-item">
+                <div class="flag-circle">
+                    <img src="https://cdn-icons-png.flaticon.com/128/206/206697.png" alt="Nepal" class="flag-img">
+                </div>
+                <span class="country-label">Nepal</span>
+            </div>
+            
+            <div class="destination-item">
+                <div class="flag-circle">
+                    <img src="https://cdn-icons-png.flaticon.com/128/206/206581.png" alt="China" class="flag-img">
+                </div>
+                <span class="country-label">China</span>
+            </div>
+            
+            <div class="destination-item">
+                <div class="flag-circle">
+                    <img src="https://cdn-icons-png.flaticon.com/128/206/206851.png" alt="Uzbekistan" class="flag-img">
+                </div>
+                <span class="country-label">Uzbekistan</span>
+            </div>
+            
+            <div class="destination-item">
+                <div class="flag-circle">
+                    <img src="https://cdn-icons-png.flaticon.com/128/206/206618.png" alt="Germany" class="flag-img">
+                </div>
+                <span class="country-label">Germany</span>
+            </div>
+            
+            <div class="destination-item">
+                <div class="flag-circle">
+                    <img src="https://cdn-icons-png.flaticon.com/128/206/206626.png" alt="Italy" class="flag-img">
+                </div>
+                <span class="country-label">Italy</span>
+            </div>
+            
+            <div class="destination-item">
+                <div class="flag-circle">
+                    <img src="https://cdn-icons-png.flaticon.com/128/206/206731.png" alt="Poland" class="flag-img">
+                </div>
+                <span class="country-label">Poland</span>
+            </div>
+            
+            <div class="destination-item">
+                <div class="flag-circle">
+                    <img src="https://cdn-icons-png.flaticon.com/128/206/206567.png" alt="Belarus" class="flag-img">
+                </div>
+                <span class="country-label">Belarus</span>
+            </div>
+            
+            <div class="destination-item">
+                <div class="flag-circle">
+                    <img src="https://cdn-icons-png.flaticon.com/128/206/206644.png" alt="Latvia" class="flag-img">
+                </div>
+                <span class="country-label">Latvia</span>
+            </div>
+        </div>
+        
+        <div class="view-all-container">
+            <a href="#" class="view-all-link">
+                <span>View All</span>
+            </a>
         </div>
     </div>
 </section>
