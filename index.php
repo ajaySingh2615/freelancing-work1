@@ -42,7 +42,7 @@ include('includes/header.php');
         
         <!-- Slide 2 -->
         <div class="hero-slide">
-            <img src="assets/images/media/home-page/hero-section/two.webp" alt="MBBS Admission Guidance" class="hero-slide-bg" width="1920" height="600">
+            <img src="assets/images/media/home-page/hero-section/one.webp" alt="MBBS Admission Guidance" class="hero-slide-bg" width="1920" height="600">
             <div class="hero-container">
                 <div class="hero-content-wrapper">
                     <div class="hero-form-wrapper">
@@ -77,7 +77,7 @@ include('includes/header.php');
         
         <!-- Slide 3 -->
         <div class="hero-slide">
-            <img src="assets/images/media/home-page/hero-section/three.webp" alt="Medical Education Consultancy" class="hero-slide-bg" width="1920" height="600">
+            <img src="assets/images/media/home-page/hero-section/one.webp" alt="Medical Education Consultancy" class="hero-slide-bg" width="1920" height="600">
             <div class="hero-container">
                 <div class="hero-content-wrapper">
                     <div class="hero-form-wrapper">
