@@ -260,26 +260,39 @@ include('includes/header.php');
         <span class="about-subtitle">About Us SGE</span>
         <h2 class="about-question">Welcome to <span class="highlight-text">Sunrise Global Education</span></h2>
         
-        <div class="about-content-wrapper">
-            <div class="about-content">
-                <p>At Sunrise Global Education, we are committed to turning your dream of studying MBBS abroad into reality. As a leading overseas education consultancy, we specialize in MBBS abroad counseling, complete documentation support, and seamless admission guidance.</p>
-                
-                <p>We proudly assist aspiring medical students in securing admissions to globally recognized universities that are WHO-approved and listed by the NMC (formerly MCI). All our partner universities offer English-medium programs, ensuring a smooth learning experience for international students.</p>
-                
-                <p>Our expertise lies in providing accurate, transparent, and up-to-date information about universities and medical education systems in countries renowned for excellence in medical studies, including Russia, Kazakhstan, and Bangladesh.</p>
-                
-                <p>With Sunrise Global Education, you get personalized guidance and end-to-end support—from selecting the right university to settling down in your dream destination.</p>
-                
-                <div class="about-actions">
-                    <a href="about.php" class="btn btn-primary">Discover Our Story</a>
-                    <a href="contact.php" class="btn btn-outline-primary">Get Free Consultation</a>
+        <div class="about-intro">
+            <p>At Sunrise Global Education, we are committed to turning your dream of studying MBBS abroad into reality. As a leading overseas education consultancy, we specialize in MBBS abroad counseling, complete documentation support, and seamless admission guidance.</p>
+        </div>
+        
+        <div class="about-highlights">
+            <div class="highlight-card">
+                <div class="highlight-icon">
+                    <i class="fas fa-university"></i>
                 </div>
+                <h3>WHO-Approved Universities</h3>
+                <p>We proudly assist aspiring medical students in securing admissions to globally recognized universities that are WHO-approved and listed by the NMC (formerly MCI).</p>
             </div>
             
-            <div class="about-image-wrapper">
-                <img src="assets/images/media/home-page/about section/about-hero-image.webp" alt="Sunrise Global Education - Medical Education Consultancy" class="about-image">
-                <div class="about-image-overlay"></div>
+            <div class="highlight-card">
+                <div class="highlight-icon">
+                    <i class="fas fa-globe-americas"></i>
+                </div>
+                <h3>Expert Guidance</h3>
+                <p>Our expertise lies in providing accurate, transparent, and up-to-date information about universities and medical education systems in Russia, Kazakhstan, and Bangladesh.</p>
             </div>
+            
+            <div class="highlight-card">
+                <div class="highlight-icon">
+                    <i class="fas fa-hands-helping"></i>
+                </div>
+                <h3>End-to-End Support</h3>
+                <p>With Sunrise Global Education, you get personalized guidance and complete support—from selecting the right university to settling down in your dream destination.</p>
+            </div>
+        </div>
+        
+        <div class="about-actions">
+            <a href="about.php" class="btn btn-primary">Discover Our Story</a>
+            <a href="contact.php" class="btn btn-outline-primary">Get Free Consultation</a>
         </div>
     </div>
 </section>
