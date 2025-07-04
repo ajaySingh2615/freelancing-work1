@@ -26,13 +26,11 @@ include('includes/header.php');
             <div class="col-lg-6">
                 <div class="about-content">
                     <span class="subtitle">WHO WE ARE</span>
-                    <h2>Leading Medical Education Consultancy Since 2005</h2>
-                    <p>MedStudy Global is a pioneer in helping aspiring medical students fulfill their dreams by providing expert guidance for pursuing medical education abroad. Established in 2005, we have been successfully guiding students for over fifteen years with our personalized counseling and comprehensive admission assistance.</p>
-                    <p>As a leading ISO 9001:2015 certified educational consultancy, we have transformed the aspirations of more than 10,000 students into reality by facilitating their admission into prestigious Medical Universities across the globe.</p>
+                    <h2>Leading Medical Education Consultancy</h2>
+                    <p>MedStudy Global is a pioneer in helping aspiring medical students fulfill their dreams by providing expert guidance for pursuing medical education abroad. We have been successfully guiding students with our personalized counseling and comprehensive admission assistance.</p>
+                    <p>As a leading ISO 9001:2015 certified educational consultancy, we have helped transform the aspirations of students into reality by facilitating their admission into prestigious Medical Universities across the globe.</p>
                     
                     <ul class="feature-list">
-                        <li>15+ Years of Experience in Medical Education Consulting</li>
-                        <li>More than 10,000 Student Success Stories</li>
                         <li>Official Representative of Top International Medical Universities</li>
                         <li>ISO 9001:2015 Certified Organization</li>
                         <li>Comprehensive Support from Application to Graduation</li>
@@ -83,7 +81,7 @@ include('includes/header.php');
             <div class="col-lg-12 text-center">
                 <span class="subtitle">OUR JOURNEY</span>
                 <h2>Milestones Achieved</h2>
-                <p class="mb-5">Over fifteen years of excellence in facilitating medical education globally</p>
+                <p class="mb-5">Our journey of excellence in facilitating medical education globally</p>
             </div>
         </div>
         <div class="row">
@@ -92,43 +90,29 @@ include('includes/header.php');
                     <div class="timeline-item">
                         <div class="timeline-dot"></div>
                         <div class="timeline-content">
-                            <h3>2005</h3>
+                            <h3>Foundation</h3>
                             <p>MedStudy Global was established with the mission to help students pursue medical education abroad.</p>
                         </div>
                     </div>
                     <div class="timeline-item">
                         <div class="timeline-dot"></div>
                         <div class="timeline-content right">
-                            <h3>2010</h3>
+                            <h3>Global Partnerships</h3>
                             <p>Became the official representative of several top international medical universities.</p>
                         </div>
                     </div>
                     <div class="timeline-item">
                         <div class="timeline-dot"></div>
                         <div class="timeline-content">
-                            <h3>2012</h3>
-                            <p>Achieved the milestone of successfully placing 5,000+ students in medical universities worldwide.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content right">
-                            <h3>2015</h3>
+                            <h3>Expansion</h3>
                             <p>Expanded operations with multiple offices across the country to provide better accessibility to students.</p>
                         </div>
                     </div>
                     <div class="timeline-item">
                         <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <h3>2018</h3>
-                            <p>Received ISO 9001:2015 certification for excellence in education consultancy services.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
                         <div class="timeline-content right">
-                            <h3>2023</h3>
-                            <p>Celebrated the success of guiding more than 10,000 students to various medical universities globally.</p>
+                            <h3>Quality Recognition</h3>
+                            <p>Received ISO 9001:2015 certification for excellence in education consultancy services.</p>
                         </div>
                     </div>
                 </div>

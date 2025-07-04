@@ -255,45 +255,30 @@ include('includes/header.php');
 </section>
 
 <!-- About Section -->
-<section class="about-section section-padding">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8">
-                <span class="subtitle">WHO WE ARE</span>
-                <h2>Welcome To MedStudy Global</h2>
-                <p>Since 2005, MedStudy Global has been a trusted name in helping aspiring doctors achieve their dream of studying MBBS abroad. With over 10,000 success stories, we are a leading ISO 9001: 2015 accredited educational consultancy specializing in medical education worldwide.</p>
+<section class="about-section">
+    <div class="about-container">
+        <span class="about-subtitle">About Us SGE</span>
+        <h2 class="about-question">Welcome to <span class="highlight-text">Sunrise Global Education</span></h2>
+        
+        <div class="about-content-wrapper">
+            <div class="about-content">
+                <p>At Sunrise Global Education, we are committed to turning your dream of studying MBBS abroad into reality. As a leading overseas education consultancy, we specialize in MBBS abroad counseling, complete documentation support, and seamless admission guidance.</p>
                 
-                <ul class="feature-list">
-                    <li>15+ Years of Experience</li>
-                    <li>Serving 3,000+ students currently</li>
-                    <li>Partnerships with Top Government Universities</li>
-                    <li>Personalized Guidance & Support</li>
-                    <li>Transparent Admission Procedures</li>
-                    <li>Comprehensive Pre-departure Assistance</li>
-                </ul>
+                <p>We proudly assist aspiring medical students in securing admissions to globally recognized universities that are WHO-approved and listed by the NMC (formerly MCI). All our partner universities offer English-medium programs, ensuring a smooth learning experience for international students.</p>
                 
-                <div class="mt-4">
-                    <a href="about.php" class="btn btn-primary">Learn More</a>
-                    <a href="contact.php" class="btn btn-outline-primary ml-2">Contact Us</a>
+                <p>Our expertise lies in providing accurate, transparent, and up-to-date information about universities and medical education systems in countries renowned for excellence in medical studies, including Russia, Kazakhstan, and Bangladesh.</p>
+                
+                <p>With Sunrise Global Education, you get personalized guidance and end-to-end support—from selecting the right university to settling down in your dream destination.</p>
+                
+                <div class="about-actions">
+                    <a href="about.php" class="btn btn-primary">Discover Our Story</a>
+                    <a href="contact.php" class="btn btn-outline-primary">Get Free Consultation</a>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="credentials-box">
-                    <figure>
-                        <img src="assets/images/15-years.png" alt="15-Years">
-                        <figcaption>Dedicated support to fulfill your medical education dreams</figcaption>
-                    </figure>
-                    
-                    <figure>
-                        <img src="assets/images/iso.png" alt="ISO 9001">
-                        <figcaption>ISO 9001:2015 certified educational consultancy</figcaption>
-                    </figure>
-                    
-                    <figure>
-                        <img src="assets/images/award.png" alt="Award Winning">
-                        <figcaption>Award-winning consultants for international medical education</figcaption>
-                    </figure>
-                </div>
+            
+            <div class="about-image-wrapper">
+                <img src="assets/images/media/home-page/about section/about-hero-image.webp" alt="Sunrise Global Education - Medical Education Consultancy" class="about-image">
+                <div class="about-image-overlay"></div>
             </div>
         </div>
     </div>
