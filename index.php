@@ -257,7 +257,6 @@ include('includes/header.php');
 <!-- About Section -->
 <section class="about-section">
     <div class="about-container">
-        <span class="about-subtitle">About SGE</span>
         <h2 class="about-question">Welcome to <span class="highlight-text">Sunrise Global Education</span></h2>
         
         <div class="about-intro">
