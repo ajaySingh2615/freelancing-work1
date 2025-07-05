@@ -2200,10 +2200,12 @@ ul, ol {
 
 .services-layout {
     display: grid;
-    grid-template-columns: 1fr 450px 1fr;
-    gap: 40px;
+    grid-template-columns: 350px 400px 350px;
+    gap: 50px;
     align-items: center;
     position: relative;
+    justify-content: center;
+    margin: 0 auto;
 }
 
 .services-left,
@@ -2211,16 +2213,15 @@ ul, ol {
     display: flex;
     flex-direction: column;
     gap: 4rem;
+    width: 100%;
 }
 
 .services-right {
     text-align: left;
-    padding-left: 2rem;
 }
 
 .services-left {
     text-align: right;
-    padding-right: 2rem;
 }
 
 .service-group {
@@ -2230,38 +2231,65 @@ ul, ol {
 }
 
 .service-group:hover {
-    transform: translateY(-5px);
+    transform: translateY(-8px);
 }
 
 .service-group:hover .service-icon {
-    transform: scale(1.1) rotate(10deg);
+    transform: scale(1.2) rotate(10deg);
     background: linear-gradient(135deg, var(--accent-color), var(--accent-light));
+    box-shadow: 0 6px 20px rgba(254, 186, 2, 0.3);
+}
+
+.service-header {
+    display: flex;
+    align-items: center;
+    gap: var(--lg);
+    margin-bottom: var(--md);
+    min-height: 60px;
 }
 
 .service-icon {
-    width: 50px;
-    height: 50px;
+    width: 55px;
+    height: 55px;
     background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
     border-radius: var(--circle);
-    display: inline-flex;
+    display: flex;
     align-items: center;
     justify-content: center;
     color: var(--white);
-    font-size: 20px;
-    margin-bottom: var(--md);
+    font-size: 22px;
+    transition: var(--transition);
+    flex-shrink: 0;
+    position: relative;
+}
+
+.service-icon::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: var(--circle);
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+    opacity: 0.2;
+    transform: scale(1.3);
     transition: var(--transition);
 }
 
-.services-left .service-icon {
-    margin-left: auto;
+.service-group:hover .service-icon::before {
+    transform: scale(1.6);
+    opacity: 0.1;
 }
 
 .service-group h3 {
-    font-size: var(--large);
+    font-size: var(--xlarge);
     font-weight: var(--semibold);
     color: var(--text-color);
-    margin-bottom: var(--sm);
-    line-height: var(--tight);
+    margin: 0;
+    line-height: 1.4;
+    flex: 1;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
 }
 
 .service-group p {
@@ -2269,7 +2297,7 @@ ul, ol {
     color: var(--light-text);
     line-height: var(--normal);
     margin: 0;
-    max-width: 300px;
+    max-width: 280px;
 }
 
 .services-left p {
@@ -2313,7 +2341,7 @@ ul, ol {
 /* Responsive Design */
 @media (max-width: 992px) {
     .services-layout {
-        grid-template-columns: 1fr 400px 1fr;
+        grid-template-columns: 300px 350px 300px;
         gap: 30px;
     }
 
@@ -2331,17 +2359,15 @@ ul, ol {
     .services-layout {
         grid-template-columns: 1fr;
         gap: 3rem;
+        justify-content: center;
     }
     
     .services-left,
     .services-right {
         text-align: left;
-        padding: 0;
         gap: 2.5rem;
-    }
-
-    .services-left .service-icon {
-        margin-left: 0;
+        justify-self: center;
+        max-width: 500px;
     }
 
     .services-left p {
@@ -2350,6 +2376,15 @@ ul, ol {
 
     .service-group p {
         max-width: 100%;
+    }
+
+    .service-group h3 {
+        font-size: var(--large);
+        min-height: 45px;
+    }
+
+    .service-header {
+        min-height: 50px;
     }
 }
 
@@ -2370,6 +2405,11 @@ ul, ol {
     .service-group {
         padding: 0.5rem;
     }
+
+    .service-header {
+        gap: var(--sm);
+        min-height: 45px;
+    }
     
     .service-icon {
         width: 45px;
@@ -2377,8 +2417,17 @@ ul, ol {
         font-size: 18px;
     }
 
+    .service-icon::before {
+        transform: scale(1.2);
+    }
+
+    .service-group:hover .service-icon::before {
+        transform: scale(1.4);
+    }
+
     .service-group h3 {
         font-size: var(--medium);
+        min-height: 40px;
     }
 
     .service-group p {

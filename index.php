@@ -344,25 +344,29 @@ include('includes/header.php');
     <div class="services-container">
         <div class="services-header">
             <h2 class="services-title">Services At <span class="highlight-text">Rus Education</span></h2>
-            <p class="services-description">An MBBS degree in Russia for Indian students is a gateway to affordable, quality medical education. With WHO-approved universities, English-medium instruction, and globally recognized degrees, Russia provides an excellent pathway to your medical career.</p>
+            <p class="services-description">Study MBBS in Russia: Affordable, WHO-approved universities, English-medium courses, and globally recognized degrees for your medical career.</p>
         </div>
         
         <div class="services-layout">
             <div class="services-left">
                 <div class="service-group">
-                    <div class="service-icon">
-                        <i class="fas fa-user-graduate"></i>
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <i class="fas fa-user-graduate"></i>
+                        </div>
+                        <h3>100% Admission Support</h3>
                     </div>
-                    <h3>100% Admission Support</h3>
-                    <p>Complete guidance from application to admission confirmation with guaranteed seat allocation in top medical universities.</p>
+                    <p>Complete guidance from application to admission with guaranteed seat allocation.</p>
                 </div>
                 
                 <div class="service-group">
-                    <div class="service-icon">
-                        <i class="fas fa-plane"></i>
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <i class="fas fa-plane"></i>
+                        </div>
+                        <h3>Visa & Travel Arrangements</h3>
                     </div>
-                    <h3>Visa & Travel Arrangements</h3>
-                    <p>Expert visa processing assistance with 100% success rate and complete travel coordination for hassle-free journey.</p>
+                    <p>Expert visa processing with 100% success rate and complete travel coordination.</p>
                 </div>
             </div>
             
@@ -372,19 +376,23 @@ include('includes/header.php');
             
             <div class="services-right">
                 <div class="service-group">
-                    <div class="service-icon">
-                        <i class="fas fa-microscope"></i>
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <i class="fas fa-microscope"></i>
+                        </div>
+                        <h3>FMGE/NExT Coaching</h3>
                     </div>
-                    <h3>FMGE/NExT Coaching</h3>
-                    <p>Comprehensive preparation for medical licensing exams with expert faculty and proven study materials.</p>
+                    <p>Comprehensive preparation for medical licensing exams with expert faculty.</p>
                 </div>
                 
                 <div class="service-group">
-                    <div class="service-icon">
-                        <i class="fas fa-building"></i>
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <h3>Hostels, Canteens & More</h3>
                     </div>
-                    <h3>Hostels, Canteens & More</h3>
-                    <p>Complete accommodation support with comfortable hostels, quality food arrangements, and campus facilities.</p>
+                    <p>Complete accommodation support with comfortable hostels and quality food arrangements.</p>
                 </div>
             </div>
         </div>
