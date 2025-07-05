@@ -341,17 +341,51 @@ include('includes/header.php');
 
 <!-- Services Section -->
 <section class="services-section section-padding">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <span class="subtitle">HOW WE ASSIST YOU</span>
-                <h2>Our Services</h2>
-                <p>At MedStudy Global, we ensure your international medical education journey is smooth and successful. We provide comprehensive support from application to graduation, helping you make the most of your time and learning abroad.</p>
-            </div>
+    <div class="services-container">
+        <div class="services-header">
+            <h2 class="services-title">Services At <span class="highlight-text">Rus Education</span></h2>
+            <p class="services-description">An MBBS degree in Russia for Indian students is a gateway to affordable, quality medical education. With WHO-approved universities, English-medium instruction, and globally recognized degrees, Russia provides an excellent pathway to your medical career.</p>
         </div>
-        <div class="row mt-4">
-            <div class="col-md-12 text-center">
-                <img src="assets/images/services.jpg" alt="Our Services" class="img-fluid">
+        
+        <div class="services-layout">
+            <div class="services-left">
+                <div class="service-group">
+                    <div class="service-icon">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <h3>100% Admission Support</h3>
+                    <p>Complete guidance from application to admission confirmation with guaranteed seat allocation in top medical universities.</p>
+                </div>
+                
+                <div class="service-group">
+                    <div class="service-icon">
+                        <i class="fas fa-plane"></i>
+                    </div>
+                    <h3>Visa & Travel Arrangements</h3>
+                    <p>Expert visa processing assistance with 100% success rate and complete travel coordination for hassle-free journey.</p>
+                </div>
+            </div>
+            
+            <div class="services-image">
+                <img src="assets/images/media/home-page/service-section/uk.webp" alt="Medical Students" class="img-fluid">
+            </div>
+            
+            <div class="services-right">
+                <div class="service-group">
+                    <div class="service-icon">
+                        <i class="fas fa-microscope"></i>
+                    </div>
+                    <h3>FMGE/NExT Coaching</h3>
+                    <p>Comprehensive preparation for medical licensing exams with expert faculty and proven study materials.</p>
+                </div>
+                
+                <div class="service-group">
+                    <div class="service-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3>Hostels, Canteens & More</h3>
+                    <p>Complete accommodation support with comfortable hostels, quality food arrangements, and campus facilities.</p>
+                </div>
             </div>
         </div>
     </div>

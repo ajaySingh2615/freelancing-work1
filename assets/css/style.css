@@ -2162,4 +2162,226 @@ ul, ol {
     .logo-item:hover img {
         transform: scale(1.05);
     }
+}
+
+/* ===== SERVICES SECTION ===== */
+.services-section {
+    background: linear-gradient(180deg, var(--white) 0%, var(--light-bg) 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.services-container {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 var(--lg);
+}
+
+.services-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.services-title {
+    font-size: var(--xlarge);
+    font-weight: var(--bold);
+    color: var(--text-color);
+    margin-bottom: var(--lg);
+    line-height: var(--tight);
+}
+
+.services-description {
+    font-size: var(--medium);
+    color: var(--light-text);
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: var(--normal);
+}
+
+.services-layout {
+    display: grid;
+    grid-template-columns: 1fr 450px 1fr;
+    gap: 40px;
+    align-items: center;
+    position: relative;
+}
+
+.services-left,
+.services-right {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+}
+
+.services-right {
+    text-align: left;
+    padding-left: 2rem;
+}
+
+.services-left {
+    text-align: right;
+    padding-right: 2rem;
+}
+
+.service-group {
+    position: relative;
+    transition: var(--transition);
+    padding: 1rem;
+}
+
+.service-group:hover {
+    transform: translateY(-5px);
+}
+
+.service-group:hover .service-icon {
+    transform: scale(1.1) rotate(10deg);
+    background: linear-gradient(135deg, var(--accent-color), var(--accent-light));
+}
+
+.service-icon {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+    border-radius: var(--circle);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    font-size: 20px;
+    margin-bottom: var(--md);
+    transition: var(--transition);
+}
+
+.services-left .service-icon {
+    margin-left: auto;
+}
+
+.service-group h3 {
+    font-size: var(--large);
+    font-weight: var(--semibold);
+    color: var(--text-color);
+    margin-bottom: var(--sm);
+    line-height: var(--tight);
+}
+
+.service-group p {
+    font-size: var(--base);
+    color: var(--light-text);
+    line-height: var(--normal);
+    margin: 0;
+    max-width: 300px;
+}
+
+.services-left p {
+    margin-left: auto;
+}
+
+.services-image {
+    position: relative;
+    z-index: 1;
+}
+
+.services-image::before {
+    content: '';
+    position: absolute;
+    width: 120%;
+    height: 120%;
+    top: -10%;
+    left: -10%;
+    background: radial-gradient(
+        circle at center,
+        rgba(254, 186, 2, 0.1) 0%,
+        rgba(0, 53, 133, 0.05) 50%,
+        transparent 70%
+    );
+    z-index: -1;
+    pointer-events: none;
+}
+
+.services-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: var(--transition);
+    clip-path: polygon(0 5%, 100% 0, 100% 95%, 0 100%);
+}
+
+.services-image:hover img {
+    transform: scale(1.02) translateY(-5px);
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .services-layout {
+        grid-template-columns: 1fr 400px 1fr;
+        gap: 30px;
+    }
+
+    .services-left,
+    .services-right {
+        gap: 3rem;
+    }
+
+    .service-group p {
+        max-width: 250px;
+    }
+}
+
+@media (max-width: 768px) {
+    .services-layout {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+    
+    .services-left,
+    .services-right {
+        text-align: left;
+        padding: 0;
+        gap: 2.5rem;
+    }
+
+    .services-left .service-icon {
+        margin-left: 0;
+    }
+
+    .services-left p {
+        margin-left: 0;
+    }
+
+    .service-group p {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .services-container {
+        padding: 0 var(--md);
+    }
+    
+    .services-header {
+        margin-bottom: 2.5rem;
+    }
+    
+    .services-left,
+    .services-right {
+        gap: 2rem;
+    }
+    
+    .service-group {
+        padding: 0.5rem;
+    }
+    
+    .service-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 18px;
+    }
+
+    .service-group h3 {
+        font-size: var(--medium);
+    }
+
+    .service-group p {
+        font-size: var(--small);
+    }
 } 
