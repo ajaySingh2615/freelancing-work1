@@ -3309,13 +3309,14 @@ ul, ol {
 .contact-wrapper {
     display: flex;
     align-items: center;
-    gap: var(--xxl);
+    gap: 5rem; /* Increased from var(--xxl) to 5rem */
 }
 
 .contact-image {
     flex: 0 0 40%;
     position: relative;
     z-index: 2;
+    padding-right: 2rem; /* Added padding for extra spacing */
 }
 
 .contact-image img {
