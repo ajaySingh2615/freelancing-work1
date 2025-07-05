@@ -452,59 +452,46 @@ include('includes/header.php');
 </div>
 
 <!-- Blog Section -->
-<section class="blog-section section-padding">
+<section class="blog-section">
     <div class="container">
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <span class="subtitle">LATEST UPDATES</span>
-                <h2>Recent News & Insights</h2>
-                <p>Stay informed about the latest developments in medical education and healthcare around the world</p>
-            </div>
+        <div class="section-header">
+            <h2 class="section-title">Latest <span class="highlight-text">News & Articles</span></h2>
+            <p class="section-description">Stay updated with the latest insights, success stories, and developments in medical education abroad through our informative blog posts.</p>
         </div>
-        
-        <div class="row mt-5">
-            <div class="col-md-4">
-                <div class="blog-card">
-                    <a href="blog-detail.php">
-                        <div class="blog-img"></div>
-                    </a>
-                    <div class="blog-content">
-                        <ul class="blog-meta">
-                            <li>April 15, 2024</li>
-                        </ul>
-                        <h3><a href="blog-detail.php">The Advantages of Pursuing Medical Education at Eastern Medical Academy</a></h3>
-                        <p>Thousands of international students choose Eastern Medical Academy for their medical education, and for good reasons...</p>
-                    </div>
+
+        <div class="blog-grid">
+            <!-- Blog Card 1 -->
+            <article class="blog-card">
+                <img src="assets/images/media/home-page/blogs-section/1.jpg" alt="Blog Post 1" class="blog-card__image" loading="lazy">
+                <div class="blog-card__content">
+                    <span class="blog-card__meta">by Admin on March 26, 2024</span>
+                    <h3 class="blog-card__title">Top Medical Universities in Europe for International Students</h3>
+                    <p class="blog-card__excerpt">Discover the leading medical universities in Europe that offer world-class education, state-of-the-art facilities, and diverse cultural experiences for international students...</p>
+                    <a href="#" class="blog-card__link">Read More</a>
                 </div>
-            </div>
-            <div class="col-md-4">
-                <div class="blog-card">
-                    <a href="blog-detail.php">
-                        <div class="blog-img"></div>
-                    </a>
-                    <div class="blog-content">
-                        <ul class="blog-meta">
-                            <li>April 10, 2024</li>
-                        </ul>
-                        <h3><a href="blog-detail.php">Medical Entrance Exam Challenges? Consider These International Options</a></h3>
-                        <p>Many aspiring doctors find entrance exams to be a significant hurdle. Fortunately, there are excellent alternatives...</p>
-                    </div>
+            </article>
+
+            <!-- Blog Card 2 -->
+            <article class="blog-card">
+                <img src="assets/images/media/home-page/blogs-section/2.jpg" alt="Blog Post 2" class="blog-card__image" loading="lazy">
+                <div class="blog-card__content">
+                    <span class="blog-card__meta">by Admin on March 24, 2024</span>
+                    <h3 class="blog-card__title">How to Prepare for Medical School Interviews</h3>
+                    <p class="blog-card__excerpt">Expert tips and strategies to help you ace your medical school interviews, including common questions, preparation techniques, and what admissions committees look for...</p>
+                    <a href="#" class="blog-card__link">Read More</a>
                 </div>
-            </div>
-            <div class="col-md-4">
-                <div class="blog-card">
-                    <a href="blog-detail.php">
-                        <div class="blog-img"></div>
-                    </a>
-                    <div class="blog-content">
-                        <ul class="blog-meta">
-                            <li>April 5, 2024</li>
-                        </ul>
-                        <h3><a href="blog-detail.php">Why Studying Medicine Abroad Might Be Your Best Career Move in 2024</a></h3>
-                        <p>International medical education has gained popularity among students worldwide due to affordable tuition fees...</p>
-                    </div>
+            </article>
+
+            <!-- Blog Card 3 -->
+            <article class="blog-card">
+                <img src="assets/images/media/home-page/blogs-section/3.jpg" alt="Blog Post 3" class="blog-card__image" loading="lazy">
+                <div class="blog-card__content">
+                    <span class="blog-card__meta">by Admin on March 22, 2024</span>
+                    <h3 class="blog-card__title">Understanding Medical Education Systems Worldwide</h3>
+                    <p class="blog-card__excerpt">A comprehensive guide to different medical education systems around the world, including curriculum structures, admission requirements, and career opportunities...</p>
+                    <a href="#" class="blog-card__link">Read More</a>
                 </div>
-            </div>
+            </article>
         </div>
     </div>
 </section>
