@@ -497,15 +497,19 @@ include('includes/header.php');
 </section>
 
 <!-- Contact Section -->
-<section class="contact-section section-padding bg-primary text-white">
+<section class="contact-section">
     <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-8">
-                <h2>Ready to Start Your Medical Journey?</h2>
-                <p>Take the first step towards your medical career. Our expert counselors are ready to guide you through the entire process.</p>
+        <div class="contact-wrapper">
+            <div class="contact-image">
+                <img src="assets/images/media/home-page/contact-us-section/contact-image.webp" alt="Graduate Student" loading="lazy">
             </div>
-            <div class="col-lg-4 text-lg-right">
-                <a href="contact.php" class="btn btn-light">Contact Us Today</a>
+            <div class="contact-content">
+                <h2 class="contact-title">Leave us your contact details here!</h2>
+                <p class="contact-description">Rus Education is a pioneer in facilitating the dreams of young aspirers... Medical Government Universities.</p>
+                <a href="#" class="contact-cta">
+                    Apply Now
+                    <span class="arrow-icon">&#8250;&#8250;</span>
+                </a>
             </div>
         </div>
     </div>
