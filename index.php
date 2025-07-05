@@ -257,7 +257,7 @@ include('includes/header.php');
 <!-- About Section -->
 <section class="about-section">
     <div class="about-container">
-        <span class="about-subtitle">About Us SGE</span>
+        <span class="about-subtitle">About SGE</span>
         <h2 class="about-question">Welcome to <span class="highlight-text">Sunrise Global Education</span></h2>
         
         <div class="about-intro">
@@ -298,35 +298,44 @@ include('includes/header.php');
 </section>
 
 <!-- Universities Section -->
-<section class="universities-section section-padding bg-light">
+<section class="universities-section section-padding">
     <div class="container">
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <span class="subtitle">TOP DESTINATIONS FOR MEDICAL EDUCATION</span>
-                <h2>Leading Medical Universities Worldwide</h2>
-                <p>We partner with prestigious medical universities across the globe that offer quality education at affordable tuition fees. These institutions provide excellent clinical exposure and research opportunities in the field of medicine. Here are our top 3 recommended universities for international students!</p>
+        <div class="section-heading">
+            <h2>Leading <span class="highlight-text">Medical Universities</span> Worldwide</h2>
+        </div>
+        
+        <div class="universities-logo-wall">
+            <div class="logo-grid">
+                <div class="logo-item">
+                    <img src="assets/images/media/home-page/medical-universities-section/logos/Asfendiyarov-Kazakh-National.webp" alt="Asfendiyarov Kazakh National Medical University">
+                </div>
+                <div class="logo-item">
+                    <img src="assets/images/media/home-page/medical-universities-section/logos/Astana-Medical-University.webp" alt="Astana Medical University">
+                </div>
+                <div class="logo-item">
+                    <img src="assets/images/media/home-page/medical-universities-section/logos/South-Kazakhstan-Medical-Academy.webp" alt="South Kazakhstan Medical Academy">
+                </div>
+                <div class="logo-item">
+                    <img src="assets/images/media/home-page/medical-universities-section/logos/Semey-State-Medical-University.webp" alt="Semey State Medical University">
+                </div>
+                <div class="logo-item">
+                    <img src="assets/images/media/home-page/medical-universities-section/logos/Asian-Medical-Institute.webp" alt="Asian Medical Institute">
+                </div>
+                <div class="logo-item">
+                    <img src="assets/images/media/home-page/medical-universities-section/logos/Orel-state-university.webp" alt="Orel State University">
+                </div>
+                <div class="logo-item">
+                    <img src="assets/images/media/home-page/medical-universities-section/logos/Jalal-Abad-State-Medical.webp" alt="Jalal-Abad State Medical University">
+                </div>
+                <div class="logo-item">
+                    <img src="assets/images/media/home-page/medical-universities-section/logos/International-Higher-School-of-Medicine.webp" alt="International Higher School of Medicine">
+                </div>
             </div>
         </div>
         
-        <div class="row mt-5">
-            <div class="col-md-4">
-                <div class="university-card">
-                    <img src="assets/images/universities/university1.jpg" alt="Medical University">
-                    <h3><a href="university-detail.php">Central Medical University</a></h3>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="university-card">
-                    <img src="assets/images/universities/university2.jpg" alt="Medical University">
-                    <h3><a href="university-detail.php">Northern State Medical University</a></h3>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="university-card">
-                    <img src="assets/images/universities/university3.jpg" alt="Medical University">
-                    <h3><a href="university-detail.php">Eastern Medical Academy</a></h3>
-                </div>
-            </div>
+        <div class="universities-actions">
+            <a href="universities.php" class="btn btn-primary">View All Universities</a>
+            <a href="contact.php" class="btn btn-outline-primary">Get Admission Guide</a>
         </div>
     </div>
 </section>
