@@ -400,6 +400,17 @@ $(document).on('keydown', function(e) {
             // Initialize carousel
             initCarousel();
         }
-    });
+            });
+        
+    })(jQuery);
+
+// Testimonial Video Play Function
+function playTestimonialVideo() {
+    // You can replace this with actual video modal or embedded video functionality
+    alert('Opening student testimonial video...\n\nReplace this with your actual video implementation.');
     
-})(jQuery); 
+    // Example of how you might open a video modal:
+    // $('#videoModal').modal('show');
+    // or redirect to YouTube/Vimeo:
+    // window.open('https://www.youtube.com/watch?v=YOUR_VIDEO_ID', '_blank');
+} 
