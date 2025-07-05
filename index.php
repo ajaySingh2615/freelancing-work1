@@ -526,55 +526,57 @@ include('includes/header.php');
 
 <!-- News Section -->
 <section class="news-section section-padding">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <span class="subtitle">Do Not Miss Any Update!</span>
-                <h2>Know What's Latest</h2>
-                <p>Latest updates on NEET UG, NEET PG, MBBS in Russia, MBBS abroad and all the recent happenings at Rus Education, catch them all at a single place.</p>
-            </div>
+    <div class="news-container">
+        <div class="news-header">
+            <h2 class="news-title">Latest <span class="highlight-text">News & Insights</span></h2>
+            <p class="news-description">Stay updated with the latest developments in medical education abroad, university news, and important announcements for aspiring medical students.</p>
         </div>
         
-        <div class="row mt-5">
-            <div class="col-md-4">
-                <article class="news-card">
-                    <a href="news-detail.php">
-                        <div class="news-img"></div>
-                    </a>
-                    <div class="news-content">
-                        <span class="news-date">June 3, 2025</span>
-                        <h3><a href="news-detail.php">NEET UG 2025 Answer Key Released: Last Chance to Raise Objections Today</a></h3>
-                        <p>The provisional answer key for the National Eligibility-cum Entrance Test Undergraduate (NEET UG) was released on June 3, 2025, by…</p>
-                        <a href="news-detail.php" class="read-more">Read More</a>
+        <div class="news-grid">
+            <article class="news-card">
+                <a href="news-detail.php" class="news-image-link">
+                    <div class="news-image">
+                        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&h=600&q=80" alt="NEET UG 2025 Answer Key Released" loading="lazy">
                     </div>
-                </article>
-            </div>
-            <div class="col-md-4">
-                <article class="news-card">
-                    <a href="news-detail.php">
-                        <div class="news-img"></div>
-                    </a>
-                    <div class="news-content">
-                        <span class="news-date">May 31, 2025</span>
-                        <h3><a href="news-detail.php">Rector of Mari State University Highlights India's Role in World War II During Inspiring Lecture…</a></h3>
-                        <p>Yoshkar-Ola, Russia — May 28, 2025: Mari State University (MarSU) proudly hosted an enlightening lecture recently by its Rector, Prof.…</p>
-                        <a href="news-detail.php" class="read-more">Read More</a>
+                </a>
+                <div class="news-content">
+                    <h3 class="news-card-title">
+                        <a href="news-detail.php">NEET UG 2025 Answer Key Released: Last Chance to Raise Objections Today</a>
+                    </h3>
+                    <a href="news-detail.php" class="news-read-more">READ MORE</a>
+                    <p class="news-meta">ON JANUARY 22, 2023 BY SHAMMI AKTAR</p>
+                </div>
+            </article>
+            
+            <article class="news-card">
+                <a href="news-detail.php" class="news-image-link">
+                    <div class="news-image">
+                        <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&h=600&q=80" alt="Mari State University Highlights India's Role" loading="lazy">
                     </div>
-                </article>
-            </div>
-            <div class="col-md-4">
-                <article class="news-card">
-                    <a href="news-detail.php">
-                        <div class="news-img"></div>
-                    </a>
-                    <div class="news-content">
-                        <span class="news-date">May 28, 2025</span>
-                        <h3><a href="news-detail.php">The 26th Russian Education Fair 2025 Kicks Off Its First Edition in Kolkata</a></h3>
-                        <p>The Russian Education Fair 2025 commenced today at the Russian House in Kolkata, offering Indian students a unique platform to…</p>
-                        <a href="news-detail.php" class="read-more">Read More</a>
+                </a>
+                <div class="news-content">
+                    <h3 class="news-card-title">
+                        <a href="news-detail.php">Rector of Mari State University Highlights India's Role in World War II During Inspiring Lecture</a>
+                    </h3>
+                    <a href="news-detail.php" class="news-read-more">READ MORE</a>
+                    <p class="news-meta">ON JANUARY 18, 2023 BY SHAMMI AKTAR</p>
+                </div>
+            </article>
+            
+            <article class="news-card">
+                <a href="news-detail.php" class="news-image-link">
+                    <div class="news-image">
+                        <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&h=600&q=80" alt="Russian Education Fair 2025 Kicks Off" loading="lazy">
                     </div>
-                </article>
-            </div>
+                </a>
+                <div class="news-content">
+                    <h3 class="news-card-title">
+                        <a href="news-detail.php">The 26th Russian Education Fair 2025 Kicks Off Its First Edition in Kolkata</a>
+                    </h3>
+                    <a href="news-detail.php" class="news-read-more">READ MORE</a>
+                    <p class="news-meta">ON JANUARY 15, 2023 BY SHAMMI AKTAR</p>
+                </div>
+            </article>
         </div>
     </div>
 </section>
