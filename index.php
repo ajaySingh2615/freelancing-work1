@@ -572,50 +572,76 @@ include('includes/header.php');
     </div>
 </section>
 
-<!-- Media Partners -->
-<section class="media-section section-padding bg-light">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <h2>Media Highlights</h2>
+<!-- Media Partners Section -->
+<section class="media-partners-section">
+    <div class="media-partners-container">
+
+        
+        <div class="media-partners-row">
+            <div class="media-partners-scroll-container">
+                <div class="media-partners-scroll">
+                    <!-- All logos in a single row -->
+                    <!-- <div class="media-partner-item">
+                        <img src="assets/images/media/home-page/Media-Partners-section/logos/ani.webp" alt="ANI News" loading="lazy">
+                    </div> -->
+                    <!-- <div class="media-partner-item">
+                        <img src="assets/images/media/home-page/Media-Partners-section/logos/dailyhunt.webp" alt="Dailyhunt" loading="lazy">
+                    </div> -->
+                    <div class="media-partner-item">
+                        <img src="assets/images/media/home-page/Media-Partners-section/logos/the-print.webp" alt="The Print" loading="lazy">
+                    </div>
+                    <div class="media-partner-item">
+                        <img src="assets/images/media/home-page/Media-Partners-section/logos/zee5.webp" alt="ZEE5" loading="lazy">
+                    </div>
+                    <!-- <div class="media-partner-item">
+                        <img src="assets/images/media/home-page/Media-Partners-section/logos/latestly.webp" alt="Latestly" loading="lazy">
+                    </div> -->
+                    <div class="media-partner-item">
+                        <img src="assets/images/media/home-page/Media-Partners-section/logos/lockmat.webp" alt="Lokmat" loading="lazy">
+                    </div>
+                    <div class="media-partner-item">
+                        <img src="assets/images/media/home-page/Media-Partners-section/logos/The-Tribune.webp" alt="The Tribune" loading="lazy">
+                    </div>
+                    <div class="media-partner-item">
+                        <img src="assets/images/media/home-page/Media-Partners-section/logos/hj.webp" alt="HJ Media" loading="lazy">
+                    </div>
+                    <div class="media-partner-item">
+                        <img src="assets/images/media/home-page/Media-Partners-section/logos/vecteezy_gradient.webp" alt="Vecteezy" loading="lazy">
+                    </div>
+                    <!-- Duplicate for seamless scrolling -->
+                    <!-- <div class="media-partner-item">
+                        <img src="assets/images/media/home-page/Media-Partners-section/logos/ani.webp" alt="ANI News" loading="lazy">
+                    </div> -->
+                    <div class="media-partner-item">
+                        <img src="assets/images/media/home-page/Media-Partners-section/logos/dailyhunt.webp" alt="Dailyhunt" loading="lazy">
+                    </div>
+                    <div class="media-partner-item">
+                        <img src="assets/images/media/home-page/Media-Partners-section/logos/the-print.webp" alt="The Print" loading="lazy">
+                    </div>
+                    <div class="media-partner-item">
+                        <img src="assets/images/media/home-page/Media-Partners-section/logos/zee5.webp" alt="ZEE5" loading="lazy">
+                    </div>
+                    <div class="media-partner-item">
+                        <img src="assets/images/media/home-page/Media-Partners-section/logos/latestly.webp" alt="Latestly" loading="lazy">
+                    </div>
+                    <div class="media-partner-item">
+                        <img src="assets/images/media/home-page/Media-Partners-section/logos/lockmat.webp" alt="Lokmat" loading="lazy">
+                    </div>
+                    <div class="media-partner-item">
+                        <img src="assets/images/media/home-page/Media-Partners-section/logos/The-Tribune.webp" alt="The Tribune" loading="lazy">
+                    </div>
+                    <div class="media-partner-item">
+                        <img src="assets/images/media/home-page/Media-Partners-section/logos/hj.webp" alt="HJ Media" loading="lazy">
+                    </div>
+                    <div class="media-partner-item">
+                        <img src="assets/images/media/home-page/Media-Partners-section/logos/vecteezy_gradient.webp" alt="Vecteezy" loading="lazy">
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="row align-items-center justify-content-center mt-4">
-            <div class="col-md-2 col-sm-4 col-6">
-                <a href="#"><img src="assets/images/media/ani.png" alt="ANI" class="img-fluid"></a>
-            </div>
-            <div class="col-md-2 col-sm-4 col-6">
-                <a href="#"><img src="assets/images/media/dailyhunt.png" alt="dailyhunt" class="img-fluid"></a>
-            </div>
-            <div class="col-md-2 col-sm-4 col-6">
-                <a href="#"><img src="assets/images/media/theprint.png" alt="theprint" class="img-fluid"></a>
-            </div>
-            <div class="col-md-2 col-sm-4 col-6">
-                <a href="#"><img src="assets/images/media/zee5.png" alt="ZEE5" class="img-fluid"></a>
-            </div>
-            <div class="col-md-2 col-sm-4 col-6">
-                <a href="#"><img src="assets/images/media/latestly.png" alt="latestly" class="img-fluid"></a>
-            </div>
-            <div class="col-md-2 col-sm-4 col-6">
-                <a href="#"><img src="assets/images/media/lokmat.png" alt="Lokmat" class="img-fluid"></a>
-            </div>
-        </div>
-        <div class="row align-items-center justify-content-center mt-4">
-            <div class="col-md-2 col-sm-4 col-6">
-                <a href="#"><img src="assets/images/media/bs.png" alt="BS" class="img-fluid"></a>
-            </div>
-            <div class="col-md-2 col-sm-4 col-6">
-                <a href="#"><img src="assets/images/media/ht.png" alt="hindustan times" class="img-fluid"></a>
-            </div>
-            <div class="col-md-2 col-sm-4 col-6">
-                <a href="#"><img src="assets/images/media/wnn.png" alt="World News Network" class="img-fluid"></a>
-            </div>
-            <div class="col-md-2 col-sm-4 col-6">
-                <a href="#"><img src="assets/images/media/inn.png" alt="indian news network" class="img-fluid"></a>
-            </div>
-            <div class="col-md-2 col-sm-4 col-6">
-                <a href="#"><img src="assets/images/media/tribune.png" alt="The Tribune" class="img-fluid"></a>
-            </div>
+        
+        <div class="media-partners-cta">
+            <a href="contact.php" class="btn">Get Featured Coverage</a>
         </div>
     </div>
 </section>
