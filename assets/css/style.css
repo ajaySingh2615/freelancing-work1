@@ -3442,9 +3442,9 @@ ul, ol {
     position: relative;
 }
 
-
 .media-partners-content {
-    margin-top: 2.5rem;
+    display: flex;
+    justify-content: center;
 }
 
 .media-partners-grid {
@@ -3453,6 +3453,8 @@ ul, ol {
     gap: 2rem;
     align-items: center;
     justify-items: center;
+    max-width: 60rem;
+    margin: 0 auto;
 }
 
 .media-partner-item {

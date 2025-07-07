@@ -165,11 +165,11 @@ include('includes/header.php');
                         <img src="assets/images/media/home-page/Media-Partners-section/logos/ani.webp" alt="ANI News" loading="lazy">
                     </div>
                 </div>
-                <div class="media-partner-item">
+                <!-- <div class="media-partner-item">
                     <div class="media-partner-logo">
                         <img src="assets/images/media/home-page/Media-Partners-section/logos/dailyhunt.webp" alt="Dailyhunt" loading="lazy">
                     </div>
-                </div>
+                </div> -->
                 <!-- <div class="media-partner-item">
                     <div class="media-partner-logo">
                         <img src="assets/images/media/home-page/Media-Partners-section/logos/the-print.webp" alt="The Print" loading="lazy">
@@ -483,7 +483,7 @@ include('includes/header.php');
         
         <div class="testimonial-right">
             <div class="testimonial-image">
-                <img src="assets/images/media/home-page/student-testimonial-section/image-1.png" alt="Medical Student with Stethoscope" class="img-fluid">
+                <img src="assets/images/media/home-page/student-testimonial-section/image-1.webp" alt="Medical Student with Stethoscope" class="img-fluid">
                 <div class="video-overlay">
                     <button class="video-play-btn" onclick="playTestimonialVideo()">
                         <i class="fas fa-play"></i>
@@ -577,7 +577,7 @@ include('includes/header.php');
             <article class="news-card">
                 <a href="news-detail.php" class="news-image-link">
                     <div class="news-image">
-                        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&h=600&q=80" alt="NEET UG 2025 Answer Key Released" loading="lazy">
+                        <img src="https://images.unsplash.com/20/cambridge.JPG?q=80&w=1147&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="NEET UG 2025 Answer Key Released" loading="lazy">
                     </div>
                 </a>
                 <div class="news-content">
