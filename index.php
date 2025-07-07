@@ -8,141 +8,21 @@ include('includes/header.php');
         <!-- Slide 1 -->
         <div class="hero-slide active">
             <img src="assets/images/media/home-page/hero-section/one.webp" alt="Medical Education Abroad" class="hero-slide-bg" width="1920" height="600">
-            <div class="hero-container">
-                <div class="hero-content-wrapper">
-                    <div class="hero-form-wrapper">
-                        <h3 class="hero-form-title">Begin Your Medical Journey</h3>
-                        <form class="hero-form" action="process-form.php" method="post">
-                            <div class="form-group">
-                                <input type="text" class="form-control" name="name" placeholder="Full Name*" required>
-                            </div>
-                            <div class="form-group">
-                                <input type="email" class="form-control" name="email" placeholder="Email Address*" required>
-                            </div>
-                            <div class="form-group">
-                                <input type="tel" class="form-control" name="phone" placeholder="Phone Number*" required>
-                            </div>
-                            <div class="form-group">
-                                <select class="form-control" name="country" required>
-                                    <option value="">Select Preferred Country*</option>
-                                    <option value="Russia">Russia</option>
-                                    <option value="Ukraine">Ukraine</option>
-                                    <option value="Kazakhstan">Kazakhstan</option>
-                                    <option value="Georgia">Georgia</option>
-                                    <option value="Philippines">Philippines</option>
-                                    <option value="Kyrgyzstan">Kyrgyzstan</option>
-                                </select>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Submit Application</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
         </div>
         
         <!-- Slide 2 -->
         <div class="hero-slide">
-            <img src="assets/images/media/home-page/hero-section/one.webp" alt="MBBS Admission Guidance" class="hero-slide-bg" width="1920" height="600">
-            <div class="hero-container">
-                <div class="hero-content-wrapper">
-                    <div class="hero-form-wrapper">
-                        <h3 class="hero-form-title">Request Free Counselling</h3>
-                        <form class="hero-form" action="process-form.php" method="post">
-                            <div class="form-group">
-                                <input type="text" class="form-control" name="name" placeholder="Full Name*" required>
-                            </div>
-                            <div class="form-group">
-                                <input type="email" class="form-control" name="email" placeholder="Email Address*" required>
-                            </div>
-                            <div class="form-group">
-                                <input type="tel" class="form-control" name="phone" placeholder="Phone Number*" required>
-                            </div>
-                            <div class="form-group">
-                                <select class="form-control" name="country" required>
-                                    <option value="">Select Preferred Country*</option>
-                                    <option value="Russia">Russia</option>
-                                    <option value="Ukraine">Ukraine</option>
-                                    <option value="Kazakhstan">Kazakhstan</option>
-                                    <option value="Georgia">Georgia</option>
-                                    <option value="Philippines">Philippines</option>
-                                    <option value="Kyrgyzstan">Kyrgyzstan</option>
-                                </select>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Submit Application</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
+            <img src="assets/images/media/home-page/hero-section/two.webp" alt="MBBS Admission Guidance" class="hero-slide-bg" width="1920" height="600">
         </div>
         
         <!-- Slide 3 -->
         <div class="hero-slide">
-            <img src="assets/images/media/home-page/hero-section/one.webp" alt="Medical Education Consultancy" class="hero-slide-bg" width="1920" height="600">
-            <div class="hero-container">
-                <div class="hero-content-wrapper">
-                    <div class="hero-form-wrapper">
-                        <h3 class="hero-form-title">Start Your Application</h3>
-                        <form class="hero-form" action="process-form.php" method="post">
-                            <div class="form-group">
-                                <input type="text" class="form-control" name="name" placeholder="Full Name*" required>
-                            </div>
-                            <div class="form-group">
-                                <input type="email" class="form-control" name="email" placeholder="Email Address*" required>
-                            </div>
-                            <div class="form-group">
-                                <input type="tel" class="form-control" name="phone" placeholder="Phone Number*" required>
-                            </div>
-                            <div class="form-group">
-                                <select class="form-control" name="country" required>
-                                    <option value="">Select Preferred Country*</option>
-                                    <option value="Russia">Russia</option>
-                                    <option value="Ukraine">Ukraine</option>
-                                    <option value="Kazakhstan">Kazakhstan</option>
-                                    <option value="Georgia">Georgia</option>
-                                    <option value="Philippines">Philippines</option>
-                                    <option value="Kyrgyzstan">Kyrgyzstan</option>
-                                </select>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Submit Application</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
+            <img src="assets/images/media/home-page/hero-section/three.webp" alt="Medical Education Consultancy" class="hero-slide-bg" width="1920" height="600">
         </div>
         
         <!-- Slide 4 -->
         <div class="hero-slide">
             <img src="assets/images/media/home-page/hero-section/four.webp" alt="Medical Study Abroad" class="hero-slide-bg" width="1920" height="600">
-            <div class="hero-container">
-                <div class="hero-content-wrapper">
-                    <div class="hero-form-wrapper">
-                        <h3 class="hero-form-title">Get Expert Guidance</h3>
-                        <form class="hero-form" action="process-form.php" method="post">
-                            <div class="form-group">
-                                <input type="text" class="form-control" name="name" placeholder="Full Name*" required>
-                            </div>
-                            <div class="form-group">
-                                <input type="email" class="form-control" name="email" placeholder="Email Address*" required>
-                            </div>
-                            <div class="form-group">
-                                <input type="tel" class="form-control" name="phone" placeholder="Phone Number*" required>
-                            </div>
-                            <div class="form-group">
-                                <select class="form-control" name="country" required>
-                                    <option value="">Select Preferred Country*</option>
-                                    <option value="Russia">Russia</option>
-                                    <option value="Ukraine">Ukraine</option>
-                                    <option value="Kazakhstan">Kazakhstan</option>
-                                    <option value="Georgia">Georgia</option>
-                                    <option value="Philippines">Philippines</option>
-                                    <option value="Kyrgyzstan">Kyrgyzstan</option>
-                                </select>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Submit Application</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
         </div>
         
         <!-- Carousel Dots -->
@@ -151,6 +31,40 @@ include('includes/header.php');
             <span class="hero-dot" data-slide="1"></span>
             <span class="hero-dot" data-slide="2"></span>
             <span class="hero-dot" data-slide="3"></span>
+        </div>
+    </div>
+    
+    <!-- Single Persistent Form - Overlays all slides -->
+    <div class="hero-form-overlay">
+        <div class="hero-container">
+            <div class="hero-content-wrapper">
+                <div class="hero-form-wrapper">
+                    <h3 class="hero-form-title">Request Free Counselling</h3>
+                    <form class="hero-form" action="process-form.php" method="post">
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="name" placeholder="Full Name*" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" name="email" placeholder="Email Address*" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" class="form-control" name="phone" placeholder="Phone Number*" required>
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control" name="country" required>
+                                <option value="">Select Preferred Country*</option>
+                                <option value="Russia">Russia</option>
+                                <option value="Ukraine">Ukraine</option>
+                                <option value="Kazakhstan">Kazakhstan</option>
+                                <option value="Georgia">Georgia</option>
+                                <option value="Philippines">Philippines</option>
+                                <option value="Kyrgyzstan">Kyrgyzstan</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit Application</button>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 </section>
