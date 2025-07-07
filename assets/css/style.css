@@ -2164,6 +2164,12 @@ ul, ol {
     }
 }
 
+@media (max-width: 480px) {
+    .universities-section .section-heading h2 {
+        font-size: 1.75rem;
+    }
+}
+
 /* ===== SERVICES SECTION ===== */
 .services-section {
     background: linear-gradient(180deg, var(--white) 0%, var(--light-bg) 100%);
@@ -2362,6 +2368,10 @@ ul, ol {
         justify-content: center;
     }
     
+    .services-title {
+        font-size: 2rem;
+    }
+    
     .services-left,
     .services-right {
         text-align: left;
@@ -2395,6 +2405,10 @@ ul, ol {
     
     .services-header {
         margin-bottom: 2.5rem;
+    }
+    
+    .services-title {
+        font-size: 1.75rem;
     }
     
     .services-left,
@@ -3292,7 +3306,7 @@ ul, ol {
 
 .contact-section {
     background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
-    padding: var(--section-padding);
+    padding: 5rem 0 2rem 0;
     color: var(--white);
     overflow: hidden;
     position: relative;
@@ -3395,6 +3409,10 @@ ul, ol {
 
 /* Tablet Responsive */
 @media (max-width: 48rem) { /* 768px */
+    .contact-section {
+        padding: 3.75rem 0 1.5rem 0;
+    }
+    
     .contact-image {
         flex: 0 0 30%;
     }
@@ -3410,6 +3428,10 @@ ul, ol {
 
 /* Mobile Responsive */
 @media (max-width: 30rem) { /* 480px */
+    .contact-section {
+        padding: 2.5rem 0 1rem 0;
+    }
+    
     .contact-wrapper {
         flex-direction: column;
         gap: var(--xl);
