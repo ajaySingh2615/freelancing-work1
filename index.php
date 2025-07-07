@@ -581,21 +581,21 @@ include('includes/header.php');
             <div class="media-partners-scroll-container">
                 <div class="media-partners-scroll">
                     <!-- All logos in a single row -->
-                    <!-- <div class="media-partner-item">
+                    <div class="media-partner-item">
                         <img src="assets/images/media/home-page/Media-Partners-section/logos/ani.webp" alt="ANI News" loading="lazy">
-                    </div> -->
-                    <!-- <div class="media-partner-item">
+                    </div>
+                    <div class="media-partner-item">
                         <img src="assets/images/media/home-page/Media-Partners-section/logos/dailyhunt.webp" alt="Dailyhunt" loading="lazy">
-                    </div> -->
+                    </div>
                     <div class="media-partner-item">
                         <img src="assets/images/media/home-page/Media-Partners-section/logos/the-print.webp" alt="The Print" loading="lazy">
                     </div>
                     <div class="media-partner-item">
                         <img src="assets/images/media/home-page/Media-Partners-section/logos/zee5.webp" alt="ZEE5" loading="lazy">
                     </div>
-                    <!-- <div class="media-partner-item">
+                    <div class="media-partner-item">
                         <img src="assets/images/media/home-page/Media-Partners-section/logos/latestly.webp" alt="Latestly" loading="lazy">
-                    </div> -->
+                    </div>
                     <div class="media-partner-item">
                         <img src="assets/images/media/home-page/Media-Partners-section/logos/lockmat.webp" alt="Lokmat" loading="lazy">
                     </div>
@@ -640,9 +640,6 @@ include('includes/header.php');
             </div>
         </div>
         
-        <div class="media-partners-cta">
-            <a href="contact.php" class="btn">Get Featured Coverage</a>
-        </div>
     </div>
 </section>
 
