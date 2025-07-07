@@ -67,8 +67,8 @@
                     <div class="col-lg-2 col-md-3">
                         <div class="logo">
                             <a href="index.php" class="logo-link">
-                                <img src="assets/images/logo.png" alt="MedStudy Global">
-                                <span class="tagline">Study Abroad Consultants</span>
+                                <img src="assets/images/media/logo/sunrise-logo.webp" alt="MedStudy Global">
+                                <!-- <span class="tagline">Study Abroad Consultants</span> -->
                             </a>
                         </div>
                     </div>
