@@ -509,6 +509,71 @@ include('includes/header.php');
     </div>
 </section>
 
+<!-- Why Choose Us Section -->
+<section class="why-choose-us-section section-padding">
+    <div class="container">
+        <div class="why-choose-us-header">
+            <h2 class="why-choose-us-title">Why <span class="highlight-text">Choose Us?</span></h2>
+        </div>
+        
+        <div class="why-choose-us-content">
+            <!-- Left Column - Benefit Cards -->
+            <div class="benefits-cards">
+                <!-- Card 1 - Rewarding Career -->
+                <div class="benefit-card card-blue">
+                    <div class="benefit-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <div class="benefit-content">
+                        <h3 class="benefit-title">Rewarding Career</h3>
+                        <p class="benefit-description">Students pursuing higher education from abroad can have a rewarding career with higher and stable earnings with endless growth opportunities.</p>
+                    </div>
+                </div>
+                
+                <!-- Card 2 - Easy Admission Process -->
+                <div class="benefit-card card-purple">
+                    <div class="benefit-icon">
+                        <i class="fas fa-clipboard-check"></i>
+                    </div>
+                    <div class="benefit-content">
+                        <h3 class="benefit-title">Easy Admission Process</h3>
+                        <p class="benefit-description">The admission process for study abroad is hassle-free with simple step-by-step procedures for MBBS and other courses.</p>
+                    </div>
+                </div>
+                
+                <!-- Card 3 - Exposure to International Culture -->
+                <div class="benefit-card card-red">
+                    <div class="benefit-icon">
+                        <i class="fas fa-globe-americas"></i>
+                    </div>
+                    <div class="benefit-content">
+                        <h3 class="benefit-title">Exposure to International Culture</h3>
+                        <p class="benefit-description">Indian students get the opportunity to interact with students from different nations and learn about diverse international cultures.</p>
+                    </div>
+                </div>
+                
+                <!-- Card 4 - World Class Education -->
+                <div class="benefit-card card-green">
+                    <div class="benefit-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="benefit-content">
+                        <h3 class="benefit-title">World Class Education</h3>
+                        <p class="benefit-description">Universities abroad provide world-class education to international students at top-ranked educational institutions.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Right Column - Image -->
+            <div class="benefits-image">
+                <div class="benefits-image-wrapper">
+                    <img src="assets/images/media/home-page/why-choose-us/image-1.webp" alt="Doctor and Patient consultation" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- Sticky Consultation Button -->
 <div class="sticky-consultation">
     <a href="contact.php" class="consultation-sticky-btn">
