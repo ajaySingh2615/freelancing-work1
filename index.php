@@ -464,51 +464,6 @@ include('includes/header.php');
     </div>
 </section>
 
-<!-- Testimonial Section -->
-<section class="testimonial-section">
-    <div class="testimonial-container">
-        <div class="testimonial-left">
-            <h2 class="testimonial-heading">What Do Our Students Say About Us?</h2>
-            <p class="testimonial-description">At Rus Education, we are dedicated to bringing you one step closer to your dream of becoming a successful doctor. Hear what our students have to say about their journey and experience with us!</p>
-            
-            <div class="testimonial-stats">
-                <div class="stat-item">
-                    <div class="stat-icon">
-                        <i class="fas fa-university"></i>
-                    </div>
-                    <div class="stat-content">
-                        <h3 class="stat-number">25+</h3>
-                        <p class="stat-label">Universities</p>
-                    </div>
-                </div>
-                
-                <div class="stat-divider"></div>
-                
-                <div class="stat-item">
-                    <div class="stat-icon">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                    <div class="stat-content">
-                        <h3 class="stat-number">5000+</h3>
-                        <p class="stat-label">Current Students</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="testimonial-right">
-            <div class="testimonial-image">
-                <img src="assets/images/media/home-page/student-testimonial-section/image-1.webp" alt="Medical Student with Stethoscope" class="img-fluid">
-                <div class="video-overlay">
-                    <button class="video-play-btn" onclick="playTestimonialVideo()">
-                        <i class="fas fa-play"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
 <!-- Why Choose Us Section -->
 <section class="why-choose-us-section section-padding">
     <div class="container">
@@ -568,6 +523,51 @@ include('includes/header.php');
             <div class="benefits-image">
                 <div class="benefits-image-wrapper">
                     <img src="assets/images/media/home-page/why-choose-us/image-1.webp" alt="Doctor and Patient consultation" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonial Section -->
+<section class="testimonial-section">
+    <div class="testimonial-container">
+        <div class="testimonial-left">
+            <h2 class="testimonial-heading">What Do Our Students Say About Us?</h2>
+            <p class="testimonial-description">At Rus Education, we are dedicated to bringing you one step closer to your dream of becoming a successful doctor. Hear what our students have to say about their journey and experience with us!</p>
+            
+            <div class="testimonial-stats">
+                <div class="stat-item">
+                    <div class="stat-icon">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 class="stat-number">25+</h3>
+                        <p class="stat-label">Universities</p>
+                    </div>
+                </div>
+                
+                <div class="stat-divider"></div>
+                
+                <div class="stat-item">
+                    <div class="stat-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 class="stat-number">5000+</h3>
+                        <p class="stat-label">Current Students</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="testimonial-right">
+            <div class="testimonial-image">
+                <img src="assets/images/media/home-page/student-testimonial-section/image-1.webp" alt="Medical Student with Stethoscope" class="img-fluid">
+                <div class="video-overlay">
+                    <button class="video-play-btn" onclick="playTestimonialVideo()">
+                        <i class="fas fa-play"></i>
+                    </button>
                 </div>
             </div>
         </div>
