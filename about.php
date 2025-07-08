@@ -89,7 +89,7 @@
             </div>
             <div class="story-image">
                 <div class="story-image-wrapper">
-                    <img src="assets/images/media/home-page/about section/about-image-1.webp" alt="Our Foundation Story" class="img-fluid">
+                    <img src="assets/images/media/about-page/foundation-section/foundation-image.webp" alt="Our Foundation Story" class="img-fluid">
                 </div>
             </div>
         </div>
@@ -122,7 +122,7 @@
                     </div>
             <div class="story-image">
                 <div class="story-image-wrapper">
-                    <img src="assets/images/media/home-page/about section/about-image-2.webp" alt="Our Growth Story" class="img-fluid">
+                    <img src="assets/images/media/about-page/foundation-section/our-growth.webp" alt="Our Growth Story" class="img-fluid">
                 </div>
                         </div>
                     </div>
