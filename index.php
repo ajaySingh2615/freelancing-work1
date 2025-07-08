@@ -529,6 +529,85 @@ include('includes/header.php');
     </div>
 </section>
 
+<!-- Working Process Section -->
+<section class="working-process-section section-padding">
+    <div class="container">
+        <div class="process-header">
+            <h2 class="process-title">How <span class="highlight-text">Does It Work</span></h2>
+            <p class="process-description">Our streamlined three-step process ensures a smooth and hassle-free journey from consultation to admission, making your dream of studying abroad a reality.</p>
+        </div>
+        
+        <div class="process-steps">
+            <!-- Step 1 -->
+            <div class="process-step">
+                <div class="step-image-wrapper">
+                    <div class="step-image-circle">
+                        <div class="step-icon">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="step-content">
+                    <span class="step-number">STEP—01</span>
+                    <h3 class="step-title">Free Counseling</h3>
+                    <p class="step-description">Sunrise Global Education provide free Counseling and guide students for better education.</p>
+                    <a href="#" class="step-cta">Learn More →</a>
+                </div>
+            </div>
+            
+            <!-- Arrow 1 -->
+            <div class="process-arrow">
+                <svg viewBox="0 0 100 50" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10,25 Q50,5 90,25" stroke="#E5E7EB" stroke-width="2" fill="none" stroke-dasharray="5,5"/>
+                    <polygon points="85,20 95,25 85,30" fill="#E5E7EB"/>
+                </svg>
+            </div>
+            
+            <!-- Step 2 -->
+            <div class="process-step">
+                <div class="step-image-wrapper">
+                    <div class="step-image-circle">
+                        <div class="step-icon">
+                            <i class="fas fa-university"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="step-content">
+                    <span class="step-number">STEP—02</span>
+                    <h3 class="step-title">Guaranteed Admission</h3>
+                    <p class="step-description">Sunrise Global Education Guaranteed Admission in your desired university.</p>
+                    <a href="#" class="step-cta">Learn More →</a>
+                </div>
+            </div>
+            
+            <!-- Arrow 2 -->
+            <div class="process-arrow">
+                <svg viewBox="0 0 100 50" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10,25 Q50,5 90,25" stroke="#E5E7EB" stroke-width="2" fill="none" stroke-dasharray="5,5"/>
+                    <polygon points="85,20 95,25 85,30" fill="#E5E7EB"/>
+                </svg>
+            </div>
+            
+            <!-- Step 3 -->
+            <div class="process-step">
+                <div class="step-image-wrapper">
+                    <div class="step-image-circle">
+                        <div class="step-icon">
+                            <i class="fas fa-passport"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="step-content">
+                    <span class="step-number">STEP—03</span>
+                    <h3 class="step-title">Visa Clearance Assistance</h3>
+                    <p class="step-description">Sunrise Global Education provide full visa Clearance Assistance and extend of visa till completion of course.</p>
+                    <a href="#" class="step-cta">Learn More →</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- Testimonial Section -->
 <section class="testimonial-section">
     <div class="testimonial-container">
