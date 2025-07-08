@@ -54,7 +54,6 @@
 <section class="company-story-section">
     <div class="container story-container">
         <div class="story-header">
-            <span class="story-subtitle">Our Journey</span>
             <h2 class="story-title">Building <span class="highlight-text">Dreams</span> Since 2008</h2>
             <p class="story-description">
                 From humble beginnings to becoming a leading name in international medical education consultancy, our story is one of dedication, trust, and countless success stories.
@@ -70,22 +69,7 @@
                     <p>Our founders, Dr. Rajesh Kumar and Mrs. Priya Sharma, both having experienced the challenges of pursuing medical education abroad, were determined to create a bridge between ambitious students and world-class medical institutions.</p>
                 </div>
                 
-                <div class="story-highlights">
-                    <div class="highlight-item">
-                        <div class="highlight-icon">
-                            <i class="fas fa-lightbulb"></i>
-                        </div>
-                        <h4 class="highlight-title">Innovation</h4>
-                        <p class="highlight-description">Pioneering new approaches to international education consultancy</p>
-                    </div>
-                    <div class="highlight-item">
-                        <div class="highlight-icon">
-                            <i class="fas fa-users"></i>
-                        </div>
-                        <h4 class="highlight-title">Community</h4>
-                        <p class="highlight-description">Building a global network of successful medical professionals</p>
-                    </div>
-                </div>
+
             </div>
             <div class="story-image">
                 <div class="story-image-wrapper">
@@ -103,22 +87,7 @@
                     <p>Today, we're proud to be the preferred choice for thousands of students and parents who trust us with their most important educational decisions.</p>
     </div>
                 
-                <div class="story-highlights">
-                    <div class="highlight-item">
-                        <div class="highlight-icon">
-                            <i class="fas fa-globe"></i>
-                        </div>
-                        <h4 class="highlight-title">Global Reach</h4>
-                        <p class="highlight-description">Partnerships across 15+ countries worldwide</p>
-                    </div>
-                    <div class="highlight-item">
-                        <div class="highlight-icon">
-                            <i class="fas fa-award"></i>
-                        </div>
-                        <h4 class="highlight-title">Excellence</h4>
-                        <p class="highlight-description">Recognized for outstanding service quality</p>
-                    </div>
-                        </div>
+
                     </div>
             <div class="story-image">
                 <div class="story-image-wrapper">
