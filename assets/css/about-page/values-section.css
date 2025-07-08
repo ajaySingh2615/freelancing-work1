@@ -1,0 +1,570 @@
+/* 
+* Values Section
+* Company values and principles showcase
+*/
+
+/* ===== VALUES SECTION ===== */
+.values-section {
+    position: relative;
+    padding: var(--section-padding);
+    background: var(--white);
+    overflow: hidden;
+}
+
+.values-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40%;
+    height: 100%;
+    background: linear-gradient(135deg, 
+        rgba(20, 157, 225, 0.02) 0%, 
+        transparent 50%);
+    pointer-events: none;
+}
+
+.values-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.values-header {
+    text-align: center;
+    margin-bottom: 4rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.values-subtitle {
+    display: inline-block;
+    font-size: var(--small);
+    font-weight: var(--semibold);
+    color: var(--secondary-color);
+    background: rgba(20, 157, 225, 0.05);
+    padding: 0.5rem 1.5rem;
+    border-radius: var(--pill);
+    border: 1px solid rgba(20, 157, 225, 0.15);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    position: relative;
+    overflow: hidden;
+}
+
+.values-subtitle::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(20, 157, 225, 0.1), transparent);
+    transition: var(--slow-transition);
+}
+
+.values-subtitle:hover::before {
+    left: 100%;
+}
+
+.values-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: var(--bold);
+    color: var(--text-color);
+    line-height: var(--tight);
+    margin-bottom: 1.5rem;
+}
+
+.values-title .highlight-text {
+    color: var(--secondary-color);
+    position: relative;
+}
+
+.values-title .highlight-text::after {
+    content: '';
+    position: absolute;
+    bottom: 2px;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent-color), var(--accent-light));
+    border-radius: 2px;
+    animation: valueHighlight 2s ease-out;
+}
+
+.values-description {
+    font-size: var(--medium);
+    color: var(--light-text);
+    line-height: var(--normal);
+}
+
+/* Values Grid */
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
+    margin-bottom: 4rem;
+}
+
+.value-card {
+    background: var(--white);
+    border-radius: var(--large);
+    padding: 2.5rem;
+    text-align: center;
+    box-shadow: var(--small-shadow);
+    border: 1px solid var(--border-color);
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+    group: value-item;
+}
+
+.value-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, 
+        rgba(0, 53, 133, 0.02) 0%, 
+        transparent 50%, 
+        rgba(254, 186, 2, 0.02) 100%);
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.value-card:hover::before {
+    opacity: 1;
+}
+
+.value-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+    transform: scaleX(0);
+    transition: var(--transition);
+}
+
+.value-card:hover::after {
+    transform: scaleX(1);
+}
+
+.value-card:hover {
+    transform: translateY(-0.75rem);
+    box-shadow: var(--large-shadow);
+    border-color: var(--accent-color);
+}
+
+.value-icon-wrapper {
+    position: relative;
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+.value-icon {
+    width: 5rem;
+    height: 5rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border-radius: var(--circle);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+    position: relative;
+    z-index: 2;
+}
+
+.value-icon::before {
+    content: '';
+    position: absolute;
+    top: -0.5rem;
+    left: -0.5rem;
+    right: -0.5rem;
+    bottom: -0.5rem;
+    border: 2px dashed rgba(0, 53, 133, 0.2);
+    border-radius: var(--circle);
+    transition: var(--transition);
+}
+
+.value-card:hover .value-icon {
+    background: linear-gradient(135deg, var(--accent-color), var(--accent-light));
+    transform: scale(1.1) rotate(10deg);
+}
+
+.value-card:hover .value-icon::before {
+    border-color: var(--accent-color);
+    transform: rotate(-15deg);
+}
+
+.value-icon i {
+    font-size: 1.75rem;
+    color: var(--white);
+    transition: var(--transition);
+}
+
+.value-card:hover .value-icon i {
+    transform: scale(1.1);
+}
+
+.value-title {
+    font-size: var(--large);
+    font-weight: var(--bold);
+    color: var(--text-color);
+    margin-bottom: 1rem;
+    transition: var(--transition);
+}
+
+.value-card:hover .value-title {
+    color: var(--primary-color);
+}
+
+.value-description {
+    font-size: var(--base);
+    color: var(--light-text);
+    line-height: var(--normal);
+    margin-bottom: 1.5rem;
+}
+
+.value-points {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+}
+
+.value-points li {
+    font-size: var(--small);
+    color: var(--light-text);
+    line-height: var(--normal);
+    margin-bottom: 0.75rem;
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.value-points li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--accent-color);
+    font-weight: var(--bold);
+    font-size: var(--small);
+}
+
+/* Core Principles Section */
+.core-principles {
+    background: var(--light-bg);
+    border-radius: var(--large);
+    padding: 3rem;
+    margin-top: 4rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.core-principles::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="principles-pattern" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="rgba(0,53,133,0.05)"/></pattern></defs><rect width="100" height="100" fill="url(%23principles-pattern)"/></svg>');
+    pointer-events: none;
+}
+
+.principles-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+    z-index: 1;
+}
+
+.principles-title {
+    font-size: var(--xlarge);
+    font-weight: var(--bold);
+    color: var(--text-color);
+    margin-bottom: 1rem;
+}
+
+.principles-description {
+    font-size: var(--medium);
+    color: var(--light-text);
+    line-height: var(--normal);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.principles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.principle-item {
+    background: var(--white);
+    border-radius: var(--large);
+    padding: 2rem;
+    box-shadow: var(--small-shadow);
+    border: 1px solid var(--border-color);
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.principle-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(254, 186, 2, 0.05), transparent);
+    transition: var(--transition);
+}
+
+.principle-item:hover::before {
+    left: 100%;
+}
+
+.principle-item:hover {
+    transform: translateY(-0.5rem);
+    box-shadow: var(--medium-shadow);
+    border-color: var(--accent-color);
+}
+
+.principle-number {
+    width: 3rem;
+    height: 3rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border-radius: var(--circle);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--medium);
+    font-weight: var(--bold);
+    color: var(--white);
+    margin-bottom: 1.5rem;
+    transition: var(--transition);
+}
+
+.principle-item:hover .principle-number {
+    background: linear-gradient(135deg, var(--accent-color), var(--accent-light));
+    transform: scale(1.1) rotate(5deg);
+}
+
+.principle-title {
+    font-size: var(--medium);
+    font-weight: var(--bold);
+    color: var(--text-color);
+    margin-bottom: 1rem;
+}
+
+.principle-description {
+    font-size: var(--small);
+    color: var(--light-text);
+    line-height: var(--normal);
+}
+
+/* Culture Cards */
+.culture-section {
+    margin-top: 5rem;
+    padding-top: 3rem;
+    border-top: 2px solid var(--border-color);
+}
+
+.culture-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.culture-title {
+    font-size: var(--xlarge);
+    font-weight: var(--bold);
+    color: var(--text-color);
+    margin-bottom: 1rem;
+}
+
+.culture-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.culture-card {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    border-radius: var(--large);
+    padding: 2.5rem;
+    color: var(--white);
+    text-align: center;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.culture-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent 0%, rgba(255, 255, 255, 0.1) 50%, transparent 100%);
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.culture-card:hover::before {
+    opacity: 1;
+}
+
+.culture-card:hover {
+    transform: translateY(-0.5rem) scale(1.02);
+    box-shadow: var(--large-shadow);
+}
+
+.culture-icon {
+    width: 4rem;
+    height: 4rem;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: var(--circle);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    transition: var(--transition);
+}
+
+.culture-card:hover .culture-icon {
+    background: var(--accent-color);
+    transform: scale(1.1) rotate(10deg);
+}
+
+.culture-icon i {
+    font-size: 1.5rem;
+    color: var(--white);
+}
+
+.culture-card h4 {
+    font-size: var(--medium);
+    font-weight: var(--bold);
+    margin-bottom: 1rem;
+}
+
+.culture-card p {
+    font-size: var(--small);
+    line-height: var(--normal);
+    opacity: 0.9;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes valueHighlight {
+    from { transform: scaleX(0); }
+    to { transform: scaleX(1); }
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 992px) {
+    .values-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+    }
+    
+    .principles-grid {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1.5rem;
+    }
+    
+    .culture-cards {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .values-section {
+        padding: 3rem 0;
+    }
+    
+    .values-header {
+        margin-bottom: 2.5rem;
+    }
+    
+    .values-title {
+        font-size: 2rem;
+    }
+    
+    .values-grid {
+        gap: 1.5rem;
+        margin-bottom: 2.5rem;
+    }
+    
+    .value-card {
+        padding: 2rem;
+    }
+    
+    .value-icon {
+        width: 4rem;
+        height: 4rem;
+    }
+    
+    .value-icon i {
+        font-size: 1.5rem;
+    }
+    
+    .core-principles {
+        padding: 2rem;
+        margin-top: 2.5rem;
+    }
+    
+    .culture-section {
+        margin-top: 3rem;
+    }
+    
+    .culture-card {
+        padding: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .values-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .value-card {
+        padding: 1.5rem;
+    }
+    
+    .core-principles {
+        padding: 1.5rem;
+    }
+    
+    .principles-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .principle-item {
+        padding: 1.5rem;
+    }
+    
+    .culture-cards {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .culture-card {
+        padding: 1.5rem;
+    }
+} 

@@ -7,9 +7,9 @@
                 <div class="col-lg-3 col-md-6">
                     <div class="footer-widget about-widget">
                         <div class="footer-logo">
-                            <img src="assets/images/logo-white.png" alt="MedStudy Global" class="img-fluid">
+                            <img src="assets/images/logo-white.png" alt="Sunrise Global Education" class="img-fluid">
                         </div>
-                        <p class="about-text">MedStudy Global is a leading educational consultancy specializing in medical education abroad. We help students achieve their dreams of becoming successful medical professionals.</p>
+                        <p class="about-text">Sunrise Global Education is a leading educational consultancy specializing in medical education abroad. We help students achieve their dreams of becoming successful medical professionals.</p>
                         <ul class="social-icons">
                             <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
                             <li><a href="#"><i class="fab fa-twitter"></i></a></li>

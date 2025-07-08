@@ -77,11 +77,12 @@
                             <ul>
                                 <li><a href="index.php" class="active">Home</a></li>
                                 <li><a href="about.php">About Us</a></li>
-                                <li><a href="universities.php">Universities</a></li>
-                                <li><a href="countries.php">Countries</a></li>
-                                <li><a href="resources.php">Resources</a></li>
-                                <li><a href="gallery.php">Gallery</a></li>
+                                <li><a href="universities.php">Our Services</a></li>
+                                <li><a href="countries.php">MBBS Destinations</a></li>
+                                <li><a href="resources.php">University Partners</a></li>
+                                <li><a href="gallery.php">Resources</a></li>
                                 <li><a href="contact.php">Contact Us</a></li>
+                                <li><a href="contact.php">Gallery</a></li>
                             </ul>
                         </nav>
                     </div>
@@ -122,11 +123,12 @@
                 <ul class="nav-menu">
                     <li><a href="index.php">Home</a></li>
                     <li><a href="about.php">About Us</a></li>
-                    <li><a href="universities.php">Universities</a></li>
-                    <li><a href="countries.php">Countries</a></li>
-                    <li><a href="resources.php">Resources</a></li>
+                    <li><a href="universities.php">Our Services</a></li>
+                    <li><a href="universities.php">MBBS Destinations</a></li>
+                    <li><a href="resources.php">University Partners</a></li>
+                    <li><a href="countries.php">Resources</a></li>
+                    <li><a href="resources.php">Contact Us</a></li>
                     <li><a href="gallery.php">Gallery</a></li>
-                    <li><a href="contact.php">Contact Us</a></li>
                 </ul>
                 <div class="menu-contact">
                     <h4>Contact Info</h4>

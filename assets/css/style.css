@@ -8,6 +8,14 @@
 @import url('header.css');
 @import url('footer.css');
 
+/* About Page Imports */
+@import url('about-page/about-hero.css');
+@import url('about-page/company-story.css');
+@import url('about-page/team-section.css');
+@import url('about-page/values-section.css');
+@import url('about-page/achievements.css');
+@import url('about-page/about-cta.css');
+
 /* ===== GENERAL STYLES ===== */
 * {
     margin: 0;

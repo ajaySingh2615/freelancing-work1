@@ -264,7 +264,7 @@ include('includes/header.php');
 <section class="services-section section-padding">
     <div class="services-container">
         <div class="services-header">
-            <h2 class="services-title">Services At <span class="highlight-text">Rus Education</span></h2>
+            <h2 class="services-title">Services At <span class="highlight-text">SGE</span></h2>
             <p class="services-description">Study MBBS in Russia: Affordable, WHO-approved universities, English-medium courses, and globally recognized degrees for your medical career.</p>
         </div>
         
@@ -613,7 +613,7 @@ include('includes/header.php');
     <div class="testimonial-container">
         <div class="testimonial-left">
             <h2 class="testimonial-heading">What Do Our Students Say About Us?</h2>
-            <p class="testimonial-description">At Rus Education, we are dedicated to bringing you one step closer to your dream of becoming a successful doctor. Hear what our students have to say about their journey and experience with us!</p>
+            <p class="testimonial-description">At SGE, we are dedicated to bringing you one step closer to your dream of becoming a successful doctor. Hear what our students have to say about their journey and experience with us!</p>
             
             <div class="testimonial-stats">
                 <div class="stat-item">
@@ -660,11 +660,11 @@ include('includes/header.php');
     </a>
 </div>
 
-<!-- Blog Section -->
+<!-- News Section -->
 <section class="blog-section">
     <div class="container">
         <div class="section-header">
-            <h2 class="section-title">Latest <span class="highlight-text">News & Articles</span></h2>
+            <h2 class="section-title">Latest <span class="highlight-text">News & Insights</span></h2>
             <p class="section-description">Stay updated with the latest insights, success stories, and developments in medical education abroad through our informative blog posts.</p>
         </div>
 
@@ -714,7 +714,7 @@ include('includes/header.php');
             </div>
             <div class="contact-content">
                 <h2 class="contact-title">Leave us your contact details here!</h2>
-                <p class="contact-description">Rus Education is a pioneer in facilitating the dreams of young aspirers... Medical Government Universities.</p>
+                <p class="contact-description">SGE is a pioneer in facilitating the dreams of young aspirers... Medical Government Universities.</p>
                 <a href="#" class="contact-cta">
                     Apply Now
                     <span class="arrow-icon">&#8250;&#8250;</span>
@@ -724,11 +724,11 @@ include('includes/header.php');
     </div>
 </section>
 
-<!-- News Section -->
+<!-- Blog Section -->
 <section class="news-section section-padding">
     <div class="news-container">
         <div class="news-header">
-            <h2 class="news-title">Latest <span class="highlight-text">News & Insights</span></h2>
+            <h2 class="news-title">Latest <span class="highlight-text">Blogs & Articles</span></h2>
             <p class="news-description">Stay updated with the latest developments in medical education abroad, university news, and important announcements for aspiring medical students.</p>
         </div>
         
