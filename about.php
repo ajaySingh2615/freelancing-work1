@@ -435,35 +435,45 @@
 
         <!-- Core Principles -->
         <div class="core-principles">
-            <div class="principles-header">
-                <h3 class="principles-title">Our Operating Principles</h3>
-                <p class="principles-description">
-                    These principles guide our daily operations and ensure consistent quality in everything we do.
-                </p>
-            </div>
-            <div class="principles-grid">
-                <div class="principle-item">
-                    <div class="principle-number">1</div>
-                    <h4 class="principle-title">Student First</h4>
-                    <p class="principle-description">Every decision prioritizes student welfare and success above all else.</p>
+            <div class="principles-container">
+                <div class="principles-header">
+                    <h2 class="principles-title">Our Operating <span class="highlight-text">Principles</span></h2>
+                    <p class="principles-description">
+                        These principles guide our daily operations and ensure consistent quality in everything we do.
+                    </p>
                 </div>
-                <div class="principle-item">
-                    <div class="principle-number">2</div>
-                    <h4 class="principle-title">Quality Assurance</h4>
-                    <p class="principle-description">Rigorous quality checks ensure excellence in all our services and partnerships.</p>
+                <div class="principles-grid">
+                    <div class="principle-item">
+                        <div class="principle-number">1</div>
+                        <div class="principle-content">
+                            <h4 class="principle-title">Student First</h4>
+                            <p class="principle-description">Every decision prioritizes student welfare and success above all else.</p>
                         </div>
-                <div class="principle-item">
-                    <div class="principle-number">3</div>
-                    <h4 class="principle-title">Continuous Learning</h4>
-                    <p class="principle-description">We stay updated with industry changes and evolving educational landscapes.</p>
-                                </div>
-                <div class="principle-item">
-                    <div class="principle-number">4</div>
-                    <h4 class="principle-title">Ethical Practice</h4>
-                    <p class="principle-description">All our operations adhere to the highest ethical and legal standards.</p>
-                                </div>
-                            </div>
+                    </div>
+                    <div class="principle-item">
+                        <div class="principle-number">2</div>
+                        <div class="principle-content">
+                            <h4 class="principle-title">Quality Assurance</h4>
+                            <p class="principle-description">Rigorous quality checks ensure excellence in all our services and partnerships.</p>
                         </div>
+                    </div>
+                    <div class="principle-item">
+                        <div class="principle-number">3</div>
+                        <div class="principle-content">
+                            <h4 class="principle-title">Continuous Learning</h4>
+                            <p class="principle-description">We stay updated with industry changes and evolving educational landscapes.</p>
+                        </div>
+                    </div>
+                    <div class="principle-item">
+                        <div class="principle-number">4</div>
+                        <div class="principle-content">
+                            <h4 class="principle-title">Ethical Practice</h4>
+                            <p class="principle-description">All our operations adhere to the highest ethical and legal standards.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <!-- Culture Section -->
         <div class="culture-section">
