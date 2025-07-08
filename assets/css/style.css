@@ -3872,6 +3872,7 @@ ul, ol {
 
 .review-nav-btn:hover {
     background: var(--accent-color);
+    border-color: var(--accent-color);
     color: var(--text-color);
     transform: scale(1.1);
     box-shadow: 0 0.25rem 1rem rgba(254, 186, 2, 0.25);
@@ -4204,5 +4205,121 @@ ul, ol {
     
     .review-message {
         margin-bottom: 1.25rem;
+    }
+}
+
+/* Mobile Responsive Styles */
+@media screen and (max-width: 767px) {
+    .reviews-header {
+        margin-bottom: 2rem;
+        padding: 0 1rem;
+    }
+
+    .reviews-title {
+        font-size: calc(var(--xlarge) * 0.8);
+    }
+
+    .reviews-description {
+        font-size: var(--small);
+    }
+
+    .review-card {
+        padding: 1rem;
+    }
+
+    .review-content {
+        flex-direction: column;
+        gap: 1.5rem;
+        padding: 1.25rem;
+        text-align: center;
+    }
+
+    .review-image-wrapper {
+        margin: 0 auto;
+    }
+
+    .review-image {
+        width: 140px;
+        height: 140px;
+    }
+
+    .review-image-bg {
+        top: 0.75rem;
+        left: 0.75rem;
+        width: 140px;
+        height: 140px;
+    }
+
+    .quote-icon {
+        font-size: 1.5rem;
+        margin-bottom: 0.75rem;
+        text-align: center;
+    }
+
+    .review-message {
+        font-size: var(--small);
+        margin-bottom: 1rem;
+        text-align: center;
+    }
+
+    .review-client {
+        text-align: center;
+    }
+
+    .client-name {
+        font-size: var(--small);
+    }
+
+    .client-designation {
+        font-size: calc(var(--small) * 0.9);
+    }
+
+    .review-rating {
+        justify-content: center;
+        margin-top: 0.5rem;
+    }
+
+    .review-rating i {
+        font-size: 1rem;
+    }
+
+    .reviews-navigation {
+        padding: 0 0.5rem;
+    }
+
+    .review-nav-btn {
+        width: 2rem;
+        height: 2rem;
+        font-size: 0.875rem;
+    }
+}
+
+/* Extra Small Mobile Screens */
+@media screen and (max-width: 375px) {
+    .reviews-title {
+        font-size: calc(var(--xlarge) * 0.7);
+    }
+
+    .review-content {
+        padding: 1rem;
+    }
+
+    .review-image,
+    .review-image-bg {
+        width: 120px;
+        height: 120px;
+    }
+
+    .review-message {
+        font-size: calc(var(--small) * 0.95);
+    }
+
+    .review-nav-btn {
+        width: 1.75rem;
+        height: 1.75rem;
+    }
+
+    .review-nav-btn i {
+        font-size: 0.75rem;
     }
 }
