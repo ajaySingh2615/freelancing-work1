@@ -329,7 +329,7 @@
 }
 
 .principle-title {
-    font-size: var(--large);
+    font-size: var(--xlarge);
     font-weight: var(--bold);
     color: var(--white);
     margin-bottom: 1rem;
@@ -674,7 +674,7 @@
     }
     
     .principle-title {
-        font-size: 1.25rem;
+        font-size: 1.6rem;
     }
     
     .principle-description {
@@ -799,7 +799,7 @@
     }
     
     .principle-title {
-        font-size: 1.1rem;
+        font-size: 1.4rem;
         margin-bottom: 0.75rem;
     }
     
