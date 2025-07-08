@@ -305,7 +305,6 @@
 <section class="values-section">
     <div class="container values-container">
         <div class="values-header">
-            <span class="values-subtitle">Our Core Values</span>
             <h2 class="values-title">What <span class="highlight-text">Drives</span> Us</h2>
             <p class="values-description">
                 Our values shape every interaction, decision, and service we provide. They're the foundation of our commitment to student success and educational excellence.
@@ -320,15 +319,17 @@
                         <i class="fas fa-handshake"></i>
                     </div>
                 </div>
-                <h3 class="value-title">Integrity</h3>
-                <p class="value-description">
-                    We maintain the highest ethical standards in all our interactions, providing honest guidance and transparent processes.
-                </p>
-                <ul class="value-points">
-                    <li>Transparent fee structure</li>
-                    <li>Honest university assessments</li>
-                    <li>Ethical business practices</li>
-                </ul>
+                <div class="value-content">
+                    <h3 class="value-title">Integrity</h3>
+                    <p class="value-description">
+                        We maintain the highest ethical standards in all our interactions, providing honest guidance and transparent processes.
+                    </p>
+                    <ul class="value-points">
+                        <li>Transparent fee structure</li>
+                        <li>Honest university assessments</li>
+                        <li>Ethical business practices</li>
+                    </ul>
+                </div>
             </div>
 
             <!-- Value 2 -->
@@ -338,15 +339,17 @@
                         <i class="fas fa-star"></i>
                     </div>
                 </div>
-                <h3 class="value-title">Excellence</h3>
-                <p class="value-description">
-                    We strive for excellence in every service, continuously improving our processes and outcomes for student success.
-                </p>
-                <ul class="value-points">
-                    <li>Quality service delivery</li>
-                    <li>Continuous improvement</li>
-                    <li>Professional expertise</li>
-                </ul>
+                <div class="value-content">
+                    <h3 class="value-title">Excellence</h3>
+                    <p class="value-description">
+                        We strive for excellence in every service, continuously improving our processes and outcomes for student success.
+                    </p>
+                    <ul class="value-points">
+                        <li>Quality service delivery</li>
+                        <li>Continuous improvement</li>
+                        <li>Professional expertise</li>
+                    </ul>
+                </div>
             </div>
 
             <!-- Value 3 -->
@@ -356,15 +359,17 @@
                         <i class="fas fa-user-graduate"></i>
                     </div>
                 </div>
-                <h3 class="value-title">Student-Centricity</h3>
-                <p class="value-description">
-                    Every decision we make is centered around student needs, aspirations, and long-term success in their medical careers.
-                </p>
-                <ul class="value-points">
-                    <li>Personalized guidance</li>
-                    <li>Individual attention</li>
-                    <li>Success-focused approach</li>
-                </ul>
+                <div class="value-content">
+                    <h3 class="value-title">Student-Centricity</h3>
+                    <p class="value-description">
+                        Every decision we make is centered around student needs, aspirations, and long-term success in their medical careers.
+                    </p>
+                    <ul class="value-points">
+                        <li>Personalized guidance</li>
+                        <li>Individual attention</li>
+                        <li>Success-focused approach</li>
+                    </ul>
+                </div>
             </div>
 
             <!-- Value 4 -->
@@ -374,15 +379,17 @@
                         <i class="fas fa-lightbulb"></i>
                     </div>
                 </div>
-                <h3 class="value-title">Innovation</h3>
-                <p class="value-description">
-                    We embrace new technologies and methodologies to enhance our services and provide better outcomes for students.
-                </p>
-                <ul class="value-points">
-                    <li>Digital platforms</li>
-                    <li>Modern processes</li>
-                    <li>Innovative solutions</li>
-                </ul>
+                <div class="value-content">
+                    <h3 class="value-title">Innovation</h3>
+                    <p class="value-description">
+                        We embrace new technologies and methodologies to enhance our services and provide better outcomes for students.
+                    </p>
+                    <ul class="value-points">
+                        <li>Digital platforms</li>
+                        <li>Modern processes</li>
+                        <li>Innovative solutions</li>
+                    </ul>
+                </div>
             </div>
 
             <!-- Value 5 -->
@@ -392,15 +399,17 @@
                         <i class="fas fa-shield-alt"></i>
                     </div>
                 </div>
-                <h3 class="value-title">Trust</h3>
-                <p class="value-description">
-                    We build lasting relationships based on trust, reliability, and consistent delivery of promised outcomes.
-                </p>
-                <ul class="value-points">
-                    <li>Reliable support</li>
-                    <li>Consistent communication</li>
-                    <li>Proven track record</li>
-                </ul>
+                <div class="value-content">
+                    <h3 class="value-title">Trust</h3>
+                    <p class="value-description">
+                        We build lasting relationships based on trust, reliability, and consistent delivery of promised outcomes.
+                    </p>
+                    <ul class="value-points">
+                        <li>Reliable support</li>
+                        <li>Consistent communication</li>
+                        <li>Proven track record</li>
+                    </ul>
+                </div>
             </div>
 
             <!-- Value 6 -->
@@ -410,15 +419,17 @@
                         <i class="fas fa-globe"></i>
                     </div>
                 </div>
-                <h3 class="value-title">Global Perspective</h3>
-                <p class="value-description">
-                    Our international outlook helps students navigate global opportunities and cultural diversity in medical education.
-                </p>
-                <ul class="value-points">
-                    <li>Cultural sensitivity</li>
-                    <li>Global partnerships</li>
-                    <li>International standards</li>
-                </ul>
+                <div class="value-content">
+                    <h3 class="value-title">Global Perspective</h3>
+                    <p class="value-description">
+                        Our international outlook helps students navigate global opportunities and cultural diversity in medical education.
+                    </p>
+                    <ul class="value-points">
+                        <li>Cultural sensitivity</li>
+                        <li>Global partnerships</li>
+                        <li>International standards</li>
+                    </ul>
+                </div>
             </div>
         </div>
 

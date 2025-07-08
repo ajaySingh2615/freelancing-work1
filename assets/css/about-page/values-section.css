@@ -39,60 +39,20 @@
     margin-right: auto;
 }
 
-.values-subtitle {
-    display: inline-block;
-    font-size: var(--small);
-    font-weight: var(--semibold);
-    color: var(--secondary-color);
-    background: rgba(20, 157, 225, 0.05);
-    padding: 0.5rem 1.5rem;
-    border-radius: var(--pill);
-    border: 1px solid rgba(20, 157, 225, 0.15);
-    margin-bottom: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    position: relative;
-    overflow: hidden;
-}
 
-.values-subtitle::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(20, 157, 225, 0.1), transparent);
-    transition: var(--slow-transition);
-}
-
-.values-subtitle:hover::before {
-    left: 100%;
-}
 
 .values-title {
-    font-size: clamp(2rem, 4vw, 3rem);
+    font-size: var(--xlarge);
     font-weight: var(--bold);
     color: var(--text-color);
     line-height: var(--tight);
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
 }
 
 .values-title .highlight-text {
-    color: var(--secondary-color);
+    color: var(--accent-color);
     position: relative;
-}
-
-.values-title .highlight-text::after {
-    content: '';
-    position: absolute;
-    bottom: 2px;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--accent-color), var(--accent-light));
-    border-radius: 2px;
-    animation: valueHighlight 2s ease-out;
 }
 
 .values-description {
@@ -104,100 +64,48 @@
 /* Values Grid */
 .values-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 2.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 4rem 3rem;
     margin-bottom: 4rem;
 }
 
 .value-card {
-    background: var(--white);
-    border-radius: var(--large);
-    padding: 2.5rem;
-    text-align: center;
-    box-shadow: var(--small-shadow);
-    border: 1px solid var(--border-color);
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    padding: 0;
+    background: transparent;
+    border: none;
+    box-shadow: none;
     transition: var(--transition);
     position: relative;
-    overflow: hidden;
-    group: value-item;
-}
-
-.value-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, 
-        rgba(0, 53, 133, 0.02) 0%, 
-        transparent 50%, 
-        rgba(254, 186, 2, 0.02) 100%);
-    opacity: 0;
-    transition: var(--transition);
-}
-
-.value-card:hover::before {
-    opacity: 1;
-}
-
-.value-card::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
-    transform: scaleX(0);
-    transition: var(--transition);
-}
-
-.value-card:hover::after {
-    transform: scaleX(1);
 }
 
 .value-card:hover {
-    transform: translateY(-0.75rem);
-    box-shadow: var(--large-shadow);
-    border-color: var(--accent-color);
+    transform: translateX(0.5rem);
 }
 
 .value-icon-wrapper {
+    flex-shrink: 0;
     position: relative;
-    margin-bottom: 2rem;
-    display: flex;
-    justify-content: center;
 }
 
 .value-icon {
-    width: 5rem;
-    height: 5rem;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    border-radius: var(--circle);
+    width: 4rem;
+    height: 4rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: var(--transition);
     position: relative;
-    z-index: 2;
-}
-
-.value-icon::before {
-    content: '';
-    position: absolute;
-    top: -0.5rem;
-    left: -0.5rem;
-    right: -0.5rem;
-    bottom: -0.5rem;
-    border: 2px dashed rgba(0, 53, 133, 0.2);
-    border-radius: var(--circle);
-    transition: var(--transition);
+    box-shadow: 0 8px 25px rgba(0, 53, 133, 0.15);
 }
 
 .value-card:hover .value-icon {
-    background: linear-gradient(135deg, var(--accent-color), var(--accent-light));
-    transform: scale(1.1) rotate(10deg);
+    transform: scale(1.05);
+    box-shadow: 0 12px 30px rgba(254, 186, 2, 0.25);
 }
 
 .value-card:hover .value-icon::before {
@@ -215,11 +123,15 @@
     transform: scale(1.1);
 }
 
+.value-content {
+    flex: 1;
+}
+
 .value-title {
     font-size: var(--large);
     font-weight: var(--bold);
     color: var(--text-color);
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
     transition: var(--transition);
 }
 
@@ -231,33 +143,34 @@
     font-size: var(--base);
     color: var(--light-text);
     line-height: var(--normal);
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.2rem;
 }
 
 .value-points {
     list-style: none;
     padding: 0;
     margin: 0;
-    text-align: left;
 }
 
 .value-points li {
     font-size: var(--small);
     color: var(--light-text);
     line-height: var(--normal);
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.4rem;
     position: relative;
-    padding-left: 1.5rem;
+    padding-left: 1rem;
 }
 
 .value-points li::before {
-    content: '✓';
+    content: '';
     position: absolute;
     left: 0;
-    top: 0;
-    color: var(--accent-color);
-    font-weight: var(--bold);
-    font-size: var(--small);
+    top: 0.5rem;
+    width: 4px;
+    height: 4px;
+    background: var(--accent-color);
+    border-radius: var(--circle);
+    transform: translateY(-50%);
 }
 
 /* Core Principles Section */
@@ -468,20 +381,23 @@
 }
 
 /* ===== ANIMATIONS ===== */
-@keyframes valueHighlight {
-    from { transform: scaleX(0); }
-    to { transform: scaleX(1); }
-}
+
 
 /* ===== RESPONSIVE DESIGN ===== */
-@media (max-width: 992px) {
+
+/* Large Tablets & Small Desktops */
+@media (max-width: 1024px) {
     .values-grid {
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 2rem;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 3rem 2rem;
+    }
+    
+    .value-card {
+        gap: 1.25rem;
     }
     
     .principles-grid {
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        grid-template-columns: repeat(2, 1fr);
         gap: 1.5rem;
     }
     
@@ -491,26 +407,115 @@
     }
 }
 
+/* Tablets */
 @media (max-width: 768px) {
     .values-section {
-        padding: 3rem 0;
+        padding: 4rem 0;
     }
     
     .values-header {
-        margin-bottom: 2.5rem;
+        margin-bottom: 3rem;
     }
     
     .values-title {
         font-size: 2rem;
     }
     
+    .values-description {
+        font-size: var(--base);
+        padding: 0 1rem;
+    }
+    
     .values-grid {
-        gap: 1.5rem;
-        margin-bottom: 2.5rem;
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        margin-bottom: 3rem;
     }
     
     .value-card {
-        padding: 2rem;
+        flex-direction: column;
+        text-align: center;
+        gap: 1.5rem;
+        padding: 0 1rem;
+    }
+    
+    .value-icon-wrapper {
+        align-self: center;
+    }
+    
+    .value-icon {
+        width: 4.5rem;
+        height: 4.5rem;
+    }
+    
+    .value-icon i {
+        font-size: 1.6rem;
+    }
+    
+    .value-title {
+        font-size: 1.35rem;
+        margin-bottom: 1rem;
+    }
+    
+    .value-description {
+        font-size: var(--base);
+        margin-bottom: 1.5rem;
+    }
+    
+    .core-principles {
+        padding: 2.5rem 1.5rem;
+        margin-top: 3rem;
+    }
+    
+    .principles-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .culture-section {
+        margin-top: 4rem;
+        padding-top: 2.5rem;
+    }
+    
+    .culture-cards {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .culture-card {
+        padding: 2.5rem 1.5rem;
+    }
+}
+
+/* Large Mobile Devices */
+@media (max-width: 576px) {
+    .values-section {
+        padding: 3rem 0;
+    }
+    
+    .values-header {
+        margin-bottom: 2.5rem;
+        padding: 0 1rem;
+    }
+    
+    .values-title {
+        font-size: 1.8rem;
+        line-height: 1.3;
+    }
+    
+    .values-description {
+        font-size: 0.95rem;
+        line-height: 1.5;
+    }
+    
+    .values-grid {
+        gap: 2.5rem;
+        padding: 0 0.5rem;
+    }
+    
+    .value-card {
+        gap: 1.25rem;
+        padding: 0;
     }
     
     .value-icon {
@@ -519,52 +524,192 @@
     }
     
     .value-icon i {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
+    }
+    
+    .value-title {
+        font-size: 1.25rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .value-description {
+        font-size: 0.9rem;
+        margin-bottom: 1.25rem;
+    }
+    
+    .value-points li {
+        font-size: 0.85rem;
+        margin-bottom: 0.35rem;
+        padding-left: 0.8rem;
+    }
+    
+    .value-points li::before {
+        width: 3px;
+        height: 3px;
+        top: 0.45rem;
     }
     
     .core-principles {
-        padding: 2rem;
+        padding: 2rem 1rem;
         margin-top: 2.5rem;
+    }
+    
+    .principles-title {
+        font-size: 1.6rem;
+    }
+    
+    .principle-item {
+        padding: 1.75rem;
     }
     
     .culture-section {
         margin-top: 3rem;
     }
     
+    .culture-title {
+        font-size: 1.6rem;
+    }
+    
     .culture-card {
-        padding: 2rem;
+        padding: 2rem 1.25rem;
     }
 }
 
+/* Small Mobile Devices */
 @media (max-width: 480px) {
+    .values-section {
+        padding: 2.5rem 0;
+    }
+    
+    .values-header {
+        margin-bottom: 2rem;
+        padding: 0 0.75rem;
+    }
+    
+    .values-title {
+        font-size: 1.6rem;
+        line-height: 1.25;
+        margin-bottom: 1.5rem;
+    }
+    
+    .values-description {
+        font-size: 0.9rem;
+        line-height: 1.4;
+    }
+    
     .values-grid {
-        grid-template-columns: 1fr;
-        gap: 1rem;
+        gap: 2rem;
+        padding: 0;
+        margin-bottom: 2rem;
     }
     
     .value-card {
-        padding: 1.5rem;
+        gap: 1rem;
+        padding: 0 0.5rem;
+    }
+    
+    .value-icon {
+        width: 3.5rem;
+        height: 3.5rem;
+        border-radius: 10px;
+    }
+    
+    .value-icon i {
+        font-size: 1.25rem;
+    }
+    
+    .value-title {
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .value-description {
+        font-size: 0.85rem;
+        margin-bottom: 1rem;
+    }
+    
+    .value-points li {
+        font-size: 0.8rem;
+        margin-bottom: 0.3rem;
+        padding-left: 0.75rem;
+    }
+    
+    .value-points li::before {
+        width: 2.5px;
+        height: 2.5px;
+        top: 0.4rem;
     }
     
     .core-principles {
-        padding: 1.5rem;
+        padding: 1.5rem 0.75rem;
+        margin-top: 2rem;
     }
     
-    .principles-grid {
-        grid-template-columns: 1fr;
-        gap: 1rem;
+    .principles-header {
+        margin-bottom: 2rem;
+    }
+    
+    .principles-title {
+        font-size: 1.4rem;
+    }
+    
+    .principles-description {
+        font-size: 0.85rem;
     }
     
     .principle-item {
         padding: 1.5rem;
     }
     
-    .culture-cards {
-        grid-template-columns: 1fr;
-        gap: 1rem;
+    .principle-number {
+        width: 2.5rem;
+        height: 2.5rem;
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+    }
+    
+    .principle-title {
+        font-size: 1rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .principle-description {
+        font-size: 0.8rem;
+    }
+    
+    .culture-section {
+        margin-top: 2.5rem;
+        padding-top: 2rem;
+    }
+    
+    .culture-header {
+        margin-bottom: 2rem;
+    }
+    
+    .culture-title {
+        font-size: 1.4rem;
     }
     
     .culture-card {
-        padding: 1.5rem;
+        padding: 1.75rem 1rem;
+    }
+    
+    .culture-icon {
+        width: 3.5rem;
+        height: 3.5rem;
+        margin-bottom: 1.25rem;
+    }
+    
+    .culture-icon i {
+        font-size: 1.25rem;
+    }
+    
+    .culture-card h4 {
+        font-size: 1rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .culture-card p {
+        font-size: 0.8rem;
     }
 } 
