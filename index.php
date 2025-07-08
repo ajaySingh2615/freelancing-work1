@@ -363,7 +363,106 @@ include('includes/header.php');
     </div>
 </section>
 
-
+<!-- Reviews Section -->
+<section class="reviews-section section-padding">
+    <div class="container">
+        <div class="reviews-header">
+            <h2 class="reviews-title">Happy & <span class="highlight-text">Satisfied Faces</span></h2>
+            <p class="reviews-description">Here's what some of our satisfied clients have to say about their journey with us</p>
+        </div>
+        
+        <div class="reviews-carousel">
+            <div class="reviews-navigation">
+                <button class="review-nav-btn review-prev" onclick="changeReview(-1)">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="review-nav-btn review-next" onclick="changeReview(1)">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+            
+            <div class="reviews-container">
+                <div class="review-card active">
+                    <div class="review-content">
+                        <div class="review-image-wrapper">
+                            <div class="review-image-bg"></div>
+                            <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300&q=80" alt="Priya Sharma" class="review-image">
+                        </div>
+                        <div class="review-text">
+                            <div class="quote-icon">
+                                <i class="fas fa-quote-left"></i>
+                            </div>
+                            <p class="review-message">"Sunrise Global Education made my dream of studying MBBS in Russia a reality. Their guidance was exceptional throughout the entire process, from university selection to visa processing. The team was always available to answer my questions and provided honest, transparent advice."</p>
+                            <div class="review-client">
+                                <h4 class="client-name">Priya Sharma</h4>
+                                <p class="client-designation">MBBS Student, Crimea Federal University</p>
+                                <div class="review-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="review-card">
+                    <div class="review-content">
+                        <div class="review-image-wrapper">
+                            <div class="review-image-bg"></div>
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300&q=80" alt="Arjun Patel" class="review-image">
+                        </div>
+                        <div class="review-text">
+                            <div class="quote-icon">
+                                <i class="fas fa-quote-left"></i>
+                            </div>
+                            <p class="review-message">"I was initially worried about studying abroad, but Sunrise Global Education's comprehensive support system put all my concerns to rest. From admission to accommodation, they handled everything professionally. Now I'm successfully pursuing my medical degree in Kazakhstan."</p>
+                            <div class="review-client">
+                                <h4 class="client-name">Arjun Patel</h4>
+                                <p class="client-designation">MBBS Student, Astana Medical University</p>
+                                <div class="review-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="review-card">
+                    <div class="review-content">
+                        <div class="review-image-wrapper">
+                            <div class="review-image-bg"></div>
+                            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b820?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300&q=80" alt="Sneha Gupta" class="review-image">
+                        </div>
+                        <div class="review-text">
+                            <div class="quote-icon">
+                                <i class="fas fa-quote-left"></i>
+                            </div>
+                            <p class="review-message">"The team at Sunrise Global Education is incredibly knowledgeable and supportive. They helped me understand all the requirements, prepared me for the interviews, and ensured a smooth transition to my new university. Highly recommended for anyone considering MBBS abroad."</p>
+                            <div class="review-client">
+                                <h4 class="client-name">Sneha Gupta</h4>
+                                <p class="client-designation">MBBS Student, South Kazakhstan Medical Academy</p>
+                                <div class="review-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 <!-- Testimonial Section -->
 <section class="testimonial-section">

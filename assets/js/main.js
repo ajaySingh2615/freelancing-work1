@@ -413,4 +413,46 @@ function playTestimonialVideo() {
     // $('#videoModal').modal('show');
     // or redirect to YouTube/Vimeo:
     // window.open('https://www.youtube.com/watch?v=YOUR_VIDEO_ID', '_blank');
-} 
+}
+
+// Reviews Carousel Functionality
+let currentReview = 0;
+const reviewCards = document.querySelectorAll('.review-card');
+const totalReviews = reviewCards.length;
+
+function showReview(index) {
+    // Remove active class from all reviews
+    reviewCards.forEach(card => card.classList.remove('active'));
+    
+    // Show the selected review
+    if (reviewCards[index]) {
+        reviewCards[index].classList.add('active');
+    }
+    
+    currentReview = index;
+}
+
+function changeReview(direction) {
+    let nextReview = currentReview + direction;
+    
+    // Handle wrap around
+    if (nextReview >= totalReviews) {
+        nextReview = 0;
+    } else if (nextReview < 0) {
+        nextReview = totalReviews - 1;
+    }
+    
+    showReview(nextReview);
+}
+
+// Initialize reviews carousel when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    if (reviewCards.length > 0) {
+        showReview(0); // Show first review initially
+        
+        // Auto-advance reviews every 8 seconds
+        setInterval(() => {
+            changeReview(1);
+        }, 8000);
+    }
+}); 
