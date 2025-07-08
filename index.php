@@ -119,6 +119,48 @@ include('includes/header.php');
     </div>
 </section>
 
+<!-- About Section -->
+<section class="about-section">
+    <div class="about-container">
+        <h2 class="about-question">Welcome to <span class="highlight-text">Sunrise Global Education</span></h2>
+        
+        <div class="about-intro">
+            <p>At Sunrise Global Education, we are committed to turning your dream of studying MBBS abroad into reality. As a leading overseas education consultancy, we specialize in MBBS abroad counseling, complete documentation support, and seamless admission guidance.</p>
+        </div>
+        
+        <div class="about-highlights">
+            <div class="highlight-card">
+                <div class="highlight-icon">
+                    <i class="fas fa-university"></i>
+                </div>
+                <h3>WHO-Approved Universities</h3>
+                <p>We proudly assist aspiring medical students in securing admissions to globally recognized universities that are WHO-approved and listed by the NMC (formerly MCI).</p>
+            </div>
+            
+            <div class="highlight-card">
+                <div class="highlight-icon">
+                    <i class="fas fa-globe-americas"></i>
+                </div>
+                <h3>Expert Guidance</h3>
+                <p>Our expertise lies in providing accurate, transparent, and up-to-date information about universities and medical education systems in Russia, Kazakhstan, and Bangladesh.</p>
+            </div>
+            
+            <div class="highlight-card">
+                <div class="highlight-icon">
+                    <i class="fas fa-hands-helping"></i>
+                </div>
+                <h3>End-to-End Support</h3>
+                <p>With Sunrise Global Education, you get personalized guidance and complete support—from selecting the right university to settling down in your dream destination.</p>
+            </div>
+        </div>
+        
+        <div class="about-actions">
+            <a href="about.php" class="btn btn-primary">Discover Our Story</a>
+            <a href="contact.php" class="btn btn-outline-primary">Get Free Consultation</a>
+        </div>
+    </div>
+</section>
+
 <!-- Study Destinations Section -->
 <section class="study-destinations-section">
     <div class="destinations-container">
@@ -218,91 +260,6 @@ include('includes/header.php');
     </div>
 </section>
 
-<!-- About Section -->
-<section class="about-section">
-    <div class="about-container">
-        <h2 class="about-question">Welcome to <span class="highlight-text">Sunrise Global Education</span></h2>
-        
-        <div class="about-intro">
-            <p>At Sunrise Global Education, we are committed to turning your dream of studying MBBS abroad into reality. As a leading overseas education consultancy, we specialize in MBBS abroad counseling, complete documentation support, and seamless admission guidance.</p>
-        </div>
-        
-        <div class="about-highlights">
-            <div class="highlight-card">
-                <div class="highlight-icon">
-                    <i class="fas fa-university"></i>
-                </div>
-                <h3>WHO-Approved Universities</h3>
-                <p>We proudly assist aspiring medical students in securing admissions to globally recognized universities that are WHO-approved and listed by the NMC (formerly MCI).</p>
-            </div>
-            
-            <div class="highlight-card">
-                <div class="highlight-icon">
-                    <i class="fas fa-globe-americas"></i>
-                </div>
-                <h3>Expert Guidance</h3>
-                <p>Our expertise lies in providing accurate, transparent, and up-to-date information about universities and medical education systems in Russia, Kazakhstan, and Bangladesh.</p>
-            </div>
-            
-            <div class="highlight-card">
-                <div class="highlight-icon">
-                    <i class="fas fa-hands-helping"></i>
-                </div>
-                <h3>End-to-End Support</h3>
-                <p>With Sunrise Global Education, you get personalized guidance and complete support—from selecting the right university to settling down in your dream destination.</p>
-            </div>
-        </div>
-        
-        <div class="about-actions">
-            <a href="about.php" class="btn btn-primary">Discover Our Story</a>
-            <a href="contact.php" class="btn btn-outline-primary">Get Free Consultation</a>
-        </div>
-    </div>
-</section>
-
-<!-- Universities Section -->
-<section class="universities-section section-padding">
-    <div class="container">
-        <div class="section-heading">
-            <h2>Leading <span class="highlight-text">Medical Universities</span> Worldwide</h2>
-        </div>
-        
-        <div class="universities-logo-wall">
-            <div class="logo-grid">
-                <div class="logo-item">
-                    <img src="assets/images/media/home-page/medical-universities-section/logos/Asfendiyarov-Kazakh-National.webp" alt="Asfendiyarov Kazakh National Medical University">
-                </div>
-                <div class="logo-item">
-                    <img src="assets/images/media/home-page/medical-universities-section/logos/Astana-Medical-University.webp" alt="Astana Medical University">
-                </div>
-                <div class="logo-item">
-                    <img src="assets/images/media/home-page/medical-universities-section/logos/South-Kazakhstan-Medical-Academy.webp" alt="South Kazakhstan Medical Academy">
-                </div>
-                <div class="logo-item">
-                    <img src="assets/images/media/home-page/medical-universities-section/logos/Semey-State-Medical-University.webp" alt="Semey State Medical University">
-                </div>
-                <div class="logo-item">
-                    <img src="assets/images/media/home-page/medical-universities-section/logos/Asian-Medical-Institute.webp" alt="Asian Medical Institute">
-                </div>
-                <div class="logo-item">
-                    <img src="assets/images/media/home-page/medical-universities-section/logos/Orel-state-university.webp" alt="Orel State University">
-                </div>
-                <div class="logo-item">
-                    <img src="assets/images/media/home-page/medical-universities-section/logos/Jalal-Abad-State-Medical.webp" alt="Jalal-Abad State Medical University">
-                </div>
-                <div class="logo-item">
-                    <img src="assets/images/media/home-page/medical-universities-section/logos/International-Higher-School-of-Medicine.webp" alt="International Higher School of Medicine">
-                </div>
-            </div>
-        </div>
-        
-        <div class="universities-actions">
-            <a href="universities.php" class="btn btn-primary">View All Universities</a>
-            <a href="contact.php" class="btn btn-outline-primary">Get Admission Guide</a>
-        </div>
-    </div>
-</section>
-
 <!-- Services Section -->
 <section class="services-section section-padding">
     <div class="services-container">
@@ -362,6 +319,51 @@ include('includes/header.php');
         </div>
     </div>
 </section>
+
+<!-- Universities Section -->
+<section class="universities-section section-padding">
+    <div class="container">
+        <div class="section-heading">
+            <h2>Leading <span class="highlight-text">Medical Universities</span> Worldwide</h2>
+        </div>
+        
+        <div class="universities-logo-wall">
+            <div class="logo-grid">
+                <div class="logo-item">
+                    <img src="assets/images/media/home-page/medical-universities-section/logos/Asfendiyarov-Kazakh-National.webp" alt="Asfendiyarov Kazakh National Medical University">
+                </div>
+                <div class="logo-item">
+                    <img src="assets/images/media/home-page/medical-universities-section/logos/Astana-Medical-University.webp" alt="Astana Medical University">
+                </div>
+                <div class="logo-item">
+                    <img src="assets/images/media/home-page/medical-universities-section/logos/South-Kazakhstan-Medical-Academy.webp" alt="South Kazakhstan Medical Academy">
+                </div>
+                <div class="logo-item">
+                    <img src="assets/images/media/home-page/medical-universities-section/logos/Semey-State-Medical-University.webp" alt="Semey State Medical University">
+                </div>
+                <div class="logo-item">
+                    <img src="assets/images/media/home-page/medical-universities-section/logos/Asian-Medical-Institute.webp" alt="Asian Medical Institute">
+                </div>
+                <div class="logo-item">
+                    <img src="assets/images/media/home-page/medical-universities-section/logos/Orel-state-university.webp" alt="Orel State University">
+                </div>
+                <div class="logo-item">
+                    <img src="assets/images/media/home-page/medical-universities-section/logos/Jalal-Abad-State-Medical.webp" alt="Jalal-Abad State Medical University">
+                </div>
+                <div class="logo-item">
+                    <img src="assets/images/media/home-page/medical-universities-section/logos/International-Higher-School-of-Medicine.webp" alt="International Higher School of Medicine">
+                </div>
+            </div>
+        </div>
+        
+        <div class="universities-actions">
+            <a href="universities.php" class="btn btn-primary">View All Universities</a>
+            <a href="contact.php" class="btn btn-outline-primary">Get Admission Guide</a>
+        </div>
+    </div>
+</section>
+
+
 
 <!-- Testimonial Section -->
 <section class="testimonial-section">
