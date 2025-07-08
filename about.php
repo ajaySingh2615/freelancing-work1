@@ -100,7 +100,7 @@
         <div class="mvv-grid">
             <div class="mvv-card">
                 <div class="mvv-icon">
-                    <i class="fas fa-bullseye"></i>
+                    <img src="assets/images/media/about-page/foundation-section/our-mission.webp" alt="Our Mission" class="mvv-image">
                 </div>
                 <h3 class="mvv-title">Our Mission</h3>
                 <p class="mvv-description">
@@ -109,7 +109,7 @@
             </div>
             <div class="mvv-card">
                 <div class="mvv-icon">
-                    <i class="fas fa-eye"></i>
+                    <img src="assets/images/media/about-page/foundation-section/our-vision.webp" alt="Our Vision" class="mvv-image">
                 </div>
                 <h3 class="mvv-title">Our Vision</h3>
                 <p class="mvv-description">
@@ -118,7 +118,7 @@
             </div>
             <div class="mvv-card">
                 <div class="mvv-icon">
-                    <i class="fas fa-heart"></i>
+                    <img src="assets/images/media/about-page/foundation-section/our-values.webp" alt="Our Values" class="mvv-image">
                 </div>
                 <h3 class="mvv-title">Our Values</h3>
                 <p class="mvv-description">
