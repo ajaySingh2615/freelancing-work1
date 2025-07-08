@@ -386,7 +386,7 @@ include('includes/header.php');
                     <div class="review-content">
                         <div class="review-image-wrapper">
                             <div class="review-image-bg"></div>
-                            <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300&q=80" alt="Priya Sharma" class="review-image">
+                            <img src="assets/images/media/home-page/happy-faces/image-1.webp" alt="Priya Sharma" class="review-image">
                         </div>
                         <div class="review-text">
                             <div class="quote-icon">
@@ -412,7 +412,7 @@ include('includes/header.php');
                     <div class="review-content">
                         <div class="review-image-wrapper">
                             <div class="review-image-bg"></div>
-                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300&q=80" alt="Arjun Patel" class="review-image">
+                            <img src="assets/images/media/home-page/happy-faces/image-2.webp" alt="Arjun Patel" class="review-image">
                         </div>
                         <div class="review-text">
                             <div class="quote-icon">
@@ -420,7 +420,7 @@ include('includes/header.php');
                             </div>
                             <p class="review-message">"I was initially worried about studying abroad, but Sunrise Global Education's comprehensive support system put all my concerns to rest. From admission to accommodation, they handled everything professionally. Now I'm successfully pursuing my medical degree in Kazakhstan."</p>
                             <div class="review-client">
-                                <h4 class="client-name">Arjun Patel</h4>
+                                <h4 class="client-name">Diksha Yadav</h4>
                                 <p class="client-designation">MBBS Student, Astana Medical University</p>
                                 <div class="review-rating">
                                     <i class="fas fa-star"></i>
@@ -438,7 +438,7 @@ include('includes/header.php');
                     <div class="review-content">
                         <div class="review-image-wrapper">
                             <div class="review-image-bg"></div>
-                            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b820?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300&q=80" alt="Sneha Gupta" class="review-image">
+                            <img src="assets/images/media/home-page/happy-faces/image-3.webp" alt="Sneha Gupta" class="review-image">
                         </div>
                         <div class="review-text">
                             <div class="quote-icon">

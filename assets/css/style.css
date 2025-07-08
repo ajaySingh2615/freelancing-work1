@@ -3871,10 +3871,10 @@ ul, ol {
 }
 
 .review-nav-btn:hover {
-    background: var(--primary-color);
-    color: var(--white);
+    background: var(--accent-color);
+    color: var(--text-color);
     transform: scale(1.1);
-    box-shadow: var(--large-shadow);
+    box-shadow: 0 0.25rem 1rem rgba(254, 186, 2, 0.25);
 }
 
 .review-nav-btn i {
