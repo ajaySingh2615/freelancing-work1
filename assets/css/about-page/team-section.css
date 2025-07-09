@@ -7,9 +7,7 @@
 .team-section {
     position: relative;
     padding: var(--section-padding);
-    background: linear-gradient(135deg, 
-        var(--light-bg) 0%, 
-        rgba(254, 186, 2, 0.02) 100%);
+    background: var(--white);
     overflow: hidden;
 }
 
@@ -21,7 +19,7 @@
     width: 20%;
     height: 120%;
     background: linear-gradient(45deg, 
-        rgba(0, 53, 133, 0.05) 0%, 
+        rgba(0, 53, 133, 0.03) 0%, 
         transparent 50%);
     transform: rotate(-15deg);
     pointer-events: none;
@@ -42,60 +40,20 @@
     margin-right: auto;
 }
 
-.team-subtitle {
-    display: inline-block;
-    font-size: var(--small);
-    font-weight: var(--semibold);
-    color: var(--primary-color);
-    background: rgba(0, 53, 133, 0.05);
-    padding: 0.5rem 1.5rem;
-    border-radius: var(--pill);
-    border: 1px solid rgba(0, 53, 133, 0.1);
-    margin-bottom: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    position: relative;
-    overflow: hidden;
-}
 
-.team-subtitle::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(0, 53, 133, 0.1), transparent);
-    transition: var(--slow-transition);
-}
-
-.team-subtitle:hover::before {
-    left: 100%;
-}
 
 .team-title {
-    font-size: clamp(2rem, 4vw, 3rem);
+    font-size: var(--xlarge);
     font-weight: var(--bold);
     color: var(--text-color);
     line-height: var(--tight);
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
 }
 
 .team-title .highlight-text {
-    color: var(--primary-color);
+    color: var(--accent-color);
     position: relative;
-}
-
-.team-title .highlight-text::after {
-    content: '';
-    position: absolute;
-    bottom: 2px;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--accent-color), var(--accent-light));
-    border-radius: 2px;
-    animation: highlightExpand 2s ease-out;
 }
 
 .team-description {
@@ -107,18 +65,21 @@
 /* Team Grid */
 .team-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
     margin-bottom: 3rem;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .team-member {
     background: var(--white);
-    border-radius: var(--large);
+    border-radius: 20px;
     overflow: hidden;
-    box-shadow: var(--small-shadow);
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
     border: 1px solid var(--border-color);
-    transition: var(--transition);
+    transition: var(--slow-transition);
     position: relative;
     group: team-card;
 }
@@ -131,11 +92,11 @@
     right: 0;
     bottom: 0;
     background: linear-gradient(135deg, 
-        rgba(0, 53, 133, 0.05) 0%, 
+        rgba(0, 53, 133, 0.03) 0%, 
         transparent 50%, 
-        rgba(254, 186, 2, 0.05) 100%);
+        rgba(254, 186, 2, 0.03) 100%);
     opacity: 0;
-    transition: var(--transition);
+    transition: var(--slow-transition);
     z-index: 1;
 }
 
@@ -144,15 +105,15 @@
 }
 
 .team-member:hover {
-    transform: translateY(-0.75rem);
-    box-shadow: var(--large-shadow);
-    border-color: var(--accent-color);
+    transform: translateY(-1rem);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+    border-color: var(--primary-color);
 }
 
 .member-image-wrapper {
     position: relative;
     overflow: hidden;
-    height: 280px;
+    height: 320px;
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
 }
 
@@ -164,7 +125,7 @@
 }
 
 .team-member:hover .member-image {
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 
 .member-overlay {
@@ -222,7 +183,7 @@
 }
 
 .member-content {
-    padding: 2rem;
+    padding: 2.5rem 2rem;
     text-align: center;
     position: relative;
     z-index: 2;
@@ -243,7 +204,7 @@
 .member-position {
     font-size: var(--base);
     font-weight: var(--medium-weight);
-    color: var(--accent-color);
+    color: var(--primary-color);
     margin-bottom: 1rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -256,139 +217,9 @@
     margin-bottom: 1.5rem;
 }
 
-.member-experience {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-top: 1rem;
-    border-top: 1px solid var(--border-color);
-}
 
-.experience-item {
-    text-align: center;
-    flex: 1;
-}
 
-.experience-number {
-    display: block;
-    font-size: var(--medium);
-    font-weight: var(--bold);
-    color: var(--primary-color);
-    margin-bottom: 0.25rem;
-}
 
-.experience-label {
-    font-size: var(--small);
-    color: var(--light-text);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-}
-
-/* Leadership Section */
-.leadership-section {
-    margin-top: 5rem;
-    padding-top: 3rem;
-    border-top: 2px solid var(--border-color);
-}
-
-.leadership-header {
-    text-align: center;
-    margin-bottom: 3rem;
-}
-
-.leadership-title {
-    font-size: var(--xlarge);
-    font-weight: var(--bold);
-    color: var(--text-color);
-    margin-bottom: 1rem;
-}
-
-.leadership-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 2.5rem;
-}
-
-.leadership-card {
-    background: var(--white);
-    border-radius: var(--large);
-    padding: 2.5rem;
-    box-shadow: var(--medium-shadow);
-    border: 1px solid var(--border-color);
-    transition: var(--transition);
-    position: relative;
-    overflow: hidden;
-}
-
-.leadership-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
-    transform: scaleX(0);
-    transition: var(--transition);
-}
-
-.leadership-card:hover::before {
-    transform: scaleX(1);
-}
-
-.leadership-card:hover {
-    transform: translateY(-0.5rem);
-    box-shadow: var(--large-shadow);
-}
-
-.leadership-content {
-    display: flex;
-    gap: 2rem;
-    align-items: center;
-}
-
-.leadership-avatar {
-    width: 5rem;
-    height: 5rem;
-    border-radius: var(--circle);
-    overflow: hidden;
-    flex-shrink: 0;
-    border: 3px solid var(--accent-color);
-    transition: var(--transition);
-}
-
-.leadership-card:hover .leadership-avatar {
-    transform: scale(1.1);
-    border-color: var(--primary-color);
-}
-
-.leadership-avatar img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.leadership-info h4 {
-    font-size: var(--medium);
-    font-weight: var(--bold);
-    color: var(--text-color);
-    margin-bottom: 0.25rem;
-}
-
-.leadership-info .position {
-    font-size: var(--small);
-    color: var(--accent-color);
-    font-weight: var(--semibold);
-    margin-bottom: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-}
-
-.leadership-info p {
-    font-size: var(--small);
-    color: var(--light-text);
-    line-height: var(--normal);
-}
 
 /* ===== ANIMATIONS ===== */
 @keyframes highlightExpand {
@@ -399,18 +230,7 @@
 /* ===== RESPONSIVE DESIGN ===== */
 @media (max-width: 992px) {
     .team-grid {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 1.5rem;
-    }
-    
-    .leadership-grid {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-    }
-    
-    .leadership-content {
-        flex-direction: column;
-        text-align: center;
+        grid-template-columns: repeat(3, 1fr);
         gap: 1.5rem;
     }
 }
@@ -425,43 +245,35 @@
     }
     
     .team-title {
-        font-size: 2rem;
+        font-size: var(--xlarge);
     }
     
     .team-grid {
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 1.5rem;
+        grid-template-columns: 1fr;
+        gap: 2rem;
     }
     
     .member-image-wrapper {
-        height: 240px;
+        height: 300px;
     }
     
     .member-content {
-        padding: 1.5rem;
-    }
-    
-    .leadership-section {
-        margin-top: 3rem;
-    }
-    
-    .leadership-card {
-        padding: 2rem;
+        padding: 2rem 1.5rem;
     }
 }
 
 @media (max-width: 480px) {
     .team-grid {
         grid-template-columns: 1fr;
-        gap: 1rem;
+        gap: 1.5rem;
     }
     
     .member-image-wrapper {
-        height: 200px;
+        height: 250px;
     }
     
     .member-content {
-        padding: 1rem;
+        padding: 1.5rem 1rem;
     }
     
     .member-social {
@@ -471,14 +283,5 @@
     .social-link {
         width: 2.5rem;
         height: 2.5rem;
-    }
-    
-    .leadership-card {
-        padding: 1.5rem;
-    }
-    
-    .leadership-avatar {
-        width: 4rem;
-        height: 4rem;
     }
 } 

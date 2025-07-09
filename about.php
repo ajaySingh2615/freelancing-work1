@@ -129,7 +129,6 @@
 <section class="team-section">
     <div class="container team-container">
         <div class="team-header">
-            <span class="team-subtitle">Meet Our Team</span>
             <h2 class="team-title">Expert <span class="highlight-text">Guidance</span> Team</h2>
             <p class="team-description">
                 Our experienced professionals bring together decades of expertise in international education, admissions, and student success to guide you every step of the way.
@@ -138,9 +137,9 @@
 
         <div class="team-grid">
             <!-- Team Member 1 -->
-                <div class="team-member">
+            <div class="team-member">
                 <div class="member-image-wrapper">
-                    <img src="assets/images/media/team/member-1.jpg" alt="Dr. Rajesh Kumar" class="member-image">
+                    <img src="assets/images/media/about-page/our-team/mohd irshad.webp" alt="Dr. Azaz Ahamad" class="member-image">
                     <div class="member-overlay">
                         <div class="member-social">
                             <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
@@ -150,28 +149,18 @@
                     </div>
                 </div>
                 <div class="member-content">
-                    <h4 class="member-name">Dr. Rajesh Kumar</h4>
-                    <span class="member-position">Founder & CEO</span>
+                    <h4 class="member-name">Dr. Azaz Ahamad</h4>
+                    <span class="member-position">Founder</span>
                     <p class="member-bio">
-                        Medical education expert with 20+ years of experience in international admissions and student counseling.
+                        Medical education expert with extensive experience in international admissions and student guidance for overseas medical studies.
                     </p>
-                    <div class="member-experience">
-                        <div class="experience-item">
-                            <span class="experience-number">20+</span>
-                            <span class="experience-label">Years</span>
-                        </div>
-                        <div class="experience-item">
-                            <span class="experience-number">2000+</span>
-                            <span class="experience-label">Students</span>
-                        </div>
-                    </div>
                 </div>
             </div>
 
             <!-- Team Member 2 -->
-                <div class="team-member">
+            <div class="team-member">
                 <div class="member-image-wrapper">
-                    <img src="assets/images/media/team/member-2.jpg" alt="Mrs. Priya Sharma" class="member-image">
+                    <img src="assets/images/media/about-page/our-team/mohd irshad.webp" alt="Mohd Irshad" class="member-image">
                     <div class="member-overlay">
                         <div class="member-social">
                             <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
@@ -181,59 +170,18 @@
                     </div>
                 </div>
                 <div class="member-content">
-                    <h4 class="member-name">Mrs. Priya Sharma</h4>
-                    <span class="member-position">Co-Founder & Director</span>
+                    <h4 class="member-name">Mohd Irshad</h4>
+                    <span class="member-position">Co-Founder</span>
                     <p class="member-bio">
-                        Specializes in visa processing, documentation, and student support services with exceptional attention to detail.
+                        Specializes in visa processing, documentation, and comprehensive student support services with exceptional attention to detail.
                     </p>
-                    <div class="member-experience">
-                        <div class="experience-item">
-                            <span class="experience-number">15+</span>
-                            <span class="experience-label">Years</span>
-                        </div>
-                        <div class="experience-item">
-                            <span class="experience-number">1500+</span>
-                            <span class="experience-label">Visas</span>
-                        </div>
-                    </div>
                 </div>
             </div>
 
             <!-- Team Member 3 -->
-                <div class="team-member">
+            <div class="team-member">
                 <div class="member-image-wrapper">
-                    <img src="assets/images/media/team/member-3.jpg" alt="Mr. Amit Patel" class="member-image">
-                    <div class="member-overlay">
-                        <div class="member-social">
-                            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                            <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="member-content">
-                    <h4 class="member-name">Mr. Amit Patel</h4>
-                    <span class="member-position">Senior Counselor</span>
-                    <p class="member-bio">
-                        Expert in European medical universities with deep knowledge of admission processes and scholarship opportunities.
-                    </p>
-                    <div class="member-experience">
-                        <div class="experience-item">
-                            <span class="experience-number">12+</span>
-                            <span class="experience-label">Years</span>
-                        </div>
-                        <div class="experience-item">
-                            <span class="experience-number">800+</span>
-                            <span class="experience-label">Students</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Team Member 4 -->
-                <div class="team-member">
-                <div class="member-image-wrapper">
-                    <img src="assets/images/media/team/member-4.jpg" alt="Ms. Sarah Johnson" class="member-image">
+                    <img src="assets/images/media/about-page/our-team/mohd irshad.webp" alt="Priya Choudhary" class="member-image">
                     <div class="member-overlay">
                         <div class="member-social">
                             <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
@@ -243,57 +191,16 @@
                     </div>
                 </div>
                 <div class="member-content">
-                    <h4 class="member-name">Ms. Sarah Johnson</h4>
-                    <span class="member-position">International Relations</span>
+                    <h4 class="member-name">Priya Choudhary</h4>
+                    <span class="member-position">Senior Counsellor</span>
                     <p class="member-bio">
-                        Manages university partnerships and maintains relationships with international medical institutions worldwide.
+                        Expert counsellor with deep knowledge of international medical universities and admission processes across multiple countries.
                     </p>
-                    <div class="member-experience">
-                        <div class="experience-item">
-                            <span class="experience-number">10+</span>
-                            <span class="experience-label">Years</span>
-                        </div>
-                        <div class="experience-item">
-                            <span class="experience-number">50+</span>
-                            <span class="experience-label">Partners</span>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- Leadership Section -->
-        <div class="leadership-section">
-            <div class="leadership-header">
-                <h3 class="leadership-title">Advisory Board</h3>
-            </div>
-            <div class="leadership-grid">
-                <div class="leadership-card">
-                    <div class="leadership-content">
-                        <div class="leadership-avatar">
-                            <img src="assets/images/media/team/advisor-1.jpg" alt="Dr. Michael Chen">
-                        </div>
-                        <div class="leadership-info">
-                            <h4>Dr. Michael Chen</h4>
-                            <span class="position">Medical Education Advisor</span>
-                            <p>Former Dean of International Affairs at prestigious medical universities with 25+ years in medical education.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="leadership-card">
-                    <div class="leadership-content">
-                        <div class="leadership-avatar">
-                            <img src="assets/images/media/team/advisor-2.jpg" alt="Prof. Elena Rodriguez">
-                        </div>
-                        <div class="leadership-info">
-                            <h4>Prof. Elena Rodriguez</h4>
-                            <span class="position">Academic Standards Advisor</span>
-                            <p>Leading expert in international medical curriculum development and quality assurance protocols.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+
     </div>
 </section>
 
