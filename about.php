@@ -21,24 +21,25 @@
             
             <div class="about-hero-stats">
                 <div class="hero-stat-item">
-                    <span class="stat-number">100+</span>
-                    <span class="stat-label">employees</span>
+                    <span class="stat-number">10+</span>
+                    <span class="stat-label">Years Experience</span>
                 </div>
                 <div class="hero-stat-item">
-                    <span class="stat-number">15+</span>
-                    <span class="stat-label">Countries</span>
+                    <span class="stat-number">5000+</span>
+                    <span class="stat-label">Students Placed
+                    </span>
                 </div>
                 <div class="hero-stat-item">
                     <span class="stat-number">60+</span>
                     <span class="stat-label">Projects done</span>
                 </div>
                 <div class="hero-stat-item">
-                    <span class="stat-number">30+</span>
-                    <span class="stat-label">Offices</span>
+                    <span class="stat-number">50+</span>
+                    <span class="stat-label">Partner Universities</span>
                 </div>
                 <div class="hero-stat-item">
-                    <span class="stat-number">25+</span>
-                    <span class="stat-label">Project Awards</span>
+                    <span class="stat-number">98%</span>
+                    <span class="stat-label">Success Rate</span>
                 </div>
             </div>
         </div>
