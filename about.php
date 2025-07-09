@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="assets/css/about-page/company-story.css">
 <link rel="stylesheet" href="assets/css/about-page/team-section.css">
 <link rel="stylesheet" href="assets/css/about-page/values-section.css">
-<link rel="stylesheet" href="assets/css/about-page/achievements.css">
+
 <link rel="stylesheet" href="assets/css/about-page/about-cta.css">
 
 <!-- About Hero Section -->
@@ -140,13 +140,6 @@
             <div class="team-member">
                 <div class="member-image-wrapper">
                     <img src="assets/images/media/about-page/our-team/mohd irshad.webp" alt="Dr. Azaz Ahamad" class="member-image">
-                    <div class="member-overlay">
-                        <div class="member-social">
-                            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                            <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
-                        </div>
-                    </div>
                 </div>
                 <div class="member-content">
                     <h4 class="member-name">Dr. Azaz Ahamad</h4>
@@ -161,13 +154,6 @@
             <div class="team-member">
                 <div class="member-image-wrapper">
                     <img src="assets/images/media/about-page/our-team/mohd irshad.webp" alt="Mohd Irshad" class="member-image">
-                    <div class="member-overlay">
-                        <div class="member-social">
-                            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
-                        </div>
-                    </div>
                 </div>
                 <div class="member-content">
                     <h4 class="member-name">Mohd Irshad</h4>
@@ -182,13 +168,6 @@
             <div class="team-member">
                 <div class="member-image-wrapper">
                     <img src="assets/images/media/about-page/our-team/mohd irshad.webp" alt="Priya Choudhary" class="member-image">
-                    <div class="member-overlay">
-                        <div class="member-social">
-                            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                            <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
-                        </div>
-                    </div>
                 </div>
                 <div class="member-content">
                     <h4 class="member-name">Priya Choudhary</h4>
@@ -432,266 +411,83 @@
     </div>
 </section>
 
-<!-- Achievements Section -->
-<section class="achievements-section">
-    <div class="container achievements-container">
-        <div class="achievements-header">
-            <span class="achievements-subtitle">Our Achievements</span>
-            <h2 class="achievements-title">15 Years of Excellence</h2>
-            <p class="achievements-description">
-                Our journey of success is measured not just in numbers, but in the lives we've transformed and the dreams we've helped realize.
-            </p>
-        </div>
-
-        <!-- Stats Grid -->
-        <div class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-icon">
-                    <i class="fas fa-user-graduate"></i>
-                </div>
-                <span class="stat-number">5000+</span>
-                <span class="stat-label">Students Placed</span>
-                <p class="stat-description">Successfully placed in top medical universities worldwide</p>
-            </div>
-            <div class="stat-card">
-                <div class="stat-icon">
-                    <i class="fas fa-university"></i>
-                </div>
-                <span class="stat-number">50+</span>
-                <span class="stat-label">University Partners</span>
-                <p class="stat-description">Strong partnerships with prestigious medical institutions</p>
-            </div>
-            <div class="stat-card">
-                <div class="stat-icon">
-                    <i class="fas fa-globe"></i>
-                </div>
-                <span class="stat-number">15+</span>
-                <span class="stat-label">Countries</span>
-                <p class="stat-description">Global presence across multiple continents</p>
-            </div>
-            <div class="stat-card">
-                <div class="stat-icon">
-                    <i class="fas fa-percentage"></i>
-                </div>
-                <span class="stat-number">98%</span>
-                <span class="stat-label">Success Rate</span>
-                <p class="stat-description">Exceptional admission and visa approval rates</p>
-            </div>
-            <div class="stat-card">
-                <div class="stat-icon">
-                    <i class="fas fa-award"></i>
-                </div>
-                <span class="stat-number">25+</span>
-                <span class="stat-label">Awards Won</span>
-                <p class="stat-description">Recognition for excellence in educational services</p>
-            </div>
-            <div class="stat-card">
-                <div class="stat-icon">
-                    <i class="fas fa-users"></i>
-                </div>
-                <span class="stat-number">50+</span>
-                <span class="stat-label">Expert Team</span>
-                <p class="stat-description">Dedicated professionals serving student needs</p>
-            </div>
-        </div>
-
-        <!-- Milestones Timeline -->
-        <div class="milestones-section">
-            <div class="milestones-header">
-                <h3 class="milestones-title">Our Journey Milestones</h3>
-                <p class="milestones-description">
-                    Key moments that shaped our growth and strengthened our commitment to student success.
-                </p>
-            </div>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <span class="milestone-year">2008</span>
-                        <h4 class="milestone-title">Foundation</h4>
-                        <p class="milestone-description">MedStudy Global was established with a mission to provide quality international medical education guidance.</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <span class="milestone-year">2012</span>
-                        <h4 class="milestone-title">First 1000 Students</h4>
-                        <p class="milestone-description">Celebrated our first 1000 successful placements, establishing trust in the market.</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <span class="milestone-year">2015</span>
-                        <h4 class="milestone-title">International Expansion</h4>
-                        <p class="milestone-description">Expanded partnerships to include universities across Europe, Asia, and other continents.</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <span class="milestone-year">2018</span>
-                        <h4 class="milestone-title">Digital Transformation</h4>
-                        <p class="milestone-description">Launched digital platforms and online services to enhance student experience.</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <span class="milestone-year">2020</span>
-                        <h4 class="milestone-title">5000+ Students Mark</h4>
-                        <p class="milestone-description">Achieved the milestone of successfully placing over 5000 students worldwide.</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <span class="milestone-year">2023</span>
-                        <h4 class="milestone-title">Industry Leadership</h4>
-                        <p class="milestone-description">Recognized as a leading international medical education consultancy with multiple awards.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Awards Section -->
-        <div class="awards-section">
-            <div class="awards-header">
-                <h3 class="awards-title">Recognition & Awards</h3>
-            </div>
-            <div class="awards-grid">
-                <div class="award-card">
-                    <div class="award-icon">
-                        <i class="fas fa-trophy"></i>
-                    </div>
-                    <h4 class="award-title">Best Education Consultancy</h4>
-                    <span class="award-organization">Education Excellence Awards</span>
-                    <p class="award-description">Recognized for outstanding service in international education consulting.</p>
-                </div>
-                <div class="award-card">
-                    <div class="award-icon">
-                        <i class="fas fa-medal"></i>
-                    </div>
-                    <h4 class="award-title">Student Choice Award</h4>
-                    <span class="award-organization">StudentConnect</span>
-                    <p class="award-description">Voted by students as the most trusted education consultant.</p>
-                </div>
-                <div class="award-card">
-                    <div class="award-icon">
-                        <i class="fas fa-certificate"></i>
-                    </div>
-                    <h4 class="award-title">Quality Service Excellence</h4>
-                    <span class="award-organization">Service Quality Institute</span>
-                    <p class="award-description">Certified for maintaining highest quality standards in services.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
 <!-- About CTA Section -->
 <section class="about-cta-section">
-    <div class="container cta-container">
-        <!-- Main CTA Block -->
-        <div class="main-cta-block">
+    <div class="container">
+        <div class="cta-card">
+            <!-- Left Side - Image -->
+            <div class="cta-image">
+                <div class="cta-illustration">
+                    <!-- 3D Building Illustration Placeholder -->
+                    <svg width="100%" height="100%" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Building Structure -->
+                        <defs>
+                            <linearGradient id="buildingGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#E8F4FD;stop-opacity:0.9" />
+                                <stop offset="100%" style="stop-color:#B8E6FF;stop-opacity:0.7" />
+                            </linearGradient>
+                            <linearGradient id="glassGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#1E5BFF;stop-opacity:0.1" />
+                                <stop offset="100%" style="stop-color:#1E5BFF;stop-opacity:0.3" />
+                            </linearGradient>
+                        </defs>
+                        
+                        <!-- Main Building -->
+                        <rect x="120" y="80" width="160" height="180" rx="8" fill="url(#buildingGradient)" stroke="#1E5BFF" stroke-width="2"/>
+                        
+                        <!-- Glass Windows -->
+                        <rect x="140" y="100" width="30" height="40" rx="4" fill="url(#glassGradient)"/>
+                        <rect x="190" y="100" width="30" height="40" rx="4" fill="url(#glassGradient)"/>
+                        <rect x="240" y="100" width="30" height="40" rx="4" fill="url(#glassGradient)"/>
+                        
+                        <rect x="140" y="160" width="30" height="40" rx="4" fill="url(#glassGradient)"/>
+                        <rect x="190" y="160" width="30" height="40" rx="4" fill="url(#glassGradient)"/>
+                        <rect x="240" y="160" width="30" height="40" rx="4" fill="url(#glassGradient)"/>
+                        
+                        <rect x="140" y="220" width="30" height="30" rx="4" fill="url(#glassGradient)"/>
+                        <rect x="190" y="220" width="30" height="30" rx="4" fill="url(#glassGradient)"/>
+                        <rect x="240" y="220" width="30" height="30" rx="4" fill="url(#glassGradient)"/>
+                        
+                        <!-- Side Buildings -->
+                        <rect x="80" y="120" width="40" height="140" rx="6" fill="#F0F6FF" stroke="#1E5BFF" stroke-width="1" opacity="0.8"/>
+                        <rect x="280" y="140" width="40" height="120" rx="6" fill="#F0F6FF" stroke="#1E5BFF" stroke-width="1" opacity="0.8"/>
+                        
+                        <!-- Trees/Greenery -->
+                        <circle cx="60" cy="240" r="20" fill="#4CAF50" opacity="0.6"/>
+                        <rect x="58" y="240" width="4" height="20" fill="#8BC34A"/>
+                        
+                        <circle cx="340" cy="230" r="15" fill="#4CAF50" opacity="0.6"/>
+                        <rect x="338" y="230" width="4" height="15" fill="#8BC34A"/>
+                        
+                        <!-- Ground -->
+                        <rect x="0" y="260" width="400" height="40" fill="#E8F5E8" opacity="0.4"/>
+                        
+                        <!-- Sky/Background Elements -->
+                        <circle cx="320" cy="40" r="25" fill="#FFE082" opacity="0.3"/>
+                        <circle cx="80" cy="60" r="15" fill="#E3F2FD" opacity="0.5"/>
+                        <circle cx="300" cy="70" r="10" fill="#E3F2FD" opacity="0.4"/>
+                    </svg>
+                </div>
+            </div>
+            
+            <!-- Right Side - Content -->
             <div class="cta-content">
-                <span class="cta-subtitle">Ready to Begin?</span>
-                <h2 class="cta-title">Start Your Medical Journey Today</h2>
-                <p class="cta-description">
-                    Join thousands of successful students who trusted us with their medical education dreams. Let our expert team guide you to your ideal medical university.
+                <h2 class="cta-headline">
+                    <span class="headline-main">Empowering Your Vision:</span>
+                    <span class="headline-highlight">Request Quote</span>
+                </h2>
+                <p class="cta-subtext">
+                    Transform your medical education dreams into reality with our comprehensive guidance and support. Get a personalized quote tailored to your academic goals and career aspirations.
                 </p>
                 <div class="cta-buttons">
-                    <a href="contact.php" class="cta-btn cta-btn-primary">
-                        <i class="fas fa-phone"></i>
-                        Book Free Consultation
+                    <a href="contact.php" class="cta-btn-primary">
+                        Request Quote
+                        <i class="fas fa-arrow-right"></i>
                     </a>
-                    <a href="apply-online.php" class="cta-btn cta-btn-secondary">
-                        <i class="fas fa-graduation-cap"></i>
-                        Apply Now
+                    <a href="#" class="cta-btn-secondary">
+                        Learn More
                     </a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Contact Info Cards -->
-        <div class="contact-info-grid">
-            <div class="contact-info-card">
-                <div class="contact-icon">
-                    <i class="fas fa-phone-alt"></i>
-                </div>
-                <h3 class="contact-title">Talk to Our Experts</h3>
-                <div class="contact-details">
-                    <p><strong>Student Helpline:</strong></p>
-                    <p><a href="tel:1800-123-4567">1800-123-4567</a></p>
-                    <p><strong>WhatsApp:</strong></p>
-                    <p><a href="https://wa.me/1234567890">+91 98765 43210</a></p>
-                </div>
-                <div class="contact-action">
-                    <a href="tel:1800-123-4567" class="contact-link">
-                        Call Now <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-
-            <div class="contact-info-card">
-                <div class="contact-icon">
-                    <i class="fas fa-envelope"></i>
-                </div>
-                <h3 class="contact-title">Email Us</h3>
-                <div class="contact-details">
-                    <p><strong>General Inquiries:</strong></p>
-                    <p><a href="mailto:info@medstudy.global">info@medstudy.global</a></p>
-                    <p><strong>Admissions Support:</strong></p>
-                    <p><a href="mailto:admissions@medstudy.global">admissions@medstudy.global</a></p>
-                </div>
-                <div class="contact-action">
-                    <a href="mailto:info@medstudy.global" class="contact-link">
-                        Send Email <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-
-            <div class="contact-info-card">
-                <div class="contact-icon">
-                    <i class="fas fa-map-marker-alt"></i>
-                </div>
-                <h3 class="contact-title">Visit Our Office</h3>
-                <div class="contact-details">
-                    <p><strong>Head Office:</strong></p>
-                    <p>123 Education Hub, Knowledge City,<br>New Delhi - 110001, India</p>
-                    <p><strong>Office Hours:</strong></p>
-                    <p>Mon - Sat: 9:00 AM - 7:00 PM</p>
-                </div>
-                <div class="contact-action">
-                    <a href="contact.php" class="contact-link">
-                        Get Directions <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Quick Stats -->
-        <div class="quick-stats">
-            <div class="quick-stats-header">
-                <h3 class="quick-stats-title">Why Students Choose Us</h3>
-            </div>
-            <div class="quick-stats-grid">
-                <div class="quick-stat-item">
-                    <span class="quick-stat-number">24/7</span>
-                    <span class="quick-stat-label">Support Available</span>
-                </div>
-                <div class="quick-stat-item">
-                    <span class="quick-stat-number">Free</span>
-                    <span class="quick-stat-label">Initial Consultation</span>
-                </div>
-                <div class="quick-stat-item">
-                    <span class="quick-stat-number">100%</span>
-                    <span class="quick-stat-label">Transparent Process</span>
-                </div>
-                <div class="quick-stat-item">
-                    <span class="quick-stat-number">Guaranteed</span>
-                    <span class="quick-stat-label">Admission Support</span>
                 </div>
             </div>
         </div>
