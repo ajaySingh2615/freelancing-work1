@@ -433,74 +433,96 @@
             </div>
         </div>
 
-        <!-- Core Principles -->
-        <div class="core-principles">
-            <div class="principles-container">
-                <div class="principles-header">
-                    <h2 class="principles-title">Our Operating <span class="highlight-text">Principles</span></h2>
-                    <p class="principles-description">
-                        These principles guide our daily operations and ensure consistent quality in everything we do.
-                    </p>
-                </div>
-                <div class="principles-grid">
-                    <div class="principle-item">
-                        <div class="principle-number">1</div>
-                        <div class="principle-content">
-                            <h4 class="principle-title">Student First</h4>
-                            <p class="principle-description">Every decision prioritizes student welfare and success above all else.</p>
-                        </div>
-                    </div>
-                    <div class="principle-item">
-                        <div class="principle-number">2</div>
-                        <div class="principle-content">
-                            <h4 class="principle-title">Quality Assurance</h4>
-                            <p class="principle-description">Rigorous quality checks ensure excellence in all our services and partnerships.</p>
-                        </div>
-                    </div>
-                    <div class="principle-item">
-                        <div class="principle-number">3</div>
-                        <div class="principle-content">
-                            <h4 class="principle-title">Continuous Learning</h4>
-                            <p class="principle-description">We stay updated with industry changes and evolving educational landscapes.</p>
-                        </div>
-                    </div>
-                    <div class="principle-item">
-                        <div class="principle-number">4</div>
-                        <div class="principle-content">
-                            <h4 class="principle-title">Ethical Practice</h4>
-                            <p class="principle-description">All our operations adhere to the highest ethical and legal standards.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+
 
         <!-- Culture Section -->
         <div class="culture-section">
             <div class="culture-header">
-                <h3 class="culture-title">Our Culture</h3>
+                <h2 class="culture-title">Our <span class="highlight-text">Culture</span></h2>
+                <p class="culture-description">
+                    Our core values and guiding principles that define who we are and how we operate in everything we do.
+                </p>
             </div>
             <div class="culture-cards">
+                <!-- Integrity Card -->
                 <div class="culture-card">
-                    <div class="culture-icon">
-                        <i class="fas fa-users"></i>
+                    <div class="culture-icon integrity-icon">
+                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20 2L6 8V18C6 26.84 11.44 35.14 20 38C28.56 35.14 34 26.84 34 18V8L20 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M15 20L18 23L25 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
                     </div>
-                    <h4>Collaborative</h4>
-                    <p>We work together as a unified team, sharing knowledge and supporting each other's growth.</p>
-                        </div>
+                    <h3 class="culture-card-title">Integrity</h3>
+                    <p class="culture-card-description">
+                        We maintain the highest ethical standards in all our interactions, providing honest guidance and transparent processes to build lasting trust.
+                    </p>
+                    <a href="#" class="culture-cta">
+                        Read more <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Excellence Card -->
                 <div class="culture-card">
-                    <div class="culture-icon">
-                        <i class="fas fa-rocket"></i>
-                                </div>
-                    <h4>Dynamic</h4>
-                    <p>We adapt quickly to changes and embrace new challenges with enthusiasm and creativity.</p>
-                                </div>
-                <div class="culture-card">
-                    <div class="culture-icon">
-                        <i class="fas fa-heart"></i>
+                    <div class="culture-icon excellence-icon">
+                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20 2L25.09 12.26L37 14.18L28.5 22.26L30.82 34.02L20 28.5L9.18 34.02L11.5 22.26L3 14.18L14.91 12.26L20 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M20 15L22.5 20L27 20L23.5 23L25 28L20 25L15 28L16.5 23L13 20L17.5 20L20 15Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
                     </div>
-                    <h4>Caring</h4>
-                    <p>We genuinely care about our students' futures and invest emotionally in their success.</p>
+                    <h3 class="culture-card-title">Excellence</h3>
+                    <p class="culture-card-description">
+                        We strive for excellence in every aspect of our service delivery, continuously improving our processes and exceeding expectations.
+                    </p>
+                    <a href="#" class="culture-cta">
+                        Read more <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Collaboration Card -->
+                <div class="culture-card">
+                    <div class="culture-icon collaboration-icon">
+                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M17 21V19C17 15.134 20.134 12 24 12C27.866 12 31 15.134 31 19V21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M9 21V19C9 15.134 12.134 12 16 12C19.866 12 23 15.134 23 19V21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <circle cx="24" cy="7" r="4" stroke="currentColor" stroke-width="2"/>
+                            <circle cx="16" cy="7" r="4" stroke="currentColor" stroke-width="2"/>
+                            <path d="M9 21H31V30C31 31.1046 30.1046 32 29 32H11C9.89543 32 9 31.1046 9 30V21Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M15 27H25" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="culture-card-title">Collaboration</h3>
+                    <p class="culture-card-description">
+                        We work together as a unified team, sharing knowledge and supporting each other's growth to achieve common goals.
+                    </p>
+                    <a href="#" class="culture-cta">
+                        Read more <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Innovation Card -->
+                <div class="culture-card">
+                    <div class="culture-icon innovation-icon">
+                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="20" cy="20" r="8" stroke="currentColor" stroke-width="2"/>
+                            <path d="M20 12C16.134 12 13 15.134 13 19C13 22.866 16.134 26 20 26C23.866 26 27 22.866 27 19C27 15.134 23.866 12 20 12Z" stroke="currentColor" stroke-width="2"/>
+                            <path d="M20 4V8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M20 32V36" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M36 20H32" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M8 20H4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M31.314 8.686L28.485 11.515" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M11.515 28.485L8.686 31.314" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M31.314 31.314L28.485 28.485" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M11.515 11.515L8.686 8.686" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <circle cx="20" cy="19" r="3" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3 class="culture-card-title">Innovation</h3>
+                    <p class="culture-card-description">
+                        We embrace creative thinking and innovative solutions to continuously improve our services and student experiences.
+                    </p>
+                    <a href="#" class="culture-cta">
+                        Read more <i class="fas fa-arrow-right"></i>
+                    </a>
                 </div>
             </div>
         </div>

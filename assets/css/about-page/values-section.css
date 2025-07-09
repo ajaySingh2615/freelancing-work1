@@ -6,23 +6,29 @@
 /* ===== VALUES SECTION ===== */
 .values-section {
     position: relative;
-    padding: var(--section-padding);
-    background: var(--white);
+    padding: 4rem;
+    background: rgba(254, 186, 2, 0.05);
+    border-radius: var(--large);
     overflow: hidden;
+    margin-top: 2rem;
 }
 
 .values-section::before {
     content: '';
     position: absolute;
     top: 0;
+    left: 0;
     right: 0;
-    width: 40%;
-    height: 100%;
+    bottom: 0;
     background: linear-gradient(135deg, 
-        rgba(20, 157, 225, 0.02) 0%, 
-        transparent 50%);
+        rgba(254, 186, 2, 0.03) 0%, 
+        transparent 30%, 
+        rgba(254, 186, 2, 0.08) 70%, 
+        transparent 100%);
     pointer-events: none;
 }
+
+
 
 .values-container {
     max-width: 1300px;
@@ -37,6 +43,8 @@
     max-width: 700px;
     margin-left: auto;
     margin-right: auto;
+    position: relative;
+    z-index: 1;
 }
 
 
@@ -173,194 +181,38 @@
     transform: translateY(-50%);
 }
 
-/* Core Principles Section */
-.core-principles {
-    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-color) 50%, var(--primary-light) 100%);
-    border-radius: 0;
-    padding: 5rem 0;
+
+
+/* Culture Cards */
+.culture-section {
     margin-top: 5rem;
+    padding: 4rem;
+    background: #F0F6FF;
+    border-radius: var(--large);
     position: relative;
     overflow: hidden;
-    color: var(--white);
 }
 
-.core-principles::before {
+.culture-section::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="principles-pattern" width="40" height="40" patternUnits="userSpaceOnUse"><circle cx="20" cy="20" r="1" fill="rgba(255,255,255,0.05)" opacity="0.5"/><circle cx="5" cy="5" r="0.5" fill="rgba(254,186,2,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23principles-pattern)"/></svg>');
+    background: linear-gradient(135deg, 
+        rgba(0, 53, 133, 0.02) 0%, 
+        transparent 30%, 
+        rgba(254, 186, 2, 0.02) 70%, 
+        transparent 100%);
     pointer-events: none;
-}
-
-.core-principles::after {
-    content: '';
-    position: absolute;
-    top: -50%;
-    right: -20%;
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(circle, rgba(254, 186, 2, 0.08) 0%, transparent 70%);
-    border-radius: var(--circle);
-    animation: principlesFloat 8s ease-in-out infinite;
-}
-
-@keyframes principlesFloat {
-    0%, 100% { transform: translateY(0) rotate(0deg); }
-    50% { transform: translateY(-20px) rotate(5deg); }
-}
-
-.principles-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
-    position: relative;
-    z-index: 2;
-}
-
-.principles-header {
-    text-align: center;
-    margin-bottom: 4rem;
-    position: relative;
-    z-index: 1;
-}
-
-.principles-title {
-    font-size: var(--xlarge);
-    font-weight: var(--bold);
-    color: var(--white);
-    margin-bottom: 2rem;
-    text-align: center;
-}
-
-.principles-description {
-    font-size: var(--medium);
-    color: rgba(255, 255, 255, 0.9);
-    line-height: var(--normal);
-    max-width: 650px;
-    margin: 0 auto;
-}
-
-.principles-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 4rem 3rem;
-    position: relative;
-    z-index: 1;
-}
-
-.principle-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 2rem;
-    padding: 0;
-    background: transparent;
-    border: none;
-    box-shadow: none;
-    transition: var(--transition);
-    position: relative;
-}
-
-.principle-item::before {
-    content: '';
-    position: absolute;
-    left: -1rem;
-    top: 0;
-    bottom: 0;
-    width: 3px;
-    background: linear-gradient(180deg, var(--accent-color) 0%, rgba(254, 186, 2, 0.3) 100%);
-    border-radius: 2px;
-    transform: scaleY(0);
-    transition: var(--slow-transition);
-    transform-origin: top;
-}
-
-.principle-item:hover::before {
-    transform: scaleY(1);
-}
-
-.principle-number {
-    width: 5rem;
-    height: 5rem;
-    background: rgba(255, 255, 255, 0.1);
-    border: 2px solid var(--accent-color);
-    border-radius: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2rem;
-    font-weight: var(--bold);
-    color: var(--accent-color);
-    transition: var(--transition);
-    flex-shrink: 0;
-    backdrop-filter: blur(10px);
-    position: relative;
-}
-
-.principle-number::before {
-    content: '';
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    background: linear-gradient(135deg, var(--accent-color), var(--accent-light));
-    border-radius: 16px;
-    z-index: -1;
-    opacity: 0;
-    transition: var(--transition);
-}
-
-.principle-item:hover .principle-number {
-    background: var(--accent-color);
-    color: var(--primary-dark);
-    transform: scale(1.05);
-    box-shadow: 0 8px 25px rgba(254, 186, 2, 0.3);
-}
-
-.principle-item:hover .principle-number::before {
-    opacity: 1;
-}
-
-.principle-content {
-    flex: 1;
-}
-
-.principle-title {
-    font-size: var(--xlarge);
-    font-weight: var(--bold);
-    color: var(--white);
-    margin-bottom: 1rem;
-    transition: var(--transition);
-}
-
-.principle-item:hover .principle-title {
-    color: var(--accent-color);
-}
-
-.principle-description {
-    font-size: var(--base);
-    color: rgba(255, 255, 255, 0.85);
-    line-height: var(--normal);
-    transition: var(--transition);
-}
-
-.principle-item:hover .principle-description {
-    color: rgba(255, 255, 255, 0.95);
-}
-
-/* Culture Cards */
-.culture-section {
-    margin-top: 5rem;
-    padding-top: 3rem;
-    border-top: 2px solid var(--border-color);
 }
 
 .culture-header {
     text-align: center;
     margin-bottom: 3rem;
+    position: relative;
+    z-index: 1;
 }
 
 .culture-title {
@@ -368,78 +220,189 @@
     font-weight: var(--bold);
     color: var(--text-color);
     margin-bottom: 1rem;
+    line-height: var(--tight);
+}
+
+.culture-title .highlight-text {
+    color: var(--accent-color);
+}
+
+.culture-description {
+    font-size: var(--base);
+    color: var(--light-text);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: var(--normal);
 }
 
 .culture-cards {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    position: relative;
+    z-index: 1;
+    max-width: none;
 }
 
 .culture-card {
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-    border-radius: var(--large);
-    padding: 2.5rem;
-    color: var(--white);
+    background: var(--white);
+    border-radius: 12px;
+    padding: 24px;
     text-align: center;
     transition: var(--transition);
     position: relative;
     overflow: hidden;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 10px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .culture-card::before {
     content: '';
     position: absolute;
     top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(45deg, transparent 0%, rgba(255, 255, 255, 0.1) 50%, transparent 100%);
-    opacity: 0;
-    transition: var(--transition);
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(254, 186, 2, 0.2),
+        transparent
+    );
+    transform: skewX(-25deg);
+    transition: 0.75s;
+    z-index: 1;
 }
 
 .culture-card:hover::before {
-    opacity: 1;
+    animation: shine 3s ease-in-out infinite;
 }
 
 .culture-card:hover {
-    transform: translateY(-0.5rem) scale(1.02);
-    box-shadow: var(--large-shadow);
+    transform: translateY(-8px);
+    border: 1px solid rgba(254, 186, 2, 0.3);
+    animation: culturePulsingGlow 3s ease-in-out infinite;
 }
 
 .culture-icon {
-    width: 4rem;
-    height: 4rem;
-    background: rgba(255, 255, 255, 0.2);
+    width: 64px;
+    height: 64px;
     border-radius: var(--circle);
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 0 auto 1.5rem;
     transition: var(--transition);
+    position: relative;
+    z-index: 2;
 }
 
-.culture-card:hover .culture-icon {
-    background: var(--accent-color);
-    transform: scale(1.1) rotate(10deg);
-}
-
-.culture-icon i {
-    font-size: 1.5rem;
+/* Specific Icon Colors */
+.integrity-icon {
+    background: linear-gradient(135deg, #10B981 0%, #059669 100%);
     color: var(--white);
 }
 
-.culture-card h4 {
-    font-size: var(--medium);
-    font-weight: var(--bold);
-    margin-bottom: 1rem;
+.excellence-icon {
+    background: linear-gradient(135deg, #92400E 0%, #78350F 100%);
+    color: var(--white);
 }
 
-.culture-card p {
-    font-size: var(--small);
+.collaboration-icon {
+    background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+    color: var(--white);
+}
+
+.innovation-icon {
+    background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
+    color: var(--white);
+}
+
+.culture-card:hover .culture-icon {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.culture-icon svg {
+    width: 40px;
+    height: 40px;
+}
+
+.culture-card-title {
+    font-size: 1.5rem;
+    font-weight: var(--bold);
+    color: var(--black);
+    margin-bottom: 1rem;
+    line-height: var(--tight);
+    position: relative;
+    z-index: 2;
+}
+
+.culture-card-description {
+    font-size: var(--base);
+    color: #7F8C8D;
     line-height: var(--normal);
-    opacity: 0.9;
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 2;
+}
+
+.culture-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 14px;
+    font-weight: var(--medium-weight);
+    color: #007BFF;
+    text-decoration: none;
+    transition: var(--transition);
+    position: relative;
+    z-index: 2;
+}
+
+.culture-cta:hover {
+    color: #0056b3;
+    transform: translateX(4px);
+}
+
+.culture-cta i {
+    font-size: 12px;
+    transition: var(--transition);
+}
+
+.culture-cta:hover i {
+    transform: translateX(2px);
+}
+
+/* Culture Cards Animations */
+@keyframes shine {
+    0% {
+        left: -100%;
+    }
+    20% {
+        left: 100%;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+@keyframes culturePulsingGlow {
+    0% {
+        box-shadow: 
+            rgba(0, 0, 0, 0.1) 0px 4px 10px,
+            0 0 1.5rem rgba(254, 186, 2, 0.2);
+    }
+    50% {
+        box-shadow: 
+            rgba(0, 0, 0, 0.1) 0px 4px 10px,
+            0 0 2rem rgba(254, 186, 2, 0.4),
+            0 0 3rem rgba(254, 186, 2, 0.2);
+    }
+    100% {
+        box-shadow: 
+            rgba(0, 0, 0, 0.1) 0px 4px 10px,
+            0 0 1.5rem rgba(254, 186, 2, 0.2);
+    }
 }
 
 /* ===== ANIMATIONS ===== */
@@ -458,27 +421,19 @@
         gap: 1.25rem;
     }
     
-    .principles-container {
-        padding: 0 1rem;
+
+    
+    .values-section {
+        padding: 3rem 2rem;
+        margin-top: 1.5rem;
     }
     
-    .principles-grid {
-        grid-template-columns: 1fr;
-        gap: 3rem;
-    }
-    
-    .principle-item {
-        gap: 1.5rem;
-    }
-    
-    .principle-number {
-        width: 4.5rem;
-        height: 4.5rem;
-        font-size: 1.8rem;
+    .culture-section {
+        padding: 3rem 2rem;
     }
     
     .culture-cards {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        grid-template-columns: repeat(2, 1fr);
         gap: 1.5rem;
     }
 }
@@ -486,7 +441,8 @@
 /* Tablets */
 @media (max-width: 768px) {
     .values-section {
-        padding: 4rem 0;
+        padding: 3rem 1.5rem;
+        margin-top: 1.5rem;
     }
     
     .values-header {
@@ -538,44 +494,7 @@
         margin-bottom: 1.5rem;
     }
     
-    .core-principles {
-        padding: 4rem 0;
-        margin-top: 4rem;
-    }
-    
-    .principles-container {
-        padding: 0 1.5rem;
-    }
-    
-    .principles-header {
-        margin-bottom: 3rem;
-    }
-    
-    .principles-title {
-        font-size: 2rem;
-    }
-    
-    .principles-grid {
-        grid-template-columns: 1fr;
-        gap: 2.5rem;
-    }
-    
-    .principle-item {
-        flex-direction: column;
-        text-align: center;
-        gap: 1.5rem;
-    }
-    
-    .principle-item::before {
-        display: none;
-    }
-    
-    .principle-number {
-        width: 4rem;
-        height: 4rem;
-        font-size: 1.6rem;
-        align-self: center;
-    }
+
     
     .culture-section {
         margin-top: 4rem;
@@ -595,7 +514,8 @@
 /* Large Mobile Devices */
 @media (max-width: 576px) {
     .values-section {
-        padding: 3rem 0;
+        padding: 3rem 1.5rem;
+        margin-top: 1rem;
     }
     
     .values-header {
@@ -654,32 +574,7 @@
         top: 0.45rem;
     }
     
-    .core-principles {
-        padding: 2rem 1rem;
-        margin-top: 2.5rem;
-    }
-    
-    .principles-title {
-        font-size: 1.8rem;
-    }
-    
-    .principles-description {
-        font-size: 0.95rem;
-    }
-    
-    .principle-number {
-        width: 4rem;
-        height: 4rem;
-        font-size: 1.5rem;
-    }
-    
-    .principle-title {
-        font-size: 1.6rem;
-    }
-    
-    .principle-description {
-        font-size: 0.9rem;
-    }
+
     
     .culture-section {
         margin-top: 3rem;
@@ -697,7 +592,8 @@
 /* Small Mobile Devices */
 @media (max-width: 480px) {
     .values-section {
-        padding: 2.5rem 0;
+        padding: 2.5rem 1.25rem;
+        margin-top: 1rem;
     }
     
     .values-header {
@@ -759,57 +655,11 @@
         top: 0.4rem;
     }
     
-    .core-principles {
-        padding: 3rem 0;
-        margin-top: 2.5rem;
-    }
-    
-    .principles-container {
-        padding: 0 1rem;
-    }
-    
-    .principles-header {
-        margin-bottom: 2.5rem;
-    }
-    
-    .principles-title {
-        font-size: 1.6rem;
-        margin-bottom: 1.25rem;
-    }
-    
 
-    
-    .principles-description {
-        font-size: 0.9rem;
-    }
-    
-    .principles-grid {
-        gap: 2rem;
-    }
-    
-    .principle-item {
-        gap: 1.25rem;
-    }
-    
-    .principle-number {
-        width: 3.5rem;
-        height: 3.5rem;
-        font-size: 1.25rem;
-        border-radius: 12px;
-    }
-    
-    .principle-title {
-        font-size: 1.4rem;
-        margin-bottom: 0.75rem;
-    }
-    
-    .principle-description {
-        font-size: 0.85rem;
-    }
     
     .culture-section {
         margin-top: 2.5rem;
-        padding-top: 2rem;
+        padding: 3rem 1.5rem;
     }
     
     .culture-header {
@@ -817,29 +667,98 @@
     }
     
     .culture-title {
-        font-size: 1.4rem;
+        font-size: 1.8rem;
+    }
+    
+    .culture-description {
+        font-size: 0.9rem;
+    }
+    
+    .culture-cards {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
     }
     
     .culture-card {
-        padding: 1.75rem 1rem;
+        padding: 20px;
     }
     
     .culture-icon {
-        width: 3.5rem;
-        height: 3.5rem;
+        width: 56px;
+        height: 56px;
         margin-bottom: 1.25rem;
     }
     
-    .culture-icon i {
-        font-size: 1.25rem;
+    .culture-icon svg {
+        width: 32px;
+        height: 32px;
     }
     
-    .culture-card h4 {
-        font-size: 1rem;
+    .culture-card-title {
+        font-size: 1.25rem;
         margin-bottom: 0.75rem;
     }
     
-    .culture-card p {
-        font-size: 0.8rem;
+    .culture-card-description {
+        font-size: 0.9rem;
+        margin-bottom: 1.25rem;
+    }
+    
+    .culture-cta {
+        font-size: 13px;
+    }
+}
+
+/* Small Mobile */
+@media (max-width: 600px) {
+    .culture-section {
+        margin-top: 2rem;
+        padding: 2.5rem 1.25rem;
+    }
+    
+    .culture-header {
+        margin-bottom: 1.5rem;
+    }
+    
+    .culture-title {
+        font-size: 1.5rem;
+    }
+    
+    .culture-description {
+        font-size: 0.85rem;
+    }
+    
+    .culture-cards {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+    }
+    
+    .culture-card {
+        padding: 18px;
+    }
+    
+    .culture-icon {
+        width: 48px;
+        height: 48px;
+        margin-bottom: 1rem;
+    }
+    
+    .culture-icon svg {
+        width: 28px;
+        height: 28px;
+    }
+    
+    .culture-card-title {
+        font-size: 1.125rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .culture-card-description {
+        font-size: 0.85rem;
+        margin-bottom: 1rem;
+    }
+    
+    .culture-cta {
+        font-size: 12px;
     }
 } 
