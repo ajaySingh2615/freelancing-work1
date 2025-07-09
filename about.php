@@ -10,40 +10,35 @@
 
 <!-- About Hero Section -->
 <section class="about-hero">
-    <div class="about-breadcrumb">
-        <div class="container">
-            <ul class="breadcrumb-list">
-                <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-                <li class="breadcrumb-separator">/</li>
-                <li class="breadcrumb-item">About Us</li>
-            </ul>
-        </div>
-    </div>
-
     <div class="container">
         <div class="about-hero-content">
-            <span class="about-hero-subtitle">About MedStudy Global</span>
-            <h1 class="about-hero-title">Empowering Dreams, Enabling Success</h1>
-            <p class="about-hero-description">
-                Your trusted partner in global medical education. We've been guiding ambitious students towards prestigious MBBS programs worldwide, creating pathways to exceptional medical careers.
-            </p>
+            <span class="about-hero-tagline">About Us</span>
+            <h1 class="about-hero-title">Bringing Your Vision to Life with Expertise and Dedication</h1>
+            
+            <div class="about-hero-image">
+                <img src="assets/images/media/about-page/hero-section/hero-image.webp" alt="Professional Team" class="hero-image">
+            </div>
             
             <div class="about-hero-stats">
                 <div class="hero-stat-item">
+                    <span class="stat-number">100+</span>
+                    <span class="stat-label">Employees</span>
+                </div>
+                <div class="hero-stat-item">
                     <span class="stat-number">15+</span>
-                    <span class="stat-label">Years Experience</span>
+                    <span class="stat-label">Countries</span>
                 </div>
                 <div class="hero-stat-item">
-                    <span class="stat-number">5000+</span>
-                    <span class="stat-label">Students Placed</span>
+                    <span class="stat-number">60+</span>
+                    <span class="stat-label">Projects Done</span>
                 </div>
                 <div class="hero-stat-item">
-                    <span class="stat-number">50+</span>
-                    <span class="stat-label">Partner Universities</span>
-            </div>
+                    <span class="stat-number">30+</span>
+                    <span class="stat-label">Offices</span>
+                </div>
                 <div class="hero-stat-item">
-                    <span class="stat-number">98%</span>
-                    <span class="stat-label">Success Rate</span>
+                    <span class="stat-number">25+</span>
+                    <span class="stat-label">Project Awards</span>
                 </div>
             </div>
         </div>
