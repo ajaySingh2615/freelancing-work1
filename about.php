@@ -22,7 +22,7 @@
             <div class="about-hero-stats">
                 <div class="hero-stat-item">
                     <span class="stat-number">100+</span>
-                    <span class="stat-label">Employees</span>
+                    <span class="stat-label">employees</span>
                 </div>
                 <div class="hero-stat-item">
                     <span class="stat-number">15+</span>
@@ -30,7 +30,7 @@
                 </div>
                 <div class="hero-stat-item">
                     <span class="stat-number">60+</span>
-                    <span class="stat-label">Projects Done</span>
+                    <span class="stat-label">Projects done</span>
                 </div>
                 <div class="hero-stat-item">
                     <span class="stat-number">30+</span>
