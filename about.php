@@ -494,4 +494,97 @@
     </div>
 </section>
 
+<!-- Media Highlights Section -->
+<section class="media-highlights-section">
+    <div class="container">
+        <div class="media-highlights-header">
+            <h2 class="media-highlights-title">Media <span class="highlight-text">Highlights</span></h2>
+            <p class="media-highlights-description">
+                Our achievements and success stories have been featured across leading media platforms, reflecting our commitment to excellence in medical education consultancy.
+            </p>
+        </div>
+        
+        <div class="media-logos-container">
+            <div class="media-logos-grid">
+                <!-- Logo 1 -->
+                <div class="media-logo-item">
+                    <div class="media-logo-wrapper">
+                        <img src="assets/images/media/about-page/logos/thetribune.webp" alt="The Tribune" loading="lazy">
+                    </div>
+                </div>
+                
+                <!-- Logo 2 -->
+                <div class="media-logo-item">
+                    <div class="media-logo-wrapper">
+                        <img src="assets/images/media/about-page/logos/News-Logo-1.webp" alt="News Media 1" loading="lazy">
+                    </div>
+                </div>
+                
+                <!-- Logo 3 -->
+                <div class="media-logo-item">
+                    <div class="media-logo-wrapper">
+                        <img src="assets/images/media/about-page/logos/News-Logo-2.webp" alt="News Media 2" loading="lazy">
+                    </div>
+                </div>
+                
+                <!-- Logo 4 -->
+                <div class="media-logo-item">
+                    <div class="media-logo-wrapper">
+                        <img src="assets/images/media/about-page/logos/News-Logo-3.webp" alt="News Media 3" loading="lazy">
+                    </div>
+                </div>
+                
+                <!-- Logo 5 -->
+                <div class="media-logo-item">
+                    <div class="media-logo-wrapper">
+                        <img src="assets/images/media/about-page/logos/News-Logo-4.webp" alt="News Media 4" loading="lazy">
+                    </div>
+                </div>
+                
+                <!-- Logo 6 -->
+                <div class="media-logo-item">
+                    <div class="media-logo-wrapper">
+                        <img src="assets/images/media/about-page/logos/News-Logo-5.webp" alt="News Media 5" loading="lazy">
+                    </div>
+                </div>
+                
+                <!-- Logo 7 -->
+                <div class="media-logo-item">
+                    <div class="media-logo-wrapper">
+                        <img src="assets/images/media/about-page/logos/News-Logo-6.webp" alt="News Media 6" loading="lazy">
+                    </div>
+                </div>
+                
+                <!-- Logo 8 -->
+                <div class="media-logo-item">
+                    <div class="media-logo-wrapper">
+                        <img src="assets/images/media/about-page/logos/News-Logo-9.webp" alt="News Media 9" loading="lazy">
+                    </div>
+                </div>
+                
+                <!-- Logo 9 -->
+                <div class="media-logo-item">
+                    <div class="media-logo-wrapper">
+                        <img src="assets/images/media/about-page/logos/News-Logo-12.webp" alt="News Media 12" loading="lazy">
+                    </div>
+                </div>
+                
+                <!-- Logo 10 -->
+                <div class="media-logo-item">
+                    <div class="media-logo-wrapper">
+                        <img src="assets/images/media/about-page/logos/News-Logo-14.webp" alt="News Media 14" loading="lazy">
+                    </div>
+                </div>
+                
+                <!-- Logo 11 -->
+                <div class="media-logo-item">
+                    <div class="media-logo-wrapper">
+                        <img src="assets/images/media/about-page/logos/News-Logo-16.webp" alt="News Media 16" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <?php include 'includes/footer.php'; ?> 
