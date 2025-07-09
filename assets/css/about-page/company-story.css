@@ -7,7 +7,7 @@
 .company-story-section {
     position: relative;
     padding: var(--section-padding);
-    background: var(--white);
+    background: #F0F6FF;
     overflow: hidden;
 }
 
