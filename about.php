@@ -500,7 +500,7 @@
         <div class="media-highlights-header">
             <h2 class="media-highlights-title">Media <span class="highlight-text">Highlights</span></h2>
             <p class="media-highlights-description">
-                Our achievements and success stories have been featured across leading media platforms, reflecting our commitment to excellence in medical education consultancy.
+            Our achievements and success stories on leading media platforms showcase our commitment to excellence in medical education consultancy.
             </p>
         </div>
         
@@ -573,13 +573,6 @@
                 <div class="media-logo-item">
                     <div class="media-logo-wrapper">
                         <img src="assets/images/media/about-page/logos/News-Logo-14.webp" alt="News Media 14" loading="lazy">
-                    </div>
-                </div>
-                
-                <!-- Logo 11 -->
-                <div class="media-logo-item">
-                    <div class="media-logo-wrapper">
-                        <img src="assets/images/media/about-page/logos/News-Logo-16.webp" alt="News Media 16" loading="lazy">
                     </div>
                 </div>
             </div>
