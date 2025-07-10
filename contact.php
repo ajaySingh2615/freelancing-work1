@@ -188,7 +188,7 @@ include('includes/header.php');
         <div class="faq-container">
             <div class="faq-header">
                 <p class="faq-prompt">Need more help?</p>
-                <h2 class="faq-title">Frequently Asked Questions (FAQ)</h2>
+                <h2 class="faq-title">Frequently Asked <span class="highlight-text">Questions (FAQ)</span></h2>
                 <p class="faq-subheading">Any question or remarks? Just write us a message!</p>
             </div>
             
