@@ -17,6 +17,9 @@
 @import url('about-page/about-cta.css');
 @import url('about-page/media-highlights.css');
 
+/* Contact Page Imports */
+@import url('contact-page.css');
+
 /* ===== GENERAL STYLES ===== */
 * {
     margin: 0;

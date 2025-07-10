@@ -2,6 +2,7 @@
 include('includes/header.php'); 
 ?>
 
+<div class="contact-page">
 <!-- Page Banner -->
 <div class="page-banner">
     <div class="container">
@@ -22,113 +23,116 @@ include('includes/header.php');
 <!-- Contact Section -->
 <section class="contact-page-section section-padding">
     <div class="container">
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="contact-info">
-                    <h2>Get in Touch</h2>
-                    <p class="mb-4">For any queries regarding admission to medical programs abroad or any other information, feel free to contact us using the details below or fill out the form.</p>
-                    
-                    <div class="info-box">
-                        <div class="icon">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div class="content">
-                            <h4>Our Address</h4>
-                            <p>123 Education Street, Central Plaza, New Delhi - 110001.</p>
-                        </div>
+        <div class="contact-split-container">
+            <!-- Left Side: Contact Information -->
+            <div class="contact-info-section">
+                <div class="contact-info-content">
+                    <!-- Decorative Shapes -->
+                    <div class="decorative-shapes">
+                        <div class="shape shape-1"></div>
+                        <div class="shape shape-2"></div>
+                        <div class="shape shape-3"></div>
                     </div>
                     
-                    <div class="info-box">
-                        <div class="icon">
-                            <i class="fas fa-phone-alt"></i>
+                    <div class="contact-info-text">
+                        <h2>Contact Information</h2>
+                        <p>Fill up the form and our team will get back to you within 24 hours.</p>
+                        
+                        <div class="contact-details">
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-phone-alt"></i>
+                                </div>
+                                <span>+0123 4567 8910</span>
+                            </div>
+                            
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <span>hello@flowbase.com</span>
+                            </div>
+                            
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <span>102 Street 2714 Don</span>
+                            </div>
                         </div>
-                        <div class="content">
-                            <h4>Call Us</h4>
-                            <p><a href="tel:1800-123-4567">1800 123 4567</a> (Toll Free)</p>
+                        
+                        <div class="social-media">
+                            <div class="social-icon">
+                                <i class="fab fa-facebook-f"></i>
+                            </div>
+                            <div class="social-icon">
+                                <i class="fab fa-twitter"></i>
+                            </div>
+                            <div class="social-icon">
+                                <i class="fab fa-instagram"></i>
+                            </div>
+                            <div class="social-icon">
+                                <i class="fab fa-linkedin-in"></i>
+                            </div>
                         </div>
-                    </div>
-                    
-                    <div class="info-box">
-                        <div class="icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div class="content">
-                            <h4>Email Us</h4>
-                            <p><a href="mailto:info@medstudy.global">info@medstudy.global</a></p>
-                        </div>
-                    </div>
-                    
-                    <div class="info-box">
-                        <div class="icon">
-                            <i class="far fa-clock"></i>
-                        </div>
-                        <div class="content">
-                            <h4>Working Hours</h4>
-                            <p>Monday - Friday: 9:00 AM - 6:00 PM <br> Saturday: 9:00 AM - 3:00 PM</p>
-                        </div>
-                    </div>
-                    
-                    <div class="social-links mt-4">
-                        <h4>Follow Us</h4>
-                        <ul class="social-icons">
-                            <li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-                            <li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
-                            <li><a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
-                            <li><a href="#" target="_blank"><i class="fab fa-youtube"></i></a></li>
-                            <li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
-                        </ul>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6">
-                <div class="contact-form-box">
-                    <h2>Send us a Message</h2>
-                    <p class="mb-4">Fill out the form below and our team will get back to you as soon as possible.</p>
-                    
+            
+            <!-- Right Side: Contact Form -->
+            <div class="contact-form-section">
+                <div class="contact-form-content">
                     <form id="contact-form" action="process-contact.php" method="post">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" id="name" name="name" placeholder="Your Name *" required>
-                                </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="first-name">First Name</label>
+                                <input type="text" class="form-control" id="first-name" name="first_name" required>
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <input type="email" class="form-control" id="email" name="email" placeholder="Your Email *" required>
-                                </div>
+                            <div class="form-group">
+                                <label for="last-name">Last Name</label>
+                                <input type="text" class="form-control" id="last-name" name="last_name" required>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <input type="tel" class="form-control" id="phone" name="phone" placeholder="Phone Number *" required>
-                                </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" class="form-control" id="email" name="email" placeholder="example@email.com" required>
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <select class="form-control" id="subject" name="subject" required>
-                                        <option value="">Select Subject</option>
-                                        <option value="Admission Inquiry">Admission Inquiry</option>
-                                        <option value="University Information">University Information</option>
-                                        <option value="Application Process">Application Process</option>
-                                        <option value="Fee Structure">Fee Structure</option>
-                                        <option value="Other">Other</option>
-                                    </select>
-                                </div>
+                            <div class="form-group">
+                                <label for="phone">Phone</label>
+                                <input type="tel" class="form-control" id="phone" name="phone" required>
                             </div>
                         </div>
+                        
                         <div class="form-group">
-                            <textarea class="form-control" id="message" name="message" rows="5" placeholder="Your Message *" required></textarea>
-                        </div>
-                        <div class="form-group">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="consent" name="consent" required>
-                                <label class="form-check-label" for="consent">
-                                    I agree to the <a href="privacy-policy.php">privacy policy</a> and consent to being contacted regarding my inquiry.
-                                </label>
+                            <label>What type of website do you need?</label>
+                            <div class="radio-group">
+                                <div class="radio-item">
+                                    <input type="radio" id="web-design" name="service_type" value="Web Design">
+                                    <label for="web-design">Web Design</label>
+                                </div>
+                                <div class="radio-item">
+                                    <input type="radio" id="web-development" name="service_type" value="Web Development" checked>
+                                    <label for="web-development">Web Development</label>
+                                </div>
+                                <div class="radio-item">
+                                    <input type="radio" id="logo-design" name="service_type" value="Logo Design">
+                                    <label for="logo-design">Logo Design</label>
+                                </div>
+                                <div class="radio-item">
+                                    <input type="radio" id="other" name="service_type" value="Other">
+                                    <label for="other">Other</label>
+                                </div>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary">Send Message</button>
+                        
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea class="form-control" id="message" name="message" rows="5" placeholder="Write your message..." required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn-submit">Send Message</button>
                     </form>
                 </div>
             </div>
@@ -245,6 +249,9 @@ include('includes/header.php');
         </div>
     </div>
 </section>
+
+</div>
+<!-- End contact-page wrapper -->
 
 <?php 
 include('includes/footer.php'); 
