@@ -802,6 +802,32 @@
     .contact-page .office-box {
         margin-bottom: 2rem;
     }
+    
+    /* Office Section - Tablet styles */
+    .contact-page .office-section h2 {
+        font-size: 2.5rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .contact-page .office-section > .container > .row > .col-lg-12 > p {
+        font-size: 1.1rem;
+        margin-bottom: 3rem;
+    }
+    
+    .contact-page .office-box {
+        padding: 2rem 1.5rem;
+        margin-bottom: 2rem;
+    }
+    
+    .contact-page .office-box h3 {
+        font-size: 1.25rem;
+        margin-bottom: 1rem;
+    }
+    
+    .contact-page .office-contact li {
+        font-size: 0.95rem;
+        margin-bottom: 0.75rem;
+    }
 }
 
 @media (max-width: 768px) {
@@ -867,6 +893,76 @@
     
     .contact-page .google-map iframe {
         height: 350px;
+    }
+    
+    /* Office Section - Mobile tablet styles */
+    .contact-page .office-section {
+        padding: 3rem 0;
+    }
+    
+    .contact-page .office-section h2 {
+        font-size: 2.25rem;
+        margin-bottom: 1.25rem;
+    }
+    
+    .contact-page .office-section > .container > .row > .col-lg-12 > p {
+        font-size: 1rem;
+        margin-bottom: 2.5rem;
+        padding: 0 1rem;
+    }
+    
+    /* Target Bootstrap columns directly for mobile spacing */
+    .contact-page .office-section .row > .col-lg-4,
+    .contact-page .office-section .row > .col-md-6 {
+        margin-bottom: 2.5rem !important;
+    }
+    
+    /* Remove margin from last office box */
+    .contact-page .office-section .row > .col-lg-4:last-child,
+    .contact-page .office-section .row > .col-md-6:last-child {
+        margin-bottom: 0 !important;
+    }
+    
+    .contact-page .office-box {
+        padding: 1.75rem 1.5rem;
+        margin-bottom: 0;
+        text-align: center;
+    }
+    
+    .contact-page .office-box h3 {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+    }
+    
+    .contact-page .office-box p {
+        font-size: 0.9rem;
+        margin-bottom: 1.25rem;
+        line-height: 1.6;
+    }
+    
+    .contact-page .office-contact li {
+        font-size: 0.9rem;
+        margin-bottom: 0.75rem;
+        justify-content: center;
+    }
+    
+    .contact-page .office-contact li i {
+        font-size: 1rem;
+        margin-right: 0.5rem;
+    }
+    
+    /* Disable animations on mobile for better performance */
+    .contact-page .office-box::before {
+        display: none;
+    }
+    
+    .contact-page .office-box:hover::before {
+        animation: none;
+    }
+    
+    .contact-page .office-box:hover {
+        animation: none;
+        transform: none;
     }
 }
 
@@ -968,6 +1064,66 @@
         padding: 18px 20px;
         font-size: 14px;
     }
+    
+    /* Office Section - Mobile styles */
+    .contact-page .office-section {
+        padding: 2.5rem 0;
+    }
+    
+    .contact-page .office-section h2 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+    
+    .contact-page .office-section > .container > .row > .col-lg-12 > p {
+        font-size: 0.95rem;
+        margin-bottom: 2rem;
+        padding: 0 1rem;
+    }
+    
+    /* Target Bootstrap columns directly for mobile spacing */
+    .contact-page .office-section .row > .col-lg-4,
+    .contact-page .office-section .row > .col-md-6 {
+        margin-bottom: 2rem !important;
+    }
+    
+    /* Remove margin from last office box */
+    .contact-page .office-section .row > .col-lg-4:last-child,
+    .contact-page .office-section .row > .col-md-6:last-child {
+        margin-bottom: 0 !important;
+    }
+    
+    .contact-page .office-box {
+        padding: 1.5rem 1.25rem;
+        margin-bottom: 0;
+        text-align: center;
+    }
+    
+    .contact-page .office-box h3 {
+        font-size: 1.1rem;
+        margin-bottom: 0.875rem;
+    }
+    
+    .contact-page .office-box p {
+        font-size: 0.875rem;
+        margin-bottom: 1rem;
+        line-height: 1.6;
+    }
+    
+    .contact-page .office-contact li {
+        font-size: 0.875rem;
+        margin-bottom: 0.625rem;
+        justify-content: center;
+    }
+    
+    .contact-page .office-contact li i {
+        font-size: 0.875rem;
+        margin-right: 0.5rem;
+    }
+    
+    .contact-page .office-contact li a {
+        font-size: 0.875rem;
+    }
 }
 
 @media (max-width: 480px) {
@@ -1054,12 +1210,64 @@
         font-size: 13px;
     }
     
+    /* Office Section - Extra small mobile styles */
+    .contact-page .office-section {
+        padding: 2rem 0;
+    }
+    
     .contact-page .office-section h2 {
         font-size: 1.75rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .contact-page .office-section > .container > .row > .col-lg-12 > p {
+        font-size: 0.875rem;
+        margin-bottom: 1.5rem;
+        padding: 0 0.75rem;
+    }
+    
+    /* Target Bootstrap columns directly for mobile spacing */
+    .contact-page .office-section .row > .col-lg-4,
+    .contact-page .office-section .row > .col-md-6 {
+        margin-bottom: 1.75rem !important;
+    }
+    
+    /* Remove margin from last office box */
+    .contact-page .office-section .row > .col-lg-4:last-child,
+    .contact-page .office-section .row > .col-md-6:last-child {
+        margin-bottom: 0 !important;
+    }
+    
+    .contact-page .office-box {
+        padding: 1.25rem 1rem;
+        margin-bottom: 0;
+        text-align: center;
     }
     
     .contact-page .office-box h3 {
         font-size: 1.1rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .contact-page .office-box p {
+        font-size: 0.8rem;
+        margin-bottom: 0.875rem;
+        line-height: 1.5;
+    }
+    
+    .contact-page .office-contact li {
+        font-size: 0.8rem;
+        margin-bottom: 0.5rem;
+        justify-content: center;
+    }
+    
+    .contact-page .office-contact li i {
+        font-size: 0.8rem;
+        margin-right: 0.375rem;
+    }
+    
+    .contact-page .office-contact li a {
+        font-size: 0.8rem;
     }
 
     .contact-page .contact-form-content .form-group {
