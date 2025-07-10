@@ -133,17 +133,12 @@ include('includes/header.php');
     </div>
 </section>
 
-<!-- Google Map -->
-<div class="google-map">
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3501.5051345023036!2d77.21761731508341!3d28.64272!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd5b347eb62d%3A0x52c2b7494e204dce!2sNew%20Delhi%2C%20Delhi%2C%20India!5e0!3m2!1sen!2sus!4v1679743456789!5m2!1sen!2sus" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-</div>
-
 <!-- Office Locations Section -->
 <section class="office-section section-padding bg-light">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
-                <h2>Our Branch Offices</h2>
+                <h2>Our Branch <span class="highlight-text">Offices</span></h2>
                 <p class="mb-5">Visit our branch offices across the country for in-person consultation.</p>
             </div>
         </div>
@@ -181,6 +176,11 @@ include('includes/header.php');
         </div>
     </div>
 </section>
+
+<!-- Google Map -->
+<div class="google-map">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3501.5051345023036!2d77.21761731508341!3d28.64272!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd5b347eb62d%3A0x52c2b7494e204dce!2sNew%20Delhi%2C%20Delhi%2C%20India!5e0!3m2!1sen!2sus!4v1679743456789!5m2!1sen!2sus" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</div>
 
 <!-- FAQ Section -->
 <section class="faq-section section-padding">
