@@ -1,0 +1,388 @@
+/* 
+* Contact Page - Main Stylesheet
+* MedStudy Global - MBBS Abroad Consultancy
+* Complete contact page styling with all sections
+*/
+
+/* Import all contact page sections */
+@import 'contact-hero.css';
+@import 'contact-form.css';
+@import 'map-section.css';
+@import 'office-locations.css';
+@import 'faq-section.css';
+
+/* ===== CONTACT PAGE GLOBAL STYLES ===== */
+.contact-page {
+    position: relative;
+    min-height: 100vh;
+    background: var(--white);
+    font-family: var(--font-family);
+    color: var(--text-color);
+    line-height: var(--normal);
+}
+
+/* Section Spacing */
+.section-padding {
+    padding: 5rem 0;
+}
+
+/* Background Variants */
+.bg-light {
+    background: var(--light-bg) !important;
+}
+
+.bg-primary {
+    background: var(--primary-color) !important;
+}
+
+.bg-gradient {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)) !important;
+}
+
+/* Container Adjustments */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* Text Utilities */
+.text-center {
+    text-align: center;
+}
+
+.text-primary {
+    color: var(--primary-color) !important;
+}
+
+.text-accent {
+    color: var(--accent-color) !important;
+}
+
+.text-white {
+    color: var(--white) !important;
+}
+
+/* Margin Utilities */
+.mb-4 {
+    margin-bottom: 2rem;
+}
+
+.mb-5 {
+    margin-bottom: 3rem;
+}
+
+.mt-4 {
+    margin-top: 2rem;
+}
+
+.mt-5 {
+    margin-top: 3rem;
+}
+
+/* Contact Page Animation */
+.contact-page-animation {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease;
+}
+
+.contact-page-animation.animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Scroll to Top Button */
+.scroll-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 3rem;
+    height: 3rem;
+    background: var(--primary-color);
+    color: var(--white);
+    border: none;
+    border-radius: var(--circle);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    cursor: pointer;
+    z-index: 1000;
+    transition: var(--transition);
+    opacity: 0;
+    transform: translateY(20px);
+    box-shadow: 0 4px 15px rgba(0, 53, 133, 0.3);
+}
+
+.scroll-top.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.scroll-top:hover {
+    background: var(--accent-color);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(254, 186, 2, 0.4);
+}
+
+/* Loading States */
+.loading {
+    position: relative;
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 2rem;
+    height: 2rem;
+    margin: -1rem 0 0 -1rem;
+    border: 2px solid var(--border-color);
+    border-top: 2px solid var(--primary-color);
+    border-radius: var(--circle);
+    animation: spin 1s linear infinite;
+    z-index: 10;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Success/Error Messages */
+.alert {
+    padding: 1rem 1.5rem;
+    border-radius: var(--large);
+    margin-bottom: 1.5rem;
+    border: 1px solid transparent;
+    font-size: var(--base);
+    line-height: var(--normal);
+}
+
+.alert-success {
+    background: rgba(40, 167, 69, 0.1);
+    color: #155724;
+    border-color: rgba(40, 167, 69, 0.3);
+}
+
+.alert-error {
+    background: rgba(220, 53, 69, 0.1);
+    color: #721c24;
+    border-color: rgba(220, 53, 69, 0.3);
+}
+
+.alert-info {
+    background: rgba(0, 53, 133, 0.1);
+    color: var(--primary-color);
+    border-color: rgba(0, 53, 133, 0.3);
+}
+
+/* Enhanced Interactive Elements */
+.contact-interactive {
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-interactive::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(255, 255, 255, 0.2), 
+        transparent);
+    transition: var(--transition);
+}
+
+.contact-interactive:hover::before {
+    left: 100%;
+}
+
+/* Accessibility Improvements */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    background: var(--primary-color);
+    color: var(--white);
+    padding: 8px;
+    text-decoration: none;
+    border-radius: var(--small-radius);
+    z-index: 1000;
+    transition: var(--transition);
+}
+
+.skip-link:focus {
+    top: 6px;
+}
+
+/* Print Styles */
+@media print {
+    .contact-page {
+        background: var(--white);
+        color: var(--black);
+    }
+    
+    .scroll-top,
+    .contact-hero-cta,
+    .contact-btn,
+    .btn {
+        display: none;
+    }
+    
+    .section-padding {
+        padding: 2rem 0;
+    }
+    
+    .container {
+        max-width: 100%;
+        padding: 0;
+    }
+    
+    a {
+        text-decoration: underline;
+    }
+    
+    .page-banner,
+    .contact-hero {
+        background: var(--white);
+        color: var(--black);
+        padding: 1rem 0;
+    }
+    
+    .page-title,
+    .contact-hero-title {
+        color: var(--black);
+        text-shadow: none;
+    }
+    
+    .info-box,
+    .office-box,
+    .contact-form-box {
+        box-shadow: none;
+        border: 1px solid var(--border-color);
+    }
+}
+
+/* Dark Mode Support (optional) */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --text-color: #e2e8f0;
+        --light-text: #a0aec0;
+        --white: #1a202c;
+        --light-bg: #2d3748;
+        --border-color: #4a5568;
+    }
+    
+    .contact-page {
+        background: #1a202c;
+    }
+    
+    .contact-form-box,
+    .office-box,
+    .info-box {
+        background: #2d3748;
+    }
+    
+    .form-control {
+        background: #2d3748;
+        border-color: #4a5568;
+        color: #e2e8f0;
+    }
+    
+    .form-control:focus {
+        background: #374151;
+        border-color: var(--primary-color);
+    }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .section-padding {
+        padding: 3rem 0;
+    }
+    
+    .container {
+        padding: 0 0.8rem;
+    }
+    
+    .scroll-top {
+        bottom: 1rem;
+        right: 1rem;
+        width: 2.5rem;
+        height: 2.5rem;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .section-padding {
+        padding: 2rem 0;
+    }
+    
+    .container {
+        padding: 0 0.5rem;
+    }
+    
+    .alert {
+        padding: 0.8rem 1rem;
+        font-size: var(--small);
+    }
+}
+
+/* Performance Optimization */
+.contact-page * {
+    box-sizing: border-box;
+}
+
+.contact-page img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Smooth Scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Focus Management */
+.contact-page :focus {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+}
+
+.contact-page :focus:not(:focus-visible) {
+    outline: none;
+}
+
+/* Animation Performance */
+.contact-page * {
+    will-change: auto;
+}
+
+.contact-page .animate {
+    will-change: transform, opacity;
+}
+
+.contact-page .animate:not(.animating) {
+    will-change: auto;
+} 

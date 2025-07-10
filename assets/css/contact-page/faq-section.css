@@ -1,0 +1,584 @@
+/* 
+* FAQ Section
+* Frequently Asked Questions with accordion styling matching about page patterns
+*/
+
+/* ===== FAQ SECTION ===== */
+.faq-section {
+    position: relative;
+    padding: var(--section-padding);
+    background: var(--white);
+    overflow: hidden;
+}
+
+.faq-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        var(--accent-color) 50%, 
+        transparent 100%);
+}
+
+.faq-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, 
+        rgba(0, 53, 133, 0.01) 0%, 
+        transparent 30%, 
+        rgba(254, 186, 2, 0.02) 70%, 
+        transparent 100%);
+    pointer-events: none;
+}
+
+.faq-section .container {
+    position: relative;
+    z-index: 1;
+}
+
+/* Section Header */
+.faq-section h2 {
+    font-size: var(--xlarge);
+    font-weight: var(--bold);
+    color: var(--text-color);
+    text-align: center;
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+.faq-section h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: var(--accent-color);
+    border-radius: 2px;
+}
+
+.faq-section p {
+    font-size: var(--base);
+    color: var(--light-text);
+    text-align: center;
+    line-height: var(--normal);
+    margin-bottom: 3rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* FAQ Accordion */
+.accordion {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.accordion .card {
+    background: var(--white);
+    border: none;
+    border-radius: var(--large);
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 53, 133, 0.1);
+    transition: var(--transition);
+    overflow: hidden;
+}
+
+.accordion .card:hover {
+    box-shadow: 0 8px 25px rgba(0, 53, 133, 0.12);
+    border-color: var(--accent-color);
+}
+
+.accordion .card:last-child {
+    margin-bottom: 0;
+}
+
+/* Card Header */
+.accordion .card-header {
+    background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+    border-bottom: none;
+    padding: 0;
+    border-radius: var(--large);
+    position: relative;
+    overflow: hidden;
+}
+
+.accordion .card-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    transform: scaleY(0);
+    transition: var(--transition);
+}
+
+.accordion .card.active .card-header::before {
+    transform: scaleY(1);
+}
+
+.accordion .card-header h5 {
+    margin: 0;
+}
+
+.accordion .card-header .btn {
+    width: 100%;
+    padding: 1.5rem 2rem;
+    background: transparent;
+    color: var(--text-color);
+    font-size: var(--base);
+    font-weight: var(--semibold);
+    font-family: var(--font-family);
+    text-align: left;
+    text-decoration: none;
+    border: none;
+    border-radius: var(--large);
+    transition: var(--transition);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.accordion .card-header .btn:hover {
+    background: linear-gradient(135deg, 
+        rgba(0, 53, 133, 0.03) 0%, 
+        rgba(254, 186, 2, 0.05) 100%);
+    color: var(--primary-color);
+}
+
+.accordion .card-header .btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 53, 133, 0.1);
+}
+
+.accordion .card-header .btn[aria-expanded="true"] {
+    background: linear-gradient(135deg, 
+        rgba(0, 53, 133, 0.05) 0%, 
+        rgba(254, 186, 2, 0.08) 100%);
+    color: var(--primary-color);
+}
+
+/* FAQ Icon */
+.accordion .card-header .btn::after {
+    content: '';
+    width: 1.5rem;
+    height: 1.5rem;
+    background: var(--primary-color);
+    border-radius: var(--circle);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+    position: relative;
+    flex-shrink: 0;
+}
+
+.accordion .card-header .btn::before {
+    content: '+';
+    position: absolute;
+    right: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.2rem;
+    font-weight: var(--bold);
+    color: var(--white);
+    transition: var(--transition);
+    z-index: 1;
+}
+
+.accordion .card-header .btn[aria-expanded="true"]::before {
+    content: '−';
+    transform: translateY(-50%) rotate(180deg);
+}
+
+.accordion .card-header .btn[aria-expanded="true"]::after {
+    background: var(--accent-color);
+    transform: rotate(180deg);
+}
+
+/* Card Body */
+.accordion .card-body {
+    padding: 0 2rem 2rem;
+    color: var(--light-text);
+    font-size: var(--base);
+    line-height: var(--normal);
+    background: var(--white);
+}
+
+.accordion .collapse {
+    transition: all 0.3s ease;
+}
+
+.accordion .collapse.show {
+    animation: fadeInDown 0.3s ease;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* FAQ Categories */
+.faq-categories {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+}
+
+.faq-category {
+    padding: 0.5rem 1.5rem;
+    background: var(--light-bg);
+    color: var(--text-color);
+    text-decoration: none;
+    border-radius: var(--pill);
+    font-size: var(--small);
+    font-weight: var(--medium-weight);
+    border: 1px solid var(--border-color);
+    transition: var(--transition);
+}
+
+.faq-category:hover,
+.faq-category.active {
+    background: var(--primary-color);
+    color: var(--white);
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 53, 133, 0.3);
+}
+
+/* FAQ Search */
+.faq-search {
+    max-width: 500px;
+    margin: 0 auto 3rem;
+    position: relative;
+}
+
+.faq-search input {
+    width: 100%;
+    padding: 1rem 1.5rem 1rem 3rem;
+    font-size: var(--base);
+    font-family: var(--font-family);
+    color: var(--text-color);
+    background: var(--white);
+    border: 2px solid var(--border-color);
+    border-radius: var(--large);
+    transition: var(--transition);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.faq-search input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 4px 15px rgba(0, 53, 133, 0.15);
+}
+
+.faq-search::before {
+    content: '';
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1.2rem;
+    height: 1.2rem;
+    background: var(--light-text);
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='m21 21-4.35-4.35'/%3E%3C/svg%3E") no-repeat center;
+    mask-size: contain;
+}
+
+/* FAQ Stats */
+.faq-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+    padding: 2rem;
+    background: var(--light-bg);
+    border-radius: var(--large);
+    text-align: center;
+}
+
+.faq-stat {
+    padding: 1rem;
+}
+
+.faq-stat .stat-number {
+    font-size: var(--xlarge);
+    font-weight: var(--bold);
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.faq-stat .stat-label {
+    font-size: var(--small);
+    color: var(--light-text);
+    font-weight: var(--medium-weight);
+}
+
+/* FAQ CTA */
+.faq-cta {
+    text-align: center;
+    margin-top: 3rem;
+    padding: 3rem 2rem;
+    background: linear-gradient(135deg, 
+        rgba(0, 53, 133, 0.05) 0%, 
+        rgba(254, 186, 2, 0.08) 100%);
+    border-radius: var(--large);
+    border: 1px solid rgba(0, 53, 133, 0.1);
+}
+
+.faq-cta h3 {
+    font-size: var(--large);
+    font-weight: var(--bold);
+    color: var(--text-color);
+    margin-bottom: 1rem;
+}
+
+.faq-cta p {
+    font-size: var(--base);
+    color: var(--light-text);
+    margin-bottom: 2rem;
+    line-height: var(--normal);
+}
+
+.faq-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--white);
+    text-decoration: none;
+    border-radius: var(--large);
+    font-size: var(--base);
+    font-weight: var(--semibold);
+    transition: var(--transition);
+    box-shadow: 0 4px 15px rgba(0, 53, 133, 0.3);
+}
+
+.faq-cta-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 53, 133, 0.4);
+    color: var(--white);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .faq-section {
+        padding: 3rem 0;
+    }
+    
+    .faq-section h2 {
+        font-size: var(--large);
+    }
+    
+    .faq-section p {
+        margin-bottom: 2rem;
+    }
+    
+    .faq-categories {
+        gap: 0.5rem;
+        margin-bottom: 2rem;
+    }
+    
+    .faq-category {
+        padding: 0.4rem 1rem;
+        font-size: 0.8rem;
+    }
+    
+    .faq-search {
+        margin-bottom: 2rem;
+    }
+    
+    .accordion .card-header .btn {
+        padding: 1rem 1.5rem;
+        font-size: var(--small);
+    }
+    
+    .accordion .card-body {
+        padding: 0 1.5rem 1.5rem;
+        font-size: var(--small);
+    }
+    
+    .faq-stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        padding: 1.5rem;
+    }
+    
+    .faq-cta {
+        padding: 2rem 1.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .faq-section {
+        padding: 2rem 0;
+    }
+    
+    .faq-section h2 {
+        font-size: var(--medium);
+    }
+    
+    .faq-categories {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .faq-category {
+        width: 100%;
+        max-width: 200px;
+        text-align: center;
+    }
+    
+    .faq-search input {
+        padding: 0.8rem 1rem 0.8rem 2.5rem;
+        font-size: var(--small);
+    }
+    
+    .accordion .card {
+        margin-bottom: 1rem;
+    }
+    
+    .accordion .card-header .btn {
+        padding: 0.8rem 1rem;
+        font-size: 0.8rem;
+    }
+    
+    .accordion .card-header .btn::after {
+        width: 1.2rem;
+        height: 1.2rem;
+    }
+    
+    .accordion .card-header .btn::before {
+        right: 0.6rem;
+        font-size: 1rem;
+    }
+    
+    .accordion .card-body {
+        padding: 0 1rem 1rem;
+        font-size: 0.8rem;
+    }
+    
+    .faq-stats {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
+    
+    .faq-stat .stat-number {
+        font-size: var(--large);
+    }
+    
+    .faq-cta {
+        padding: 1.5rem 1rem;
+    }
+    
+    .faq-cta h3 {
+        font-size: var(--base);
+    }
+    
+    .faq-cta p {
+        font-size: var(--small);
+    }
+    
+    .faq-cta-btn {
+        padding: 0.8rem 1.5rem;
+        font-size: var(--small);
+    }
+}
+
+@media (max-width: 480px) {
+    .faq-section h2 {
+        font-size: var(--base);
+    }
+    
+    .faq-search {
+        margin-bottom: 1.5rem;
+    }
+    
+    .faq-search input {
+        padding: 0.6rem 0.8rem 0.6rem 2rem;
+    }
+    
+    .accordion .card-header .btn {
+        padding: 0.6rem 0.8rem;
+        font-size: 0.7rem;
+    }
+    
+    .accordion .card-body {
+        padding: 0 0.8rem 0.8rem;
+        font-size: 0.7rem;
+    }
+    
+    .faq-cta {
+        padding: 1rem 0.8rem;
+    }
+    
+    .faq-cta h3 {
+        font-size: var(--small);
+    }
+    
+    .faq-cta-btn {
+        padding: 0.6rem 1rem;
+        font-size: 0.8rem;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .faq-section {
+        background: var(--white);
+        padding: 2rem 0;
+    }
+    
+    .faq-categories,
+    .faq-search,
+    .faq-cta {
+        display: none;
+    }
+    
+    .accordion .card {
+        box-shadow: none;
+        border: 1px solid var(--border-color);
+        margin-bottom: 1rem;
+    }
+    
+    .accordion .card-header .btn {
+        background: var(--light-bg);
+        color: var(--text-color);
+    }
+    
+    .accordion .card-header .btn::after,
+    .accordion .card-header .btn::before {
+        display: none;
+    }
+    
+    .accordion .collapse {
+        display: block !important;
+    }
+    
+    .accordion .card-body {
+        padding: 1rem;
+    }
+} 
