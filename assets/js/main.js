@@ -456,3 +456,23 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 8000);
     }
 }); 
+
+// FAQ Accordion Active State Handler
+$(document).ready(function() {
+    // Handle FAQ accordion active state
+    $('.contact-page .accordion .card-header .btn').on('click', function() {
+        // Remove active class from all headers
+        $('.contact-page .accordion .card-header').removeClass('active');
+        
+        // Add active class to current header if it's being expanded
+        if ($(this).hasClass('collapsed')) {
+            // This will be expanded, so add active class
+            $(this).closest('.card-header').addClass('active');
+        }
+    });
+    
+    // Set initial active state for expanded accordion items
+    $('.contact-page .accordion .card-header .btn:not(.collapsed)').each(function() {
+        $(this).closest('.card-header').addClass('active');
+    });
+}); 

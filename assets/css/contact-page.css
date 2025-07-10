@@ -625,19 +625,9 @@
 
 /* ===== FAQ SECTION ===== */
 .contact-page .faq-section {
-    background: var(--white);
+    background: #F3F8FF;
     position: relative;
-}
-
-.contact-page .faq-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, rgba(0, 53, 133, 0.02) 0%, rgba(254, 186, 2, 0.02) 100%);
-    pointer-events: none;
+    padding: 40px 0;
 }
 
 .contact-page .faq-section .container {
@@ -645,102 +635,139 @@
     z-index: 2;
 }
 
-.contact-page .faq-section h2 {
-    font-size: var(--xlarge);
-    font-weight: var(--bold);
-    color: var(--primary-color);
-    margin-bottom: 1rem;
-    position: relative;
+.contact-page .faq-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: #F3F8FF;
+    border-radius: 8px;
+    padding: 40px;
 }
 
-.contact-page .faq-section h2::after {
-    content: '';
-    position: absolute;
-    bottom: -8px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60px;
-    height: 4px;
-    background: var(--accent-color);
-    border-radius: 2px;
+/* FAQ Header */
+.contact-page .faq-header {
+    text-align: center;
+    margin-bottom: 40px;
 }
 
-.contact-page .faq-section > .container > .row > .col-lg-12 > p {
-    color: var(--light-text);
-    font-size: var(--medium);
-    line-height: var(--normal);
-    max-width: 600px;
-    margin: 0 auto 3rem;
+.contact-page .faq-prompt {
+    font-size: 16px;
+    font-weight: 500;
+    color: #2ECC71;
+    margin-bottom: 12px;
+    text-transform: none;
+    letter-spacing: normal;
+}
+
+.contact-page .faq-title {
+    font-size: 32px;
+    font-weight: 700;
+    color: #1A1A1A;
+    margin-bottom: 16px;
+    line-height: 1.2;
+}
+
+.contact-page .faq-subheading {
+    font-size: 16px;
+    font-weight: 400;
+    color: #6C757D;
+    margin-bottom: 0;
+    line-height: 1.5;
+}
+
+/* FAQ Accordion */
+.contact-page .faq-accordion {
+    max-width: 100%;
 }
 
 .contact-page .accordion .card {
-    border: 1px solid rgba(0, 53, 133, 0.1);
-    border-radius: 15px;
-    margin-bottom: 1rem;
-    background: var(--white);
+    border: 1px solid #E0E0E0;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    background: #FFFFFF;
     overflow: hidden;
-    transition: var(--transition);
+    transition: all 0.3s ease;
+    box-shadow: none;
 }
 
 .contact-page .accordion .card:hover {
-    box-shadow: 0 8px 25px rgba(0, 53, 133, 0.1);
-    border-color: var(--primary-color);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .contact-page .accordion .card-header {
-    background: var(--light-bg);
-    border-bottom: 1px solid rgba(0, 53, 133, 0.1);
+    background: #FFFFFF;
+    border-bottom: none;
     padding: 0;
-    border-radius: 15px 15px 0 0;
+    border-radius: 8px 8px 0 0;
+}
+
+.contact-page .accordion .card-header.active {
+    background: #E6F0FF;
 }
 
 .contact-page .accordion .card-header .btn {
     width: 100%;
     text-align: left;
-    padding: 1.5rem;
-    font-weight: var(--semibold);
-    color: var(--primary-color);
-    text-decoration: none;
+    padding: 20px 24px;
+    font-weight: 500;
+    color: #333333;
+    font-size: 18px;
     border: none;
-    background: none;
-    font-size: var(--base);
-    transition: var(--transition);
+    background: transparent;
+    box-shadow: none;
     position: relative;
-    border-radius: 0;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    line-height: 1.4;
 }
 
 .contact-page .accordion .card-header .btn:hover {
-    color: var(--accent-color);
-    background: rgba(0, 53, 133, 0.05);
+    background: transparent;
+    color: #333333;
+}
+
+.contact-page .accordion .card-header .btn:not(.collapsed) {
+    font-weight: 600;
+    color: #333333;
 }
 
 .contact-page .accordion .card-header .btn::after {
-    content: '+';
+    content: '\f107';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
     position: absolute;
-    right: 1.5rem;
+    right: 24px;
     top: 50%;
     transform: translateY(-50%);
-    font-size: 1.5rem;
-    font-weight: var(--bold);
-    color: var(--primary-color);
-    transition: var(--transition);
+    color: #6C757D;
+    transition: all 0.3s ease;
+    font-size: 16px;
 }
 
 .contact-page .accordion .card-header .btn:not(.collapsed)::after {
-    content: '−';
-    color: var(--accent-color);
+    transform: translateY(-50%) rotate(180deg);
 }
 
 .contact-page .accordion .card-body {
-    padding: 1.5rem;
-    color: var(--light-text);
-    line-height: var(--normal);
-    border-top: 1px solid rgba(0, 53, 133, 0.1);
-    background: var(--white);
+    padding: 20px 24px;
+    font-size: 15px;
+    color: #444444;
+    line-height: 1.7;
+    border-top: 1px solid #F0F0F0;
+}
+
+.contact-page .accordion .card-body a {
+    color: #007BFF;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.contact-page .accordion .card-body a:hover {
+    color: #0056B3;
+    text-decoration: underline;
 }
 
 .contact-page .accordion .collapse {
-    transition: var(--transition);
+    border-top: none;
 }
 
 /* ===== RESPONSIVE DESIGN ===== */
@@ -880,13 +907,30 @@
         height: 300px;
     }
     
+    .contact-page .faq-container {
+        padding: 30px 20px;
+    }
+    
+    .contact-page .faq-title {
+        font-size: 28px;
+    }
+    
+    .contact-page .faq-prompt {
+        font-size: 14px;
+    }
+    
+    .contact-page .faq-subheading {
+        font-size: 15px;
+    }
+    
     .contact-page .accordion .card-header .btn {
-        padding: 1.25rem;
-        font-size: var(--small);
+        padding: 18px 20px;
+        font-size: 16px;
     }
     
     .contact-page .accordion .card-body {
-        padding: 1.25rem;
+        padding: 18px 20px;
+        font-size: 14px;
     }
 }
 
@@ -950,8 +994,33 @@
         right: 0%;
     }
     
-    .contact-page .office-section h2,
-    .contact-page .faq-section h2 {
+    .contact-page .faq-container {
+        padding: 25px 15px;
+    }
+    
+    .contact-page .faq-title {
+        font-size: 24px;
+    }
+    
+    .contact-page .faq-prompt {
+        font-size: 13px;
+    }
+    
+    .contact-page .faq-subheading {
+        font-size: 14px;
+    }
+    
+    .contact-page .accordion .card-header .btn {
+        padding: 16px 18px;
+        font-size: 15px;
+    }
+    
+    .contact-page .accordion .card-body {
+        padding: 16px 18px;
+        font-size: 13px;
+    }
+    
+    .contact-page .office-section h2 {
         font-size: 1.75rem;
     }
     

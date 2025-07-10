@@ -185,14 +185,14 @@ include('includes/header.php');
 <!-- FAQ Section -->
 <section class="faq-section section-padding">
     <div class="container">
-        <div class="row">
-            <div class="col-lg-12 text-center">
-                <h2>Frequently Asked Questions</h2>
-                <p class="mb-5">Find answers to some of the most commonly asked questions about studying medicine abroad.</p>
+        <div class="faq-container">
+            <div class="faq-header">
+                <p class="faq-prompt">Need more help?</p>
+                <h2 class="faq-title">Frequently Asked Questions (FAQ)</h2>
+                <p class="faq-subheading">Any question or remarks? Just write us a message!</p>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-12">
+            
+            <div class="faq-accordion">
                 <div class="accordion" id="contactFaq">
                     <div class="card">
                         <div class="card-header" id="headingOne">
