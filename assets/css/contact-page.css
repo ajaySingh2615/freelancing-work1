@@ -4,73 +4,6 @@
 * All selectors are scoped to contact page to avoid affecting other pages
 */
 
-/* ===== CONTACT PAGE HERO SECTION ===== */
-.contact-page .page-banner {
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
-    padding: 6rem 0 4rem;
-    position: relative;
-    overflow: hidden;
-}
-
-.contact-page .page-banner::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(45deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
-    pointer-events: none;
-}
-
-.contact-page .page-banner .container {
-    position: relative;
-    z-index: 2;
-}
-
-.contact-page .page-title {
-    font-size: var(--xxlarge);
-    font-weight: var(--bold);
-    color: var(--white);
-    margin-bottom: 1rem;
-    text-align: center;
-    line-height: var(--tight);
-}
-
-.contact-page .breadcrumb {
-    background: none;
-    padding: 0;
-    margin: 0;
-    justify-content: center;
-    margin-bottom: 0;
-}
-
-.contact-page .breadcrumb-item {
-    color: rgba(255, 255, 255, 0.8);
-    font-size: var(--small);
-    font-weight: var(--medium-weight);
-}
-
-.contact-page .breadcrumb-item a {
-    color: var(--white);
-    text-decoration: none;
-    transition: var(--transition);
-}
-
-.contact-page .breadcrumb-item a:hover {
-    color: var(--accent-color);
-}
-
-.contact-page .breadcrumb-item.active {
-    color: var(--accent-color);
-}
-
-.contact-page .breadcrumb-item + .breadcrumb-item::before {
-    content: '›';
-    color: rgba(255, 255, 255, 0.6);
-    padding: 0 0.5rem;
-}
-
 /* ===== CONTACT HEADER SECTION ===== */
 .contact-page .contact-header-section {
     background-color: var(--white);
@@ -723,10 +656,6 @@
 
 /* ===== RESPONSIVE DESIGN ===== */
 @media (max-width: 1024px) {
-    .contact-page .page-title {
-        font-size: 2.5rem;
-    }
-    
     .contact-page .contact-split-container {
         max-width: 100%;
         margin: 0 1rem;
@@ -743,14 +672,6 @@
 }
 
 @media (max-width: 768px) {
-    .contact-page .page-banner {
-        padding: 4rem 0 3rem;
-    }
-    
-    .contact-page .page-title {
-        font-size: 2rem;
-    }
-    
     .contact-page .contact-split-container {
         grid-template-columns: 1fr;
         margin: 0 1rem;
@@ -807,14 +728,6 @@
 }
 
 @media (max-width: 576px) {
-    .contact-page .page-banner {
-        padding: 3rem 0 2rem;
-    }
-    
-    .contact-page .page-title {
-        font-size: 1.75rem;
-    }
-    
     .contact-page .contact-split-container {
         margin: 0 0.5rem;
         border-radius: 8px;

@@ -3,23 +3,6 @@ include('includes/header.php');
 ?>
 
 <div class="contact-page">
-<!-- Page Banner -->
-<div class="page-banner">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-title">Contact Us</h1>
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Contact Us</li>
-                    </ol>
-                </nav>
-            </div>
-        </div>
-    </div>
-</div>
-
 <!-- Contact Header Section -->
 <section class="contact-header-section section-padding">
     <div class="container">
