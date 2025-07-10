@@ -20,6 +20,16 @@ include('includes/header.php');
     </div>
 </div>
 
+<!-- Contact Header Section -->
+<section class="contact-header-section section-padding">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Contact <span class="highlight-text">Us</span></h2>
+            <p class="section-description">Any question or remark? just write us a message!</p>
+        </div>
+    </div>
+</section>
+
 <!-- Contact Section -->
 <section class="contact-page-section section-padding">
     <div class="container">
