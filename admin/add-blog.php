@@ -11,6 +11,7 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
 
 $errors = [];
 $success = '';
+$showSuccessModal = false;
 
 // Get categories for dropdown
 try {
@@ -142,9 +143,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             
             $success = "Blog post created successfully!";
             
-            // Redirect to dashboard after successful creation
-            header("Location: dashboard.php?success=" . urlencode($success));
-            exit();
+            // Set flag for showing success modal
+            $showSuccessModal = true;
             
         } catch (Exception $e) {
             $errors[] = "Error saving blog post: " . $e->getMessage();
@@ -158,6 +158,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
     <title>Add New Blog - MedStudy Global</title>
     
     <!-- Bootstrap CSS -->
@@ -170,7 +171,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- TinyMCE (Rich Text Editor) -->
-    <script src="https://cdn.tiny.cloud/1/ckhdla67dgiuczihylz9vgm24qocra38y6d17t4zfaad8v8b/tinymce/7/tinymce.min.js" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.tiny.cloud/1/ckhdla67dgiuczihylz9vgm24qocra38y6d17t4zfaad8v8b/tinymce/7/tinymce.min.js" referrerpolicy="strict-origin-when-cross-origin"></script>
     
     <!-- Custom Admin CSS -->
     <link rel="stylesheet" href="admin-styles.css">
@@ -488,6 +489,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 
                 <div class="form-group">
                     <label for="content">Content *</label>
+                    <div class="alert alert-warning tinymce-error" style="display: none;">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        Rich text editor failed to load. You can still use the basic text area below.
+                    </div>
                     <textarea class="form-control" 
                               id="content" 
                               name="content" 
@@ -722,6 +727,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
     <script>
         $(document).ready(function() {
+            // Debug: Log current origin for TinyMCE troubleshooting
+            console.log('Current origin for TinyMCE:', window.location.origin);
+            console.log('Current hostname:', window.location.hostname);
+            
             // Initialize TinyMCE for content
             tinymce.init({
                 selector: '#content',
@@ -739,14 +748,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 content_style: 'body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 14px }',
                 branding: false,
                 promotion: false,
+                // Privacy settings to disable analytics and telemetry
+                analytics: false,
+                telemetry: false,
+                statistics: false,
+                privacy_policy_url: '',
+                // Additional privacy settings
+                referrer_policy: 'no-referrer',
                 skin: 'oxide',
                 content_css: 'default',
-                // Disable analytics and tracking
-                analytics: false,
-                tinymce_error_reporting: false,
-                privacy_policy_url: false,
-                referrer_policy: 'no-referrer',
-                // Additional privacy settings
+                // Domain configuration for localhost development
+                document_base_url: window.location.origin,
+                // Additional settings for better UX
                 help_accessibility: false,
                 statusbar: false,
                 convert_urls: false,
@@ -759,16 +772,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     
                     // Handle initialization errors
                     editor.on('init', function() {
-                        console.log('TinyMCE initialized successfully');
+                        console.log('TinyMCE initialized successfully for:', editor.id);
+                        // Hide any error messages
+                        $('.tinymce-error').hide();
+                    });
+                    
+                    editor.on('LoadError', function(e) {
+                        console.error('TinyMCE Load Error:', e);
+                        $('.tinymce-error').show();
                     });
                 },
                 // Error handling
                 init_instance_callback: function(editor) {
-                    console.log('TinyMCE instance initialized:', editor.id);
+                    console.log('TinyMCE instance callback:', editor.id);
                 }
+            }).then(function(editors) {
+                console.log('TinyMCE initialized successfully');
             }).catch(function(error) {
                 console.error('TinyMCE initialization failed:', error);
-                // Fallback to basic textarea if TinyMCE fails
+                // Show error message and fallback to basic textarea
+                $('.tinymce-error').show();
                 $('#content').show();
             });
             
@@ -894,7 +917,52 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 
                 return true;
             });
+
+            <?php if ($showSuccessModal): ?>
+            // Show success modal
+            $('#successModal').modal('show');
+            <?php endif; ?>
         });
+    </script>
+
+    <!-- Success Modal -->
+    <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title" id="successModalLabel">
+                        <i class="fas fa-check-circle mr-2"></i>Blog Post Created Successfully!
+                    </h5>
+                </div>
+                <div class="modal-body text-center">
+                    <div class="mb-4">
+                        <i class="fas fa-check-circle text-success" style="font-size: 3rem;"></i>
+                    </div>
+                    <h6 class="mb-3">Your blog post has been saved successfully!</h6>
+                    <p class="text-muted">What would you like to do next?</p>
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <button type="button" class="btn btn-outline-secondary mr-3" onclick="createAnother()">
+                        <i class="fas fa-plus mr-1"></i>Create Another Blog
+                    </button>
+                    <button type="button" class="btn btn-primary" onclick="goToDashboard()">
+                        <i class="fas fa-tachometer-alt mr-1"></i>View Dashboard
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function createAnother() {
+            // Reload the page to create another blog
+            window.location.href = 'add-blog.php';
+        }
+
+        function goToDashboard() {
+            // Navigate to dashboard
+            window.location.href = 'dashboard.php';
+        }
     </script>
 </body>
 </html> 
