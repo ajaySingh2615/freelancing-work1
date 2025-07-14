@@ -15,6 +15,31 @@ $db = $database->connect();
 $errors = [];
 $success = '';
 
+// Handle AJAX requests
+if (isset($_GET['ajax']) && $_GET['ajax'] === 'stats') {
+    try {
+        $statsQuery = $db->prepare("
+            SELECT 
+                COUNT(CASE WHEN status = 'published' THEN 1 END) as published_blogs,
+                COUNT(CASE WHEN status = 'draft' THEN 1 END) as draft_blogs,
+                COUNT(CASE WHEN status = 'archived' THEN 1 END) as archived_blogs,
+                SUM(views) as total_views,
+                COUNT(*) as total_blogs
+            FROM blogs
+        ");
+        $statsQuery->execute();
+        $stats = $statsQuery->fetch();
+        
+        header('Content-Type: application/json');
+        echo json_encode(['stats' => $stats]);
+        exit();
+    } catch (Exception $e) {
+        header('Content-Type: application/json');
+        echo json_encode(['error' => $e->getMessage()]);
+        exit();
+    }
+}
+
 // Handle POST actions
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['action'])) {
@@ -83,8 +108,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 $statusFilter = isset($_GET['status']) ? sanitizeInput($_GET['status']) : '';
 $categoryFilter = isset($_GET['category']) ? sanitizeInput($_GET['category']) : '';
 $searchQuery = isset($_GET['search']) ? sanitizeInput($_GET['search']) : '';
-$dateFrom = isset($_GET['date_from']) ? sanitizeInput($_GET['date_from']) : '';
-$dateTo = isset($_GET['date_to']) ? sanitizeInput($_GET['date_to']) : '';
+// Date filter parameters removed
 
 // Pagination
 $page = isset($_GET['page']) ? max(1, intval($_GET['page'])) : 1;
@@ -131,15 +155,7 @@ if (!empty($searchQuery)) {
     $params[] = $searchParam;
 }
 
-if (!empty($dateFrom)) {
-    $whereConditions[] = "DATE(b.created_at) >= ?";
-    $params[] = $dateFrom;
-}
-
-if (!empty($dateTo)) {
-    $whereConditions[] = "DATE(b.created_at) <= ?";
-    $params[] = $dateTo;
-}
+// Date filters removed as requested
 
 $whereClause = !empty($whereConditions) ? 'WHERE ' . implode(' AND ', $whereConditions) : '';
 
@@ -775,21 +791,14 @@ try {
                                     <?php endforeach; ?>
                                 </select>
                             </div>
-                            <div class="col-md-3 mb-3">
-                                <label class="form-label">Date From</label>
-                                <input type="date" name="date_from" class="form-control" value="<?php echo $dateFrom; ?>">
-                            </div>
-                            <div class="col-md-3 mb-3">
-                                <label class="form-label">Date To</label>
-                                <input type="date" name="date_to" class="form-control" value="<?php echo $dateTo; ?>">
-                            </div>
+                            <!-- Date filters removed as requested -->
                         </div>
                         <div class="row">
-                            <div class="col-md-8 mb-3">
+                            <div class="col-md-6 mb-3">
                                 <label class="form-label">Search</label>
                                 <input type="text" name="search" class="form-control" placeholder="Search by title, content, or excerpt..." value="<?php echo htmlspecialchars($searchQuery); ?>">
                             </div>
-                            <div class="col-md-4 mb-3">
+                            <div class="col-md-6 mb-3">
                                 <label class="form-label">&nbsp;</label>
                                 <div class="d-flex gap-2">
                                     <button type="submit" class="btn btn-filter">
@@ -882,25 +891,25 @@ try {
                                                 <i class="fas fa-edit"></i>
                                             </a>
                                             
-                                            <?php if ($blog['status'] === 'published'): ?>
-                                                <form method="POST" style="display: inline;">
-                                                    <input type="hidden" name="action" value="toggle_status">
-                                                    <input type="hidden" name="blog_id" value="<?php echo $blog['id']; ?>">
-                                                    <input type="hidden" name="new_status" value="draft">
-                                                    <button type="submit" class="btn-action btn-unpublish" title="Unpublish">
-                                                        <i class="fas fa-eye-slash"></i>
-                                                    </button>
-                                                </form>
-                                            <?php else: ?>
-                                                <form method="POST" style="display: inline;">
-                                                    <input type="hidden" name="action" value="toggle_status">
-                                                    <input type="hidden" name="blog_id" value="<?php echo $blog['id']; ?>">
-                                                    <input type="hidden" name="new_status" value="published">
-                                                    <button type="submit" class="btn-action btn-publish" title="Publish">
-                                                        <i class="fas fa-eye"></i>
-                                                    </button>
-                                                </form>
-                                            <?php endif; ?>
+                                                                        <?php if ($blog['status'] === 'published'): ?>
+                                <form method="POST" style="display: inline;" class="status-form">
+                                    <input type="hidden" name="action" value="toggle_status">
+                                    <input type="hidden" name="blog_id" value="<?php echo $blog['id']; ?>">
+                                    <input type="hidden" name="new_status" value="draft">
+                                    <button type="submit" class="btn-action btn-publish" title="Currently Published - Click to Unpublish">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </form>
+                            <?php else: ?>
+                                <form method="POST" style="display: inline;" class="status-form">
+                                    <input type="hidden" name="action" value="toggle_status">
+                                    <input type="hidden" name="blog_id" value="<?php echo $blog['id']; ?>">
+                                    <input type="hidden" name="new_status" value="published">
+                                    <button type="submit" class="btn-action btn-unpublish" title="Currently Draft - Click to Publish">
+                                        <i class="fas fa-eye-slash"></i>
+                                    </button>
+                                </form>
+                            <?php endif; ?>
                                             
                                             <form method="POST" style="display: inline;" onsubmit="return confirm('Are you sure you want to delete this blog?');">
                                                 <input type="hidden" name="action" value="delete_blog">
@@ -968,6 +977,150 @@ try {
             const checkboxes = document.querySelectorAll('input[name="selected_blogs[]"]');
             checkboxes.forEach(cb => cb.checked = this.checked);
         });
+
+        // AJAX for status toggle forms
+        document.addEventListener('DOMContentLoaded', function() {
+            // Handle status toggle forms with AJAX
+            document.querySelectorAll('.status-form').forEach(form => {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const formData = new FormData(this);
+                    const button = this.querySelector('button');
+                    const originalHtml = button.innerHTML;
+                    
+                    // Show loading state
+                    button.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+                    button.disabled = true;
+                    
+                    fetch('dashboard.php', {
+                        method: 'POST',
+                        body: formData
+                    })
+                    .then(response => response.text())
+                    .then(data => {
+                        // Parse the response to get the updated row
+                        const parser = new DOMParser();
+                        const doc = parser.parseFromString(data, 'text/html');
+                        
+                        // Find the corresponding row and update it
+                        const blogId = formData.get('blog_id');
+                        const currentRow = document.querySelector(`input[value="${blogId}"]`).closest('tr');
+                        const newRow = doc.querySelector(`input[value="${blogId}"]`).closest('tr');
+                        
+                        if (newRow) {
+                            currentRow.innerHTML = newRow.innerHTML;
+                            
+                            // Re-attach event listeners to the new elements
+                            attachStatusFormListeners(currentRow);
+                            
+                            // Show success message
+                            showAlert('Status updated successfully!', 'success');
+                            
+                            // Update statistics
+                            updateStatistics();
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        button.innerHTML = originalHtml;
+                        button.disabled = false;
+                        showAlert('Error updating status. Please try again.', 'danger');
+                    });
+                });
+            });
+            
+            // Handle delete forms with AJAX
+            document.querySelectorAll('form[onsubmit*="confirm"]').forEach(form => {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    if (!confirm('Are you sure you want to delete this blog?')) {
+                        return;
+                    }
+                    
+                    const formData = new FormData(this);
+                    const button = this.querySelector('button');
+                    const originalHtml = button.innerHTML;
+                    
+                    // Show loading state
+                    button.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+                    button.disabled = true;
+                    
+                    fetch('dashboard.php', {
+                        method: 'POST',
+                        body: formData
+                    })
+                    .then(response => response.text())
+                    .then(data => {
+                        // Remove the row
+                        const blogId = formData.get('blog_id');
+                        const currentRow = document.querySelector(`input[value="${blogId}"]`).closest('tr');
+                        currentRow.remove();
+                        
+                        // Show success message
+                        showAlert('Blog deleted successfully!', 'success');
+                        
+                        // Update statistics
+                        updateStatistics();
+                        
+                        // Check if no blogs left
+                        const remainingRows = document.querySelectorAll('tbody tr');
+                        if (remainingRows.length === 0) {
+                            location.reload(); // Reload to show empty state
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        button.innerHTML = originalHtml;
+                        button.disabled = false;
+                        showAlert('Error deleting blog. Please try again.', 'danger');
+                    });
+                });
+            });
+        });
+
+        // Function to attach status form listeners to new elements
+        function attachStatusFormListeners(container) {
+            container.querySelectorAll('.status-form').forEach(form => {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    // Same logic as above - could be refactored into a function
+                });
+            });
+        }
+
+        // Function to show alert messages
+        function showAlert(message, type) {
+            const alertDiv = document.createElement('div');
+            alertDiv.className = `alert alert-${type}`;
+            alertDiv.innerHTML = `<i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-triangle'} me-2"></i>${message}`;
+            
+            const content = document.querySelector('.admin-content');
+            content.insertBefore(alertDiv, content.firstChild);
+            
+            // Auto-hide after 5 seconds
+            setTimeout(() => {
+                alertDiv.style.transition = 'opacity 0.5s ease';
+                alertDiv.style.opacity = '0';
+                setTimeout(() => alertDiv.remove(), 500);
+            }, 5000);
+        }
+
+        // Function to update statistics via AJAX
+        function updateStatistics() {
+            fetch('dashboard.php?ajax=stats')
+            .then(response => response.json())
+            .then(data => {
+                if (data.stats) {
+                    document.querySelector('.stat-card.published .stat-number').textContent = data.stats.published_blogs;
+                    document.querySelector('.stat-card.draft .stat-number').textContent = data.stats.draft_blogs;
+                    document.querySelector('.stat-card.archived .stat-number').textContent = data.stats.archived_blogs;
+                    document.querySelector('.stat-card.views .stat-number').textContent = data.stats.total_views;
+                }
+            })
+            .catch(error => console.error('Error updating stats:', error));
+        }
 
         // Bulk actions form validation
         document.getElementById('bulkForm').addEventListener('submit', function(e) {

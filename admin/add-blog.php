@@ -12,6 +12,28 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
 $errors = [];
 $success = '';
 $showSuccessModal = false;
+$isEdit = false;
+$editBlog = null;
+
+// Check if this is an edit operation
+if (isset($_GET['id']) && !empty($_GET['id'])) {
+    $isEdit = true;
+    $blogId = intval($_GET['id']);
+    
+    try {
+        $editQuery = $db->prepare("SELECT * FROM blogs WHERE id = ?");
+        $editQuery->execute([$blogId]);
+        $editBlog = $editQuery->fetch();
+        
+        if (!$editBlog) {
+            $errors[] = "Blog not found.";
+            $isEdit = false;
+        }
+    } catch (Exception $e) {
+        $errors[] = "Error loading blog for editing: " . $e->getMessage();
+        $isEdit = false;
+    }
+}
 
 // Get categories for dropdown
 try {
@@ -58,20 +80,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (empty($content)) $errors[] = "Content is required";
     if (empty($author_name)) $errors[] = "Author name is required";
     
-    // Check if slug already exists
+    // Check if slug already exists (skip check if editing the same blog)
     if (!empty($slug)) {
-        $slugCheck = $db->prepare("SELECT id FROM blogs WHERE slug = ?");
-        $slugCheck->execute([$slug]);
+        if ($isEdit) {
+            $slugCheck = $db->prepare("SELECT id FROM blogs WHERE slug = ? AND id != ?");
+            $slugCheck->execute([$slug, $blogId]);
+        } else {
+            $slugCheck = $db->prepare("SELECT id FROM blogs WHERE slug = ?");
+            $slugCheck->execute([$slug]);
+        }
+        
         if ($slugCheck->fetch()) {
             $errors[] = "Slug already exists. Please choose a different slug.";
         }
     }
     
     // Handle featured image upload
-    $featured_image = '';
-    $author_avatar = '';
-    $og_image = '';
-    $twitter_image = '';
+    $featured_image = $isEdit ? $editBlog['featured_image'] : '';
+    $author_avatar = $isEdit ? $editBlog['author_avatar'] : '';
+    $og_image = $isEdit ? $editBlog['og_image'] : '';
+    $twitter_image = $isEdit ? $editBlog['twitter_image'] : '';
     
     if (isset($_FILES['featured_image']) && $_FILES['featured_image']['error'] === 0) {
         $uploadResult = uploadToCloudinary($_FILES['featured_image'], 'blog-featured');
@@ -115,33 +143,59 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 'dateModified' => date('c')
             ]);
             
-            $insertQuery = $db->prepare("
-                INSERT INTO blogs (
-                    title, slug, excerpt, content, featured_image, category_id, 
-                    author_id, author_name, author_avatar, status, is_featured, is_editors_pick,
-                    meta_title, meta_description, meta_keywords, canonical_url,
-                    og_title, og_description, og_image,
-                    twitter_title, twitter_description, twitter_image,
-                    schema_type, schema_data,
-                    published_at, created_at
-                ) VALUES (
-                    ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW()
-                )
-            ");
-            
             $published_at = ($status === 'published') ? date('Y-m-d H:i:s') : null;
             
-            $insertQuery->execute([
-                $title, $slug, $excerpt, $content, $featured_image, $category_id,
-                $_SESSION['admin_id'], $author_name, $author_avatar, $status, $is_featured, $is_editors_pick,
-                $meta_title, $meta_description, $meta_keywords, $canonical_url,
-                $og_title, $og_description, $og_image,
-                $twitter_title, $twitter_description, $twitter_image,
-                $schema_type, $schema_data,
-                $published_at
-            ]);
-            
-            $success = "Blog post created successfully!";
+            if ($isEdit) {
+                // Update existing blog
+                $updateQuery = $db->prepare("
+                    UPDATE blogs SET
+                        title = ?, slug = ?, excerpt = ?, content = ?, featured_image = ?, category_id = ?, 
+                        author_name = ?, author_avatar = ?, status = ?, is_featured = ?, is_editors_pick = ?,
+                        meta_title = ?, meta_description = ?, meta_keywords = ?, canonical_url = ?,
+                        og_title = ?, og_description = ?, og_image = ?,
+                        twitter_title = ?, twitter_description = ?, twitter_image = ?,
+                        schema_type = ?, schema_data = ?, published_at = ?, updated_at = NOW()
+                    WHERE id = ?
+                ");
+                
+                $updateQuery->execute([
+                    $title, $slug, $excerpt, $content, $featured_image, $category_id,
+                    $author_name, $author_avatar, $status, $is_featured, $is_editors_pick,
+                    $meta_title, $meta_description, $meta_keywords, $canonical_url,
+                    $og_title, $og_description, $og_image,
+                    $twitter_title, $twitter_description, $twitter_image,
+                    $schema_type, $schema_data, $published_at, $blogId
+                ]);
+                
+                $success = "Blog post updated successfully!";
+            } else {
+                // Insert new blog
+                $insertQuery = $db->prepare("
+                    INSERT INTO blogs (
+                        title, slug, excerpt, content, featured_image, category_id, 
+                        author_id, author_name, author_avatar, status, is_featured, is_editors_pick,
+                        meta_title, meta_description, meta_keywords, canonical_url,
+                        og_title, og_description, og_image,
+                        twitter_title, twitter_description, twitter_image,
+                        schema_type, schema_data,
+                        published_at, created_at
+                    ) VALUES (
+                        ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW()
+                    )
+                ");
+                
+                $insertQuery->execute([
+                    $title, $slug, $excerpt, $content, $featured_image, $category_id,
+                    $_SESSION['admin_id'], $author_name, $author_avatar, $status, $is_featured, $is_editors_pick,
+                    $meta_title, $meta_description, $meta_keywords, $canonical_url,
+                    $og_title, $og_description, $og_image,
+                    $twitter_title, $twitter_description, $twitter_image,
+                    $schema_type, $schema_data,
+                    $published_at
+                ]);
+                
+                $success = "Blog post created successfully!";
+            }
             
             // Set flag for showing success modal
             $showSuccessModal = true;
@@ -159,7 +213,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="referrer" content="strict-origin-when-cross-origin">
-    <title>Add New Blog - MedStudy Global</title>
+    <title><?php echo $isEdit ? 'Edit Blog' : 'Add New Blog'; ?> - MedStudy Global</title>
     
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
@@ -402,7 +456,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-md-6">
-                    <h1><i class="fas fa-plus"></i> Add New Blog</h1>
+                    <h1><i class="fas fa-<?php echo $isEdit ? 'edit' : 'plus'; ?>"></i> <?php echo $isEdit ? 'Edit Blog' : 'Add New Blog'; ?></h1>
                 </div>
                 <div class="col-md-6 text-right">
                     <a href="dashboard.php" class="btn btn-light">
@@ -444,7 +498,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                    class="form-control" 
                                    id="title" 
                                    name="title" 
-                                   value="<?php echo isset($_POST['title']) ? htmlspecialchars($_POST['title']) : ''; ?>"
+                                   value="<?php echo isset($_POST['title']) ? htmlspecialchars($_POST['title']) : ($isEdit ? htmlspecialchars($editBlog['title']) : ''); ?>"
                                    required>
                             <div class="help-text">This will be the main heading of your blog post</div>
                         </div>
@@ -454,9 +508,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <div class="form-group">
                             <label for="status">Status *</label>
                             <select class="form-control" id="status" name="status" required>
-                                <option value="draft" <?php echo (isset($_POST['status']) && $_POST['status'] === 'draft') ? 'selected' : ''; ?>>Draft</option>
-                                <option value="published" <?php echo (isset($_POST['status']) && $_POST['status'] === 'published') ? 'selected' : ''; ?>>Published</option>
-                                <option value="archived" <?php echo (isset($_POST['status']) && $_POST['status'] === 'archived') ? 'selected' : ''; ?>>Archived</option>
+                                <?php 
+                                $currentStatus = isset($_POST['status']) ? $_POST['status'] : ($isEdit ? $editBlog['status'] : 'draft');
+                                ?>
+                                <option value="draft" <?php echo $currentStatus === 'draft' ? 'selected' : ''; ?>>Draft</option>
+                                <option value="published" <?php echo $currentStatus === 'published' ? 'selected' : ''; ?>>Published</option>
+                                <option value="archived" <?php echo $currentStatus === 'archived' ? 'selected' : ''; ?>>Archived</option>
                             </select>
                         </div>
                     </div>
@@ -470,7 +527,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                class="form-control" 
                                id="slug" 
                                name="slug" 
-                               value="<?php echo isset($_POST['slug']) ? htmlspecialchars($_POST['slug']) : ''; ?>"
+                               value="<?php echo isset($_POST['slug']) ? htmlspecialchars($_POST['slug']) : ($isEdit ? htmlspecialchars($editBlog['slug']) : ''); ?>"
                                required>
                     </div>
                     <div class="help-text">URL-friendly version of the title. Only lowercase letters, numbers, and hyphens.</div>
@@ -482,7 +539,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                               id="excerpt" 
                               name="excerpt" 
                               rows="3" 
-                              maxlength="300"><?php echo isset($_POST['excerpt']) ? htmlspecialchars($_POST['excerpt']) : ''; ?></textarea>
+                              maxlength="300"><?php echo isset($_POST['excerpt']) ? htmlspecialchars($_POST['excerpt']) : ($isEdit ? htmlspecialchars($editBlog['excerpt']) : ''); ?></textarea>
                     <div class="character-count" id="excerpt-count">0/300 characters</div>
                     <div class="help-text">Brief summary of the blog post (optional but recommended)</div>
                 </div>
@@ -497,7 +554,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                               id="content" 
                               name="content" 
                               rows="10" 
-                              required><?php echo isset($_POST['content']) ? htmlspecialchars($_POST['content']) : ''; ?></textarea>
+                              required><?php echo isset($_POST['content']) ? htmlspecialchars($_POST['content']) : ($isEdit ? htmlspecialchars($editBlog['content']) : ''); ?></textarea>
                 </div>
                 
                 <div class="row">
@@ -506,9 +563,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <label for="category_id">Category</label>
                             <select class="form-control" id="category_id" name="category_id">
                                 <option value="">Select Category</option>
-                                <?php foreach ($categories as $category): ?>
+                                <?php 
+                                $currentCategoryId = isset($_POST['category_id']) ? $_POST['category_id'] : ($isEdit ? $editBlog['category_id'] : '');
+                                foreach ($categories as $category): 
+                                ?>
                                     <option value="<?php echo $category['id']; ?>" 
-                                            <?php echo (isset($_POST['category_id']) && $_POST['category_id'] == $category['id']) ? 'selected' : ''; ?>>
+                                            <?php echo $currentCategoryId == $category['id'] ? 'selected' : ''; ?>>
                                         <?php echo htmlspecialchars($category['name']); ?>
                                     </option>
                                 <?php endforeach; ?>
@@ -523,7 +583,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                    class="form-control" 
                                    id="author_name" 
                                    name="author_name" 
-                                   value="<?php echo isset($_POST['author_name']) ? htmlspecialchars($_POST['author_name']) : $_SESSION['admin_name']; ?>"
+                                   value="<?php echo isset($_POST['author_name']) ? htmlspecialchars($_POST['author_name']) : ($isEdit ? htmlspecialchars($editBlog['author_name']) : $_SESSION['admin_name']); ?>"
                                    required>
                         </div>
                     </div>
@@ -537,7 +597,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                    id="is_featured" 
                                    name="is_featured" 
                                    value="1" 
-                                   <?php echo (isset($_POST['is_featured'])) ? 'checked' : ''; ?>>
+                                   <?php echo (isset($_POST['is_featured']) || ($isEdit && $editBlog['is_featured'])) ? 'checked' : ''; ?>>
                             <label class="form-check-label" for="is_featured">
                                 <i class="fas fa-star"></i> Featured Post
                             </label>
@@ -551,7 +611,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                    id="is_editors_pick" 
                                    name="is_editors_pick" 
                                    value="1" 
-                                   <?php echo (isset($_POST['is_editors_pick'])) ? 'checked' : ''; ?>>
+                                   <?php echo (isset($_POST['is_editors_pick']) || ($isEdit && $editBlog['is_editors_pick'])) ? 'checked' : ''; ?>>
                             <label class="form-check-label" for="is_editors_pick">
                                 <i class="fas fa-heart"></i> Editor's Pick
                             </label>
