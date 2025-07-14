@@ -475,4 +475,68 @@ $(document).ready(function() {
     $('.contact-page .accordion .card-header .btn:not(.collapsed)').each(function() {
         $(this).closest('.card-header').addClass('active');
     });
+    
+    // Blog Page Functionality
+    if ($('.blog-page').length > 0) {
+        // Category Filter
+        $('#categoryFilter').on('change', function() {
+            var selectedCategory = $(this).val();
+            filterBlogPosts(selectedCategory, $('#searchInput').val());
+        });
+        
+        // Search Filter
+        $('#searchInput').on('input', function() {
+            var searchTerm = $(this).val().toLowerCase();
+            filterBlogPosts($('#categoryFilter').val(), searchTerm);
+        });
+        
+        // Filter Function
+        function filterBlogPosts(category, searchTerm) {
+            $('.blog-card').each(function() {
+                var $card = $(this);
+                var cardCategory = $card.find('.blog-category').text().toLowerCase().replace(/\s+/g, '-');
+                var cardTitle = $card.find('.blog-card-title a').text().toLowerCase();
+                var cardExcerpt = $card.find('.blog-excerpt').text().toLowerCase();
+                
+                var categoryMatch = !category || cardCategory === category;
+                var searchMatch = !searchTerm || cardTitle.includes(searchTerm) || cardExcerpt.includes(searchTerm);
+                
+                if (categoryMatch && searchMatch) {
+                    $card.show();
+                } else {
+                    $card.hide();
+                }
+            });
+        }
+        
+        // Newsletter Form
+        $('.newsletter-form').on('submit', function(e) {
+            e.preventDefault();
+            var $form = $(this);
+            var $button = $form.find('.subscribe-btn');
+            var originalText = $button.text();
+            
+            // Show loading state
+            $button.text('Subscribing...').prop('disabled', true);
+            
+            // Simulate form submission (replace with actual AJAX call)
+            setTimeout(function() {
+                $button.text('Subscribed!').removeClass('subscribe-btn').addClass('subscribed');
+                $form.find('input').val('');
+                
+                // Reset button after 3 seconds
+                setTimeout(function() {
+                    $button.text(originalText).prop('disabled', false).removeClass('subscribed').addClass('subscribe-btn');
+                }, 3000);
+            }, 2000);
+        });
+        
+        // Smooth scroll for pagination
+        $('.pagination-btn, .pagination-number').on('click', function(e) {
+            e.preventDefault();
+            $('html, body').animate({
+                scrollTop: $('.blog-grid-section').offset().top - 100
+            }, 800);
+        });
+    }
 }); 

@@ -80,6 +80,7 @@
                                 <li><a href="universities.php">Our Services</a></li>
                                 <li><a href="countries.php">MBBS Destinations</a></li>
                                 <li><a href="resources.php">University Partners</a></li>
+                                <li><a href="blog.php">Blog</a></li>
                                 <li><a href="gallery.php">Resources</a></li>
                                 <li><a href="contact.php">Contact Us</a></li>
                                 <li><a href="contact.php">Gallery</a></li>
@@ -126,6 +127,7 @@
                     <li><a href="universities.php">Our Services</a></li>
                     <li><a href="universities.php">MBBS Destinations</a></li>
                     <li><a href="resources.php">University Partners</a></li>
+                    <li><a href="blog.php">Blog</a></li>
                     <li><a href="countries.php">Resources</a></li>
                     <li><a href="resources.php">Contact Us</a></li>
                     <li><a href="gallery.php">Gallery</a></li>
