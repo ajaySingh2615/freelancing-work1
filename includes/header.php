@@ -83,7 +83,7 @@
                                 <li><a href="blog.php">Blog</a></li>
                                 <li><a href="gallery.php">Resources</a></li>
                                 <li><a href="contact.php">Contact Us</a></li>
-                                <li><a href="contact.php">Gallery</a></li>
+                                <li><a href="gallery.php">Gallery</a></li>
                             </ul>
                         </nav>
                     </div>
