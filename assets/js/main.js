@@ -500,3 +500,64 @@ $(document).ready(function() {
         });
     }
 }); 
+
+$(function() {
+    // === Blog Detail: Auto-generate Table of Contents ===
+    var $content = $('.blog-content');
+    var $toc = $('#toc');
+    if ($content.length && $toc.length) {
+        var headings = $content.find('h2, h3, h4');
+        if (headings.length >= 2) {
+            var tocList = $('<ul></ul>');
+            var lastLevel = 2;
+            var parents = [tocList];
+            headings.each(function(i) {
+                var $h = $(this);
+                var tag = $h.prop('tagName').toLowerCase();
+                var level = parseInt(tag.replace('h', ''));
+                var text = $h.text();
+                var id = $h.attr('id');
+                if (!id) {
+                    id = 'section-' + i + '-' + text.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+                    $h.attr('id', id);
+                }
+                var $li = $('<li></li>');
+                var $a = $('<a></a>').attr('href', '#' + id).text(text);
+                $li.append($a);
+                // Nesting logic
+                if (level > lastLevel) {
+                    var $ul = $('<ul></ul>');
+                    parents[parents.length-1].children('li').last().append($ul);
+                    parents.push($ul);
+                } else if (level < lastLevel) {
+                    parents.splice(level - 1);
+                }
+                parents[parents.length-1].append($li);
+                lastLevel = level;
+            });
+            $toc.append('<h5>Table of Contents</h5>');
+            $toc.append(tocList);
+            // Smooth scroll
+            $toc.on('click', 'a', function(e) {
+                var target = $($(this).attr('href'));
+                if (target.length) {
+                    e.preventDefault();
+                    $('html, body').animate({ scrollTop: target.offset().top - 80 }, 500);
+                }
+            });
+            // Highlight active section
+            var headingTops = headings.map(function() { return $(this).offset().top; }).get();
+            $(window).on('scroll', function() {
+                var scroll = $(window).scrollTop() + 100;
+                var activeIdx = 0;
+                for (var i = 0; i < headingTops.length; i++) {
+                    if (scroll >= headingTops[i]) activeIdx = i;
+                }
+                $toc.find('a').removeClass('active');
+                $toc.find('a').eq(activeIdx).addClass('active');
+            });
+        } else {
+            $toc.hide();
+        }
+    }
+}); 

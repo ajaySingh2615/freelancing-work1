@@ -80,6 +80,17 @@ $page_keywords = $post['meta_keywords'] ?: '';
 $canonical_url = $post['canonical_url'] ?: SITE_URL . 'blog-detail.php?slug=' . $post['slug'];
 $og_image = $post['og_image'] ?: $post['featured_image'];
 $current_url = SITE_URL . 'blog-detail.php?slug=' . $post['slug'];
+
+// Fetch tags for this blog post
+$tags = [];
+try {
+    $tag_query = "SELECT t.name, t.slug FROM blog_tags t INNER JOIN blog_tag_relations r ON t.id = r.tag_id WHERE r.blog_id = ? ORDER BY t.name";
+    $tag_stmt = $db->prepare($tag_query);
+    $tag_stmt->execute([$post['id']]);
+    $tags = $tag_stmt->fetchAll();
+} catch (Exception $e) {
+    $tags = [];
+}
 ?>
 
 <!DOCTYPE html>
@@ -167,312 +178,26 @@ $current_url = SITE_URL . 'blog-detail.php?slug=' . $post['slug'];
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/header.css">
     <link rel="stylesheet" href="assets/css/footer.css">
-    
-    <style>
-        .blog-detail-page {
-            padding: 2rem 0 4rem 0;
-            background: #f8f9fa;
-        }
-        
-        .blog-header {
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            margin-bottom: 2rem;
-            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
-        }
-        
-        .blog-featured-image {
-            width: 100%;
-            height: 400px;
-            object-fit: cover;
-        }
-        
-        .blog-header-content {
-            padding: 2rem;
-        }
-        
-        .blog-category {
-            display: inline-block;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.875rem;
-            font-weight: 600;
-            color: white;
-            margin-bottom: 1rem;
-        }
-        
-        .blog-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #2c3e50;
-            margin-bottom: 1rem;
-            line-height: 1.2;
-        }
-        
-        .blog-meta {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-            margin-bottom: 1rem;
-            flex-wrap: wrap;
-        }
-        
-        .author-info {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-        
-        .author-avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            overflow: hidden;
-        }
-        
-        .author-avatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        .author-details h6 {
-            margin: 0;
-            font-weight: 600;
-            color: #2c3e50;
-        }
-        
-        .author-details span {
-            font-size: 0.875rem;
-            color: #6c757d;
-        }
-        
-        .blog-stats {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            font-size: 0.875rem;
-            color: #6c757d;
-        }
-        
-        .blog-content {
-            background: white;
-            border-radius: 12px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
-            line-height: 1.8;
-        }
-        
-        .blog-content h1, .blog-content h2, .blog-content h3, 
-        .blog-content h4, .blog-content h5, .blog-content h6 {
-            color: #2c3e50;
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-        }
-        
-        .blog-content p {
-            margin-bottom: 1.5rem;
-            color: #495057;
-        }
-        
-        .blog-content img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-            margin: 1rem 0;
-        }
-        
-        .social-share {
-            background: white;
-            border-radius: 12px;
-            padding: 1.5rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
-        }
-        
-        .social-share h5 {
-            margin-bottom: 1rem;
-            color: #2c3e50;
-        }
-        
-        .share-buttons {
-            display: flex;
-            gap: 0.75rem;
-            flex-wrap: wrap;
-        }
-        
-        .share-btn {
-            padding: 0.5rem 1rem;
-            border: none;
-            border-radius: 6px;
-            color: white;
-            text-decoration: none;
-            font-size: 0.875rem;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .share-btn.facebook { background: #1877f2; }
-        .share-btn.twitter { background: #1da1f2; }
-        .share-btn.linkedin { background: #0077b5; }
-        .share-btn.whatsapp { background: #25d366; }
-        .share-btn.email { background: #6c757d; }
-        
-        .share-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-            color: white;
-        }
-        
-        .blog-navigation {
-            background: white;
-            border-radius: 12px;
-            padding: 1.5rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
-        }
-        
-        .nav-posts {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-        }
-        
-        .nav-post {
-            text-decoration: none;
-            padding: 1rem;
-            border: 1px solid #e9ecef;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-        }
-        
-        .nav-post:hover {
-            border-color: #007bff;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-        
-        .nav-post.prev {
-            text-align: left;
-        }
-        
-        .nav-post.next {
-            text-align: right;
-        }
-        
-        .nav-label {
-            font-size: 0.75rem;
-            color: #6c757d;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 0.5rem;
-        }
-        
-        .nav-title {
-            color: #2c3e50;
-            font-weight: 600;
-            margin: 0;
-        }
-        
-        .related-posts {
-            background: white;
-            border-radius: 12px;
-            padding: 2rem;
-            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
-        }
-        
-        .related-posts h4 {
-            margin-bottom: 1.5rem;
-            color: #2c3e50;
-        }
-        
-        .related-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-        }
-        
-        .related-card {
-            border: 1px solid #e9ecef;
-            border-radius: 8px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            text-decoration: none;
-        }
-        
-        .related-card:hover {
-            border-color: #007bff;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            text-decoration: none;
-        }
-        
-        .related-image {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-        }
-        
-        .related-content {
-            padding: 1rem;
-        }
-        
-        .related-category {
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            margin-bottom: 0.5rem;
-        }
-        
-        .related-title {
-            color: #2c3e50;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            font-size: 1rem;
-        }
-        
-        .related-meta {
-            font-size: 0.75rem;
-            color: #6c757d;
-        }
-        
-        @media (max-width: 768px) {
-            .blog-title {
-                font-size: 2rem;
-            }
-            
-            .blog-meta {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 1rem;
-            }
-            
-            .nav-posts {
-                grid-template-columns: 1fr;
-            }
-            
-            .share-buttons {
-                justify-content: center;
-            }
-            
-            .related-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="assets/css/blog-detail.css">
 </head>
 <body>
     <?php include 'includes/header.php'; ?>
-    
     <div class="blog-detail-page">
         <div class="container">
+            <!-- Breadcrumb Navigation -->
+            <nav aria-label="breadcrumb" class="mb-4">
+                <ol class="breadcrumb bg-white p-3 rounded shadow-sm">
+                    <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+                    <li class="breadcrumb-item"><a href="blog.php">Blog</a></li>
+                    <?php if ($post['category_name']): ?>
+                    <li class="breadcrumb-item"><a href="blog.php?category=<?php echo urlencode($post['category_slug']); ?>"><?php echo htmlspecialchars($post['category_name']); ?></a></li>
+                    <?php endif; ?>
+                    <li class="breadcrumb-item active" aria-current="page"><?php echo htmlspecialchars($post['title']); ?></li>
+                </ol>
+            </nav>
             <div class="row">
-                <div class="col-lg-8 mx-auto">
+                <!-- Main Content -->
+                <div class="col-lg-8 order-2 order-lg-1">
                     <!-- Blog Header -->
                     <article class="blog-header">
                         <?php if ($post['featured_image']): ?>
@@ -483,7 +208,7 @@ $current_url = SITE_URL . 'blog-detail.php?slug=' . $post['slug'];
                         
                         <div class="blog-header-content">
                             <?php if ($post['category_name']): ?>
-                            <span class="blog-category" style="background-color: <?php echo htmlspecialchars($post['category_color'] ?? '#007bff'); ?>">
+                            <span class="blog-category" style="background-color: <?php echo htmlspecialchars($post['category_color'] ?? '#007bff'); ?>;">
                                 <?php echo htmlspecialchars($post['category_name']); ?>
                             </span>
                             <?php endif; ?>
@@ -513,12 +238,42 @@ $current_url = SITE_URL . 'blog-detail.php?slug=' . $post['slug'];
                             <?php endif; ?>
                         </div>
                     </article>
-                    
                     <!-- Blog Content -->
                     <div class="blog-content">
                         <?php echo $post['content']; ?>
                     </div>
-                    
+                    <!-- Tags Section -->
+                    <?php if (!empty($tags)): ?>
+                    <div class="mb-4">
+                        <div class="d-flex align-items-center flex-wrap gap-2">
+                            <span class="fw-bold text-secondary me-2">Tags:</span>
+                            <?php foreach ($tags as $tag): ?>
+                                <a href="blog.php?tag=<?php echo urlencode($tag['slug']); ?>" class="badge bg-light text-primary border border-primary fw-normal px-3 py-2 text-decoration-none">
+                                    #<?php echo htmlspecialchars($tag['name']); ?>
+                                </a>
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+                    <?php endif; ?>
+                    <!-- Author Box -->
+                    <div class="author-box bg-white rounded shadow-sm p-4 mb-4 d-flex align-items-center gap-4">
+                        <div class="author-avatar flex-shrink-0" style="width: 80px; height: 80px;">
+                            <img src="<?php echo $post['author_avatar'] ?: 'assets/images/media/about-page/our-team/mohd irshad.webp'; ?>" alt="<?php echo htmlspecialchars($post['author_name']); ?>" class="rounded-circle w-100 h-100 object-fit-cover">
+                        </div>
+                        <div>
+                            <h5 class="mb-1 fw-bold text-primary"><?php echo htmlspecialchars($post['author_name']); ?></h5>
+                            <div class="mb-2 text-muted" style="font-size: 0.95rem;">MedStudy Global Contributor</div>
+                            <div class="mb-2" style="max-width: 500px;">
+                                <!-- Hardcoded bio, can be made dynamic later -->
+                                <span>Passionate about medical education, student success, and global opportunities. Sharing insights to help students achieve their dreams.</span>
+                            </div>
+                            <div class="author-social d-flex gap-2">
+                                <a href="#" class="text-primary" title="LinkedIn" target="_blank"><i class="fab fa-linkedin fa-lg"></i></a>
+                                <a href="#" class="text-info" title="Twitter" target="_blank"><i class="fab fa-twitter fa-lg"></i></a>
+                                <a href="#" class="text-danger" title="Email"><i class="far fa-envelope fa-lg"></i></a>
+                            </div>
+                        </div>
+                    </div>
                     <!-- Social Share -->
                     <div class="social-share">
                         <h5><i class="fas fa-share-alt"></i> Share this article</h5>
@@ -545,7 +300,6 @@ $current_url = SITE_URL . 'blog-detail.php?slug=' . $post['slug'];
                             </a>
                         </div>
                     </div>
-                    
                     <!-- Blog Navigation -->
                     <?php if ($prev_post || $next_post): ?>
                     <div class="blog-navigation">
@@ -558,7 +312,6 @@ $current_url = SITE_URL . 'blog-detail.php?slug=' . $post['slug'];
                             <?php else: ?>
                             <div></div>
                             <?php endif; ?>
-                            
                             <?php if ($next_post): ?>
                             <a href="blog-detail.php?slug=<?php echo urlencode($next_post['slug']); ?>" class="nav-post next">
                                 <div class="nav-label">Next Article <i class="fas fa-chevron-right"></i></div>
@@ -568,37 +321,6 @@ $current_url = SITE_URL . 'blog-detail.php?slug=' . $post['slug'];
                         </div>
                     </div>
                     <?php endif; ?>
-                    
-                    <!-- Related Posts -->
-                    <?php if (!empty($related_posts)): ?>
-                    <div class="related-posts">
-                        <h4><i class="fas fa-newspaper"></i> Related Articles</h4>
-                        <div class="related-grid">
-                            <?php foreach ($related_posts as $related): ?>
-                            <a href="blog-detail.php?slug=<?php echo urlencode($related['slug']); ?>" class="related-card">
-                                <?php if ($related['featured_image']): ?>
-                                <img src="<?php echo htmlspecialchars($related['featured_image']); ?>" 
-                                     alt="<?php echo htmlspecialchars($related['title']); ?>" 
-                                     class="related-image">
-                                <?php endif; ?>
-                                <div class="related-content">
-                                    <?php if ($related['category_name']): ?>
-                                    <div class="related-category" style="color: <?php echo htmlspecialchars($related['category_color'] ?? '#007bff'); ?>">
-                                        <?php echo htmlspecialchars($related['category_name']); ?>
-                                    </div>
-                                    <?php endif; ?>
-                                    <h6 class="related-title"><?php echo htmlspecialchars($related['title']); ?></h6>
-                                    <div class="related-meta">
-                                        <?php echo htmlspecialchars($related['author_name']); ?> • 
-                                        <?php echo timeAgo($related['published_at']); ?>
-                                    </div>
-                                </div>
-                            </a>
-                            <?php endforeach; ?>
-                        </div>
-                    </div>
-                    <?php endif; ?>
-                    
                     <!-- Back to Blog -->
                     <div class="text-center mt-4">
                         <a href="blog.php" class="btn btn-outline-primary">
@@ -606,6 +328,42 @@ $current_url = SITE_URL . 'blog-detail.php?slug=' . $post['slug'];
                         </a>
                     </div>
                 </div>
+                <!-- Sidebar -->
+                <aside class="col-lg-4 order-1 order-lg-2 mb-5 mb-lg-0">
+                    <div class="blog-sidebar sticky-sidebar">
+                        <!-- Table of Contents -->
+                        <div id="toc" class="mb-4"></div>
+                        <!-- Related Posts -->
+                        <?php if (!empty($related_posts)): ?>
+                        <div class="related-posts">
+                            <h4><i class="fas fa-newspaper"></i> Related Articles</h4>
+                            <div class="related-grid">
+                                <?php foreach ($related_posts as $related): ?>
+                                <a href="blog-detail.php?slug=<?php echo urlencode($related['slug']); ?>" class="related-card">
+                                    <?php if ($related['featured_image']): ?>
+                                    <img src="<?php echo htmlspecialchars($related['featured_image']); ?>" 
+                                         alt="<?php echo htmlspecialchars($related['title']); ?>" 
+                                         class="related-image">
+                                    <?php endif; ?>
+                                    <div class="related-content">
+                                        <?php if ($related['category_name']): ?>
+                                        <div class="related-category" style="color: <?php echo htmlspecialchars($related['category_color'] ?? '#007bff'); ?>;">
+                                            <?php echo htmlspecialchars($related['category_name']); ?>
+                                        </div>
+                                        <?php endif; ?>
+                                        <h6 class="related-title"><?php echo htmlspecialchars($related['title']); ?></h6>
+                                        <div class="related-meta">
+                                            <?php echo htmlspecialchars($related['author_name']); ?> • 
+                                            <?php echo timeAgo($related['published_at']); ?>
+                                        </div>
+                                    </div>
+                                </a>
+                                <?php endforeach; ?>
+                            </div>
+                        </div>
+                        <?php endif; ?>
+                    </div>
+                </aside>
             </div>
         </div>
     </div>
