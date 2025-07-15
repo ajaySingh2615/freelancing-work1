@@ -307,7 +307,7 @@ try {
                             <a class="page-link" href="?<?php echo http_build_query(array_merge($_GET, ['page' => 1])); ?>">1</a>
                         </li>
                         <?php if ($start_page > 2): ?>
-                        <li class="page-item disabled"><span class="page-link">...</span></li>
+                        <li class="page-item disabled"><span class="page-link" aria-disabled="true">...</span></li>
                         <?php endif; ?>
                         <?php endif; ?>
 
@@ -321,7 +321,7 @@ try {
 
                         <?php if ($end_page < $total_pages): ?>
                         <?php if ($end_page < $total_pages - 1): ?>
-                        <li class="page-item disabled"><span class="page-link">...</span></li>
+                        <li class="page-item disabled"><span class="page-link" aria-disabled="true">...</span></li>
                         <?php endif; ?>
                         <li class="page-item">
                             <a class="page-link" href="?<?php echo http_build_query(array_merge($_GET, ['page' => $total_pages])); ?>">
@@ -379,99 +379,6 @@ try {
     </section>
 </div>
 
-<style>
-.results-info {
-    margin: 1rem 0;
-    padding: 1rem;
-    background: #f8f9fa;
-    border-radius: 8px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
 
-.results-info p {
-    margin: 0;
-    color: #6c757d;
-}
-
-.clear-filters {
-    color: #007bff;
-    text-decoration: none;
-    font-weight: 500;
-}
-
-.clear-filters:hover {
-    text-decoration: underline;
-}
-
-.no-posts {
-    grid-column: 1 / -1;
-    text-align: center;
-    padding: 3rem;
-    background: #f8f9fa;
-    border-radius: 12px;
-}
-
-.pagination-container {
-    margin-top: 2rem;
-    display: flex;
-    justify-content: center;
-}
-
-.pagination {
-    display: flex;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    gap: 0.25rem;
-}
-
-.page-item .page-link {
-    padding: 0.5rem 0.75rem;
-    color: #007bff;
-    text-decoration: none;
-    border: 1px solid #dee2e6;
-    border-radius: 0.25rem;
-    transition: all 0.2s;
-}
-
-.page-item:hover .page-link {
-    background-color: #e9ecef;
-}
-
-.page-item.active .page-link {
-    background-color: #007bff;
-    color: white;
-    border-color: #007bff;
-}
-
-.page-item.disabled .page-link {
-    color: #6c757d;
-    cursor: not-allowed;
-}
-
-@media (max-width: 768px) {
-    .results-info {
-        flex-direction: column;
-        gap: 0.5rem;
-        text-align: center;
-    }
-    
-    .filter-bar {
-        flex-direction: column;
-        gap: 1rem;
-    }
-    
-    .filter-left, .filter-right {
-        width: 100%;
-    }
-    
-    .pagination {
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-}
-</style>
 
 <?php include 'includes/footer.php'; ?> 
