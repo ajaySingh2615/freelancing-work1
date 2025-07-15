@@ -517,151 +517,7 @@
     overflow: hidden;
 }
 
-/* ===== LEAD MAGNET SECTION ===== */
-.blog-page .lead-magnet-section {
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
-    color: var(--white);
-    position: relative;
-    overflow: hidden;
-}
 
-.blog-page .lead-magnet-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: 
-        radial-gradient(circle at 85% 20%, rgba(254, 186, 2, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 15% 80%, rgba(254, 186, 2, 0.05) 0%, transparent 50%);
-    pointer-events: none;
-    z-index: 1;
-}
-
-.blog-page .lead-magnet-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    align-items: center;
-    position: relative;
-    z-index: 2;
-}
-
-.blog-page .lead-magnet-title {
-    font-size: 2.25rem;
-    font-weight: 700;
-    color: var(--white);
-    margin-bottom: 1rem;
-    line-height: 1.3;
-}
-
-.blog-page .lead-magnet-description {
-    font-size: 1.125rem;
-    color: rgba(255, 255, 255, 0.9);
-    margin-bottom: 2rem;
-    line-height: 1.6;
-}
-
-.blog-page .subscription-message {
-    padding: 1rem 1.5rem;
-    border-radius: 8px;
-    margin-bottom: 1.5rem;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    font-size: 0.9375rem;
-    font-weight: 500;
-}
-
-.blog-page .subscription-message.success {
-    background: rgba(40, 167, 69, 0.1);
-    color: #28a745;
-    border: 1px solid rgba(40, 167, 69, 0.3);
-}
-
-.blog-page .subscription-message.error {
-    background: rgba(220, 53, 69, 0.1);
-    color: #dc3545;
-    border: 1px solid rgba(220, 53, 69, 0.3);
-}
-
-.blog-page .subscription-message i {
-    font-size: 1.125rem;
-    flex-shrink: 0;
-}
-
-.blog-page .newsletter-form {
-    margin-bottom: 1rem;
-}
-
-.blog-page .form-row {
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
-}
-
-.blog-page .form-input {
-    flex: 1;
-    padding: 0.875rem 1rem;
-    border: none;
-    border-radius: 8px;
-    font-size: 0.9375rem;
-    color: var(--text-color);
-    background: var(--white);
-    transition: all 0.3s ease;
-}
-
-.blog-page .form-input:focus {
-    outline: none;
-    box-shadow: 0 0 0 2px rgba(254, 186, 2, 0.3);
-}
-
-.blog-page .subscribe-btn {
-    background: var(--accent-color);
-    color: var(--primary-color);
-    padding: 0.875rem 2rem;
-    border: none;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-.blog-page .subscribe-btn:hover {
-    background: var(--accent-dark);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(254, 186, 2, 0.3);
-}
-
-.blog-page .subscribe-btn.subscribed {
-    background: #28a745;
-    color: var(--white);
-}
-
-.blog-page .subscribe-btn.subscribed:hover {
-    background: #218838;
-    color: var(--white);
-}
-
-.blog-page .privacy-note {
-    font-size: 0.8125rem;
-    color: rgba(255, 255, 255, 0.8);
-    margin-bottom: 0;
-}
-
-.blog-page .lead-magnet-image {
-    text-align: center;
-}
-
-.blog-page .lead-magnet-image img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 12px;
-}
 
 /* ===== RESULTS INFO ===== */
 .blog-page .results-info {
@@ -905,11 +761,7 @@
         gap: 1.5rem;
     }
     
-    .blog-page .lead-magnet-content {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-        text-align: center;
-    }
+
 }
 
 @media (max-width: 768px) {
@@ -930,10 +782,6 @@
     
     .blog-page .latest-post-title {
         font-size: 1.5rem;
-    }
-    
-    .blog-page .lead-magnet-title {
-        font-size: 1.75rem;
     }
     
     .blog-page .form-row {
@@ -1003,13 +851,7 @@
         font-size: 1.25rem;
     }
     
-    .blog-page .lead-magnet-title {
-        font-size: 1.5rem;
-    }
-    
-    .blog-page .lead-magnet-description {
-        font-size: 1rem;
-    }
+
 }
 
 @media (max-width: 480px) {

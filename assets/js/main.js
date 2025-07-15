@@ -315,27 +315,7 @@ $(document).on('keydown', function(e) {
             $('#city').html(cityOptions);
         });
         
-        // Newsletter subscription
-        $('.newsletter-form').on('submit', function(e) {
-            e.preventDefault();
-            var email = $(this).find('input[type="email"]').val();
-            
-            if (email) {
-                // Send the email to server
-                $.ajax({
-                    type: 'POST',
-                    url: 'subscribe.php',
-                    data: {email: email},
-                    success: function(response) {
-                        alert('Thank you for subscribing to our newsletter!');
-                        $('.newsletter-form').find('input[type="email"]').val('');
-                    },
-                    error: function(error) {
-                        alert('There was an error with your subscription. Please try again later.');
-                    }
-                });
-            }
-        });
+
 
         // Hero Carousel
         const heroCarousel = document.querySelector('.hero-carousel');
@@ -509,27 +489,7 @@ $(document).ready(function() {
             });
         }
         
-        // Newsletter Form
-        $('.newsletter-form').on('submit', function(e) {
-            e.preventDefault();
-            var $form = $(this);
-            var $button = $form.find('.subscribe-btn');
-            var originalText = $button.text();
-            
-            // Show loading state
-            $button.text('Subscribing...').prop('disabled', true);
-            
-            // Simulate form submission (replace with actual AJAX call)
-            setTimeout(function() {
-                $button.text('Subscribed!').removeClass('subscribe-btn').addClass('subscribed');
-                $form.find('input').val('');
-                
-                // Reset button after 3 seconds
-                setTimeout(function() {
-                    $button.text(originalText).prop('disabled', false).removeClass('subscribed').addClass('subscribe-btn');
-                }, 3000);
-            }, 2000);
-        });
+
         
         // Smooth scroll for pagination
         $('.pagination-btn, .pagination-number').on('click', function(e) {

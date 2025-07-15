@@ -343,40 +343,6 @@ try {
             <?php endif; ?>
         </div>
     </section>
-
-    <!-- Lead Magnet Section -->
-    <section class="lead-magnet-section section-padding">
-        <div class="container">
-            <div class="lead-magnet-content">
-                <div class="lead-magnet-text">
-                    <h2 class="lead-magnet-title">Stay Updated with Medical Education Insights!</h2>
-                    <p class="lead-magnet-description">Get the latest updates on medical university admissions, scholarship opportunities, and career guidance delivered straight to your inbox.</p>
-                    
-                    <?php if (isset($_GET['subscription'])): ?>
-                        <div class="subscription-message <?php echo $_GET['subscription'] === 'success' ? 'success' : 'error'; ?>">
-                            <?php if ($_GET['subscription'] === 'success'): ?>
-                                <i class="fas fa-check-circle"></i>
-                                <span>Thank you for subscribing! You'll receive updates about medical education opportunities.</span>
-                            <?php else: ?>
-                                <i class="fas fa-exclamation-triangle"></i>
-                                <span><?php echo isset($_GET['message']) ? htmlspecialchars($_GET['message']) : 'An error occurred. Please try again.'; ?></span>
-                            <?php endif; ?>
-                        </div>
-                    <?php endif; ?>
-                    
-                    <form class="newsletter-form" action="process-newsletter.php" method="POST">
-                        <div class="form-group">
-                            <input type="email" name="email" placeholder="Enter your email address" required>
-                            <button type="submit" class="submit-btn">Subscribe Now</button>
-                        </div>
-                    </form>
-                </div>
-                <div class="lead-magnet-image">
-                    <img src="assets/images/media/home-page/contact-us-section/contact-image.webp" alt="Stay Updated">
-                </div>
-            </div>
-        </div>
-    </section>
 </div>
 
 
