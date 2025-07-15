@@ -804,8 +804,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 toolbar: 'undo redo | blocks | ' +
                         'bold italic forecolor | alignleft aligncenter ' +
                         'alignright alignjustify | bullist numlist outdent indent | ' +
-                        'removeformat | help',
+                        'link unlink | removeformat | help',
                 content_style: 'body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 14px }',
+                // Link configuration
+                link_assume_external_targets: true,
+                link_context_toolbar: true,
+                link_default_target: '_blank',
+                link_default_protocol: 'https',
+                link_title: false,
+                target_list: [
+                    {title: 'None', value: ''},
+                    {title: 'New window', value: '_blank'},
+                    {title: 'Same window', value: '_self'}
+                ],
                 branding: false,
                 promotion: false,
                 // Privacy settings to disable analytics and telemetry
