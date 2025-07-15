@@ -32,13 +32,13 @@ class Database {
         
         try {
             $this->conn = new PDO(
-                "mysql:host=" . $this->host . ";dbname=" . $this->db_name,
+                "mysql:host=" . $this->host . ";dbname=" . $this->db_name . ";charset=utf8mb4",
                 $this->username,
                 $this->password,
                 array(
                     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
                     PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-                    PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"
+                    PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8mb4 COLLATE utf8mb4_unicode_ci"
                 )
             );
         } catch(PDOException $e) {
@@ -72,7 +72,7 @@ function createTables($db) {
             last_login TIMESTAMP NULL,
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
             updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-        )");
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci");
         
         // Blog Categories Table
         $db->exec("CREATE TABLE IF NOT EXISTS blog_categories (
@@ -84,7 +84,7 @@ function createTables($db) {
             status ENUM('active', 'inactive') DEFAULT 'active',
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
             updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-        )");
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci");
         
         // Blogs Table
         $db->exec("CREATE TABLE IF NOT EXISTS blogs (
@@ -134,7 +134,7 @@ function createTables($db) {
             INDEX idx_category (category_id),
             INDEX idx_featured (is_featured),
             INDEX idx_published (published_at)
-        )");
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci");
         
         // Blog Tags Table (Many-to-Many relationship)
         $db->exec("CREATE TABLE IF NOT EXISTS blog_tags (
@@ -142,7 +142,7 @@ function createTables($db) {
             name VARCHAR(50) NOT NULL UNIQUE,
             slug VARCHAR(50) NOT NULL UNIQUE,
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-        )");
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci");
         
         $db->exec("CREATE TABLE IF NOT EXISTS blog_tag_relations (
             blog_id INT,
@@ -150,7 +150,7 @@ function createTables($db) {
             PRIMARY KEY (blog_id, tag_id),
             FOREIGN KEY (blog_id) REFERENCES blogs(id) ON DELETE CASCADE,
             FOREIGN KEY (tag_id) REFERENCES blog_tags(id) ON DELETE CASCADE
-        )");
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci");
         
         // Insert default admin user (password: admin123)
         $defaultAdmin = $db->prepare("INSERT IGNORE INTO admin_users (username, email, password, full_name) VALUES (?, ?, ?, ?)");
