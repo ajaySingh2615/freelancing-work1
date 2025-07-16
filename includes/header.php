@@ -78,7 +78,7 @@
                                 <li><a href="index.php" class="active">Home</a></li>
                                 <li><a href="about.php">About Us</a></li>
                                 <li><a href="universities.php">Our Services</a></li>
-                                <li><a href="countries.php">MBBS Destinations</a></li>
+                                <li><a href="destinations.php">MBBS Destinations</a></li>
                                 <li><a href="resources.php">University Partners</a></li>
                                 <li><a href="blog.php">Blog</a></li>
                                 <li><a href="gallery.php">Resources</a></li>
@@ -125,7 +125,7 @@
                     <li><a href="index.php">Home</a></li>
                     <li><a href="about.php">About Us</a></li>
                     <li><a href="universities.php">Our Services</a></li>
-                    <li><a href="universities.php">MBBS Destinations</a></li>
+                    <li><a href="destinations.php">MBBS Destinations</a></li>
                     <li><a href="resources.php">University Partners</a></li>
                     <li><a href="blog.php">Blog</a></li>
                     <li><a href="countries.php">Resources</a></li>
