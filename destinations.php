@@ -394,7 +394,7 @@ include 'includes/header.php';
             <h2 class="cta-title">Ready to Start Your Medical Journey?</h2>
             <p class="cta-description">Get personalized guidance from our expert counselors and find the perfect destination for your MBBS studies.</p>
             <div class="cta-buttons">
-                <a href="contact.php" class="btn btn-primary">Get Free Consultation</a>
+                <a href="contact.php" class="btn btn-warning">Get Free Consultation</a>
             </div>
         </div>
     </div>
