@@ -8,8 +8,12 @@ include 'includes/header.php';
 <section class="destinations-hero">
     <div class="container">
         <div class="hero-content">
+            <nav class="breadcrumb">
+                <a href="index.php">Home</a>
+                <span>/</span>
+                <span>Countries</span>
+            </nav>
             <h1 class="hero-title">Best Countries to Study Abroad</h1>
-            <p class="hero-description">Discover top destinations for MBBS studies with world-class universities, affordable tuition, and excellent career opportunities.</p>
         </div>
     </div>
 </section>
@@ -19,7 +23,6 @@ include 'includes/header.php';
     <div class="container">
         <div class="search-wrapper">
             <div class="search-header">
-                <h2 class="search-title">Find Your Perfect Study Destination</h2>
                 <p class="search-subtitle">Search through top MBBS destinations and find the perfect country for your medical education journey</p>
             </div>
             
@@ -392,7 +395,6 @@ include 'includes/header.php';
             <p class="cta-description">Get personalized guidance from our expert counselors and find the perfect destination for your MBBS studies.</p>
             <div class="cta-buttons">
                 <a href="contact.php" class="btn btn-primary">Get Free Consultation</a>
-                <a href="#" class="btn btn-secondary">Download Brochure</a>
             </div>
         </div>
     </div>
