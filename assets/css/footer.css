@@ -193,6 +193,7 @@
   margin-top: 0.1rem;
   flex-shrink: 0;
   width: 1.2rem;
+  text-align: center;
 }
 
 .contact-info li a {
@@ -204,7 +205,7 @@
 
 .contact-info li a:hover {
   color: var(--white);
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 .copyright {
@@ -399,15 +400,24 @@
     justify-content: center;
     text-align: center;
     flex-direction: column;
+    align-items: center;
     gap: 0.5rem;
     margin-bottom: 1.5rem;
+    max-width: 280px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .contact-info li i {
     margin-top: 0;
     font-size: 1.25rem;
+    width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
+  .contact-info li span,
   .contact-info li a {
     min-height: 44px;
     display: flex;
@@ -416,10 +426,13 @@
     padding: 0.5rem;
     border-radius: 0.25rem;
     transition: all 0.3s ease;
+    text-align: center;
+    line-height: 1.4;
   }
 
   .contact-info li a:hover {
     background: rgba(255, 255, 255, 0.05);
+    text-decoration: none;
   }
 
   /* Improved floating elements positioning for tablet */
@@ -446,6 +459,7 @@
 
   .footer-widget {
     margin-bottom: 2rem;
+    text-align: center;
   }
 
   .footer-logo img {
@@ -457,15 +471,24 @@
     margin-bottom: 1rem;
   }
 
+  .widget-title:after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
   .about-text {
     font-size: 0.875rem;
     margin-bottom: 1rem;
     line-height: 1.6;
+    max-width: 320px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .footer-widget .social-icons {
     gap: 0.75rem;
     margin-top: 1rem;
+    justify-content: center;
   }
 
   .footer-widget .social-icons li a {
@@ -482,17 +505,60 @@
     font-size: 0.9375rem;
     padding: 0.75rem 0;
     min-height: 48px;
+    display: block;
+  }
+
+  .footer-links li a:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 0.25rem;
+    padding-left: 0;
+    transform: none;
+  }
+
+  .footer-links li a:before {
+    display: none;
+  }
+
+  .contact-info {
+    max-width: 300px;
+    margin: 0 auto;
   }
 
   .contact-info li {
-    margin-bottom: 1.25rem;
+    margin-bottom: 1.5rem;
     font-size: 0.9375rem;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    gap: 0.75rem;
   }
 
+  .contact-info li i {
+    font-size: 1.2rem;
+    margin-top: 0;
+    width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .contact-info li span,
   .contact-info li a {
     min-height: 48px;
     padding: 0.75rem;
     font-size: 0.9375rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    line-height: 1.4;
+    border-radius: 0.25rem;
+    transition: all 0.3s ease;
+  }
+
+  .contact-info li a:hover {
+    background: rgba(255, 255, 255, 0.05);
+    text-decoration: none;
   }
 
   .copyright {
@@ -534,6 +600,7 @@
 
   .footer-widget {
     margin-bottom: 1.75rem;
+    text-align: center;
   }
 
   .footer-logo img {
@@ -545,13 +612,22 @@
     margin-bottom: 0.875rem;
   }
 
+  .widget-title:after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
   .about-text {
     font-size: 0.8125rem;
     line-height: 1.65;
+    max-width: 280px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .footer-widget .social-icons {
     gap: 0.625rem;
+    justify-content: center;
   }
 
   .footer-widget .social-icons li a {
@@ -563,16 +639,59 @@
   .footer-links li a {
     font-size: 0.875rem;
     padding: 0.625rem 0;
+    display: block;
+  }
+
+  .footer-links li a:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 0.25rem;
+    padding-left: 0;
+    transform: none;
+  }
+
+  .footer-links li a:before {
+    display: none;
+  }
+
+  .contact-info {
+    max-width: 280px;
+    margin: 0 auto;
   }
 
   .contact-info li {
     font-size: 0.875rem;
-    margin-bottom: 1rem;
+    margin-bottom: 1.25rem;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    gap: 0.5rem;
   }
 
+  .contact-info li i {
+    font-size: 1.1rem;
+    margin-top: 0;
+    width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .contact-info li span,
   .contact-info li a {
     font-size: 0.875rem;
     padding: 0.625rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    line-height: 1.4;
+    border-radius: 0.25rem;
+    min-height: 44px;
+  }
+
+  .contact-info li a:hover {
+    background: rgba(255, 255, 255, 0.05);
+    text-decoration: none;
   }
 
   .copyright {
@@ -593,6 +712,7 @@
 
   .footer-widget {
     margin-bottom: 1.5rem;
+    text-align: center;
   }
 
   .footer-logo img {
@@ -604,10 +724,18 @@
     margin-bottom: 0.75rem;
   }
 
+  .widget-title:after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
   .about-text {
     font-size: 0.75rem;
     line-height: 1.7;
     margin-bottom: 0.875rem;
+    max-width: 260px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .footer-widget .social-icons {
@@ -625,16 +753,59 @@
   .footer-links li a {
     font-size: 0.8125rem;
     padding: 0.5rem 0;
+    display: block;
+  }
+
+  .footer-links li a:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 0.25rem;
+    padding-left: 0;
+    transform: none;
+  }
+
+  .footer-links li a:before {
+    display: none;
+  }
+
+  .contact-info {
+    max-width: 260px;
+    margin: 0 auto;
   }
 
   .contact-info li {
     font-size: 0.8125rem;
-    margin-bottom: 0.875rem;
+    margin-bottom: 1rem;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    gap: 0.5rem;
   }
 
+  .contact-info li i {
+    font-size: 1rem;
+    margin-top: 0;
+    width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .contact-info li span,
   .contact-info li a {
     font-size: 0.8125rem;
     padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    line-height: 1.4;
+    border-radius: 0.25rem;
+    min-height: 44px;
+  }
+
+  .contact-info li a:hover {
+    background: rgba(255, 255, 255, 0.05);
+    text-decoration: none;
   }
 
   .copyright {
@@ -673,6 +844,7 @@
   /* Enhanced touch targets for all interactive elements */
   .footer-links li a,
   .contact-info li a,
+  .contact-info li span,
   .footer-widget .social-icons li a {
     min-height: 44px;
     min-width: 44px;
@@ -685,8 +857,8 @@
   }
 
   .footer-links li a {
-    justify-content: flex-start;
-    text-align: left;
+    justify-content: center;
+    text-align: center;
   }
 
   /* Remove hover effects that don't work on touch */
@@ -715,14 +887,33 @@
   /* Better spacing for touch interactions */
   .footer-widget .social-icons {
     gap: 1rem;
+    justify-content: center;
   }
 
   .footer-links li {
     margin-bottom: 0.5rem;
   }
 
+  .contact-info {
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
   .contact-info li {
     margin-bottom: 1.5rem;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .contact-info li i {
+    font-size: 1.25rem;
+    margin-top: 0;
+    width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   /* Improve floating buttons for touch */
@@ -735,6 +926,16 @@
   .back-to-top:active,
   .whatsapp-float:active {
     transform: scale(0.95);
+  }
+
+  /* Ensure all text is centered on touch devices */
+  .footer-widget {
+    text-align: center;
+  }
+
+  .widget-title:after {
+    left: 50%;
+    transform: translateX(-50%);
   }
 }
 
