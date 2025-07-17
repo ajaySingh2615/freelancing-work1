@@ -4,70 +4,57 @@
     <footer id="footer" class="footer-area">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-md-6">
+                <div class="col-lg-4 col-md-6">
                     <div class="footer-widget about-widget">
                         <div class="footer-logo">
-                            <img src="assets/images/logo-white.png" alt="Sunrise Global Education" class="img-fluid">
+                            <a href="index.php">
+                                <img src="assets/images/media/logo/sunrise-logo.webp" alt="Sunrise Global Education" class="img-fluid">
+                            </a>
                         </div>
-                        <p class="about-text">Sunrise Global Education is a leading educational consultancy specializing in medical education abroad. We help students achieve their dreams of becoming successful medical professionals.</p>
+                        <p class="about-text">Leading educational consultancy specializing in medical education abroad, helping students achieve their dreams of becoming successful medical professionals worldwide.</p>
                         <ul class="social-icons">
-                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                            <li><a href="https://www.facebook.com/people/Sunrise-Global-Education-Pvt-Ltd/61577444481874/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+                            <li><a href="https://www.instagram.com/sunriseglobaleducation_ggn/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a></li>
+                            <li><a href="https://www.linkedin.com/company/sunrise-global-education-ggn/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a></li>
+                            <li><a href="https://x.com/sge_ggn" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a></li>
+                            <li><a href="https://www.youtube.com/@sunriseglobaleducationggn" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a></li>
                         </ul>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6">
+                <div class="col-lg-4 col-md-6">
                     <div class="footer-widget">
                         <h4 class="widget-title">Quick Links</h4>
                         <ul class="footer-links">
                             <li><a href="index.php">Home</a></li>
                             <li><a href="about.php">About Us</a></li>
-                            <li><a href="universities.php">Universities</a></li>
-                            <li><a href="countries.php">Countries</a></li>
-                            <li><a href="resources.php">Resources</a></li>
+                            <li><a href="destinations.php">MBBS Destinations</a></li>
+                            <li><a href="universities.php">University Partners</a></li>
+                            <li><a href="blog.php">Blog & Resources</a></li>
                             <li><a href="contact.php">Contact Us</a></li>
                         </ul>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="footer-widget">
-                        <h4 class="widget-title">Our Services</h4>
-                        <ul class="footer-links">
-                            <li><a href="#">University Selection</a></li>
-                            <li><a href="#">Admission Guidance</a></li>
-                            <li><a href="#">Visa Assistance</a></li>
-                            <li><a href="#">Pre-Departure Briefing</a></li>
-                            <li><a href="#">Accommodation Support</a></li>
-                            <li><a href="#">Career Counseling</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
+                <div class="col-lg-4 col-md-6">
                     <div class="footer-widget">
                         <h4 class="widget-title">Contact Info</h4>
                         <ul class="contact-info">
                             <li>
                                 <i class="fas fa-map-marker-alt"></i>
-                                <span>123 Main Street, New Delhi, India</span>
+                                <span>Unit-828, Tower B3, Spaze i-Tech Park, Sector 49, Gurugram, Haryana 122018</span>
                             </li>
                             <li>
                                 <i class="fas fa-phone-alt"></i>
-                                <a href="tel:1800-123-4567">1800-123-4567</a>
+                                <a href="tel:+91-9996817513">+91-9996817513</a>
                             </li>
                             <li>
                                 <i class="fas fa-envelope"></i>
-                                <a href="mailto:info@medstudy.global">info@medstudy.global</a>
+                                <a href="mailto:sunriseglobaleducationgurgaon@gmail.com">sunriseglobaleducationgurgaon@gmail.com</a>
+                            </li>
+                            <li>
+                                <i class="fas fa-clock"></i>
+                                <span>Mon - Sat: 9:00 AM - 6:00 PM</span>
                             </li>
                         </ul>
-                        <div class="newsletter">
-                            <h5>Subscribe to Our Newsletter</h5>
-                            <form action="#" method="post" class="newsletter-form">
-                                <input type="email" name="email" placeholder="Your Email Address" required>
-                                <button type="submit"><i class="fas fa-paper-plane"></i></button>
-                            </form>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -76,7 +63,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                        <p>&copy; 2023 MedStudy Global. All Rights Reserved.</p>
+                        <p>&copy; 2024 Sunrise Global Education. All Rights Reserved.</p>
                     </div>
                 </div>
             </div>
