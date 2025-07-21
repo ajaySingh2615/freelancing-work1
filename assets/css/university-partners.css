@@ -1,0 +1,952 @@
+/* 
+* University Partners Page Styles
+* Bootstrap 4.6 Integration with MedStudy Global Design System
+*/
+
+/* ===== HERO SECTION ===== */
+.university-partners-hero {
+  background: linear-gradient(135deg, #f8fafb 0%, #e9ecef 100%);
+  padding: 3rem 0;
+  position: relative;
+}
+
+.bg-gradient-light {
+  background: linear-gradient(135deg, #f8fafb 0%, #e9ecef 100%);
+}
+
+/* Custom Breadcrumb */
+.custom-breadcrumb {
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 25px;
+  padding: 0.5rem 1.5rem;
+  backdrop-filter: blur(10px);
+  display: inline-flex;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.custom-breadcrumb .breadcrumb-item a {
+  color: var(--primary-color);
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.custom-breadcrumb .breadcrumb-item a:hover {
+  color: var(--primary-dark);
+  text-decoration: none;
+}
+
+.custom-breadcrumb .breadcrumb-item.active {
+  color: #6c757d;
+  font-weight: 600;
+}
+
+.custom-breadcrumb .breadcrumb-item + .breadcrumb-item::before {
+  content: "›";
+  color: #6c757d;
+  font-weight: 600;
+}
+
+/* Country Header Card */
+.country-header-card {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  transition: all 0.3s ease;
+}
+
+.country-header-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Enhanced Flag Styling */
+.country-flag-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flag-wrapper {
+  position: relative;
+  z-index: 2;
+}
+
+.country-flag-img {
+  width: 70px;
+  height: 50px;
+  border-radius: 12px;
+  object-fit: cover;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  border: 3px solid rgba(255, 255, 255, 0.9);
+  transition: all 0.3s ease;
+}
+
+.country-flag-img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+}
+
+.flag-backdrop {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90px;
+  height: 70px;
+  background: linear-gradient(
+    135deg,
+    var(--primary-color),
+    var(--secondary-color)
+  );
+  border-radius: 15px;
+  opacity: 0.1;
+  z-index: 1;
+}
+
+/* Country Title and Stats */
+.country-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--dark-color);
+  line-height: 1.2;
+  margin: 0;
+}
+
+.country-stats {
+  margin-top: 1rem;
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.7);
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.stat-item:hover {
+  background: rgba(255, 255, 255, 0.9);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.stat-number {
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-right: 0.25rem;
+  color: var(--dark-color);
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  color: #6c757d;
+  font-weight: 500;
+}
+
+/* Country Description */
+.country-description {
+  background: rgba(108, 117, 125, 0.05);
+  border-radius: 12px;
+  padding: 1.25rem;
+  border-left: 4px solid var(--primary-color);
+}
+
+.description-text {
+  color: #495057;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Enhanced Badge Styling */
+.country-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.custom-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.custom-badge::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+.custom-badge:hover::before {
+  left: 100%;
+}
+
+.badge-popular {
+  background: linear-gradient(135deg, #ffc107, #ffb300);
+  color: #212529;
+  border-color: #ffc107;
+}
+
+.badge-budget {
+  background: linear-gradient(135deg, #28a745, #20c997);
+  color: white;
+  border-color: #28a745;
+}
+
+.badge-recommended {
+  background: linear-gradient(
+    135deg,
+    var(--primary-color),
+    var(--secondary-color)
+  );
+  color: white;
+  border-color: var(--primary-color);
+}
+
+/* Enhanced Guidance Card */
+.guidance-card {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  height: 100%;
+  transition: all 0.3s ease;
+}
+
+.guidance-card:hover {
+  transform: translateY(-10px);
+}
+
+.card-gradient-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    var(--primary-color) 0%,
+    var(--secondary-color) 100%
+  );
+  opacity: 1;
+}
+
+.card-content {
+  position: relative;
+  z-index: 2;
+  padding: 2rem;
+  text-align: center;
+  color: white;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.icon-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.icon-circle {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+.guidance-card:hover .icon-circle {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
+}
+
+.icon-circle i {
+  font-size: 1.5rem;
+  color: white;
+}
+
+.card-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 1rem;
+}
+
+.card-description {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 1.5rem;
+}
+
+.btn-consultation {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  padding: 0.75rem 2rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  margin-bottom: 1.5rem;
+}
+
+.btn-consultation:hover {
+  background: white;
+  color: var(--primary-color);
+  border-color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+}
+
+.consultation-features {
+  text-align: left;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* ===== UNIVERSITY CARDS ===== */
+.hover-lift-university {
+  transition: all 0.3s ease;
+  border-radius: var(--medium-radius);
+  overflow: hidden;
+}
+
+.hover-lift-university:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15) !important;
+}
+
+/* University Image Container */
+.university-image-container {
+  height: 200px;
+  overflow: hidden;
+  position: relative;
+}
+
+.university-featured-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.university-placeholder-img {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.hover-lift-university:hover .university-featured-img {
+  transform: scale(1.05);
+}
+
+/* University Logo Overlay */
+.university-logo-overlay {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background: white;
+  border-radius: 8px;
+  padding: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.university-logo {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+/* University Meta Information */
+.university-meta {
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
+.university-meta i {
+  width: 14px;
+  text-align: center;
+}
+
+/* University Fees Display */
+.university-fees {
+  background: rgba(var(--success-rgb), 0.1);
+  border-radius: var(--small-radius);
+  padding: var(--sm);
+  border: 1px solid rgba(var(--success-rgb), 0.2);
+}
+
+/* ===== CARD ANIMATIONS ===== */
+.university-card-wrapper {
+  animation: fadeInUp 0.6s ease-out;
+  animation-fill-mode: both;
+}
+
+/* Staggered Animation Delays */
+.university-card-wrapper:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.university-card-wrapper:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.university-card-wrapper:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.university-card-wrapper:nth-child(4) {
+  animation-delay: 0.4s;
+}
+.university-card-wrapper:nth-child(5) {
+  animation-delay: 0.5s;
+}
+.university-card-wrapper:nth-child(6) {
+  animation-delay: 0.6s;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== SEARCH AND FILTER SECTION ===== */
+.search-filter-section {
+  background: var(--light-bg);
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* Enhanced Input Groups */
+.input-group-text {
+  background: white;
+  border: 1px solid #ced4da;
+}
+
+.input-group .form-control:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 0.2rem rgba(0, 53, 133, 0.25);
+}
+
+/* Custom Select Styling */
+.form-select:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 0.2rem rgba(0, 53, 133, 0.25);
+}
+
+/* Result Count Badge */
+.university-count-badge {
+  background: var(--primary-color);
+  color: white;
+  font-weight: var(--medium-weight);
+}
+
+/* ===== CONSULTATION FORM SECTION ===== */
+.consultation-form-section {
+  background: var(--light-bg);
+}
+
+/* Form Styling */
+.form-label {
+  font-weight: var(--medium-weight);
+  color: var(--text-color);
+  margin-bottom: var(--xs);
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 0.25rem rgba(0, 53, 133, 0.25);
+}
+
+/* Required Field Indicator */
+.text-danger {
+  color: #dc3545 !important;
+}
+
+/* Form Section Headers */
+.form-section-header {
+  color: var(--primary-color);
+  font-weight: var(--semibold);
+  border-bottom: 2px solid var(--primary-color);
+  padding-bottom: var(--xs);
+  margin-bottom: var(--lg);
+}
+
+/* Form Card Styling */
+.consultation-card {
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.1);
+  border: none;
+  border-radius: var(--medium-radius);
+  overflow: hidden;
+}
+
+.consultation-card .card-header {
+  background: linear-gradient(
+    135deg,
+    var(--primary-color) 0%,
+    var(--primary-dark) 100%
+  );
+  border: none;
+}
+
+/* Submit Button Enhancement */
+.btn-submit {
+  background: linear-gradient(
+    135deg,
+    var(--primary-color) 0%,
+    var(--primary-dark) 100%
+  );
+  border: none;
+  font-weight: var(--semibold);
+  padding: var(--md) var(--xl);
+  transition: all 0.3s ease;
+}
+
+.btn-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 53, 133, 0.3);
+}
+
+/* ===== SMOOTH SCROLLING ===== */
+.smooth-scroll {
+  scroll-behavior: smooth;
+  transition: all 0.3s ease;
+}
+
+.smooth-scroll:hover {
+  transform: translateY(-1px);
+}
+
+/* ===== ALERTS AND NOTIFICATIONS ===== */
+.alert {
+  border: none;
+  border-radius: var(--medium-radius);
+  padding: var(--lg);
+  margin-bottom: var(--lg);
+}
+
+.alert-success {
+  background: linear-gradient(
+    135deg,
+    rgba(40, 167, 69, 0.1) 0%,
+    rgba(40, 167, 69, 0.05) 100%
+  );
+  color: #155724;
+  border-left: 4px solid #28a745;
+}
+
+.alert-danger {
+  background: linear-gradient(
+    135deg,
+    rgba(220, 53, 69, 0.1) 0%,
+    rgba(220, 53, 69, 0.05) 100%
+  );
+  color: #721c24;
+  border-left: 4px solid #dc3545;
+}
+
+/* ===== LOADING STATES ===== */
+.btn-loading {
+  position: relative;
+  color: transparent !important;
+}
+
+.btn-loading::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 50%;
+  left: 50%;
+  margin-left: -10px;
+  margin-top: -10px;
+  border: 2px solid transparent;
+  border-top: 2px solid currentColor;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* ===== NO UNIVERSITIES STATE ===== */
+.no-universities-state {
+  padding: var(--section-padding);
+  text-align: center;
+}
+
+.no-universities-icon {
+  color: var(--light-text);
+  margin-bottom: var(--lg);
+}
+
+.no-universities-title {
+  color: var(--text-color);
+  font-weight: var(--semibold);
+  margin-bottom: var(--md);
+}
+
+.no-universities-description {
+  color: var(--light-text);
+  margin-bottom: var(--xl);
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+
+/* Tablet Landscape (768px - 1024px) */
+@media (max-width: 1024px) {
+  .university-partners-hero {
+    padding: 2.5rem 0;
+  }
+
+  .country-flag-img {
+    width: 60px;
+    height: 42px;
+  }
+
+  .country-title {
+    font-size: 1.9rem;
+  }
+
+  .flag-backdrop {
+    width: 80px;
+    height: 62px;
+  }
+
+  .university-image-container {
+    height: 180px;
+  }
+}
+
+/* Tablet Portrait (768px) */
+@media (max-width: 768px) {
+  .university-partners-hero {
+    padding: 2rem 0;
+  }
+
+  .country-flag-img {
+    width: 55px;
+    height: 39px;
+  }
+
+  .country-title {
+    font-size: 1.75rem;
+  }
+
+  .flag-backdrop {
+    width: 75px;
+    height: 59px;
+  }
+
+  .country-stats {
+    justify-content: center;
+  }
+
+  .stat-item {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
+  }
+
+  .guidance-card {
+    margin-top: 2rem;
+  }
+
+  .card-content {
+    padding: 1.5rem;
+  }
+
+  .university-image-container {
+    height: 160px;
+  }
+
+  /* Stack hero content vertically */
+  .university-partners-hero .row {
+    flex-direction: column;
+  }
+
+  .university-partners-hero .col-lg-4 {
+    margin-top: var(--lg);
+  }
+
+  /* Adjust search filters */
+  .search-filter-section .row {
+    flex-direction: column;
+    gap: var(--md);
+  }
+
+  /* Full width form elements on mobile */
+  .consultation-card .card-body {
+    padding: var(--lg) var(--md);
+  }
+}
+
+/* Mobile Landscape (576px - 768px) */
+@media (max-width: 576px) {
+  .university-partners-hero {
+    padding: 1.5rem 0;
+  }
+
+  .country-flag-img {
+    width: 50px;
+    height: 35px;
+  }
+
+  .country-title {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  .flag-backdrop {
+    width: 70px;
+    height: 55px;
+  }
+
+  .description-text {
+    font-size: 0.9rem;
+  }
+
+  .university-image-container {
+    height: 140px;
+  }
+
+  .guidance-card {
+    margin-top: 2rem;
+  }
+
+  .card-content {
+    padding: 1.25rem;
+  }
+
+  .btn-consultation {
+    padding: 0.6rem 1.5rem;
+    font-size: 0.9rem;
+  }
+
+  /* Adjust spacing */
+  .university-card-wrapper {
+    margin-bottom: var(--lg);
+  }
+
+  /* Stack hero elements vertically */
+  .country-header-card .d-flex.align-items-start {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+
+  .country-flag-container {
+    margin: 0 auto;
+  }
+
+  .country-stats {
+    justify-content: center;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .stat-item {
+    justify-content: center;
+    min-width: 200px;
+  }
+
+  .custom-badge {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+  }
+
+  /* Mobile form adjustments */
+  .consultation-card .card-header {
+    padding: var(--lg) var(--md);
+  }
+
+  .consultation-card .card-body {
+    padding: var(--lg) var(--sm);
+  }
+
+  /* Full width buttons on mobile */
+  .btn-lg {
+    padding: var(--md) var(--lg);
+    font-size: var(--base);
+  }
+}
+}
+
+/* Mobile Portrait (320px - 576px) */
+@media (max-width: 480px) {
+  .university-partners-hero {
+    padding: var(--md) 0;
+  }
+
+  .country-flag-large {
+    text-align: center;
+    margin-bottom: var(--md);
+  }
+
+  .university-partners-hero .d-flex {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .university-image-container {
+    height: 120px;
+  }
+
+  /* Smaller university logos */
+  .university-logo {
+    width: 30px;
+    height: 30px;
+  }
+
+  .university-logo-overlay {
+    bottom: 5px;
+    right: 5px;
+    padding: 4px;
+  }
+
+  /* Compact form styling */
+  .consultation-card .card-body {
+    padding: var(--md) var(--sm);
+  }
+
+  .form-label {
+    font-size: var(--small);
+  }
+
+  .btn {
+    font-size: var(--small);
+  }
+}
+
+/* High DPI / Retina Displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .university-featured-img,
+  .university-logo {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
+
+/* ===== PRINT STYLES ===== */
+@media print {
+  .university-partners-hero,
+  .search-filter-section,
+  .consultation-form-section {
+    display: none;
+  }
+
+  .university-card-wrapper {
+    break-inside: avoid;
+    margin-bottom: var(--lg);
+  }
+
+  .hover-lift-university {
+    box-shadow: none !important;
+    transform: none !important;
+  }
+
+  .university-featured-img {
+    transform: none !important;
+  }
+}
+
+/* ===== ACCESSIBILITY IMPROVEMENTS ===== */
+
+/* Focus States */
+.btn:focus,
+.form-control:focus,
+.form-select:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  .university-card-wrapper {
+    border: 2px solid var(--text-color);
+  }
+
+  .btn {
+    border: 2px solid currentColor;
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .hover-lift-university:hover {
+    transform: none;
+  }
+
+  .university-featured-img {
+    transition: none;
+  }
+}
+
+/* ===== DARK MODE SUPPORT (Future Enhancement) ===== */
+@media (prefers-color-scheme: dark) {
+  /* Dark mode styles can be added here in future updates */
+}

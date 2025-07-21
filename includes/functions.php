@@ -194,6 +194,37 @@ function getCountryBySlug($slug) {
 }
 
 /**
+ * Get country by ID
+ * @param int $country_id - Country ID
+ * @return array|null - Country data or null
+ */
+function getCountryById($country_id) {
+    global $db;
+    
+    try {
+        $stmt = $db->prepare("
+            SELECT * FROM countries 
+            WHERE id = ? AND is_active = 1 
+            LIMIT 1
+        ");
+        $stmt->execute([$country_id]);
+        
+        $country = $stmt->fetch();
+        
+        if ($country) {
+            // Decode JSON categories
+            $country['categories'] = json_decode($country['categories'], true) ?? [];
+        }
+        
+        return $country;
+        
+    } catch (PDOException $e) {
+        error_log("Error fetching country by ID: " . $e->getMessage());
+        return null;
+    }
+}
+
+/**
  * Get total universities count for a country
  * @param int $country_id - Country ID
  * @return int - Count of active universities
