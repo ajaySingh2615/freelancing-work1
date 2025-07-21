@@ -279,4 +279,298 @@ function generateImageAltText($filename, $context = '') {
     
     return $filename;
 }
+
+/**
+ * Upload university featured image
+ */
+function uploadUniversityFeaturedImage($file, $universitySlug) {
+    $folder = 'universities/featured';
+    $result = uploadToCloudinary($file, $folder);
+    
+    if (isset($result['success'])) {
+        // Add university-specific metadata
+        $result['alt_text'] = generateImageAltText($file['name'], $universitySlug . ' university featured image');
+        $result['category'] = 'featured';
+    }
+    
+    return $result;
+}
+
+/**
+ * Upload university logo image
+ */
+function uploadUniversityLogo($file, $universitySlug) {
+    $folder = 'universities/logos';
+    $result = uploadToCloudinary($file, $folder);
+    
+    if (isset($result['success'])) {
+        // Add university-specific metadata
+        $result['alt_text'] = generateImageAltText($file['name'], $universitySlug . ' university logo');
+        $result['category'] = 'logo';
+    }
+    
+    return $result;
+}
+
+/**
+ * Upload university gallery image
+ */
+function uploadUniversityGalleryImage($file, $universitySlug) {
+    $folder = 'universities/gallery';
+    $result = uploadToCloudinary($file, $folder);
+    
+    if (isset($result['success'])) {
+        // Add university-specific metadata
+        $result['alt_text'] = generateImageAltText($file['name'], $universitySlug . ' university campus');
+        $result['category'] = 'gallery';
+    }
+    
+    return $result;
+}
+
+/**
+ * Upload country featured image
+ */
+function uploadCountryFeaturedImage($file, $countrySlug) {
+    $folder = 'countries/featured';
+    $result = uploadToCloudinary($file, $folder);
+    
+    if (isset($result['success'])) {
+        // Add country-specific metadata
+        $result['alt_text'] = generateImageAltText($file['name'], 'Study in ' . ucfirst($countrySlug));
+        $result['category'] = 'country';
+    }
+    
+    return $result;
+}
+
+/**
+ * Bulk upload university images
+ */
+function bulkUploadUniversityImages($files, $universitySlug) {
+    global $db;
+    
+    if (!is_array($files['tmp_name'])) {
+        return ['error' => 'No files provided for bulk upload'];
+    }
+    
+    $results = [];
+    $successCount = 0;
+    $errorCount = 0;
+    
+    for ($i = 0; $i < count($files['tmp_name']); $i++) {
+        $file = [
+            'name' => $files['name'][$i],
+            'type' => $files['type'][$i],
+            'tmp_name' => $files['tmp_name'][$i],
+            'error' => $files['error'][$i],
+            'size' => $files['size'][$i]
+        ];
+        
+        // Skip if file has error
+        if ($file['error'] !== UPLOAD_ERR_OK) {
+            $results[] = [
+                'filename' => $file['name'],
+                'success' => false,
+                'error' => 'Upload error code: ' . $file['error']
+            ];
+            $errorCount++;
+            continue;
+        }
+        
+        // Upload to Cloudinary
+        $uploadResult = uploadUniversityGalleryImage($file, $universitySlug);
+        
+        if (isset($uploadResult['success'])) {
+            // Get university ID
+            $stmt = $db->prepare("SELECT id FROM universities WHERE slug = ? LIMIT 1");
+            $stmt->execute([$universitySlug]);
+            $university = $stmt->fetch();
+            
+            if ($university) {
+                // Insert into university_images table
+                $imageStmt = $db->prepare("INSERT INTO university_images (university_id, image_url) VALUES (?, ?)");
+                $imageStmt->execute([$university['id'], $uploadResult['url']]);
+                
+                $results[] = [
+                    'filename' => $file['name'],
+                    'success' => true,
+                    'url' => $uploadResult['url'],
+                    'public_id' => $uploadResult['public_id']
+                ];
+                $successCount++;
+            } else {
+                $results[] = [
+                    'filename' => $file['name'],
+                    'success' => false,
+                    'error' => 'University not found'
+                ];
+                $errorCount++;
+            }
+        } else {
+            $results[] = [
+                'filename' => $file['name'],
+                'success' => false,
+                'error' => $uploadResult['error'] ?? 'Unknown upload error'
+            ];
+            $errorCount++;
+        }
+    }
+    
+    return [
+        'success' => $successCount > 0,
+        'summary' => [
+            'total' => count($files['tmp_name']),
+            'success' => $successCount,
+            'errors' => $errorCount
+        ],
+        'results' => $results
+    ];
+}
+
+/**
+ * Get university image presets for different use cases
+ */
+function getUniversityImagePresets($url) {
+    if (empty($url)) return [];
+    
+    return [
+        // Featured image presets
+        'hero_desktop' => getOptimizedImageUrl($url, 1600, 900, 'auto'),
+        'hero_tablet' => getOptimizedImageUrl($url, 1024, 576, 'auto'),
+        'hero_mobile' => getOptimizedImageUrl($url, 768, 432, 'auto'),
+        
+        // Card/listing presets
+        'card_large' => getOptimizedImageUrl($url, 600, 400, 'auto'),
+        'card_medium' => getOptimizedImageUrl($url, 400, 267, 'auto'),
+        'card_small' => getOptimizedImageUrl($url, 300, 200, 'auto'),
+        
+        // Logo presets
+        'logo_large' => getOptimizedImageUrl($url, 200, 200, 'auto'),
+        'logo_medium' => getOptimizedImageUrl($url, 100, 100, 'auto'),
+        'logo_small' => getOptimizedImageUrl($url, 50, 50, 'auto'),
+        
+        // Gallery presets
+        'gallery_main' => getOptimizedImageUrl($url, 800, 600, 'auto'),
+        'gallery_thumb' => getOptimizedImageUrl($url, 150, 150, 'auto'),
+        
+        // Original
+        'original' => $url
+    ];
+}
+
+/**
+ * Delete university images from both Cloudinary and database
+ */
+function deleteUniversityImage($imageId) {
+    global $db;
+    
+    try {
+        // Get image details from database
+        $stmt = $db->prepare("SELECT * FROM university_images WHERE id = ?");
+        $stmt->execute([$imageId]);
+        $image = $stmt->fetch();
+        
+        if (!$image) {
+            return ['error' => 'Image not found'];
+        }
+        
+        // Extract public_id from Cloudinary URL
+        $publicId = extractPublicIdFromUrl($image['image_url']);
+        
+        if ($publicId) {
+            // Delete from Cloudinary
+            $cloudinaryResult = deleteFromCloudinary($publicId);
+            
+            if (!isset($cloudinaryResult['success'])) {
+                // Log warning but continue with database deletion
+                error_log("Failed to delete from Cloudinary: " . ($cloudinaryResult['error'] ?? 'Unknown error'));
+            }
+        }
+        
+        // Delete from database
+        $deleteStmt = $db->prepare("DELETE FROM university_images WHERE id = ?");
+        $deleteStmt->execute([$imageId]);
+        
+        return ['success' => true, 'message' => 'Image deleted successfully'];
+        
+    } catch (Exception $e) {
+        return ['error' => 'Delete error: ' . $e->getMessage()];
+    }
+}
+
+/**
+ * Extract public_id from Cloudinary URL
+ */
+function extractPublicIdFromUrl($url) {
+    if (strpos($url, 'cloudinary.com') === false) {
+        return null;
+    }
+    
+    // Extract the public_id from URL
+    // Example URL: https://res.cloudinary.com/cloud/image/upload/v1234567890/folder/image.jpg
+    preg_match('/\/upload\/(?:v\d+\/)?(.+)\.([^.]+)$/', $url, $matches);
+    
+    if (isset($matches[1])) {
+        return $matches[1];
+    }
+    
+    return null;
+}
+
+/**
+ * Optimize image upload settings for universities
+ */
+function getUniversityUploadSettings() {
+    return [
+        'max_file_size' => 5 * 1024 * 1024, // 5MB
+        'allowed_types' => ['image/jpeg', 'image/png', 'image/webp'],
+        'min_dimensions' => ['width' => 400, 'height' => 300],
+        'max_dimensions' => ['width' => 5000, 'height' => 5000],
+        'quality' => 'auto:best',
+        'format' => 'auto'
+    ];
+}
+
+/**
+ * Validate university image upload
+ */
+function validateUniversityImageUpload($file, $type = 'gallery') {
+    $errors = validateImageFile($file);
+    $settings = getUniversityUploadSettings();
+    
+    // Additional validation for specific image types
+    if (empty($errors)) {
+        $imageInfo = getimagesize($file['tmp_name']);
+        $width = $imageInfo[0];
+        $height = $imageInfo[1];
+        
+        switch ($type) {
+            case 'logo':
+                if ($width < 100 || $height < 100) {
+                    $errors[] = 'Logo image too small. Minimum size is 100x100 pixels';
+                }
+                break;
+                
+            case 'featured':
+                if ($width < 800 || $height < 400) {
+                    $errors[] = 'Featured image too small. Minimum size is 800x400 pixels';
+                }
+                // Aspect ratio check (prefer 16:9 or 4:3)
+                $ratio = $width / $height;
+                if ($ratio < 1.3 || $ratio > 2.0) {
+                    $errors[] = 'Featured image should have aspect ratio between 4:3 and 2:1';
+                }
+                break;
+                
+            case 'gallery':
+                if ($width < 400 || $height < 300) {
+                    $errors[] = 'Gallery image too small. Minimum size is 400x300 pixels';
+                }
+                break;
+        }
+    }
+    
+    return $errors;
+}
 ?> 

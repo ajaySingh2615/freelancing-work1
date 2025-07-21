@@ -2,6 +2,11 @@
 $page_title = "MBBS Destinations - Best Countries to Study Abroad";
 $page_description = "Explore the best countries for MBBS studies abroad. Compare destinations, universities, and opportunities for medical education.";
 include 'includes/header.php';
+include 'includes/functions.php';
+
+// Get all countries from database
+$countries = getCountriesByRegion();
+$totalCountries = count($countries);
 ?>
 
 <!-- Hero Section -->
@@ -47,9 +52,9 @@ include 'includes/header.php';
             </div>
             
             <div class="search-stats">
-                <span class="search-result-count" id="resultCount">12 Countries</span>
+                <span class="search-result-count" id="resultCount"><?php echo $totalCountries; ?> Countries</span>
                 <span>•</span>
-                <span>Popular destinations for Indian students</span>
+                <span>Popular destinations for international students</span>
             </div>
             
             <div class="search-filters">
@@ -83,305 +88,76 @@ include 'includes/header.php';
     <div class="container">
         <div class="countries-grid">
             
-            <!-- Russia -->
-            <div class="country-card" data-country="russia" data-region="asia" data-category="popular,budget">
-                <div class="country-header">
-                    <div class="country-flag">
-                        <span class="flag-icon flag-icon-ru"></span>
+            <?php if (!empty($countries)): ?>
+                <?php foreach ($countries as $country): 
+                    $universitiesCount = getUniversitiesCountByCountry($country['id']);
+                    $categoriesString = is_array($country['categories']) ? implode(',', $country['categories']) : '';
+                ?>
+                <div class="country-card" 
+                     data-country="<?php echo htmlspecialchars($country['slug']); ?>" 
+                     data-region="<?php echo htmlspecialchars($country['region']); ?>" 
+                     data-category="<?php echo htmlspecialchars($categoriesString); ?>">
+                    
+                    <div class="country-header">
+                        <div class="country-flag">
+                            <span class="flag-icon flag-icon-<?php echo htmlspecialchars($country['flag_code']); ?>"></span>
+                        </div>
+                        <div class="country-info">
+                            <h3 class="country-name"><?php echo htmlspecialchars($country['name']); ?></h3>
+                            <p class="students-count">
+                                <i class="fas fa-users"></i>
+                                <?php echo number_format($country['student_count']); ?> Students
+                            </p>
+                            <p class="universities-count">
+                                <i class="fas fa-university"></i>
+                                <?php echo $universitiesCount; ?> <?php echo $universitiesCount === 1 ? 'University' : 'Universities'; ?>
+                            </p>
+                        </div>
                     </div>
-                    <div class="country-info">
-                        <h3 class="country-name">Russia</h3>
-                        <p class="students-count">
-                            <i class="fas fa-users"></i>
-                            18039 Indian Students
+                    
+                    <div class="country-content">
+                        <p class="country-description">
+                            <?php echo htmlspecialchars(substr($country['description'], 0, 200)); ?>
+                            <?php if (strlen($country['description']) > 200) echo '...'; ?>
                         </p>
+                        
+                        <?php if (!empty($country['categories'])): ?>
+                        <div class="country-tags">
+                            <?php foreach ($country['categories'] as $category): ?>
+                                <span class="tag tag-<?php echo htmlspecialchars($category); ?>">
+                                    <?php echo ucfirst($category); ?>
+                                </span>
+                            <?php endforeach; ?>
+                        </div>
+                        <?php endif; ?>
+                        
+                        <div class="country-actions">
+                            <a href="university-partners.php?country=<?php echo urlencode($country['slug']); ?>" 
+                               class="btn btn-secondary" 
+                               data-track="explore_universities"
+                               data-country="<?php echo htmlspecialchars($country['name']); ?>">
+                                View Universities
+                            </a>
+                            <a href="contact.php?country=<?php echo urlencode($country['slug']); ?>" 
+                               class="btn btn-accent" 
+                               data-track="talk_to_counselor"
+                               data-country="<?php echo htmlspecialchars($country['name']); ?>">
+                                Get Consultation
+                            </a>
+                        </div>
                     </div>
                 </div>
-                <div class="country-content">
-                    <p class="country-description">
-                        Indians have been going to Russia to study Medicine since last 25 years. However, there are few top universities worth going due to English taught programs as per Indian government website.
-                    </p>
-                    <div class="country-actions">
-                        <a href="#" class="btn btn-secondary">Explore Universities</a>
-                        <a href="#" class="btn btn-accent">Talk to Counselor</a>
+                <?php endforeach; ?>
+                
+            <?php else: ?>
+                <div class="no-countries">
+                    <div class="no-countries-content">
+                        <i class="fas fa-globe-americas fa-3x"></i>
+                        <h3>No countries available</h3>
+                        <p>We're currently updating our destinations. Please check back soon!</p>
                     </div>
                 </div>
-            </div>
-
-            <!-- Georgia -->
-            <div class="country-card" data-country="georgia" data-region="asia" data-category="popular,budget">
-                <div class="country-header">
-                    <div class="country-flag">
-                        <span class="flag-icon flag-icon-ge"></span>
-                    </div>
-                    <div class="country-info">
-                        <h3 class="country-name">Georgia</h3>
-                        <p class="students-count">
-                            <i class="fas fa-users"></i>
-                            14000 Indian Students
-                        </p>
-                    </div>
-                </div>
-                <div class="country-content">
-                    <p class="country-description">
-                        Most of the universities in Georgia are privately run small scale colleges. However, Indian agents promote to earn money out of the students career. Be very careful before you select this country.
-                    </p>
-                    <div class="country-actions">
-                        <a href="#" class="btn btn-secondary">Explore Universities</a>
-                        <a href="#" class="btn btn-accent">Talk to Counselor</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Kazakhstan -->
-            <div class="country-card" data-country="kazakhstan" data-region="asia" data-category="popular,budget">
-                <div class="country-header">
-                    <div class="country-flag">
-                        <span class="flag-icon flag-icon-kz"></span>
-                    </div>
-                    <div class="country-info">
-                        <h3 class="country-name">Kazakhstan</h3>
-                        <p class="students-count">
-                            <i class="fas fa-users"></i>
-                            3555 Indian Students
-                        </p>
-                    </div>
-                </div>
-                <div class="country-content">
-                    <p class="country-description">
-                        Since 2017 onward, Kazakh has been increasingly popular among Indian students and the students are shifting their choice from Kyrgyzstan to Kazakh due to better quality of infra & education. It also offers 5 years of Medicine.
-                    </p>
-                    <div class="country-actions">
-                        <a href="#" class="btn btn-secondary">Explore Universities</a>
-                        <a href="#" class="btn btn-accent">Talk to Counselor</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Egypt -->
-            <div class="country-card" data-country="egypt" data-region="africa" data-category="budget">
-                <div class="country-header">
-                    <div class="country-flag">
-                        <span class="flag-icon flag-icon-eg"></span>
-                    </div>
-                    <div class="country-info">
-                        <h3 class="country-name">Egypt</h3>
-                        <p class="students-count">
-                            <i class="fas fa-users"></i>
-                            400 Indian Students
-                        </p>
-                    </div>
-                </div>
-                <div class="country-content">
-                    <p class="country-description">
-                        The ancient Egyptians practiced medicine with highly professional methods. They had advanced knowledge of anatomy and surgery. Universities in Egypt are Govt, rich history of teaching and Budget friendly.
-                    </p>
-                    <div class="country-actions">
-                        <a href="#" class="btn btn-secondary">Explore Universities</a>
-                        <a href="#" class="btn btn-accent">Talk to Counselor</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Nepal -->
-            <div class="country-card" data-country="nepal" data-region="asia" data-category="popular,budget">
-                <div class="country-header">
-                    <div class="country-flag">
-                        <span class="flag-icon flag-icon-np"></span>
-                    </div>
-                    <div class="country-info">
-                        <h3 class="country-name">Nepal</h3>
-                        <p class="students-count">
-                            <i class="fas fa-users"></i>
-                            2400 Indian Students
-                        </p>
-                    </div>
-                </div>
-                <div class="country-content">
-                    <p class="country-description">
-                        Nepal's Medical Education system is very similar to India's. The country offers NMC Seats of 6000 and 16 Private Medical colleges affiliated with Kathmandu & Tribhuvan University. As per NMC Nepal, 540 Seats are offered.
-                    </p>
-                    <div class="country-actions">
-                        <a href="#" class="btn btn-secondary">Explore Universities</a>
-                        <a href="#" class="btn btn-accent">Talk to Counselor</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- China -->
-            <div class="country-card" data-country="china" data-region="asia" data-category="popular">
-                <div class="country-header">
-                    <div class="country-flag">
-                        <span class="flag-icon flag-icon-cn"></span>
-                    </div>
-                    <div class="country-info">
-                        <h3 class="country-name">China</h3>
-                        <p class="students-count">
-                            <i class="fas fa-users"></i>
-                            6346 Indian Students
-                        </p>
-                    </div>
-                </div>
-                <div class="country-content">
-                    <p class="country-description">
-                        China was the most popular destination till 2019 among Indian due to its superb infrastructure, allowing Students to do their 1 Year Internship in India after 5 Years of MBBS in China, and Affordable Tuition Fees. Post COVID.
-                    </p>
-                    <div class="country-actions">
-                        <a href="#" class="btn btn-secondary">Explore Universities</a>
-                        <a href="#" class="btn btn-accent">Talk to Counselor</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Uzbekistan -->
-            <div class="country-card" data-country="uzbekistan" data-region="asia" data-category="budget">
-                <div class="country-header">
-                    <div class="country-flag">
-                        <span class="flag-icon flag-icon-uz"></span>
-                    </div>
-                    <div class="country-info">
-                        <h3 class="country-name">Uzbekistan</h3>
-                        <p class="students-count">
-                            <i class="fas fa-users"></i>
-                            250 Indian Students
-                        </p>
-                    </div>
-                </div>
-                <div class="country-content">
-                    <p class="country-description">
-                        Uzbekistan, a former part of the USSR is located in central Asia. There are 8 Medical Colleges in Uzbekistan offering Medicine programs of 6 Years to the students. All 8 Medical Colleges are branches of these 8 Medical Colleges. T...
-                    </p>
-                    <div class="country-actions">
-                        <a href="#" class="btn btn-secondary">Explore Universities</a>
-                        <a href="#" class="btn btn-accent">Talk to Counselor</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Germany -->
-            <div class="country-card" data-country="germany" data-region="europe" data-category="popular">
-                <div class="country-header">
-                    <div class="country-flag">
-                        <span class="flag-icon flag-icon-de"></span>
-                    </div>
-                    <div class="country-info">
-                        <h3 class="country-name">Germany</h3>
-                        <p class="students-count">
-                            <i class="fas fa-users"></i>
-                            54864 Indian Students
-                        </p>
-                    </div>
-                </div>
-                <div class="country-content">
-                    <p class="country-description">
-                        Germany is 5th Largest Economy and Hub of Automobile Engineering companies of the world. Germany is a popular destination in Europe due to it's many excellent universities, its dynamic student life and good funding...
-                    </p>
-                    <div class="country-actions">
-                        <a href="#" class="btn btn-secondary">Explore Universities</a>
-                        <a href="#" class="btn btn-accent">Talk to Counselor</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Italy -->
-            <div class="country-card" data-country="italy" data-region="europe" data-category="popular">
-                <div class="country-header">
-                    <div class="country-flag">
-                        <span class="flag-icon flag-icon-it"></span>
-                    </div>
-                    <div class="country-info">
-                        <h3 class="country-name">Italy</h3>
-                        <p class="students-count">
-                            <i class="fas fa-users"></i>
-                            5897 Indian Students
-                        </p>
-                    </div>
-                </div>
-                <div class="country-content">
-                    <p class="country-description">
-                        Italy is a top rated destination among Indian Students. Italy Public Universities are offering more than 500 English taught programs to International Students. Government of Italy offers more than 6000 scholarships every year.
-                    </p>
-                    <div class="country-actions">
-                        <a href="#" class="btn btn-secondary">Explore Universities</a>
-                        <a href="#" class="btn btn-accent">Talk to Counselor</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Poland -->
-            <div class="country-card" data-country="poland" data-region="europe" data-category="popular">
-                <div class="country-header">
-                    <div class="country-flag">
-                        <span class="flag-icon flag-icon-pl"></span>
-                    </div>
-                    <div class="country-info">
-                        <h3 class="country-name">Poland</h3>
-                        <p class="students-count">
-                            <i class="fas fa-users"></i>
-                            5000 Indian Students
-                        </p>
-                    </div>
-                </div>
-                <div class="country-content">
-                    <p class="country-description">
-                        There are more than 1.2 million students studying in Poland, at almost 380 universities. Polish university education system has a history of 650 years of educating high profile professionals. Living in Poland as a student is relative...
-                    </p>
-                    <div class="country-actions">
-                        <a href="#" class="btn btn-secondary">Explore Universities</a>
-                        <a href="#" class="btn btn-accent">Talk to Counselor</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Belarus -->
-            <div class="country-card" data-country="belarus" data-region="europe" data-category="budget">
-                <div class="country-header">
-                    <div class="country-flag">
-                        <span class="flag-icon flag-icon-by"></span>
-                    </div>
-                    <div class="country-info">
-                        <h3 class="country-name">Belarus</h3>
-                        <p class="students-count">
-                            <i class="fas fa-users"></i>
-                            793 Indian Students
-                        </p>
-                    </div>
-                </div>
-                <div class="country-content">
-                    <p class="country-description">
-                        There are only 4 medical Universities in Belarus and all 4 are FQME accredited. Belarus has a very good student life and good infrastructure. Universities in Belarus are affordable and offer good quality education.
-                    </p>
-                    <div class="country-actions">
-                        <a href="#" class="btn btn-secondary">Explore Universities</a>
-                        <a href="#" class="btn btn-accent">Talk to Counselor</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Latvia -->
-            <div class="country-card" data-country="latvia" data-region="europe" data-category="budget">
-                <div class="country-header">
-                    <div class="country-flag">
-                        <span class="flag-icon flag-icon-lv"></span>
-                    </div>
-                    <div class="country-info">
-                        <h3 class="country-name">Latvia</h3>
-                        <p class="students-count">
-                            <i class="fas fa-users"></i>
-                            1000 Indian Students
-                        </p>
-                    </div>
-                </div>
-                <div class="country-content">
-                    <p class="country-description">
-                        Latvia member of EU and NATO lies on the eastern shore of the Baltic Sea. The capital, Riga is a beautiful city with rich history and culture. Universities in Latvia offer excellent education with modern facilities.
-                    </p>
-                    <div class="country-actions">
-                        <a href="#" class="btn btn-secondary">Explore Universities</a>
-                        <a href="#" class="btn btn-accent">Talk to Counselor</a>
-                    </div>
-                </div>
-            </div>
+            <?php endif; ?>
 
         </div>
     </div>
@@ -412,16 +188,102 @@ include 'includes/header.php';
 <!-- JavaScript for Enhanced Functionality -->
 <script src="assets/js/destinations.js"></script>
 <script>
-// Add tracking attributes to buttons
+// Enhanced tracking and dynamic functionality
 document.addEventListener('DOMContentLoaded', function() {
+    // Track button clicks with additional country context
     const buttons = document.querySelectorAll('.country-actions .btn');
     buttons.forEach(button => {
-        const text = button.textContent.trim().toLowerCase();
-        if (text.includes('explore universities')) {
-            button.setAttribute('data-track', 'explore_universities');
-        } else if (text.includes('talk to counselor')) {
-            button.setAttribute('data-track', 'talk_to_counselor');
-        }
+        button.addEventListener('click', function() {
+            const country = this.getAttribute('data-country');
+            const action = this.getAttribute('data-track');
+            
+            // Analytics tracking (if available)
+            if (typeof gtag !== 'undefined') {
+                gtag('event', action, {
+                    'event_category': 'country_interaction',
+                    'event_label': country,
+                    'value': 1
+                });
+            }
+            
+            // Console log for development
+            console.log('Country Action:', {action, country, url: this.href});
+        });
+    });
+    
+    // Update search functionality for database-driven content
+    const searchInput = document.getElementById('countrySearch');
+    const countryCards = document.querySelectorAll('.country-card');
+    const resultCount = document.getElementById('resultCount');
+    
+    if (searchInput) {
+        searchInput.addEventListener('input', function() {
+            const query = this.value.toLowerCase().trim();
+            let visibleCount = 0;
+            
+            countryCards.forEach(card => {
+                const countryName = card.querySelector('.country-name').textContent.toLowerCase();
+                const description = card.querySelector('.country-description').textContent.toLowerCase();
+                const region = card.getAttribute('data-region');
+                
+                const matches = countryName.includes(query) || 
+                              description.includes(query) || 
+                              region.includes(query);
+                
+                if (matches || query === '') {
+                    card.style.display = 'block';
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+            
+            // Update result count
+            if (resultCount) {
+                resultCount.textContent = `${visibleCount} Countries`;
+            }
+        });
+    }
+    
+    // Filter functionality
+    const filterTags = document.querySelectorAll('.filter-tag');
+    filterTags.forEach(tag => {
+        tag.addEventListener('click', function() {
+            // Remove active class from all tags
+            filterTags.forEach(t => t.classList.remove('active'));
+            // Add active class to clicked tag
+            this.classList.add('active');
+            
+            const filter = this.getAttribute('data-filter');
+            let visibleCount = 0;
+            
+            countryCards.forEach(card => {
+                const region = card.getAttribute('data-region');
+                const categories = card.getAttribute('data-category');
+                
+                let shouldShow = false;
+                
+                if (filter === 'all') {
+                    shouldShow = true;
+                } else if (filter === 'europe' || filter === 'asia') {
+                    shouldShow = region === filter;
+                } else {
+                    shouldShow = categories.includes(filter);
+                }
+                
+                if (shouldShow) {
+                    card.style.display = 'block';
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+            
+            // Update result count
+            if (resultCount) {
+                resultCount.textContent = `${visibleCount} Countries`;
+            }
+        });
     });
 });
 </script>

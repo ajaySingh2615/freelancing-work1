@@ -1,258 +1,38 @@
 <?php
 /**
- * Database Configuration
- * MedStudy Global - Blog System
+ * Insert Complete Sample Data
+ * This will add all 12 countries and universities as originally planned
  */
 
-// Database Configuration
-define('DB_HOST', 'localhost');
-define('DB_NAME', 'medstudy_blog');
-define('DB_USER', 'root');
-define('DB_PASS', '');
+// Enable error reporting
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
-// Cloudinary Configuration
-define('CLOUDINARY_CLOUD_NAME', 'dswzvbhix');
-define('CLOUDINARY_API_KEY', '443489439765691');
-define('CLOUDINARY_API_SECRET', 'QQqfhuPJ_mv5L3u3ikvvA_DsZy4');
+try {
+    // Database connection
+    $db = new PDO(
+        "mysql:host=localhost;dbname=medstudy_blog;charset=utf8mb4",
+        'root',
+        '',
+        array(
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
+        )
+    );
 
-// Site Configuration
-define('SITE_URL', 'http://localhost/Project-1/');
-define('ADMIN_URL', SITE_URL . 'admin/');
+    echo "<h2>Inserting Complete Sample Data</h2>";
 
-// Database Connection Class
-class Database {
-    private $host = DB_HOST;
-    private $db_name = DB_NAME;
-    private $username = DB_USER;
-    private $password = DB_PASS;
-    private $conn;
+    // Clear existing data (optional - remove if you want to keep current data)
+    echo "<p>Clearing existing data...</p>";
+    $db->exec("DELETE FROM university_images");
+    $db->exec("DELETE FROM universities");  
+    $db->exec("DELETE FROM countries");
+    $db->exec("ALTER TABLE countries AUTO_INCREMENT = 1");
+    $db->exec("ALTER TABLE universities AUTO_INCREMENT = 1");
 
-    public function connect() {
-        $this->conn = null;
-        
-        try {
-            $this->conn = new PDO(
-                "mysql:host=" . $this->host . ";dbname=" . $this->db_name . ";charset=utf8mb4",
-                $this->username,
-                $this->password,
-                array(
-                    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-                    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-                    PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8mb4 COLLATE utf8mb4_unicode_ci"
-                )
-            );
-        } catch(PDOException $e) {
-            echo "Connection Error: " . $e->getMessage();
-        }
-        
-        return $this->conn;
-    }
+    // Insert all 12 countries
+    echo "<p>Inserting 12 countries...</p>";
     
-    public function disconnect() {
-        $this->conn = null;
-    }
-}
-
-// Global Database Instance
-$database = new Database();
-$db = $database->connect();
-
-// Check if tables exist, create if not
-function createTables($db) {
-    try {
-        // Admin Users Table
-        $db->exec("CREATE TABLE IF NOT EXISTS admin_users (
-            id INT AUTO_INCREMENT PRIMARY KEY,
-            username VARCHAR(50) NOT NULL UNIQUE,
-            email VARCHAR(100) NOT NULL UNIQUE,
-            password VARCHAR(255) NOT NULL,
-            full_name VARCHAR(100) NOT NULL,
-            role VARCHAR(20) DEFAULT 'admin',
-            status ENUM('active', 'inactive') DEFAULT 'active',
-            last_login TIMESTAMP NULL,
-            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-            updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci");
-        
-        // Blog Categories Table
-        $db->exec("CREATE TABLE IF NOT EXISTS blog_categories (
-            id INT AUTO_INCREMENT PRIMARY KEY,
-            name VARCHAR(100) NOT NULL,
-            slug VARCHAR(100) NOT NULL UNIQUE,
-            description TEXT,
-            color VARCHAR(7) DEFAULT '#003585',
-            status ENUM('active', 'inactive') DEFAULT 'active',
-            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-            updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci");
-        
-        // Blogs Table
-        $db->exec("CREATE TABLE IF NOT EXISTS blogs (
-            id INT AUTO_INCREMENT PRIMARY KEY,
-            title VARCHAR(255) NOT NULL,
-            slug VARCHAR(255) NOT NULL UNIQUE,
-            excerpt TEXT,
-            content LONGTEXT NOT NULL,
-            featured_image VARCHAR(500),
-            category_id INT,
-            author_id INT,
-            author_name VARCHAR(100),
-            author_avatar VARCHAR(500),
-            status ENUM('draft', 'published', 'archived') DEFAULT 'draft',
-            is_featured BOOLEAN DEFAULT FALSE,
-            is_editors_pick BOOLEAN DEFAULT FALSE,
-            views INT DEFAULT 0,
-            
-            -- SEO Fields
-            meta_title VARCHAR(255),
-            meta_description TEXT,
-            meta_keywords VARCHAR(500),
-            canonical_url VARCHAR(500),
-            og_title VARCHAR(255),
-            og_description TEXT,
-            og_image VARCHAR(500),
-            twitter_title VARCHAR(255),
-            twitter_description TEXT,
-            twitter_image VARCHAR(500),
-            
-            -- Schema.org structured data
-            schema_type VARCHAR(50) DEFAULT 'Article',
-            schema_data JSON,
-            
-            -- Timestamps
-            published_at TIMESTAMP NULL,
-            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-            updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-            
-            -- Foreign Keys
-            FOREIGN KEY (category_id) REFERENCES blog_categories(id) ON DELETE SET NULL,
-            FOREIGN KEY (author_id) REFERENCES admin_users(id) ON DELETE SET NULL,
-            
-            -- Indexes
-            INDEX idx_slug (slug),
-            INDEX idx_status (status),
-            INDEX idx_category (category_id),
-            INDEX idx_featured (is_featured),
-            INDEX idx_published (published_at)
-        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci");
-        
-        // Blog Tags Table (Many-to-Many relationship)
-        $db->exec("CREATE TABLE IF NOT EXISTS blog_tags (
-            id INT AUTO_INCREMENT PRIMARY KEY,
-            name VARCHAR(50) NOT NULL UNIQUE,
-            slug VARCHAR(50) NOT NULL UNIQUE,
-            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci");
-        
-        $db->exec("CREATE TABLE IF NOT EXISTS blog_tag_relations (
-            blog_id INT,
-            tag_id INT,
-            PRIMARY KEY (blog_id, tag_id),
-            FOREIGN KEY (blog_id) REFERENCES blogs(id) ON DELETE CASCADE,
-            FOREIGN KEY (tag_id) REFERENCES blog_tags(id) ON DELETE CASCADE
-        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci");
-        
-        // Countries Table
-        $db->exec("CREATE TABLE IF NOT EXISTS countries (
-            id INT AUTO_INCREMENT PRIMARY KEY,
-            name VARCHAR(100) NOT NULL,
-            slug VARCHAR(100) NOT NULL UNIQUE,
-            flag_code VARCHAR(5),
-            description TEXT,
-            featured_image VARCHAR(500),
-            meta_title VARCHAR(255),
-            meta_description TEXT,
-            is_active BOOLEAN DEFAULT TRUE,
-            sort_order INT DEFAULT 0,
-            student_count INT DEFAULT 0,
-            region ENUM('asia', 'europe', 'africa', 'americas', 'oceania'),
-            categories JSON,
-            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-            updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-            
-            INDEX idx_slug (slug),
-            INDEX idx_active (is_active),
-            INDEX idx_region (region),
-            INDEX idx_sort (sort_order)
-        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci");
-        
-        // Universities Table
-        $db->exec("CREATE TABLE IF NOT EXISTS universities (
-            id INT AUTO_INCREMENT PRIMARY KEY,
-            country_id INT NOT NULL,
-            name VARCHAR(200) NOT NULL,
-            slug VARCHAR(200) NOT NULL UNIQUE,
-            featured_image VARCHAR(500),
-            logo_image VARCHAR(500),
-            about_university LONGTEXT,
-            course_duration VARCHAR(50),
-            language_of_instruction VARCHAR(100),
-            annual_fees DECIMAL(10,2),
-            location VARCHAR(200),
-            is_active BOOLEAN DEFAULT TRUE,
-            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-            updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-            
-            FOREIGN KEY (country_id) REFERENCES countries(id) ON DELETE CASCADE,
-            
-            INDEX idx_country (country_id),
-            INDEX idx_slug (slug),
-            INDEX idx_active (is_active),
-            INDEX idx_fees (annual_fees)
-        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci");
-        
-        // University Images Table
-        $db->exec("CREATE TABLE IF NOT EXISTS university_images (
-            id INT AUTO_INCREMENT PRIMARY KEY,
-            university_id INT NOT NULL,
-            image_url VARCHAR(500) NOT NULL,
-            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-            
-            FOREIGN KEY (university_id) REFERENCES universities(id) ON DELETE CASCADE,
-            
-            INDEX idx_university (university_id)
-        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci");
-        
-        // Insert default admin user (password: admin123)
-        $defaultAdmin = $db->prepare("INSERT IGNORE INTO admin_users (username, email, password, full_name) VALUES (?, ?, ?, ?)");
-        $defaultAdmin->execute([
-            'admin',
-            'admin@medstudy.global',
-            password_hash('admin123', PASSWORD_DEFAULT),
-            'System Administrator'
-        ]);
-        
-        // Insert default categories
-        $categories = [
-            ['Medical Education', 'medical-education', 'Articles about medical education and career guidance'],
-            ['University Guide', 'university-guide', 'Information about medical universities worldwide'],
-            ['Visa Guide', 'visa-guide', 'Student visa processes and requirements'],
-            ['Scholarships', 'scholarships', 'Scholarship opportunities and application guides'],
-            ['Student Life', 'student-life', 'Life as a medical student abroad'],
-            ['Career Guidance', 'career-guidance', 'Medical career advice and specialization guides']
-        ];
-        
-        $categoryStmt = $db->prepare("INSERT IGNORE INTO blog_categories (name, slug, description) VALUES (?, ?, ?)");
-        foreach ($categories as $category) {
-            $categoryStmt->execute($category);
-        }
-        
-        // Insert sample countries data
-        insertSampleCountries($db);
-        
-        // Insert sample universities data  
-        insertSampleUniversities($db);
-        
-        return true;
-        
-    } catch(PDOException $e) {
-        error_log("Database Error: " . $e->getMessage());
-        return false;
-    }
-}
-
-// Sample Data Insertion Functions
-function insertSampleCountries($db) {
     $countries = [
         [
             'name' => 'Russia',
@@ -364,7 +144,7 @@ function insertSampleCountries($db) {
         ]
     ];
     
-    $stmt = $db->prepare("INSERT IGNORE INTO countries (name, slug, flag_code, description, region, student_count, categories, is_active, sort_order) VALUES (?, ?, ?, ?, ?, ?, ?, 1, ?)");
+    $stmt = $db->prepare("INSERT INTO countries (name, slug, flag_code, description, region, student_count, categories, is_active, sort_order) VALUES (?, ?, ?, ?, ?, ?, ?, 1, ?)");
     
     foreach ($countries as $index => $country) {
         $stmt->execute([
@@ -378,17 +158,19 @@ function insertSampleCountries($db) {
             $index + 1
         ]);
     }
-}
+    
+    echo "<p>✓ All 12 countries inserted successfully!</p>";
 
-function insertSampleUniversities($db) {
-    // Get country IDs first
+    // Insert universities for each country
+    echo "<p>Inserting universities for each country...</p>";
+    
     $countryStmt = $db->prepare("SELECT id, name FROM countries");
     $countryStmt->execute();
-    $countries = $countryStmt->fetchAll();
+    $countryList = $countryStmt->fetchAll();
     
     $universities = [];
     
-    foreach ($countries as $country) {
+    foreach ($countryList as $country) {
         switch ($country['name']) {
             case 'Russia':
                 $universities = array_merge($universities, [
@@ -486,7 +268,7 @@ function insertSampleUniversities($db) {
                 break;
                 
             default:
-                // Add 2-3 sample universities for remaining countries
+                // Add 2 sample universities for remaining countries
                 $universities = array_merge($universities, [
                     [
                         'country_id' => $country['id'],
@@ -513,7 +295,7 @@ function insertSampleUniversities($db) {
         }
     }
     
-    $stmt = $db->prepare("INSERT IGNORE INTO universities (country_id, name, slug, about_university, course_duration, language_of_instruction, annual_fees, location, is_active) VALUES (?, ?, ?, ?, ?, ?, ?, ?, 1)");
+    $stmt = $db->prepare("INSERT INTO universities (country_id, name, slug, about_university, course_duration, language_of_instruction, annual_fees, location, is_active) VALUES (?, ?, ?, ?, ?, ?, ?, ?, 1)");
     
     foreach ($universities as $university) {
         $stmt->execute([
@@ -527,8 +309,34 @@ function insertSampleUniversities($db) {
             $university['location']
         ]);
     }
-}
+    
+    echo "<p>✓ All universities inserted successfully!</p>";
 
-// Create tables on first run
-createTables($db);
+    // Show final counts
+    echo "<h3>Final Database Status:</h3>";
+    
+    $countStmt = $db->query("SELECT COUNT(*) FROM countries");
+    $countriesCount = $countStmt->fetchColumn();
+    echo "<p>✓ Countries: <strong>$countriesCount</strong></p>";
+    
+    $uniStmt = $db->query("SELECT COUNT(*) FROM universities");
+    $universitiesCount = $uniStmt->fetchColumn();
+    echo "<p>✓ Universities: <strong>$universitiesCount</strong></p>";
+    
+    echo "<h3>Countries by Region:</h3>";
+    $regionStmt = $db->query("SELECT region, COUNT(*) as count FROM countries GROUP BY region ORDER BY count DESC");
+    $regions = $regionStmt->fetchAll();
+    foreach ($regions as $region) {
+        echo "<p>✓ " . ucfirst($region['region']) . ": <strong>" . $region['count'] . "</strong> countries</p>";
+    }
+
+    echo "<div style='background: #d4edda; padding: 15px; border: 1px solid #c3e6cb; border-radius: 5px; margin: 20px 0;'>";
+    echo "<h3 style='color: #155724; margin: 0 0 10px 0;'>🎉 Database Setup Complete!</h3>";
+    echo "<p style='color: #155724; margin: 0;'>You can now visit <a href='destinations.php' style='color: #155724; font-weight: bold;'>destinations.php</a> to see all countries and test the full system!</p>";
+    echo "</div>";
+
+} catch (Exception $e) {
+    echo "<h3 style='color: red;'>❌ Error:</h3>";
+    echo "<p style='color: red;'>" . $e->getMessage() . "</p>";
+}
 ?> 
