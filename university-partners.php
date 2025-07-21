@@ -30,29 +30,29 @@ $page_description = sprintf($page_description, $country['name']);
 
 <!-- Country Hero Section -->
 <section class="university-partners-hero">
+    <div class="hero-background-decoration">
+        <div class="airplane-icon airplane-1">
+            <i class="fas fa-plane"></i>
+        </div>
+        <div class="airplane-icon airplane-2">
+            <i class="fas fa-plane"></i>
+        </div>
+        <div class="airplane-icon airplane-3">
+            <i class="fas fa-plane"></i>
+        </div>
+    </div>
     <div class="container">
         <div class="hero-content">
-            <nav class="breadcrumb">
+            <nav class="hero-breadcrumb">
                 <a href="index.php">Home</a>
-                <span>/</span>
-                <a href="destinations.php">Countries</a>
-                <span>/</span>
-                <span><?php echo htmlspecialchars($country['name']); ?></span>
+                <span class="breadcrumb-separator">/</span>
+                <a href="destinations.php"><?php echo htmlspecialchars($country['name']); ?></a>
+                <span class="breadcrumb-separator">/</span>
+                <span class="breadcrumb-current">Universities</span>
             </nav>
-            <div class="hero-header">
-                <div class="hero-title-section">
-                    <div class="country-flag-inline">
-                        <img src="https://flagcdn.com/w40/<?php echo strtolower($country['flag_code']); ?>.png" 
-                             alt="<?php echo htmlspecialchars($country['name']); ?> Flag" 
-                             class="country-flag">
-                    </div>
-                    <h1 class="hero-title">Study MBBS in <?php echo htmlspecialchars($country['name']); ?></h1>
-                </div>
-                <div class="hero-stats">
-                    <span class="stat-item"><?php echo count($universities); ?> Universities Available</span>
-                </div>
+            <div class="hero-main">
+                <h1 class="hero-title">Top Universities in <?php echo htmlspecialchars($country['name']); ?></h1>
             </div>
-
         </div>
     </div>
 </section>
@@ -151,15 +151,7 @@ $page_description = sprintf($page_description, $country['name']);
                                     ?>
                                 </p>
                                 
-                                <!-- Annual Fees -->
-                                <?php if (!empty($university['annual_fees']) && $university['annual_fees'] > 0): ?>
-                                <div class="university-fees mb-3">
-                                    <div class="d-flex align-items-center justify-content-between">
-                                        <span class="text-muted small">Annual Fees:</span>
-                                        <span class="fw-bold text-success">$<?php echo number_format($university['annual_fees']); ?></span>
-                                    </div>
-                                </div>
-                                <?php endif; ?>
+
                             </div>
                             
                             <!-- University Actions -->
@@ -196,100 +188,103 @@ $page_description = sprintf($page_description, $country['name']);
 
 <!-- Enhanced CSS for University Partners -->
 <style>
-/* Hero Section - Matching destinations.php style */
+/* Hero Section - Clean Design with Background Decoration */
 .university-partners-hero {
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-    padding: 3rem 0 2rem;
-    border-bottom: 1px solid #dee2e6;
+    background: linear-gradient(135deg, #fef8e7 0%, #f0f9ff 100%);
+    padding: 3rem 0;
+    position: relative;
+    overflow: hidden;
+    min-height: 250px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.hero-background-decoration {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.airplane-icon {
+    position: absolute;
+    font-size: 2.5rem;
+    transform: rotate(45deg);
+    opacity: 0.1;
+}
+
+.airplane-1 {
+    top: 20%;
+    right: 15%;
+    font-size: 3rem;
+    color: #003585;
+    opacity: 0.08;
+}
+
+.airplane-2 {
+    top: 60%;
+    right: 25%;
+    font-size: 2rem;
+    color: #FEBA02;
+    opacity: 0.12;
+}
+
+.airplane-3 {
+    top: 40%;
+    right: 5%;
+    font-size: 2.5rem;
+    color: #149DE1;
+    opacity: 0.1;
 }
 
 .hero-content {
+    position: relative;
+    z-index: 2;
     max-width: 100%;
 }
 
-.breadcrumb {
+.hero-breadcrumb {
     display: flex;
     align-items: center;
     gap: 0.5rem;
     margin-bottom: 2rem;
     font-size: 0.9rem;
+    font-weight: 500;
 }
 
-.breadcrumb a {
-    color: var(--primary-color);
+.hero-breadcrumb a {
+    color: #6b7280;
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
-.breadcrumb a:hover {
-    color: var(--primary-dark);
+.hero-breadcrumb a:hover {
+    color: #003585;
 }
 
-.breadcrumb span {
-    color: #6c757d;
+.breadcrumb-separator {
+    color: #9ca3af;
+    margin: 0 0.25rem;
 }
 
-.hero-header {
-    margin-bottom: 2rem;
+.breadcrumb-current {
+    color: #374151;
+    font-weight: 600;
 }
 
-.hero-title-section {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 1rem;
-}
-
-.country-flag-inline {
-    flex-shrink: 0;
-}
-
-.country-flag {
-    width: 32px;
-    height: 24px;
-    border-radius: 4px;
-    object-fit: cover;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+.hero-main {
+    max-width: 800px;
 }
 
 .hero-title {
-    font-size: 2.5rem;
+    font-size: clamp(2rem, 5vw, 3.5rem);
     font-weight: 700;
-    color: var(--text-color);
+    color: #111827 !important;
     margin: 0;
     line-height: 1.2;
-}
-
-.hero-stats {
-    color: #6c757d;
-    font-size: 1.1rem;
-}
-
-.stat-item {
-    font-weight: 500;
-}
-
-.hero-actions {
-    margin-top: 1.5rem;
-}
-
-.btn.btn-accent {
-    background: var(--accent-color);
-    color: white;
-    border: none;
-    padding: 0.75rem 2rem;
-    font-weight: 600;
-    border-radius: 8px;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    transition: all 0.3s ease;
-}
-
-.btn.btn-accent:hover {
-    background: var(--accent-dark);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    letter-spacing: -0.02em;
 }
 
 /* Universities Grid Section */
@@ -311,19 +306,78 @@ $page_description = sprintf($page_description, $country['name']);
 
 /* University Card Styling */
 .hover-lift-university {
-    transition: all 0.3s ease;
-    border-radius: 12px;
+    position: relative;
     overflow: hidden;
-    border: 1px solid #e9ecef;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.05);
     height: 100%;
     display: flex;
     flex-direction: column;
 }
 
+/* Combined hover effects - matching blog cards */
 .hover-lift-university:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 1.5rem 3rem rgba(0,0,0,.12)!important;
-    border-color: rgba(0, 53, 133, 0.1);
+    transform: translateY(-5px);
+    border: 1px solid rgba(254, 186, 2, 0.3);
+    animation: pulsingGlow 3s ease-in-out infinite;
+}
+
+/* Shine effect - matching blog cards */
+.hover-lift-university::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(254, 186, 2, 0.2),
+        transparent
+    );
+    transform: skewX(-25deg);
+    transition: 0.75s;
+    z-index: 1;
+}
+
+.hover-lift-university:hover::before {
+    animation: shine 3s ease-in-out infinite;
+}
+
+/* Animations - matching blog cards */
+@keyframes shine {
+    0% {
+        left: -100%;
+    }
+    20% {
+        left: 100%;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+@keyframes pulsingGlow {
+    0% {
+        box-shadow: 
+            0 0.25rem 0.75rem rgba(0, 0, 0, 0.15),
+            0 0 1.5rem rgba(254, 186, 2, 0.2);
+    }
+    50% {
+        box-shadow: 
+            0 0.25rem 0.75rem rgba(0, 0, 0, 0.15),
+            0 0 2rem rgba(254, 186, 2, 0.4),
+            0 0 3rem rgba(254, 186, 2, 0.2);
+    }
+    100% {
+        box-shadow: 
+            0 0.25rem 0.75rem rgba(0, 0, 0, 0.15),
+            0 0 1.5rem rgba(254, 186, 2, 0.2);
+    }
 }
 
 .university-image-container {
@@ -359,6 +413,7 @@ $page_description = sprintf($page_description, $country['name']);
     padding: 8px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     border: 1px solid rgba(0,0,0,0.05);
+    z-index: 3;
 }
 
 .university-logo {
@@ -368,7 +423,7 @@ $page_description = sprintf($page_description, $country['name']);
 }
 
 .hover-lift-university:hover .university-featured-img {
-    transform: scale(1.05);
+    transform: scale(1.03);
 }
 
 /* Card Content */
@@ -377,6 +432,8 @@ $page_description = sprintf($page_description, $country['name']);
     display: flex;
     flex-direction: column;
     padding: 1.5rem;
+    position: relative;
+    z-index: 2;
 }
 
 .university-name {
@@ -385,6 +442,11 @@ $page_description = sprintf($page_description, $country['name']);
     color: #212529;
     line-height: 1.4;
     margin-bottom: 1rem;
+    transition: color 0.3s ease;
+}
+
+.hover-lift-university:hover .university-name {
+    color: #003585;
 }
 
 .university-meta {
@@ -409,20 +471,14 @@ $page_description = sprintf($page_description, $country['name']);
     margin-bottom: 1rem;
 }
 
-.university-fees {
-    margin-bottom: 1rem;
-    padding: 0.75rem;
-    background: rgba(40, 167, 69, 0.05);
-    border-radius: 8px;
-    border: 1px solid rgba(40, 167, 69, 0.1);
-}
-
 /* Card Footer */
 .hover-lift-university .card-footer {
     background: #f8f9fa;
     border-top: 1px solid #e9ecef;
     padding: 1.25rem 1.5rem;
     margin-top: auto;
+    position: relative;
+    z-index: 2;
 }
 
 
@@ -549,17 +605,31 @@ $page_description = sprintf($page_description, $country['name']);
 
 @media (max-width: 768px) {
     .university-partners-hero {
-        padding: 2rem 0 1.5rem;
+        padding: var(--xl) 0;
+        min-height: 200px;
     }
     
-    .hero-title {
+    .hero-breadcrumb {
+        margin-bottom: var(--lg);
+        font-size: 0.8rem;
+    }
+    
+    .airplane-1 {
+        font-size: 2.5rem;
+        top: 15%;
+        right: 10%;
+    }
+    
+    .airplane-2 {
+        font-size: 1.5rem;
+        top: 70%;
+        right: 20%;
+    }
+    
+    .airplane-3 {
         font-size: 2rem;
-    }
-    
-    .hero-title-section {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.75rem;
+        top: 45%;
+        right: 2%;
     }
     
     /* Card adjustments for tablet */
@@ -582,25 +652,35 @@ $page_description = sprintf($page_description, $country['name']);
 
 @media (max-width: 576px) {
     .university-partners-hero {
-        padding: 1.5rem 0;
+        padding: var(--lg) 0;
+        min-height: 180px;
     }
     
-    .hero-title {
-        font-size: 1.75rem;
+    .hero-breadcrumb {
+        margin-bottom: var(--md);
+        font-size: 0.75rem;
+        flex-wrap: wrap;
+        gap: var(--xs);
     }
     
-    .breadcrumb {
-        font-size: 0.8rem;
-        margin-bottom: 1.5rem;
+    .breadcrumb-separator {
+        margin: 0 0.25rem;
     }
     
-    .hero-title-section {
-        gap: 0.5rem;
+    .airplane-1 {
+        font-size: 2rem;
+        top: 10%;
+        right: 5%;
     }
     
-    .country-flag {
-        width: 28px;
-        height: 21px;
+    .airplane-2 {
+        font-size: 1.2rem;
+        top: 75%;
+        right: 15%;
+    }
+    
+    .airplane-3 {
+        display: none; /* Hide third airplane on mobile for cleaner look */
     }
     
     /* Mobile card adjustments */
