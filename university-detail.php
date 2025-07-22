@@ -105,13 +105,13 @@ $page_description = sprintf($page_description, $university['name']);
 </section>
 
 <!-- Main Content Section -->
-<section class="py-4">
+<section class="main-content-section">
     <div class="container">
-        <div class="row">
+        <div class="row g-4">
             <!-- Left Column - Main Content (70%) -->
             <div class="col-lg-8">
                 <!-- University Image Gallery -->
-                <div class="card border-0 shadow-sm mb-4">
+                <div class="modern-card gallery-card">
                     <div class="card-body p-0">
                         <div class="university-gallery">
                             <!-- Main Image -->
@@ -176,10 +176,10 @@ $page_description = sprintf($page_description, $university['name']);
                 </div>
 
                 <!-- About The University -->
-                <div class="card border-0 shadow-sm mb-4">
-                    <div class="card-header bg-light border-0 py-3">
-                        <h3 class="h5 mb-0 text-primary">
-                            <i class="fas fa-university me-2"></i>About The University
+                <div class="modern-card content-card">
+                    <div class="modern-card-header">
+                        <h3 class="modern-card-title">
+                            <i class="fas fa-university card-icon"></i>About The University
                         </h3>
                     </div>
                     <div class="card-body">
@@ -194,10 +194,10 @@ $page_description = sprintf($page_description, $university['name']);
                 </div>
 
                 <!-- University Information -->
-                <div class="card border-0 shadow-sm mb-4">
-                    <div class="card-header bg-light border-0 py-3">
-                        <h3 class="h5 mb-0 text-primary">
-                            <i class="fas fa-info-circle me-2"></i>University Information
+                <div class="modern-card info-card">
+                    <div class="modern-card-header">
+                        <h3 class="modern-card-title">
+                            <i class="fas fa-info-circle card-icon"></i>University Information
                         </h3>
                     </div>
                     <div class="card-body">
@@ -260,10 +260,10 @@ $page_description = sprintf($page_description, $university['name']);
                 </div>
 
                 <!-- Features and Facilities (if available) -->
-                <div class="card border-0 shadow-sm mb-4">
-                    <div class="card-header bg-light border-0 py-3">
-                        <h3 class="h5 mb-0 text-primary">
-                            <i class="fas fa-star me-2"></i>Why Choose This University?
+                <div class="modern-card features-card">
+                    <div class="modern-card-header">
+                        <h3 class="modern-card-title">
+                            <i class="fas fa-star card-icon"></i>Why Choose This University?
                         </h3>
                     </div>
                     <div class="card-body">
@@ -313,10 +313,10 @@ $page_description = sprintf($page_description, $university['name']);
             <div class="col-lg-4">
                 <div class="sticky-sidebar">
                     <!-- University Quick Info Card -->
-                    <div class="card border-0 shadow-sm mb-4">
-                        <div class="card-header bg-primary text-white text-center py-3">
-                            <h4 class="h6 mb-0">
-                                <i class="fas fa-info-circle me-2"></i>Quick Information
+                    <div class="modern-card sidebar-info-card">
+                        <div class="modern-card-header primary-header">
+                            <h4 class="sidebar-card-title">
+                                <i class="fas fa-info-circle card-icon"></i>Quick Information
                             </h4>
                         </div>
                         <div class="card-body p-3">
@@ -361,13 +361,13 @@ $page_description = sprintf($page_description, $university['name']);
                     </div>
 
                     <!-- Get Free Counselling Form -->
-                    <div class="card border-0 shadow-lg" id="consultation-form">
-                        <div class="card-header bg-warning text-dark text-center py-3">
-                            <h4 class="h6 mb-0">
-                                <i class="fas fa-phone-alt me-2"></i>Get Free Counselling
+                    <div class="modern-card consultation-form-card" id="consultation-form">
+                        <div class="modern-card-header accent-header">
+                            <h4 class="sidebar-card-title">
+                                <i class="fas fa-phone-alt card-icon"></i>Get Free Counselling
                             </h4>
                         </div>
-                        <div class="card-body p-4">
+                        <div class="modern-card-body form-body">
                             <form id="universityDetailForm" action="process-university-inquiry.php" method="post">
                                 <input type="hidden" name="university_id" value="<?php echo $university['id']; ?>">
                                 <input type="hidden" name="university_name" value="<?php echo htmlspecialchars($university['name']); ?>">
@@ -376,25 +376,25 @@ $page_description = sprintf($page_description, $university['name']);
                                 <input type="hidden" name="country_name" value="<?php echo htmlspecialchars($country['name']); ?>">
                                 <?php endif; ?>
                                 
-                                <div class="mb-3">
-                                    <label for="student_name" class="form-label">Full Name <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control form-control-sm" id="student_name" name="student_name" required>
+                                <div class="form-group">
+                                    <label for="student_name" class="modern-form-label">Full Name <span class="required-star">*</span></label>
+                                    <input type="text" class="modern-form-input" id="student_name" name="student_name" required>
                                 </div>
                                 
-                                <div class="mb-3">
-                                    <label for="email" class="form-label">Email Address <span class="text-danger">*</span></label>
-                                    <input type="email" class="form-control form-control-sm" id="email" name="email" required>
+                                <div class="form-group">
+                                    <label for="email" class="modern-form-label">Email Address <span class="required-star">*</span></label>
+                                    <input type="email" class="modern-form-input" id="email" name="email" required>
                                 </div>
                                 
-                                <div class="mb-3">
-                                    <label for="phone" class="form-label">Phone Number <span class="text-danger">*</span></label>
-                                    <input type="tel" class="form-control form-control-sm" id="phone" name="phone" required>
+                                <div class="form-group">
+                                    <label for="phone" class="modern-form-label">Phone Number <span class="required-star">*</span></label>
+                                    <input type="tel" class="modern-form-input" id="phone" name="phone" required>
                                 </div>
                                 
-                                <div class="row g-2 mb-3">
-                                    <div class="col-6">
-                                        <label for="country" class="form-label">Country <span class="text-danger">*</span></label>
-                                        <select class="form-select form-select-sm" id="country" name="country" required>
+                                <div class="form-row">
+                                    <div class="col-half">
+                                        <label for="country" class="modern-form-label">Country <span class="required-star">*</span></label>
+                                        <select class="modern-form-select" id="country" name="country" required>
                                             <option value="">Select</option>
                                             <option value="IN" selected>India</option>
                                             <option value="US">USA</option>
@@ -403,30 +403,30 @@ $page_description = sprintf($page_description, $university['name']);
                                             <option value="AU">Australia</option>
                                         </select>
                                     </div>
-                                    <div class="col-6">
-                                        <label for="state" class="form-label">State <span class="text-danger">*</span></label>
-                                        <select class="form-select form-select-sm" id="state" name="state" required>
+                                    <div class="col-half">
+                                        <label for="state" class="modern-form-label">State <span class="required-star">*</span></label>
+                                        <select class="modern-form-select" id="state" name="state" required>
                                             <option value="">Select</option>
                                         </select>
                                     </div>
                                 </div>
                                 
-                                <div class="mb-3">
-                                    <label for="city" class="form-label">City <span class="text-danger">*</span></label>
-                                    <select class="form-select form-select-sm" id="city" name="city" required>
+                                <div class="form-group">
+                                    <label for="city" class="modern-form-label">City <span class="required-star">*</span></label>
+                                    <select class="modern-form-select" id="city" name="city" required>
                                         <option value="">Select City</option>
                                     </select>
                                 </div>
                                 
-                                <div class="mb-3">
-                                    <label for="message" class="form-label">Message (Optional)</label>
-                                    <textarea class="form-control form-control-sm" id="message" name="message" rows="3" 
+                                <div class="form-group">
+                                    <label for="message" class="modern-form-label">Message (Optional)</label>
+                                    <textarea class="modern-form-textarea" id="message" name="message" rows="3" 
                                               placeholder="Tell us about your educational background or any specific questions..."></textarea>
                                 </div>
                                 
-                                <div class="d-grid">
-                                    <button type="submit" class="btn btn-primary btn-sm">
-                                        <i class="fas fa-paper-plane me-2"></i>Submit Inquiry
+                                <div class="form-submit">
+                                    <button type="submit" class="modern-submit-btn">
+                                        <i class="fas fa-paper-plane submit-icon"></i>Submit Inquiry
                                     </button>
                                 </div>
                             </form>
@@ -434,10 +434,10 @@ $page_description = sprintf($page_description, $university['name']);
                     </div>
 
                     <!-- Contact Information -->
-                    <div class="card border-0 shadow-sm mt-4">
-                        <div class="card-header bg-light border-0 py-3">
-                            <h5 class="h6 mb-0 text-primary">
-                                <i class="fas fa-headset me-2"></i>Need Immediate Help?
+                    <div class="modern-card contact-card">
+                        <div class="modern-card-header">
+                            <h5 class="sidebar-card-title">
+                                <i class="fas fa-headset card-icon"></i>Need Immediate Help?
                             </h5>
                         </div>
                         <div class="card-body p-3">
@@ -685,6 +685,232 @@ $page_description = sprintf($page_description, $university['name']);
     color: #ffffff;
 }
 
+/* ===== MAIN CONTENT SECTION STYLES ===== */
+.main-content-section {
+    padding: var(--xxl) 0;
+    background: linear-gradient(135deg, var(--light-bg) 0%, #ffffff 100%);
+    min-height: 100vh;
+}
+
+/* Modern Card Styles */
+.modern-card {
+    background: var(--white);
+    border-radius: var(--large);
+    box-shadow: var(--medium-shadow);
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+    transition: var(--transition);
+    margin-bottom: var(--xl);
+}
+
+.modern-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--large-shadow);
+}
+
+.modern-card-header {
+    background: linear-gradient(135deg, var(--light-bg) 0%, #f0f4f8 100%);
+    padding: var(--lg) var(--xl);
+    border-bottom: 2px solid var(--border-color);
+    position: relative;
+}
+
+.modern-card-header::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+    border-radius: var(--small-radius);
+}
+
+.modern-card-title {
+    font-size: var(--medium);
+    font-weight: var(--semibold);
+    color: var(--text-color);
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: var(--sm);
+}
+
+.card-icon {
+    color: var(--primary-color);
+    font-size: var(--medium);
+    width: 20px;
+    text-align: center;
+}
+
+.modern-card-body {
+    padding: var(--xl);
+}
+
+/* Sidebar Card Styles */
+.sidebar-info-card .modern-card-header.primary-header {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+    color: var(--white);
+}
+
+.sidebar-info-card .primary-header .card-icon {
+    color: var(--white);
+}
+
+.consultation-form-card .modern-card-header.accent-header {
+    background: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-dark) 100%);
+    color: var(--text-color);
+}
+
+.consultation-form-card .accent-header .card-icon {
+    color: var(--text-color);
+}
+
+.sidebar-card-title {
+    font-size: var(--base);
+    font-weight: var(--semibold);
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--sm);
+    text-align: center;
+}
+
+/* ===== PROFESSIONAL FORM STYLES ===== */
+.form-body {
+    padding: var(--xl) var(--lg);
+}
+
+.form-group {
+    margin-bottom: var(--lg);
+    position: relative;
+}
+
+.form-row {
+    display: flex;
+    gap: var(--md);
+    margin-bottom: var(--lg);
+}
+
+.col-half {
+    flex: 1;
+}
+
+.modern-form-label {
+    display: block;
+    font-size: var(--small);
+    font-weight: var(--medium-weight);
+    color: var(--text-color);
+    margin-bottom: var(--xs);
+    letter-spacing: 0.02em;
+}
+
+.required-star {
+    color: #e74c3c;
+    font-weight: var(--bold);
+}
+
+.modern-form-input,
+.modern-form-select,
+.modern-form-textarea {
+    width: 100%;
+    padding: var(--md) var(--sm);
+    border: 2px solid var(--border-color);
+    border-radius: var(--medium-radius);
+    font-size: var(--small);
+    font-family: var(--font-family);
+    background: var(--white);
+    transition: var(--transition);
+    outline: none;
+}
+
+.modern-form-input:focus,
+.modern-form-select:focus,
+.modern-form-textarea:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(0, 53, 133, 0.1);
+    transform: translateY(-1px);
+}
+
+.modern-form-input:hover,
+.modern-form-select:hover,
+.modern-form-textarea:hover {
+    border-color: var(--primary-light);
+}
+
+.modern-form-select {
+    cursor: pointer;
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23777' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right var(--sm) center;
+    background-size: 12px;
+    padding-right: var(--xl);
+}
+
+.modern-form-textarea {
+    resize: vertical;
+    min-height: 90px;
+    line-height: var(--normal);
+}
+
+.modern-form-textarea::placeholder {
+    color: var(--light-text);
+    font-style: italic;
+}
+
+.form-submit {
+    margin-top: var(--lg);
+}
+
+.modern-submit-btn {
+    width: 100%;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+    color: var(--white);
+    border: none;
+    padding: var(--md) var(--lg);
+    border-radius: var(--medium-radius);
+    font-size: var(--base);
+    font-weight: var(--semibold);
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--sm);
+    position: relative;
+    overflow: hidden;
+}
+
+.modern-submit-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.modern-submit-btn:hover::before {
+    left: 100%;
+}
+
+.modern-submit-btn:hover {
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-color) 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 53, 133, 0.3);
+}
+
+.modern-submit-btn:active {
+    transform: translateY(0);
+}
+
+.submit-icon {
+    font-size: var(--small);
+}
+
 /* Gallery Styles */
 .main-image-container {
     height: 400px;
@@ -763,42 +989,80 @@ $page_description = sprintf($page_description, $university['name']);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-/* Info Items */
+/* Info Items - Enhanced */
 .info-item {
     display: flex;
     align-items: flex-start;
-    gap: 12px;
+    gap: var(--md);
+    padding: var(--md);
+    background: linear-gradient(135deg, var(--light-bg) 0%, #fafbfc 100%);
+    border-radius: var(--medium-radius);
+    border: 1px solid var(--border-color);
+    transition: var(--transition);
+}
+
+.info-item:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--small-shadow);
+    border-color: var(--primary-light);
 }
 
 .info-icon {
-    width: 24px;
-    height: 24px;
+    width: 40px;
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    margin-top: 2px;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
+    color: var(--white);
+    border-radius: var(--circle);
+    font-size: var(--small);
+}
+
+.info-content {
+    flex: 1;
 }
 
 .info-title {
-    font-size: 0.9rem;
-    font-weight: 600;
+    font-size: var(--small);
+    font-weight: var(--semibold);
     color: var(--text-color);
-    margin-bottom: 2px;
+    margin-bottom: var(--xs);
+    letter-spacing: 0.02em;
 }
 
 .info-value {
-    font-size: 0.9rem;
+    font-size: var(--base);
     color: var(--light-text);
     margin: 0;
+    font-weight: var(--medium-weight);
 }
 
-/* Feature Items */
+/* Feature Items - Enhanced */
 .feature-item {
     display: flex;
     align-items: center;
-    font-size: 0.9rem;
-    margin-bottom: 8px;
+    gap: var(--sm);
+    padding: var(--sm) var(--md);
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    border-radius: var(--medium-radius);
+    border: 1px solid #bfdbfe;
+    margin-bottom: var(--sm);
+    transition: var(--transition);
+    font-size: var(--small);
+    font-weight: var(--medium-weight);
+}
+
+.feature-item:hover {
+    transform: translateX(4px);
+    background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+    border-color: var(--primary-light);
+}
+
+.feature-item i {
+    color: #10b981;
+    font-size: var(--base);
 }
 
 /* Sidebar Styles */
@@ -853,7 +1117,7 @@ $page_description = sprintf($page_description, $university['name']);
 @media (max-width: 992px) {
     .sticky-sidebar {
         position: static;
-        margin-top: 2rem;
+        margin-top: 0;
     }
     
     .main-image-container {
@@ -895,6 +1159,27 @@ $page_description = sprintf($page_description, $university['name']);
     .hero-logo-image {
         width: 75px;
         height: 75px;
+    }
+    
+    /* Modern Cards Tablet Responsive */
+    .main-content-section {
+        padding: var(--xl) 0;
+    }
+    
+    .modern-card {
+        margin-bottom: var(--lg);
+    }
+    
+    .modern-card-header {
+        padding: var(--md) var(--lg);
+    }
+    
+    .modern-card-body {
+        padding: var(--lg);
+    }
+    
+    .form-body {
+        padding: var(--lg) var(--md);
     }
 }
 
@@ -1023,6 +1308,66 @@ $page_description = sprintf($page_description, $university['name']);
     .thumbnail-image {
         width: 60px;
         height: 45px;
+    }
+    
+    /* Modern Cards Mobile Responsive */
+    .main-content-section {
+        padding: var(--lg) 0;
+    }
+    
+    .modern-card {
+        margin-bottom: var(--md);
+        border-radius: var(--medium-radius);
+    }
+    
+    .modern-card-header {
+        padding: var(--md);
+    }
+    
+    .modern-card-title {
+        font-size: var(--base);
+        flex-direction: column;
+        gap: var(--xs);
+        text-align: center;
+    }
+    
+    .sidebar-card-title {
+        font-size: var(--small);
+    }
+    
+    .modern-card-body {
+        padding: var(--md);
+    }
+    
+    /* Form Mobile Responsive */
+    .form-body {
+        padding: var(--md);
+    }
+    
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+    
+    .col-half {
+        margin-bottom: var(--md);
+    }
+    
+    .modern-form-input,
+    .modern-form-select,
+    .modern-form-textarea {
+        padding: var(--sm) var(--md);
+        font-size: var(--base);
+    }
+    
+    .modern-form-label {
+        font-size: var(--base);
+        margin-bottom: var(--sm);
+    }
+    
+    .modern-submit-btn {
+        padding: var(--lg);
+        font-size: var(--base);
     }
 }
 
@@ -1154,6 +1499,76 @@ $page_description = sprintf($page_description, $university['name']);
     
     .info-icon {
         align-self: flex-start;
+    }
+    
+    /* Modern Cards Small Mobile Responsive */
+    .main-content-section {
+        padding: var(--md) 0;
+    }
+    
+    .modern-card {
+        margin-bottom: var(--sm);
+        border-radius: var(--small-radius);
+    }
+    
+    .modern-card-header {
+        padding: var(--sm) var(--md);
+    }
+    
+    .modern-card-header::before {
+        width: 40px;
+        height: 2px;
+    }
+    
+    .modern-card-title {
+        font-size: var(--small);
+        flex-direction: column;
+        gap: 4px;
+    }
+    
+    .card-icon {
+        font-size: var(--small);
+    }
+    
+    .sidebar-card-title {
+        font-size: 0.8rem;
+    }
+    
+    .modern-card-body {
+        padding: var(--sm) var(--md);
+    }
+    
+    /* Form Small Mobile Responsive */
+    .form-body {
+        padding: var(--sm) var(--md);
+    }
+    
+    .form-group {
+        margin-bottom: var(--md);
+    }
+    
+    .col-half {
+        margin-bottom: var(--sm);
+    }
+    
+    .modern-form-input,
+    .modern-form-select,
+    .modern-form-textarea {
+        padding: var(--md);
+        font-size: var(--small);
+    }
+    
+    .modern-form-label {
+        font-size: var(--small);
+    }
+    
+    .modern-submit-btn {
+        padding: var(--md) var(--lg);
+        font-size: var(--small);
+    }
+    
+    .submit-icon {
+        font-size: 0.75rem;
     }
 }
 </style>
