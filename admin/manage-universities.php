@@ -121,11 +121,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 break;
                 
             case 'bulk_action':
-                $action = $_POST['bulk_action'];
+                $action = $_POST['bulk_action'] ?? '';
                 $selected_ids = $_POST['selected_universities'] ?? [];
                 
-                if (!empty($selected_ids) && !empty($action)) {
+
+                
+                if (empty($selected_ids)) {
+                    $errors[] = "Please select at least one university to perform bulk action.";
+                } elseif (empty($action)) {
+                    $errors[] = "Please select an action to perform.";
+                } else {
                     try {
+                        $processed_count = 0;
+                        
                         switch ($action) {
                             case 'activate':
                                 $stmt = $db->prepare("UPDATE universities SET is_active = 1 WHERE id = ?");
@@ -138,18 +146,37 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 $deleteImagesStmt = $db->prepare("DELETE FROM university_images WHERE university_id = ?");
                                 $stmt = $db->prepare("DELETE FROM universities WHERE id = ?");
                                 break;
+                            default:
+                                $errors[] = "Invalid action selected.";
+                                break 2; // Break out of both switch and try
                         }
                         
                         foreach ($selected_ids as $id) {
-                            if ($action === 'delete') {
-                                $deleteImagesStmt->execute([intval($id)]);
+                            $id = intval($id);
+                            if ($id > 0) {
+                                if ($action === 'delete') {
+                                    $deleteImagesStmt->execute([$id]);
+                                }
+                                $stmt->execute([$id]);
+                                $processed_count++;
                             }
-                            $stmt->execute([intval($id)]);
                         }
                         
-                        $_SESSION['success_message'] = "Bulk action completed successfully!";
-                        header("Location: manage-universities.php");
-                        exit();
+                        if ($processed_count > 0) {
+                            $action_word = ucfirst($action);
+                            if ($action === 'activate') $action_word = 'Activated';
+                            elseif ($action === 'deactivate') $action_word = 'Deactivated';
+                            elseif ($action === 'delete') $action_word = 'Deleted';
+                            
+                            $_SESSION['success_message'] = "{$action_word} {$processed_count} universit" . ($processed_count === 1 ? 'y' : 'ies') . " successfully!";
+                        } else {
+                            $errors[] = "No valid universities found to process.";
+                        }
+                        
+                        if (empty($errors)) {
+                            header("Location: manage-universities.php");
+                            exit();
+                        }
                     } catch (Exception $e) {
                         $errors[] = "Error performing bulk action: " . $e->getMessage();
                     }
@@ -679,13 +706,11 @@ function sanitizeInput($input) {
                     </div>
                 </div>
 
-                <!-- Bulk Actions Form -->
-                <form method="POST" id="bulkActionForm">
-                    <input type="hidden" name="action" value="bulk_action">
-                    
-                    <!-- Bulk Actions Bar -->
-                    <div class="admin-card">
-                        <div class="card-body">
+                <!-- Bulk Actions Bar -->
+                <div class="admin-card">
+                    <div class="card-body">
+                        <form method="POST" id="bulkActionForm">
+                            <input type="hidden" name="action" value="bulk_action">
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="d-flex align-items-center gap-3">
                                     <input type="checkbox" id="selectAll" class="form-check-input">
@@ -698,7 +723,7 @@ function sanitizeInput($input) {
                                         <option value="delete">Delete</option>
                                     </select>
                                     
-                                    <button type="submit" class="btn btn-warning btn-sm" onclick="return confirm('Are you sure you want to perform this bulk action?')">
+                                    <button type="submit" class="btn btn-warning btn-sm" onclick="return validateBulkAction()">
                                         Apply
                                     </button>
                                 </div>
@@ -707,11 +732,12 @@ function sanitizeInput($input) {
                                     Total: <?php echo $total_universities; ?> universities
                                 </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
+                </div>
 
-                    <!-- Universities Table -->
-                    <div class="table-container">
+                <!-- Universities Table -->
+                <div class="table-container">
                         <table class="table">
                             <thead>
                                 <tr>
@@ -810,7 +836,6 @@ function sanitizeInput($input) {
                             </tbody>
                         </table>
                     </div>
-                </form>
 
                 <!-- Pagination -->
                 <?php if ($total_pages > 1): ?>
@@ -972,6 +997,7 @@ function sanitizeInput($input) {
             checkboxes.forEach(checkbox => {
                 checkbox.checked = this.checked;
             });
+            updateSelectAllState();
         });
 
         document.getElementById('selectAllTable').addEventListener('change', function() {
@@ -980,7 +1006,79 @@ function sanitizeInput($input) {
                 checkbox.checked = this.checked;
             });
             document.getElementById('selectAll').checked = this.checked;
+            updateSelectAllState();
         });
+
+        // Update select all state when individual checkboxes are clicked
+        document.addEventListener('change', function(e) {
+            if (e.target.classList.contains('university-checkbox')) {
+                updateSelectAllState();
+            }
+        });
+
+
+
+        function updateSelectAllState() {
+            const checkboxes = document.querySelectorAll('.university-checkbox');
+            const checkedBoxes = document.querySelectorAll('.university-checkbox:checked');
+            const selectAllCheckbox = document.getElementById('selectAll');
+            const selectAllTableCheckbox = document.getElementById('selectAllTable');
+            
+            if (checkedBoxes.length === 0) {
+                selectAllCheckbox.indeterminate = false;
+                selectAllCheckbox.checked = false;
+                selectAllTableCheckbox.indeterminate = false;
+                selectAllTableCheckbox.checked = false;
+            } else if (checkedBoxes.length === checkboxes.length) {
+                selectAllCheckbox.indeterminate = false;
+                selectAllCheckbox.checked = true;
+                selectAllTableCheckbox.indeterminate = false;
+                selectAllTableCheckbox.checked = true;
+            } else {
+                selectAllCheckbox.indeterminate = true;
+                selectAllCheckbox.checked = false;
+                selectAllTableCheckbox.indeterminate = true;
+                selectAllTableCheckbox.checked = false;
+            }
+        }
+
+        // Bulk action validation
+        function validateBulkAction() {
+            const checkedBoxes = document.querySelectorAll('.university-checkbox:checked');
+            const bulkAction = document.querySelector('select[name="bulk_action"]').value;
+            const form = document.getElementById('bulkActionForm');
+            
+            if (checkedBoxes.length === 0) {
+                alert('Please select at least one university to perform bulk action.');
+                return false;
+            }
+            
+            if (!bulkAction) {
+                alert('Please select an action to perform.');
+                return false;
+            }
+            
+            // Clear any existing selected_universities inputs
+            const existingInputs = form.querySelectorAll('input[name="selected_universities[]"]');
+            existingInputs.forEach(input => input.remove());
+            
+            // Add selected IDs to the form
+            checkedBoxes.forEach((box) => {
+                const hiddenInput = document.createElement('input');
+                hiddenInput.type = 'hidden';
+                hiddenInput.name = 'selected_universities[]';
+                hiddenInput.value = box.value;
+                form.appendChild(hiddenInput);
+            });
+            
+            let confirmMessage = `Are you sure you want to ${bulkAction} ${checkedBoxes.length} selected universit${checkedBoxes.length === 1 ? 'y' : 'ies'}?`;
+            
+            if (bulkAction === 'delete') {
+                confirmMessage = `⚠️ WARNING: This will permanently delete ${checkedBoxes.length} universit${checkedBoxes.length === 1 ? 'y' : 'ies'} and all associated data!\n\nThis action cannot be undone. Are you sure you want to continue?`;
+            }
+            
+            return confirm(confirmMessage);
+        }
 
         // Auto-open modal if editing
         <?php if ($editing_university): ?>

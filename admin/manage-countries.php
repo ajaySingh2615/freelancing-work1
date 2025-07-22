@@ -127,11 +127,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 break;
                 
             case 'bulk_action':
-                $action = $_POST['bulk_action'];
+                $action = $_POST['bulk_action'] ?? '';
                 $selected_ids = $_POST['selected_countries'] ?? [];
                 
-                if (!empty($selected_ids) && !empty($action)) {
+
+                
+                if (empty($selected_ids)) {
+                    $errors[] = "Please select at least one country to perform bulk action.";
+                } elseif (empty($action)) {
+                    $errors[] = "Please select an action to perform.";
+                } else {
                     try {
+                        $processed_count = 0;
+                        $skipped_count = 0;
+                        
                         switch ($action) {
                             case 'activate':
                                 $stmt = $db->prepare("UPDATE countries SET is_active = 1 WHERE id = ?");
@@ -140,17 +149,56 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 $stmt = $db->prepare("UPDATE countries SET is_active = 0 WHERE id = ?");
                                 break;
                             case 'delete':
+                                // For delete, check if country has universities
+                                $checkStmt = $db->prepare("SELECT COUNT(*) as count FROM universities WHERE country_id = ?");
                                 $stmt = $db->prepare("DELETE FROM countries WHERE id = ?");
                                 break;
+                            default:
+                                $errors[] = "Invalid action selected.";
+                                break 2; // Break out of both switch and try
                         }
                         
                         foreach ($selected_ids as $id) {
-                            $stmt->execute([intval($id)]);
+                            $id = intval($id);
+                            if ($id > 0) {
+                                if ($action === 'delete') {
+                                    // Check if country has universities before deleting
+                                    $checkStmt->execute([$id]);
+                                    $result = $checkStmt->fetch();
+                                    
+                                    if ($result['count'] > 0) {
+                                        $skipped_count++;
+                                        continue; // Skip this country
+                                    }
+                                }
+                                $stmt->execute([$id]);
+                                $processed_count++;
+                            }
                         }
                         
-                        $_SESSION['success_message'] = "Bulk action completed successfully!";
-                        header("Location: manage-countries.php");
-                        exit();
+                        if ($processed_count > 0) {
+                            $action_word = ucfirst($action);
+                            if ($action === 'activate') $action_word = 'Activated';
+                            elseif ($action === 'deactivate') $action_word = 'Deactivated';
+                            elseif ($action === 'delete') $action_word = 'Deleted';
+                            
+                            $_SESSION['success_message'] = "{$action_word} {$processed_count} countr" . ($processed_count === 1 ? 'y' : 'ies') . " successfully!";
+                            
+                            if ($skipped_count > 0) {
+                                $_SESSION['success_message'] .= " ({$skipped_count} countr" . ($skipped_count === 1 ? 'y' : 'ies') . " skipped - has universities)";
+                            }
+                        } else {
+                            if ($skipped_count > 0) {
+                                $errors[] = "Cannot delete selected countries. They have associated universities.";
+                            } else {
+                                $errors[] = "No valid countries found to process.";
+                            }
+                        }
+                        
+                        if (empty($errors)) {
+                            header("Location: manage-countries.php");
+                            exit();
+                        }
                     } catch (Exception $e) {
                         $errors[] = "Error performing bulk action: " . $e->getMessage();
                     }
@@ -682,13 +730,11 @@ function sanitizeInput($input) {
                     </div>
                 </div>
 
-                <!-- Bulk Actions Form -->
-                <form method="POST" id="bulkActionForm">
-                    <input type="hidden" name="action" value="bulk_action">
-                    
-                    <!-- Bulk Actions Bar -->
-                    <div class="admin-card">
-                        <div class="card-body">
+                <!-- Bulk Actions Bar -->
+                <div class="admin-card">
+                    <div class="card-body">
+                        <form method="POST" id="bulkActionForm">
+                            <input type="hidden" name="action" value="bulk_action">
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="d-flex align-items-center gap-3">
                                     <input type="checkbox" id="selectAll" class="form-check-input">
@@ -701,7 +747,7 @@ function sanitizeInput($input) {
                                         <option value="delete">Delete</option>
                                     </select>
                                     
-                                    <button type="submit" class="btn btn-warning btn-sm" onclick="return confirm('Are you sure you want to perform this bulk action?')">
+                                    <button type="submit" class="btn btn-warning btn-sm" onclick="return validateBulkAction()">
                                         Apply
                                     </button>
                                 </div>
@@ -710,11 +756,12 @@ function sanitizeInput($input) {
                                     Total: <?php echo $total_countries; ?> countries
                                 </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
+                </div>
 
-                    <!-- Countries Table -->
-                    <div class="table-container">
+                <!-- Countries Table -->
+                <div class="table-container">
                         <table class="table">
                             <thead>
                                 <tr>
@@ -808,7 +855,6 @@ function sanitizeInput($input) {
                             </tbody>
                         </table>
                     </div>
-                </form>
 
                 <!-- Pagination -->
                 <?php if ($total_pages > 1): ?>
@@ -973,6 +1019,7 @@ function sanitizeInput($input) {
             checkboxes.forEach(checkbox => {
                 checkbox.checked = this.checked;
             });
+            updateSelectAllState();
         });
 
         document.getElementById('selectAllTable').addEventListener('change', function() {
@@ -981,7 +1028,79 @@ function sanitizeInput($input) {
                 checkbox.checked = this.checked;
             });
             document.getElementById('selectAll').checked = this.checked;
+            updateSelectAllState();
         });
+
+        // Update select all state when individual checkboxes are clicked
+        document.addEventListener('change', function(e) {
+            if (e.target.classList.contains('country-checkbox')) {
+                updateSelectAllState();
+            }
+        });
+
+
+
+        function updateSelectAllState() {
+            const checkboxes = document.querySelectorAll('.country-checkbox');
+            const checkedBoxes = document.querySelectorAll('.country-checkbox:checked');
+            const selectAllCheckbox = document.getElementById('selectAll');
+            const selectAllTableCheckbox = document.getElementById('selectAllTable');
+            
+            if (checkedBoxes.length === 0) {
+                selectAllCheckbox.indeterminate = false;
+                selectAllCheckbox.checked = false;
+                selectAllTableCheckbox.indeterminate = false;
+                selectAllTableCheckbox.checked = false;
+            } else if (checkedBoxes.length === checkboxes.length) {
+                selectAllCheckbox.indeterminate = false;
+                selectAllCheckbox.checked = true;
+                selectAllTableCheckbox.indeterminate = false;
+                selectAllTableCheckbox.checked = true;
+            } else {
+                selectAllCheckbox.indeterminate = true;
+                selectAllCheckbox.checked = false;
+                selectAllTableCheckbox.indeterminate = true;
+                selectAllTableCheckbox.checked = false;
+            }
+        }
+
+        // Bulk action validation
+        function validateBulkAction() {
+            const checkedBoxes = document.querySelectorAll('.country-checkbox:checked');
+            const bulkAction = document.querySelector('select[name="bulk_action"]').value;
+            const form = document.getElementById('bulkActionForm');
+            
+            if (checkedBoxes.length === 0) {
+                alert('Please select at least one country to perform bulk action.');
+                return false;
+            }
+            
+            if (!bulkAction) {
+                alert('Please select an action to perform.');
+                return false;
+            }
+            
+            // Clear any existing selected_countries inputs
+            const existingInputs = form.querySelectorAll('input[name="selected_countries[]"]');
+            existingInputs.forEach(input => input.remove());
+            
+            // Add selected IDs to the form
+            checkedBoxes.forEach((box) => {
+                const hiddenInput = document.createElement('input');
+                hiddenInput.type = 'hidden';
+                hiddenInput.name = 'selected_countries[]';
+                hiddenInput.value = box.value;
+                form.appendChild(hiddenInput);
+            });
+            
+            let confirmMessage = `Are you sure you want to ${bulkAction} ${checkedBoxes.length} selected countr${checkedBoxes.length === 1 ? 'y' : 'ies'}?`;
+            
+            if (bulkAction === 'delete') {
+                confirmMessage = `⚠️ WARNING: This will permanently delete ${checkedBoxes.length} countr${checkedBoxes.length === 1 ? 'y' : 'ies'} and may affect associated universities!\n\nThis action cannot be undone. Are you sure you want to continue?`;
+            }
+            
+            return confirm(confirmMessage);
+        }
 
         // Auto-open modal if editing
         <?php if ($editing_country): ?>
