@@ -392,4 +392,62 @@ function logActivity($message, $context = []) {
     }
 }
 
+/**
+ * Get all universities with country information
+ * @return array - Array of universities with country data
+ */
+function getAllUniversities() {
+    global $db;
+    
+    try {
+        $stmt = $db->prepare("
+            SELECT u.*, c.name as country_name, c.flag_code,
+                   (SELECT COUNT(*) FROM university_images ui WHERE ui.university_id = u.id) as images_count
+            FROM universities u 
+            LEFT JOIN countries c ON u.country_id = c.id
+            WHERE u.is_active = 1 AND c.is_active = 1
+            ORDER BY u.name ASC
+        ");
+        $stmt->execute();
+        
+        $universities = $stmt->fetchAll();
+        
+        return $universities;
+        
+    } catch (PDOException $e) {
+        error_log("Error fetching all universities: " . $e->getMessage());
+        return [];
+    }
+}
+
+/**
+ * Get all countries
+ * @return array - Array of all active countries
+ */
+function getAllCountries() {
+    global $db;
+    
+    try {
+        $stmt = $db->prepare("
+            SELECT * FROM countries 
+            WHERE is_active = 1 
+            ORDER BY name ASC
+        ");
+        $stmt->execute();
+        
+        $countries = $stmt->fetchAll();
+        
+        // Decode JSON categories for each country
+        foreach ($countries as &$country) {
+            $country['categories'] = json_decode($country['categories'], true) ?? [];
+        }
+        
+        return $countries;
+        
+    } catch (PDOException $e) {
+        error_log("Error fetching all countries: " . $e->getMessage());
+        return [];
+    }
+}
+
 ?> 
