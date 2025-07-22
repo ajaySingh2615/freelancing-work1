@@ -1,3 +1,23 @@
+<?php 
+// Static popular countries for header dropdown (no database needed)
+$headerPopularCountries = [
+    ['name' => 'Russia', 'slug' => 'russia', 'flag_code' => 'ru'],
+    ['name' => 'Georgia', 'slug' => 'georgia', 'flag_code' => 'ge'],
+    ['name' => 'Kazakhstan', 'slug' => 'kazakhstan', 'flag_code' => 'kz'],
+    ['name' => 'Egypt', 'slug' => 'egypt', 'flag_code' => 'eg'],
+    ['name' => 'Nepal', 'slug' => 'nepal', 'flag_code' => 'np'],
+    ['name' => 'China', 'slug' => 'china', 'flag_code' => 'cn'],
+    ['name' => 'Uzbekistan', 'slug' => 'uzbekistan', 'flag_code' => 'uz'],
+    ['name' => 'Germany', 'slug' => 'germany', 'flag_code' => 'de'],
+    ['name' => 'Italy', 'slug' => 'italy', 'flag_code' => 'it'],
+    ['name' => 'Poland', 'slug' => 'poland', 'flag_code' => 'pl'],
+    ['name' => 'Belarus', 'slug' => 'belarus', 'flag_code' => 'by'],
+    ['name' => 'Latvia', 'slug' => 'latvia', 'flag_code' => 'lv'],
+    ['name' => 'Lithuania', 'slug' => 'lithuania', 'flag_code' => 'lt'],
+    ['name' => 'Romania', 'slug' => 'romania', 'flag_code' => 'ro'],
+    ['name' => 'Hungary', 'slug' => 'hungary', 'flag_code' => 'hu']
+];
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,6 +40,212 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
     <!-- CSS files were split for better organization -->
+    
+    <!-- Bootstrap Dropdown Custom Styles -->
+    <style>
+        /* Fix Bootstrap dropdown positioning and z-index */
+        .main-nav {
+            position: relative;
+            z-index: 1000;
+        }
+        
+        .main-nav .dropdown {
+            position: relative;
+        }
+        
+        /* Ensure dropdown toggle aligns with other nav links */
+        .main-nav ul li .dropdown-toggle {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-color);
+            text-decoration: none;
+            position: relative;
+            display: inline-block;
+            letter-spacing: 0.01em;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            padding: 0;
+            border: none;
+            background: none;
+        }
+        
+        .main-nav ul li .dropdown-toggle:hover,
+        .main-nav ul li .dropdown-toggle:focus {
+            color: var(--primary-color);
+            text-decoration: none;
+            outline: none;
+            box-shadow: none;
+        }
+        
+        /* Remove Bootstrap dropdown arrow styling and add custom underline */
+        .main-nav ul li .dropdown-toggle::after {
+            display: none;
+        }
+        
+        .main-nav ul li .dropdown-toggle::before {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--primary-color);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+            transform-origin: center;
+        }
+        
+        .main-nav ul li .dropdown-toggle:hover::before,
+        .main-nav ul li .dropdown-toggle.show::before {
+            transform: scaleX(1);
+        }
+        
+        /* Custom Bootstrap Dropdown Styling */
+        .destinations-dropdown {
+            min-width: 420px;
+            max-width: 500px;
+            border: none;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            border-radius: 12px;
+            padding: 0;
+            margin-top: 8px;
+            position: absolute !important;
+            top: 100% !important;
+            left: 50% !important;
+            transform: translateX(-50%) !important;
+            /* Ensure proper z-index */
+            z-index: 1050 !important;
+            /* Force hide by default */
+            visibility: hidden !important;
+            opacity: 0 !important;
+            display: none !important;
+            transition: all 0.3s ease !important;
+        }
+        
+        /* Only show when Bootstrap adds the 'show' class */
+        .destinations-dropdown.show {
+            visibility: visible !important;
+            opacity: 1 !important;
+            display: block !important;
+        }
+        
+        /* Ensure dropdown stays within viewport */
+        @media (max-width: 1400px) {
+            .destinations-dropdown {
+                left: 0 !important;
+                transform: none !important;
+                min-width: 380px;
+            }
+        }
+        
+        .destinations-dropdown .dropdown-header {
+            background: #f8f9fa;
+            border-radius: 12px 12px 0 0;
+            padding: 16px;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .destinations-dropdown .country-item {
+            transition: all 0.2s ease;
+            border-radius: 8px;
+            margin: 1px;
+            text-decoration: none;
+        }
+        
+        .destinations-dropdown .row > .col-4 {
+            padding: 2px;
+        }
+        
+        .destinations-dropdown .country-item:hover {
+            background: #003585 !important;
+            color: white !important;
+            transform: translateY(-1px);
+            text-decoration: none;
+        }
+        
+        .destinations-dropdown .country-item:hover .country-name {
+            color: white !important;
+        }
+        
+        .destinations-dropdown .explore-more-btn {
+            background: #003585;
+            border: none;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .destinations-dropdown .explore-more-btn:hover {
+            background: #0056b3;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 53, 133, 0.3);
+        }
+        
+        /* Fix nav overlap issues */
+        .main-nav ul {
+            position: relative;
+            z-index: 999;
+            white-space: nowrap;
+            overflow: visible;
+        }
+        
+        .main-nav ul li {
+            position: relative;
+            flex-shrink: 0;
+        }
+        
+        /* Ensure navigation doesn't wrap or collapse */
+        .main-nav {
+            width: 100%;
+            overflow: visible;
+        }
+        
+        .main-nav ul {
+            display: flex !important;
+            flex-wrap: nowrap !important;
+            align-items: center !important;
+            justify-content: center !important;
+        }
+        
+        /* Prevent dropdown from affecting document flow */
+        .main-nav .dropdown {
+            position: relative;
+            overflow: visible;
+        }
+        
+        .destinations-dropdown {
+            pointer-events: none;
+        }
+        
+        .destinations-dropdown.show {
+            pointer-events: auto;
+        }
+        
+        /* Ensure proper stacking context */
+        .main-header {
+            position: relative;
+            z-index: 100;
+        }
+        
+        /* Mobile responsive */
+        @media (max-width: 768px) {
+            .destinations-dropdown {
+                min-width: 300px;
+                max-width: 350px;
+                position: fixed !important;
+                top: 60px !important;
+                left: 10px !important;
+                right: 10px !important;
+                transform: none !important;
+            }
+            
+            .destinations-dropdown .row .col-4 {
+                flex: 0 0 33.333333%;
+                max-width: 33.333333%;
+            }
+        }
+    </style>
 </head>
 <body>
 
@@ -81,7 +307,50 @@
                                 <li><a href="index.php" class="active">Home</a></li>
                                 <li><a href="about.php">About Us</a></li>
                                 <li><a href="universities.php">Our Services</a></li>
-                                <li><a href="destinations.php">MBBS Destinations</a></li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" id="mbbsDestinationsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        MBBS Destinations
+                                    </a>
+                                    <ul class="dropdown-menu destinations-dropdown" aria-labelledby="mbbsDestinationsDropdown">
+                                        <li class="dropdown-header text-center">
+                                            <h6 class="mb-1 text-primary">Popular MBBS Destinations</h6>
+                                            <small class="text-muted">Choose from top medical education destinations</small>
+                                        </li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        
+                                        <!-- Countries Grid -->
+                                        <li class="px-3">
+                                            <div class="row">
+                                                <?php foreach (array_slice($headerPopularCountries, 0, 12) as $index => $country): ?>
+                                                <div class="col-4">
+                                                    <a href="university-partners.php?country=<?php echo urlencode($country['slug']); ?>" 
+                                                       class="dropdown-item country-item d-flex flex-column align-items-center text-center p-2 rounded" 
+                                                       title="Study MBBS in <?php echo htmlspecialchars($country['name']); ?>">
+                                                        <div class="country-flag mb-1">
+                                                            <img src="https://flagcdn.com/32x24/<?php echo strtolower($country['flag_code']); ?>.png" 
+                                                                 alt="<?php echo htmlspecialchars($country['name']); ?> Flag"
+                                                                 loading="lazy"
+                                                                 class="rounded-1" 
+                                                                 style="width: 32px; height: 24px;">
+                                                        </div>
+                                                        <small class="country-name text-truncate" style="font-size: 0.75rem;">
+                                                            <?php echo htmlspecialchars($country['name']); ?>
+                                                        </small>
+                                                    </a>
+                                                </div>
+                                                <?php endforeach; ?>
+                                            </div>
+                                        </li>
+                                        
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li class="px-3 pb-2">
+                                            <a href="destinations.php" class="btn btn-primary btn-sm w-100 explore-more-btn">
+                                                <span>Explore More Destinations</span>
+                                                <i class="fas fa-arrow-right ml-1"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
                                 <li><a href="resources.php">University Partners</a></li>
                                 <li><a href="blog.php">Blog</a></li>
                                 <li><a href="gallery.php">Resources</a></li>
@@ -166,4 +435,110 @@
     </a>
     
     <!-- Main Content Area -->
-    <main id="content" class="main-content"> 
+    <main id="content" class="main-content">
+    
+    <!-- Bootstrap Dropdown Fix & Analytics -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Ensure dropdown is hidden on page load
+            const dropdown = document.querySelector('.destinations-dropdown');
+            const dropdownToggle = document.querySelector('#mbbsDestinationsDropdown');
+            const dropdownParent = document.querySelector('.dropdown');
+            
+            if (dropdown && dropdownToggle && dropdownParent) {
+                // Force hide dropdown on load with multiple methods
+                dropdown.classList.remove('show');
+                dropdown.style.display = 'none';
+                dropdown.style.visibility = 'hidden';
+                dropdown.style.opacity = '0';
+                dropdownToggle.setAttribute('aria-expanded', 'false');
+                dropdownParent.classList.remove('show');
+                
+                // Disable Bootstrap's automatic dropdown behavior temporarily
+                dropdownToggle.setAttribute('data-toggle', '');
+                
+                // Add hover behavior instead of click
+                let hoverTimeout;
+                
+                dropdownParent.addEventListener('mouseenter', function() {
+                    clearTimeout(hoverTimeout);
+                    dropdown.classList.add('show');
+                    dropdown.style.display = 'block';
+                    dropdown.style.visibility = 'visible';
+                    dropdown.style.opacity = '1';
+                    dropdownToggle.setAttribute('aria-expanded', 'true');
+                });
+                
+                dropdownParent.addEventListener('mouseleave', function() {
+                    hoverTimeout = setTimeout(function() {
+                        dropdown.classList.remove('show');
+                        dropdown.style.display = 'none';
+                        dropdown.style.visibility = 'hidden';
+                        dropdown.style.opacity = '0';
+                        dropdownToggle.setAttribute('aria-expanded', 'false');
+                    }, 100); // Small delay to prevent flickering
+                });
+                
+                // Keep dropdown open when hovering over it
+                dropdown.addEventListener('mouseenter', function() {
+                    clearTimeout(hoverTimeout);
+                });
+                
+                dropdown.addEventListener('mouseleave', function() {
+                    hoverTimeout = setTimeout(function() {
+                        dropdown.classList.remove('show');
+                        dropdown.style.display = 'none';
+                        dropdown.style.visibility = 'hidden';
+                        dropdown.style.opacity = '0';
+                        dropdownToggle.setAttribute('aria-expanded', 'false');
+                    }, 100);
+                });
+                
+                // Close dropdown when clicking outside
+                document.addEventListener('click', function(e) {
+                    if (!dropdownParent.contains(e.target)) {
+                        dropdown.classList.remove('show');
+                        dropdown.style.display = 'none';
+                        dropdown.style.visibility = 'hidden';
+                        dropdown.style.opacity = '0';
+                        dropdownToggle.setAttribute('aria-expanded', 'false');
+                    }
+                });
+            }
+            
+            // Track country clicks for analytics
+            const countryItems = document.querySelectorAll('.country-item');
+            countryItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const countryName = this.querySelector('.country-name').textContent;
+                    
+                    // Analytics tracking (if available)
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'country_click_header_dropdown', {
+                            'event_category': 'navigation',
+                            'event_label': countryName,
+                            'value': 1
+                        });
+                    }
+                });
+            });
+            
+            // Track explore more button clicks
+            const exploreMoreBtn = document.querySelector('.explore-more-btn');
+            if (exploreMoreBtn) {
+                exploreMoreBtn.addEventListener('click', function() {
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'explore_more_click', {
+                            'event_category': 'navigation',
+                            'event_label': 'header_dropdown',
+                            'value': 1
+                        });
+                    }
+                });
+            }
+        });
+    </script>
+    
+    <!-- Bootstrap 4 JavaScript (Required for dropdowns) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script> 
