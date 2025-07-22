@@ -101,26 +101,26 @@ $headerPopularCountries = [
             transform: scaleX(1);
         }
         
-        /* Custom Bootstrap Dropdown Styling */
+        /* Custom Bootstrap Dropdown Styling - Clean Design */
         .destinations-dropdown {
-            min-width: 420px;
-            max-width: 500px;
-            border: none;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-            border-radius: 12px;
-            padding: 0;
+            width: 420px;
+            border: 1px solid #e1e5e9;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            border-radius: 8px;
+            padding: 16px;
             margin-top: 8px;
             position: absolute !important;
             top: 100% !important;
             left: 50% !important;
             transform: translateX(-50%) !important;
+            background: #ffffff;
             /* Ensure proper z-index */
             z-index: 1050 !important;
             /* Force hide by default */
             visibility: hidden !important;
             opacity: 0 !important;
             display: none !important;
-            transition: all 0.3s ease !important;
+            transition: all 0.2s ease !important;
         }
         
         /* Only show when Bootstrap adds the 'show' class */
@@ -135,51 +135,102 @@ $headerPopularCountries = [
             .destinations-dropdown {
                 left: 0 !important;
                 transform: none !important;
-                min-width: 380px;
+                width: 400px;
             }
         }
         
-        .destinations-dropdown .dropdown-header {
-            background: #f8f9fa;
-            border-radius: 12px 12px 0 0;
-            padding: 16px;
-            border-bottom: 1px solid #e9ecef;
+        @media (max-width: 600px) {
+            .destinations-dropdown {
+                left: 50% !important;
+                transform: translateX(-50%) !important;
+                width: 360px;
+                padding: 12px;
+            }
         }
         
         .destinations-dropdown .country-item {
-            transition: all 0.2s ease;
-            border-radius: 8px;
-            margin: 1px;
+            transition: all 0.15s ease;
+            border-radius: 6px;
+            margin: 0;
             text-decoration: none;
+            padding: 8px 12px !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: 12px;
+            min-height: 40px;
+            width: 100%;
         }
         
-        .destinations-dropdown .row > .col-4 {
-            padding: 2px;
+        .destinations-dropdown .row {
+            margin: 0 -6px;
+            padding: 0;
+        }
+        
+        .destinations-dropdown .row > .col-6 {
+            padding: 0 6px;
+            margin-bottom: 8px;
+        }
+        
+        .destinations-dropdown .country-flag {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            overflow: hidden;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            border: 1px solid #e1e5e9;
+        }
+        
+        .destinations-dropdown .country-flag img {
+            width: 24px !important;
+            height: 18px !important;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+        
+        .destinations-dropdown .country-name {
+            font-size: 14px;
+            font-weight: 500;
+            color: #333;
+            white-space: nowrap;
+            margin: 0;
+            flex: 1;
+            line-height: 1.2;
         }
         
         .destinations-dropdown .country-item:hover {
-            background: #003585 !important;
-            color: white !important;
-            transform: translateY(-1px);
+            background: #f8f9fa !important;
+            color: #003585 !important;
             text-decoration: none;
         }
         
         .destinations-dropdown .country-item:hover .country-name {
-            color: white !important;
+            color: #003585 !important;
         }
         
         .destinations-dropdown .explore-more-btn {
-            background: #003585;
-            border: none;
-            border-radius: 8px;
+            background: #dc3545;
+            border: 1px solid #dc3545;
+            border-radius: 6px;
             font-weight: 500;
-            transition: all 0.3s ease;
+            font-size: 14px;
+            padding: 12px 24px;
+            transition: all 0.2s ease;
+            color: white;
+            margin-top: 16px;
+            text-align: center;
         }
         
         .destinations-dropdown .explore-more-btn:hover {
-            background: #0056b3;
+            background: #c82333;
+            border-color: #c82333;
             transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(0, 53, 133, 0.3);
+            box-shadow: 0 3px 8px rgba(220, 53, 69, 0.3);
+            color: white;
+            text-decoration: none;
         }
         
         /* Fix nav overlap issues */
@@ -311,45 +362,32 @@ $headerPopularCountries = [
                                     <a href="#" class="dropdown-toggle" id="mbbsDestinationsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         MBBS Destinations
                                     </a>
-                                    <ul class="dropdown-menu destinations-dropdown" aria-labelledby="mbbsDestinationsDropdown">
-                                        <li class="dropdown-header text-center">
-                                            <h6 class="mb-1 text-primary">Popular MBBS Destinations</h6>
-                                            <small class="text-muted">Choose from top medical education destinations</small>
-                                        </li>
-                                        <li><hr class="dropdown-divider"></li>
-                                        
+                                    <div class="dropdown-menu destinations-dropdown" aria-labelledby="mbbsDestinationsDropdown">
                                         <!-- Countries Grid -->
-                                        <li class="px-3">
-                                            <div class="row">
-                                                <?php foreach (array_slice($headerPopularCountries, 0, 12) as $index => $country): ?>
-                                                <div class="col-4">
-                                                    <a href="university-partners.php?country=<?php echo urlencode($country['slug']); ?>" 
-                                                       class="dropdown-item country-item d-flex flex-column align-items-center text-center p-2 rounded" 
-                                                       title="Study MBBS in <?php echo htmlspecialchars($country['name']); ?>">
-                                                        <div class="country-flag mb-1">
-                                                            <img src="https://flagcdn.com/32x24/<?php echo strtolower($country['flag_code']); ?>.png" 
-                                                                 alt="<?php echo htmlspecialchars($country['name']); ?> Flag"
-                                                                 loading="lazy"
-                                                                 class="rounded-1" 
-                                                                 style="width: 32px; height: 24px;">
-                                                        </div>
-                                                        <small class="country-name text-truncate" style="font-size: 0.75rem;">
-                                                            <?php echo htmlspecialchars($country['name']); ?>
-                                                        </small>
-                                                    </a>
-                                                </div>
-                                                <?php endforeach; ?>
+                                        <div class="row">
+                                            <?php foreach (array_slice($headerPopularCountries, 0, 12) as $index => $country): ?>
+                                            <div class="col-6">
+                                                <a href="university-partners.php?country=<?php echo urlencode($country['slug']); ?>" 
+                                                   class="dropdown-item country-item" 
+                                                   title="Study MBBS in <?php echo htmlspecialchars($country['name']); ?>">
+                                                    <div class="country-flag">
+                                                        <img src="https://flagcdn.com/32x24/<?php echo strtolower($country['flag_code']); ?>.png" 
+                                                             alt="<?php echo htmlspecialchars($country['name']); ?> Flag"
+                                                             loading="lazy">
+                                                    </div>
+                                                    <span class="country-name">
+                                                        <?php echo htmlspecialchars($country['name']); ?>
+                                                    </span>
+                                                </a>
                                             </div>
-                                        </li>
+                                            <?php endforeach; ?>
+                                        </div>
                                         
-                                        <li><hr class="dropdown-divider"></li>
-                                        <li class="px-3 pb-2">
-                                            <a href="destinations.php" class="btn btn-primary btn-sm w-100 explore-more-btn">
-                                                <span>Explore More Destinations</span>
-                                                <i class="fas fa-arrow-right ml-1"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
+                                        <!-- Explore More Button -->
+                                        <a href="destinations.php" class="btn w-100 explore-more-btn">
+                                            Explore More
+                                        </a>
+                                    </div>
                                 </li>
                                 <li><a href="resources.php">University Partners</a></li>
                                 <li><a href="blog.php">Blog</a></li>
