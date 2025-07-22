@@ -90,7 +90,7 @@ $countries = getAllCountries();
                 
                 <div class="filter-controls">
                     <div class="country-filter-dropdown">
-                        <select id="countryFilter" class="form-control">
+                        <select id="countryFilter">
                             <option value="">All Countries</option>
                             <?php foreach ($countries as $country): ?>
                                 <option value="<?php echo $country['id']; ?>" data-flag="<?php echo strtolower($country['flag_code']); ?>">
@@ -476,32 +476,90 @@ $countries = getAllCountries();
     font-size: 0.7rem;
 }
 
-/* Country Filter Dropdown */
+/* Country Filter Dropdown - Clean Design */
 .country-filter-dropdown {
     position: relative;
+    display: inline-block;
 }
 
 .country-filter-dropdown select {
-    min-width: 180px;
-    padding: 0.75rem 1rem;
-    background: white;
-    border: 2px solid #e5e7eb;
-    border-radius: 8px;
-    color: #374151;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.3s ease;
+    min-width: 180px !important;
+    padding: 0.75rem 2.75rem 0.75rem 1rem !important;
+    background: white !important;
+    border: 2px solid #e5e7eb !important;
+    border-radius: 8px !important;
+    color: #374151 !important;
+    font-weight: 500 !important;
+    font-size: 0.9rem !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    outline: none !important;
+    box-shadow: none !important;
+    height: auto !important;
+    line-height: normal !important;
+    
+    /* Remove default styling */
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    appearance: none !important;
+    
+    /* Remove default arrow in IE */
+    background-image: none !important;
+}
+
+/* Custom dropdown arrow */
+.country-filter-dropdown::after {
+    content: '' !important;
+    position: absolute !important;
+    top: 50% !important;
+    right: 1rem !important;
+    width: 0 !important;
+    height: 0 !important;
+    border-left: 5px solid transparent !important;
+    border-right: 5px solid transparent !important;
+    border-top: 6px solid #6b7280 !important;
+    transform: translateY(-50%) !important;
+    pointer-events: none !important;
+    transition: all 0.3s ease !important;
+    z-index: 10 !important;
+}
+
+.country-filter-dropdown:hover::after {
+    border-top-color: #374151 !important;
+}
+
+.country-filter-dropdown select:focus + .country-filter-dropdown::after,
+.country-filter-dropdown:focus-within::after {
+    border-top-color: #003585 !important;
 }
 
 .country-filter-dropdown select:hover {
-    border-color: #d1d5db;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    border-color: #d1d5db !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06) !important;
 }
 
 .country-filter-dropdown select:focus {
-    border-color: #003585;
-    box-shadow: 0 4px 20px rgba(0, 53, 133, 0.15);
-    outline: none;
+    border-color: #003585 !important;
+    box-shadow: 0 4px 20px rgba(0, 53, 133, 0.15) !important;
+}
+
+/* Fix for Firefox */
+.country-filter-dropdown select::-moz-focus-inner {
+    border: 0;
+}
+
+/* Fix for IE */
+.country-filter-dropdown select::-ms-expand {
+    display: none;
+}
+
+/* Option styling */
+.country-filter-dropdown select option {
+    padding: 0.75rem 1rem;
+    background: white;
+    color: #374151;
+    font-weight: 500;
+    border: none;
 }
 
 /* Enhanced Search and Filter Section */
@@ -1198,10 +1256,7 @@ $countries = getAllCountries();
         font-size: 0.875rem;
     }
     
-    .country-filter-dropdown select {
-        min-width: 140px;
-        font-size: 0.875rem;
-    }
+
 }
 </style>
 

@@ -357,7 +357,7 @@ $headerPopularCountries = [
                             <ul>
                                 <li><a href="index.php" class="active">Home</a></li>
                                 <li><a href="about.php">About Us</a></li>
-                                <li><a href="universities.php">Our Services</a></li>
+                                <li><a href="services.php">Our Services</a></li>
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" id="mbbsDestinationsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         MBBS Destinations
@@ -391,9 +391,8 @@ $headerPopularCountries = [
                                 </li>
                                 <li><a href="resources.php">University Partners</a></li>
                                 <li><a href="blog.php">Blog</a></li>
-                                <li><a href="gallery.php">Resources</a></li>
-                                <li><a href="contact.php">Contact Us</a></li>
                                 <li><a href="gallery.php">Gallery</a></li>
+                                <li><a href="contact.php">Contact Us</a></li>
                             </ul>
                         </nav>
                     </div>
@@ -434,13 +433,12 @@ $headerPopularCountries = [
                 <ul class="nav-menu">
                     <li><a href="index.php">Home</a></li>
                     <li><a href="about.php">About Us</a></li>
-                    <li><a href="universities.php">Our Services</a></li>
+                    <li><a href="services.php">Our Services</a></li>
                     <li><a href="destinations.php">MBBS Destinations</a></li>
                     <li><a href="resources.php">University Partners</a></li>
                     <li><a href="blog.php">Blog</a></li>
-                    <li><a href="countries.php">Resources</a></li>
-                    <li><a href="resources.php">Contact Us</a></li>
                     <li><a href="gallery.php">Gallery</a></li>
+                    <li><a href="contact.php">Contact Us</a></li>
                 </ul>
                 <div class="menu-contact">
                     <h4>Contact Info</h4>
