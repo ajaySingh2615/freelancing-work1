@@ -230,19 +230,7 @@ $page_description = sprintf($page_description, $university['name']);
                             </div>
                             <?php endif; ?>
                             
-                            <?php if (!empty($university['annual_fees']) && $university['annual_fees'] > 0): ?>
-                            <div class="col-md-6">
-                                <div class="info-item">
-                                    <div class="info-icon">
-                                        <i class="fas fa-dollar-sign text-success"></i>
-                                    </div>
-                                    <div class="info-content">
-                                        <h6 class="info-title">Annual Fees</h6>
-                                        <p class="info-value text-success fw-bold">$<?php echo number_format($university['annual_fees']); ?></p>
-                                    </div>
-                                </div>
-                            </div>
-                            <?php endif; ?>
+
                             
                             <div class="col-md-6">
                                 <div class="info-item">
@@ -314,7 +302,7 @@ $page_description = sprintf($page_description, $university['name']);
                 <div class="sticky-sidebar">
                     <!-- University Quick Info Card -->
                     <div class="modern-card sidebar-info-card">
-                        <div class="modern-card-header primary-header">
+                        <div class="modern-card-header accent-header">
                             <h4 class="sidebar-card-title">
                                 <i class="fas fa-info-circle card-icon"></i>Quick Information
                             </h4>
@@ -350,12 +338,7 @@ $page_description = sprintf($page_description, $university['name']);
                                 </div>
                                 <?php endif; ?>
                                 
-                                <?php if (!empty($university['annual_fees']) && $university['annual_fees'] > 0): ?>
-                                <div class="quick-info-item">
-                                    <i class="fas fa-dollar-sign text-success"></i>
-                                    <span class="fw-bold text-success">$<?php echo number_format($university['annual_fees']); ?>/year</span>
-                                </div>
-                                <?php endif; ?>
+
                             </div>
                         </div>
                     </div>
@@ -443,15 +426,15 @@ $page_description = sprintf($page_description, $university['name']);
                         <div class="card-body p-3">
                             <div class="contact-item mb-2">
                                 <i class="fas fa-phone text-success me-2"></i>
-                                <a href="tel:+919311246058" class="text-decoration-none">+91 9311 246 058</a>
+                                <a href="tel:+919996817513" class="text-decoration-none">+91-9996817513</a>
                             </div>
                             <div class="contact-item mb-2">
                                 <i class="fab fa-whatsapp text-success me-2"></i>
-                                <a href="https://wa.me/919311246058" class="text-decoration-none" target="_blank">WhatsApp Chat</a>
+                                <a href="https://wa.me/919996817513" class="text-decoration-none" target="_blank">WhatsApp Chat</a>
                             </div>
                             <div class="contact-item">
                                 <i class="fas fa-envelope text-primary me-2"></i>
-                                <a href="mailto:info@sunriseglobal.edu" class="text-decoration-none">info@sunriseglobal.edu</a>
+                                <a href="mailto:sunriseglobaleducationgurgaon@gmail.com" class="text-decoration-none">sunriseglobaleducationgurgaon@gmail.com</a>
                             </div>
                         </div>
                     </div>
