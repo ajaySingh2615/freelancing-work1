@@ -1,0 +1,623 @@
+<?php
+$page_title = "Our Services - Study MBBS Abroad | MedStudy Global";
+$page_description = "Discover our comprehensive services for MBBS abroad - personalized guidance, university selection, and 100% admission assistance for your medical education journey.";
+
+include 'includes/header.php';
+?>
+
+<!-- Services Page -->
+<main class="services-page">
+    <!-- Hero Section (Banner) -->
+    <section class="services-hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="container">
+                <nav class="hero-breadcrumb">
+                    <a href="index.php">MedStudy Global</a>
+                    <span class="breadcrumb-separator">></span>
+                    <span class="breadcrumb-current">Services</span>
+                </nav>
+                <h1 class="hero-title">OUR SERVICES</h1>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content Section -->
+    <section class="services-content">
+        <div class="container">
+            <!-- Section Title -->
+            <div class="section-header">
+                <h3 class="section-subheading">How We Help?</h3>
+                <h2 class="section-heading">Services At MedStudy Global</h2>
+                <p class="section-description">
+                    We provide comprehensive support throughout your medical education journey abroad. 
+                    From initial consultation to final admission, our expert team ensures you receive 
+                    personalized guidance every step of the way.
+                </p>
+            </div>
+
+            <!-- Service Cards -->
+            <div class="services-grid">
+                <!-- Service Card 1 -->
+                <article class="service-card">
+                    <div class="service-image">
+                        <img src="assets/images/media/service-page/Personalised-Guidance-Counselling.webp" 
+                             alt="Personalized Guidance & Counseling" 
+                             class="service-img">
+                    </div>
+                    <h3 class="service-title">Personalized Guidance & Counseling</h3>
+                    <p class="service-description">
+                        Finding a university abroad that suits your budget, as well as requirements, is difficult. 
+                        Therefore, many students are confused about which country to choose or which university to 
+                        apply to. For this, we have a team of well trained and expert counsellors who help you to identify 
+                        your needs and goals and assist you with personal admission guidance and career counselling.
+                    </p>
+                </article>
+
+                <!-- Service Card 2 -->
+                <article class="service-card">
+                    <div class="service-image">
+                        <img src="assets/images/media/service-page/University-Selection.webp" 
+                             alt="University Selection" 
+                             class="service-img">
+                    </div>
+                    <h3 class="service-title">University Selection</h3>
+                    <p class="service-description">
+                        Counsellors at Rus Education are well experienced, competent and trained in helping 
+                        the students in finding the right university for their education abroad, in retrospect of your 
+                        individual needs and requirements. They offer some of the cherry-picked options, from 50+ top 
+                        medical universities & 20+ countries, to help you to become a successful doctor.
+                    </p>
+                </article>
+
+                <!-- Service Card 3 -->
+                <article class="service-card">
+                    <div class="service-image">
+                        <img src="assets/images/media/service-page/100-Admission-Assistance.webp" 
+                             alt="100% Admission Assistance" 
+                             class="service-img">
+                    </div>
+                    <h3 class="service-title">100% Admission Assistance</h3>
+                    <p class="service-description">
+                        Rus Education assist you with complete admission guidance at every step. When it 
+                        comes to studying MBBS abroad, there can be piles of documentation required at various 
+                        stages. Our team offers complete assistance through the entire process. Documentation 
+                        Assistance Travel Assistance Forex Assistance Loan Assistance.
+                    </p>
+                </article>
+            </div>
+
+            <!-- Additional Services Section -->
+            <div class="additional-services">
+                <h3 class="additional-title">Additional Support Services</h3>
+                <div class="additional-grid">
+                    <div class="additional-item">
+                        <i class="fas fa-passport"></i>
+                        <h4>Visa Assistance</h4>
+                        <p>Complete visa guidance and documentation support</p>
+                    </div>
+                    <div class="additional-item">
+                        <i class="fas fa-plane"></i>
+                        <h4>Travel Arrangements</h4>
+                        <p>Flight booking and travel planning assistance</p>
+                    </div>
+                    <div class="additional-item">
+                        <i class="fas fa-home"></i>
+                        <h4>Accommodation</h4>
+                        <p>Hostel and accommodation booking services</p>
+                    </div>
+                    <div class="additional-item">
+                        <i class="fas fa-language"></i>
+                        <h4>Language Support</h4>
+                        <p>Language training and cultural orientation</p>
+                    </div>
+                    <div class="additional-item">
+                        <i class="fas fa-headset"></i>
+                        <h4>24/7 Support</h4>
+                        <p>Round-the-clock assistance during your studies</p>
+                    </div>
+                    <div class="additional-item">
+                        <i class="fas fa-graduation-cap"></i>
+                        <h4>Career Guidance</h4>
+                        <p>Post-graduation career planning and support</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Call to Action -->
+            <div class="services-cta">
+                <div class="cta-content">
+                    <h3>Ready to Start Your Medical Journey?</h3>
+                    <p>Get in touch with our expert counselors for personalized guidance and support.</p>
+                    <div class="cta-buttons">
+                        <a href="contact.php" class="btn btn-primary">Get Free Consultation</a>
+                        <a href="university-partners.php" class="btn btn-secondary">Explore Universities</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- Enhanced CSS for Services Page -->
+<style>
+/* ===== SERVICES PAGE STYLES ===== */
+
+/* Hero Section (Banner) */
+.services-hero {
+    position: relative;
+    min-height: 60vh;
+    background-image: url('assets/images/media/destinations/hero-banner1.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.services-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        135deg,
+        rgba(0, 53, 133, 0.8) 0%,
+        rgba(229, 9, 20, 0.7) 100%
+    );
+    z-index: 1;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 2;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    color: var(--white);
+    width: 100%;
+}
+
+.hero-breadcrumb {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--sm);
+    margin-bottom: var(--xl);
+    font-size: var(--small);
+    opacity: 0.9;
+}
+
+.hero-breadcrumb a {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.hero-breadcrumb a:hover {
+    color: var(--white);
+}
+
+.breadcrumb-separator {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.breadcrumb-current {
+    color: var(--white);
+    font-weight: var(--medium-weight);
+}
+
+.hero-title {
+    font-size: clamp(2.5rem, 6vw, var(--xxxlarge));
+    font-weight: var(--bold);
+    letter-spacing: 2px;
+    margin: 0;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Services Content Section */
+.services-content {
+    padding: var(--section-padding);
+    background: var(--light-bg);
+}
+
+/* Section Header */
+.section-header {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto var(--xxl) auto;
+}
+
+.section-subheading {
+    font-size: var(--medium);
+    color: var(--accent-color);
+    font-weight: var(--semibold);
+    margin-bottom: var(--sm);
+    border-left: 3px solid var(--accent-color);
+    padding-left: 10px;
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.section-heading {
+    font-size: clamp(var(--xlarge), 5vw, var(--xxlarge));
+    font-weight: var(--bold);
+    color: var(--text-color);
+    margin-bottom: var(--xl);
+    line-height: var(--tight);
+}
+
+.section-description {
+    font-size: var(--medium);
+    line-height: var(--normal);
+    color: var(--light-text);
+    margin: 0;
+}
+
+/* Service Cards Grid */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: var(--xxl);
+    margin-bottom: var(--xxl);
+}
+
+.service-card {
+    background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+    color: var(--white);
+    padding: 0;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(220, 38, 38, 0.3);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+/* Enhanced hover effects */
+.service-card:hover {
+    transform: translateY(-8px);
+    background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+    box-shadow: 0 20px 40px rgba(31, 41, 55, 0.4);
+}
+
+.service-image {
+    width: 100%;
+    height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    overflow: hidden;
+}
+
+.service-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: none;
+    background: none;
+    padding: 0;
+}
+
+.service-title {
+    font-size: 1.5rem !important;
+    font-weight: var(--bold) !important;
+    margin-bottom: var(--lg) !important;
+    margin-top: var(--xl) !important;
+    line-height: 1.3 !important;
+    position: relative !important;
+    z-index: 2 !important;
+    transition: var(--transition) !important;
+    color: var(--white) !important;
+    text-align: center !important;
+    padding: 0 var(--xl) !important;
+}
+
+.service-description {
+    font-size: var(--base);
+    line-height: 1.6;
+    margin: 0;
+    opacity: 0.95;
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    padding: 0 var(--xl) var(--xl);
+}
+
+/* Additional Services */
+.additional-services {
+    background: var(--white);
+    padding: var(--xxl);
+    border-radius: var(--large);
+    box-shadow: var(--medium-shadow);
+    margin-bottom: var(--xxl);
+}
+
+.additional-title {
+    font-size: var(--xlarge);
+    font-weight: var(--bold);
+    color: var(--text-color);
+    text-align: center;
+    margin-bottom: var(--xxl);
+}
+
+.additional-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--xl);
+}
+
+.additional-item {
+    text-align: center;
+    padding: var(--xl);
+    transition: var(--transition);
+    border-radius: var(--medium-radius);
+}
+
+.additional-item:hover {
+    background: var(--light-bg);
+    transform: translateY(-4px);
+    box-shadow: var(--small-shadow);
+}
+
+.additional-item i {
+    font-size: var(--xxlarge);
+    color: var(--secondary-color);
+    margin-bottom: var(--lg);
+}
+
+.additional-item h4 {
+    font-size: var(--medium);
+    font-weight: var(--semibold);
+    color: var(--text-color);
+    margin-bottom: var(--md);
+}
+
+.additional-item p {
+    font-size: var(--small);
+    color: var(--light-text);
+    line-height: var(--normal);
+    margin: 0;
+}
+
+/* Call to Action */
+.services-cta {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: var(--white);
+    padding: var(--xxl);
+    border-radius: var(--large);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.services-cta::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="rgba(255,255,255,0.05)"><circle cx="50" cy="50" r="40"/><circle cx="20" cy="20" r="15"/><circle cx="80" cy="80" r="10"/></svg>') no-repeat;
+    background-size: cover;
+}
+
+.cta-content {
+    position: relative;
+    z-index: 1;
+}
+
+.cta-content h3 {
+    font-size: var(--xlarge);
+    font-weight: var(--bold);
+    margin-bottom: var(--lg);
+}
+
+.cta-content p {
+    font-size: var(--medium);
+    margin-bottom: var(--xl);
+    opacity: 0.95;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: var(--lg);
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn {
+    display: inline-block;
+    padding: var(--md) var(--xl);
+    border-radius: var(--medium-radius);
+    text-decoration: none;
+    font-weight: var(--semibold);
+    font-size: var(--base);
+    transition: var(--transition);
+    border: 2px solid transparent;
+}
+
+.btn-primary {
+    background: var(--white);
+    color: var(--primary-color);
+    border-color: var(--white);
+}
+
+.btn-primary:hover {
+    background: transparent;
+    color: var(--white);
+    border-color: var(--white);
+    transform: translateY(-2px);
+    text-decoration: none;
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--white);
+    border-color: var(--white);
+}
+
+.btn-secondary:hover {
+    background: var(--white);
+    color: var(--primary-color);
+    transform: translateY(-2px);
+    text-decoration: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .services-hero {
+        min-height: 40vh;
+    }
+    
+    .hero-title {
+        font-size: var(--xxlarge);
+        letter-spacing: 1px;
+    }
+    
+    .services-content {
+        padding: var(--xl) 0;
+    }
+    
+    .section-header {
+        margin-bottom: var(--xxl);
+    }
+    
+    .services-grid {
+        grid-template-columns: 1fr;
+        gap: var(--xl);
+        margin-bottom: var(--xxl);
+    }
+    
+    .service-card {
+        min-height: 450px;
+    }
+    
+    .service-image {
+        height: 200px;
+    }
+    
+    .service-title {
+        font-size: 1.3rem !important;
+        padding: 0 var(--lg) !important;
+        margin-top: var(--lg) !important;
+    }
+    
+    .service-description {
+        padding: 0 var(--lg) var(--lg);
+    }
+    
+    .additional-services {
+        padding: var(--xl);
+        margin-bottom: var(--xxl);
+    }
+    
+    .additional-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: var(--xl);
+    }
+    
+    .services-cta {
+        padding: var(--xl);
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .btn {
+        width: 100%;
+        max-width: 280px;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-breadcrumb {
+        flex-direction: column;
+        gap: var(--xs);
+    }
+    
+    .section-subheading {
+        font-size: var(--base);
+    }
+    
+    .service-card {
+        min-height: 400px;
+    }
+    
+    .service-image {
+        height: 180px;
+    }
+    
+    .service-title {
+        font-size: 1.2rem !important;
+        margin-bottom: var(--md) !important;
+        margin-top: var(--md) !important;
+        padding: 0 var(--md) !important;
+    }
+    
+    .service-description {
+        font-size: var(--small);
+        padding: 0 var(--md) var(--md);
+    }
+    
+    .additional-item {
+        padding: var(--lg);
+    }
+    
+    .additional-item i {
+        font-size: var(--xlarge);
+    }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+    .service-card,
+    .additional-item,
+    .btn {
+        transition: none;
+    }
+    
+    .service-card:hover,
+    .additional-item:hover,
+    .btn:hover {
+        transform: none;
+        animation: none;
+    }
+}
+
+/* Focus states for accessibility */
+.btn:focus,
+.service-card:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+</style>
+
+<?php include 'includes/footer.php'; ?> 

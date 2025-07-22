@@ -133,6 +133,36 @@ try {
     $stats = ['published_blogs' => 0, 'draft_blogs' => 0, 'archived_blogs' => 0, 'total_views' => 0, 'total_blogs' => 0];
 }
 
+// Get countries and universities statistics
+try {
+    $countriesStatsQuery = $db->prepare("
+        SELECT 
+            COUNT(*) as total_countries,
+            COUNT(CASE WHEN is_active = 1 THEN 1 END) as active_countries,
+            SUM(student_count) as total_students
+        FROM countries
+    ");
+    $countriesStatsQuery->execute();
+    $countriesStats = $countriesStatsQuery->fetch();
+    
+    $universitiesStatsQuery = $db->prepare("
+        SELECT 
+            COUNT(*) as total_universities,
+            COUNT(CASE WHEN is_active = 1 THEN 1 END) as active_universities
+        FROM universities
+    ");
+    $universitiesStatsQuery->execute();
+    $universitiesStats = $universitiesStatsQuery->fetch();
+    
+    $imagesStatsQuery = $db->prepare("SELECT COUNT(*) as total_images FROM university_images");
+    $imagesStatsQuery->execute();
+    $imagesStats = $imagesStatsQuery->fetch();
+} catch (Exception $e) {
+    $countriesStats = ['total_countries' => 0, 'active_countries' => 0, 'total_students' => 0];
+    $universitiesStats = ['total_universities' => 0, 'active_universities' => 0];
+    $imagesStats = ['total_images' => 0];
+}
+
 // Build WHERE clause for filters
 $whereConditions = [];
 $params = [];
@@ -354,6 +384,22 @@ try {
             border-left: 4px solid var(--info-color);
         }
 
+        .stat-card.countries {
+            border-left: 4px solid #28a745;
+        }
+
+        .stat-card.universities {
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .stat-card.students {
+            border-left: 4px solid var(--secondary-color);
+        }
+
+        .stat-card.images {
+            border-left: 4px solid #6f42c1;
+        }
+
         .stat-number {
             font-size: 2.5rem;
             font-weight: 700;
@@ -366,6 +412,12 @@ try {
             color: #6c757d;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+        }
+
+        .stat-sublabel {
+            font-size: 0.8rem;
+            color: #6c757d;
+            margin-top: 0.25rem;
         }
 
         .stat-icon {
@@ -692,6 +744,9 @@ try {
                 <li class="active"><a href="dashboard.php"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
                 <li><a href="add-blog.php"><i class="fas fa-plus"></i> Add Blog</a></li>
                 <li><a href="manage-categories.php"><i class="fas fa-tags"></i> Categories</a></li>
+                <li><a href="manage-countries.php"><i class="fas fa-globe"></i> Countries</a></li>
+                <li><a href="manage-universities.php"><i class="fas fa-university"></i> Universities</a></li>
+                <li><a href="manage-university-images.php"><i class="fas fa-images"></i> University Images</a></li>
                 <li><a href="../blog.php" target="_blank"><i class="fas fa-external-link-alt"></i> View Blog</a></li>
                 <li><a href="logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
             </ul>
@@ -756,6 +811,40 @@ try {
                             <i class="fas fa-eye stat-icon"></i>
                             <div class="stat-number"><?php echo number_format($stats['total_views']); ?></div>
                             <div class="stat-label">Total Views</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Countries & Universities Statistics -->
+                <div class="row stats-row">
+                    <div class="col-lg-3 col-md-6 mb-3">
+                        <div class="stat-card countries">
+                            <i class="fas fa-globe stat-icon"></i>
+                            <div class="stat-number"><?php echo number_format($countriesStats['total_countries']); ?></div>
+                            <div class="stat-label">Total Countries</div>
+                            <div class="stat-sublabel"><?php echo number_format($countriesStats['active_countries']); ?> Active</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-3">
+                        <div class="stat-card universities">
+                            <i class="fas fa-university stat-icon"></i>
+                            <div class="stat-number"><?php echo number_format($universitiesStats['total_universities']); ?></div>
+                            <div class="stat-label">Total Universities</div>
+                            <div class="stat-sublabel"><?php echo number_format($universitiesStats['active_universities']); ?> Active</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-3">
+                        <div class="stat-card students">
+                            <i class="fas fa-graduation-cap stat-icon"></i>
+                            <div class="stat-number"><?php echo number_format($countriesStats['total_students']); ?></div>
+                            <div class="stat-label">Total Students</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-3">
+                        <div class="stat-card images">
+                            <i class="fas fa-images stat-icon"></i>
+                            <div class="stat-number"><?php echo number_format($imagesStats['total_images']); ?></div>
+                            <div class="stat-label">University Images</div>
                         </div>
                     </div>
                 </div>
