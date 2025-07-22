@@ -15,6 +15,12 @@ $db = $database->connect();
 $errors = [];
 $success = '';
 
+// Check for session success message
+if (isset($_SESSION['success_message'])) {
+    $success = $_SESSION['success_message'];
+    unset($_SESSION['success_message']);
+}
+
 // Handle form submissions
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['action'])) {
@@ -41,7 +47,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     try {
                         $stmt = $db->prepare("INSERT INTO countries (name, slug, flag_code, description, region, student_count, categories, featured_image, meta_title, meta_description, sort_order, is_active) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
                         $stmt->execute([$name, $slug, $flag_code, $description, $region, $student_count, $categories, $featured_image, $meta_title, $meta_description, $sort_order, $is_active]);
-                        $success = "Country added successfully!";
+                        $_SESSION['success_message'] = "Country added successfully!";
+                        header("Location: manage-countries.php");
+                        exit();
                     } catch (Exception $e) {
                         $errors[] = "Error adding country: " . $e->getMessage();
                     }
@@ -71,7 +79,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     try {
                         $stmt = $db->prepare("UPDATE countries SET name = ?, slug = ?, flag_code = ?, description = ?, region = ?, student_count = ?, categories = ?, featured_image = ?, meta_title = ?, meta_description = ?, sort_order = ?, is_active = ? WHERE id = ?");
                         $stmt->execute([$name, $slug, $flag_code, $description, $region, $student_count, $categories, $featured_image, $meta_title, $meta_description, $sort_order, $is_active, $id]);
-                        $success = "Country updated successfully!";
+                        $_SESSION['success_message'] = "Country updated successfully!";
+                        header("Location: manage-countries.php");
+                        exit();
                     } catch (Exception $e) {
                         $errors[] = "Error updating country: " . $e->getMessage();
                     }
@@ -85,7 +95,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 try {
                     $stmt = $db->prepare("UPDATE countries SET is_active = ? WHERE id = ?");
                     $stmt->execute([$new_status, $id]);
-                    $success = "Country status updated successfully!";
+                    $_SESSION['success_message'] = "Country status updated successfully!";
+                    header("Location: manage-countries.php");
+                    exit();
                 } catch (Exception $e) {
                     $errors[] = "Error updating status: " . $e->getMessage();
                 }
@@ -105,7 +117,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     } else {
                         $stmt = $db->prepare("DELETE FROM countries WHERE id = ?");
                         $stmt->execute([$id]);
-                        $success = "Country deleted successfully!";
+                        $_SESSION['success_message'] = "Country deleted successfully!";
+                        header("Location: manage-countries.php");
+                        exit();
                     }
                 } catch (Exception $e) {
                     $errors[] = "Error deleting country: " . $e->getMessage();
@@ -134,7 +148,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             $stmt->execute([intval($id)]);
                         }
                         
-                        $success = "Bulk action completed successfully!";
+                        $_SESSION['success_message'] = "Bulk action completed successfully!";
+                        header("Location: manage-countries.php");
+                        exit();
                     } catch (Exception $e) {
                         $errors[] = "Error performing bulk action: " . $e->getMessage();
                     }

@@ -15,6 +15,12 @@ $db = $database->connect();
 $errors = [];
 $success = '';
 
+// Check for session success message
+if (isset($_SESSION['success_message'])) {
+    $success = $_SESSION['success_message'];
+    unset($_SESSION['success_message']);
+}
+
 // Handle form submissions
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['action'])) {
@@ -40,7 +46,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     try {
                         $stmt = $db->prepare("INSERT INTO universities (country_id, name, slug, featured_image, logo_image, about_university, course_duration, language_of_instruction, annual_fees, location, is_active) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
                         $stmt->execute([$country_id, $name, $slug, $featured_image, $logo_image, $about_university, $course_duration, $language_of_instruction, $annual_fees, $location, $is_active]);
-                        $success = "University added successfully!";
+                        $_SESSION['success_message'] = "University added successfully!";
+                        header("Location: manage-universities.php");
+                        exit();
                     } catch (Exception $e) {
                         $errors[] = "Error adding university: " . $e->getMessage();
                     }
@@ -69,7 +77,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     try {
                         $stmt = $db->prepare("UPDATE universities SET country_id = ?, name = ?, slug = ?, featured_image = ?, logo_image = ?, about_university = ?, course_duration = ?, language_of_instruction = ?, annual_fees = ?, location = ?, is_active = ? WHERE id = ?");
                         $stmt->execute([$country_id, $name, $slug, $featured_image, $logo_image, $about_university, $course_duration, $language_of_instruction, $annual_fees, $location, $is_active, $id]);
-                        $success = "University updated successfully!";
+                        $_SESSION['success_message'] = "University updated successfully!";
+                        header("Location: manage-universities.php");
+                        exit();
                     } catch (Exception $e) {
                         $errors[] = "Error updating university: " . $e->getMessage();
                     }
@@ -83,7 +93,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 try {
                     $stmt = $db->prepare("UPDATE universities SET is_active = ? WHERE id = ?");
                     $stmt->execute([$new_status, $id]);
-                    $success = "University status updated successfully!";
+                    $_SESSION['success_message'] = "University status updated successfully!";
+                    header("Location: manage-universities.php");
+                    exit();
                 } catch (Exception $e) {
                     $errors[] = "Error updating status: " . $e->getMessage();
                 }
@@ -100,7 +112,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     // Delete university
                     $stmt = $db->prepare("DELETE FROM universities WHERE id = ?");
                     $stmt->execute([$id]);
-                    $success = "University deleted successfully!";
+                    $_SESSION['success_message'] = "University deleted successfully!";
+                    header("Location: manage-universities.php");
+                    exit();
                 } catch (Exception $e) {
                     $errors[] = "Error deleting university: " . $e->getMessage();
                 }
@@ -133,7 +147,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             $stmt->execute([intval($id)]);
                         }
                         
-                        $success = "Bulk action completed successfully!";
+                        $_SESSION['success_message'] = "Bulk action completed successfully!";
+                        header("Location: manage-universities.php");
+                        exit();
                     } catch (Exception $e) {
                         $errors[] = "Error performing bulk action: " . $e->getMessage();
                     }
@@ -222,6 +238,9 @@ function sanitizeInput($input) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet">
+    
+    <!-- TinyMCE (Rich Text Editor) -->
+    <script src="https://cdn.tiny.cloud/1/ckhdla67dgiuczihylz9vgm24qocra38y6d17t4zfaad8v8b/tinymce/7/tinymce.min.js" referrerpolicy="strict-origin-when-cross-origin"></script>
     <style>
         :root {
             --primary-color: #003585;
@@ -894,8 +913,13 @@ function sanitizeInput($input) {
                         
                         <div class="form-group">
                             <label class="form-label">About University</label>
-                            <textarea name="about_university" class="form-control" rows="4" 
+                            <div class="alert alert-warning tinymce-error" style="display: none;">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                Rich text editor failed to load. You can still use the basic text area below.
+                            </div>
+                            <textarea name="about_university" class="form-control" id="about_university" rows="6" 
                                       placeholder="Detailed description about the university..."><?php echo $editing_university ? htmlspecialchars($editing_university['about_university']) : ''; ?></textarea>
+                            <small class="form-text text-muted">Use the rich text editor to format your content with headings, lists, links, and more.</small>
                         </div>
                         
                         <div class="form-row">
@@ -963,6 +987,94 @@ function sanitizeInput($input) {
             const editModal = new bootstrap.Modal(document.getElementById('addUniversityModal'));
             editModal.show();
         <?php endif; ?>
+
+        // Initialize TinyMCE for About University textarea
+        document.addEventListener('DOMContentLoaded', function() {
+            // Debug: Log current origin for TinyMCE troubleshooting
+            console.log('Current origin for TinyMCE:', window.location.origin);
+            console.log('Current hostname:', window.location.hostname);
+            
+            // Initialize TinyMCE for about_university
+            tinymce.init({
+                selector: '#about_university',
+                height: 300,
+                menubar: false,
+                plugins: [
+                    'advlist', 'autolink', 'lists', 'link', 'charmap', 'preview',
+                    'anchor', 'searchreplace', 'visualblocks', 'code', 'fullscreen',
+                    'insertdatetime', 'table', 'help', 'wordcount'
+                ],
+                toolbar: 'undo redo | blocks | ' +
+                        'bold italic forecolor | alignleft aligncenter ' +
+                        'alignright alignjustify | bullist numlist outdent indent | ' +
+                        'link unlink | removeformat | help',
+                content_style: 'body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 14px }',
+                // Link configuration
+                link_assume_external_targets: true,
+                link_context_toolbar: true,
+                link_default_target: '_blank',
+                link_default_protocol: 'https',
+                link_title: false,
+                target_list: [
+                    {title: 'None', value: ''},
+                    {title: 'New window', value: '_blank'},
+                    {title: 'Same window', value: '_self'}
+                ],
+                branding: false,
+                promotion: false,
+                // Privacy settings to disable analytics and telemetry
+                analytics: false,
+                telemetry: false,
+                statistics: false,
+                privacy_policy_url: '',
+                // Additional privacy settings
+                referrer_policy: 'no-referrer',
+                skin: 'oxide',
+                content_css: 'default',
+                // Domain configuration for localhost development
+                document_base_url: window.location.origin,
+                // Additional settings for better UX
+                help_accessibility: false,
+                statusbar: false,
+                convert_urls: false,
+                remove_script_host: false,
+                relative_urls: false,
+                setup: function (editor) {
+                    editor.on('change', function () {
+                        editor.save();
+                    });
+                    
+                    // Handle initialization errors
+                    editor.on('init', function() {
+                        console.log('TinyMCE initialized successfully for:', editor.id);
+                        // Hide any error messages
+                        const errorElements = document.querySelectorAll('.tinymce-error');
+                        errorElements.forEach(function(el) {
+                            el.style.display = 'none';
+                        });
+                    });
+                    
+                    editor.on('LoadError', function(e) {
+                        console.error('TinyMCE Load Error:', e);
+                        const errorElements = document.querySelectorAll('.tinymce-error');
+                        errorElements.forEach(function(el) {
+                            el.style.display = 'block';
+                        });
+                    });
+                },
+                // Error handling
+                init_instance_callback: function(editor) {
+                    console.log('TinyMCE instance callback:', editor.id);
+                }
+            }).then(function(editors) {
+                console.log('TinyMCE initialized successfully');
+            }).catch(function(error) {
+                console.error('TinyMCE initialization failed:', error);
+                // Show error message and fallback to basic textarea
+                document.querySelector('.tinymce-error').style.display = 'block';
+                document.getElementById('about_university').style.display = 'block';
+            });
+        });
     </script>
 </body>
 </html> 

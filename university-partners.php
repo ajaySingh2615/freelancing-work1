@@ -227,9 +227,17 @@ $page_description = sprintf($page_description, $country['name']);
                                 <!-- University Description -->
                                 <div class="university-description">
                                     <?php 
-                                    $description = strip_tags($university['about_university']);
-                                    echo htmlspecialchars(substr($description, 0, 120)); 
-                                    if (strlen($description) > 120) echo '...';
+                                    $description = $university['about_university'];
+                                    $plainText = strip_tags($description);
+                                    
+                                    if (strlen($plainText) > 120) {
+                                        // Truncate HTML content safely
+                                        $truncated = mb_substr($plainText, 0, 120);
+                                        echo htmlspecialchars($truncated) . '...';
+                                    } else {
+                                        // Display safe HTML content
+                                        echo strip_tags($description, '<p><br><strong><b><em><i><ul><ol><li>');
+                                    }
                                     ?>
                                 </div>
                                 

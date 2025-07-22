@@ -185,7 +185,10 @@ $page_description = sprintf($page_description, $university['name']);
                     <div class="card-body">
                         <?php if (!empty($university['about_university'])): ?>
                             <div class="university-content">
-                                <?php echo nl2br(htmlspecialchars($university['about_university'])); ?>
+                                <?php 
+                                // Display safe HTML content from TinyMCE
+                                echo strip_tags($university['about_university'], '<p><br><strong><b><em><i><ul><ol><li><h1><h2><h3><h4><h5><h6><a><img><blockquote><table><tr><td><th><thead><tbody>');
+                                ?>
                             </div>
                         <?php else: ?>
                             <p class="text-muted">University description will be updated soon. Please contact us for more information.</p>
@@ -1088,6 +1091,100 @@ $page_description = sprintf($page_description, $university['name']);
     display: flex;
     align-items: center;
     font-size: 0.9rem;
+}
+
+/* University Content from TinyMCE */
+.university-content {
+    line-height: 1.6;
+    color: var(--text-color);
+}
+
+.university-content p {
+    margin-bottom: 1rem;
+}
+
+.university-content h1,
+.university-content h2,
+.university-content h3,
+.university-content h4,
+.university-content h5,
+.university-content h6 {
+    color: var(--primary-color);
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.university-content h1 { font-size: 1.75rem; }
+.university-content h2 { font-size: 1.5rem; }
+.university-content h3 { font-size: 1.25rem; }
+.university-content h4 { font-size: 1.1rem; }
+.university-content h5 { font-size: 1rem; }
+.university-content h6 { font-size: 0.9rem; }
+
+.university-content ul,
+.university-content ol {
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+}
+
+.university-content li {
+    margin-bottom: 0.25rem;
+}
+
+.university-content strong,
+.university-content b {
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.university-content em,
+.university-content i {
+    font-style: italic;
+}
+
+.university-content a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.university-content a:hover {
+    color: var(--primary-dark);
+    text-decoration: underline;
+}
+
+.university-content blockquote {
+    border-left: 4px solid var(--primary-color);
+    margin: 1rem 0;
+    padding: 0.5rem 1rem;
+    background: var(--light-bg);
+    font-style: italic;
+}
+
+.university-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+}
+
+.university-content table th,
+.university-content table td {
+    border: 1px solid var(--border-color);
+    padding: 0.5rem;
+    text-align: left;
+}
+
+.university-content table th {
+    background: var(--light-bg);
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.university-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--medium-radius);
+    margin: 1rem 0;
 }
 
 /* Form Enhancements */
