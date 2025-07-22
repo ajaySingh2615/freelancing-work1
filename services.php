@@ -40,71 +40,50 @@ include 'includes/header.php';
             <div class="services-grid">
                 <!-- Service Card 1 -->
                 <article class="service-card">
-                    <div class="service-icon">
-                        <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M30 5C16.193 5 5 16.193 5 30s11.193 25 25 25 25-11.193 25-25S43.807 5 30 5zm0 45c-11.046 0-20-8.954-20-20s8.954-20 20-20 20 8.954 20 20-8.954 20-20 20z" fill="white"/>
-                            <path d="M35 25h-5v-5c0-2.761-2.239-5-5-5s-5 2.239-5 5v5h-5c-1.104 0-2 .896-2 2v18c0 1.104.896 2 2 2h20c1.104 0 2-.896 2-2V27c0-1.104-.896-2-2-2zm-15-5c0-1.657 1.343-3 3-3s3 1.343 3 3v5h-6v-5zm13 23H17V29h16v14z" fill="white"/>
-                            <circle cx="25" cy="36" r="2" fill="white"/>
-                        </svg>
+                    <div class="service-image">
+                        <img src="assets/images/media/service-page/Personalised-Guidance-Counselling.webp" 
+                             alt="Personalized Guidance & Counseling" 
+                             class="service-img">
                     </div>
                     <h3 class="service-title">Personalized Guidance & Counseling</h3>
                     <p class="service-description">
-                        Our experienced counselors provide one-on-one guidance tailored to your academic background, 
-                        career goals, and personal preferences. We help you make informed decisions about your 
-                        medical education journey abroad.
+                        Finding a university abroad that suits your budget, as well as requirements, is difficult. 
+                        Therefore, many students are confused about which country to choose or which university to 
+                        apply to. For this, we have a team of well trained and expert counsellors who help you to identify 
+                        your needs and goals and assist you with personal admission guidance and career counselling.
                     </p>
-                    <ul class="service-features">
-                        <li>Individual consultation sessions</li>
-                        <li>Career path assessment</li>
-                        <li>Academic background evaluation</li>
-                        <li>Goal-oriented planning</li>
-                    </ul>
                 </article>
 
                 <!-- Service Card 2 -->
                 <article class="service-card">
-                    <div class="service-icon">
-                        <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M50 10H10c-2.761 0-5 2.239-5 5v30c0 2.761 2.239 5 5 5h40c2.761 0 5-2.239 5-5V15c0-2.761-2.239-5-5-5zm-40 3h40c1.104 0 2 .896 2 2v3H8v-3c0-1.104.896-2 2-2zm40 34H10c-1.104 0-2-.896-2-2V20h44v25c0 1.104-.896 2-2 2z" fill="white"/>
-                            <path d="M15 25h10v3H15v-3zm0 6h15v3H15v-3zm0 6h20v3H15v-3z" fill="white"/>
-                            <circle cx="42" cy="32" r="6" fill="white"/>
-                            <path d="M42 28c-2.209 0-4 1.791-4 4s1.791 4 4 4 4-1.791 4-4-1.791-4-4-4zm0 6c-1.104 0-2-.896-2-2s.896-2 2-2 2 .896 2 2-.896 2-2 2z" fill="#e50914"/>
-                        </svg>
+                    <div class="service-image">
+                        <img src="assets/images/media/service-page/University-Selection.webp" 
+                             alt="University Selection" 
+                             class="service-img">
                     </div>
                     <h3 class="service-title">University Selection</h3>
                     <p class="service-description">
-                        We help you choose the right university from our extensive network of top medical institutions 
-                        worldwide. Our selection process considers factors like curriculum, fees, location, and 
-                        recognition to find your perfect match.
+                        Counsellors at Rus Education are well experienced, competent and trained in helping 
+                        the students in finding the right university for their education abroad, in retrospect of your 
+                        individual needs and requirements. They offer some of the cherry-picked options, from 50+ top 
+                        medical universities & 20+ countries, to help you to become a successful doctor.
                     </p>
-                    <ul class="service-features">
-                        <li>Comprehensive university database</li>
-                        <li>Detailed comparison analysis</li>
-                        <li>Fee structure evaluation</li>
-                        <li>Recognition verification</li>
-                    </ul>
                 </article>
 
                 <!-- Service Card 3 -->
                 <article class="service-card">
-                    <div class="service-icon">
-                        <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M50 20H35v-5c0-2.761-2.239-5-5-5H20c-2.761 0-5 2.239-5 5v5H10c-2.761 0-5 2.239-5 5v20c0 2.761 2.239 5 5 5h40c2.761 0 5-2.239 5-5V25c0-2.761-2.239-5-5-5zM17 15c0-1.657 1.343-3 3-3h10c1.657 0 3 1.343 3 3v5H17v-5zm35 32H8V25c0-1.104.896-2 2-2h40c1.104 0 2 .896 2 2v22c0 1.104-.896 2-2 2z" fill="white"/>
-                            <path d="M25 35l5 5 10-10" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-                        </svg>
+                    <div class="service-image">
+                        <img src="assets/images/media/service-page/100-Admission-Assistance.webp" 
+                             alt="100% Admission Assistance" 
+                             class="service-img">
                     </div>
                     <h3 class="service-title">100% Admission Assistance</h3>
                     <p class="service-description">
-                        From application preparation to final admission confirmation, we provide complete assistance 
-                        throughout the admission process. Our proven track record ensures maximum success rates 
-                        for our students.
+                        Rus Education assist you with complete admission guidance at every step. When it 
+                        comes to studying MBBS abroad, there can be piles of documentation required at various 
+                        stages. Our team offers complete assistance through the entire process. Documentation 
+                        Assistance Travel Assistance Forex Assistance Loan Assistance.
                     </p>
-                    <ul class="service-features">
-                        <li>Complete application support</li>
-                        <li>Document preparation assistance</li>
-                        <li>Interview preparation coaching</li>
-                        <li>Admission follow-up services</li>
-                    </ul>
                 </article>
             </div>
 
@@ -291,145 +270,83 @@ include 'includes/header.php';
 /* Service Cards Grid */
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: var(--xl);
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: var(--xxl);
     margin-bottom: var(--xxl);
 }
 
 .service-card {
-    background: var(--primary-color);
+    background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
     color: var(--white);
-    padding: var(--xxl);
-    border-radius: var(--large);
-    box-shadow: var(--medium-shadow);
-    transition: var(--transition);
+    padding: 0;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(220, 38, 38, 0.3);
+    transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
+    text-align: center;
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
 }
 
-/* Shine effect from blog cards */
-.service-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 50%;
-    height: 100%;
-    background: linear-gradient(
-        120deg,
-        transparent,
-        rgba(254, 186, 2, 0.2),
-        transparent
-    );
-    transform: skewX(-25deg);
-    transition: 0.75s;
-    z-index: 1;
-}
-
-/* Enhanced hover effects from blog cards */
+/* Enhanced hover effects */
 .service-card:hover {
-    transform: translateY(-5px);
-    border: 1px solid rgba(254, 186, 2, 0.3);
-    animation: pulsingGlow 3s ease-in-out infinite;
+    transform: translateY(-8px);
+    background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+    box-shadow: 0 20px 40px rgba(31, 41, 55, 0.4);
 }
 
-.service-card:hover::before {
-    animation: shine 3s ease-in-out infinite;
-}
-
-/* Animations from blog cards */
-@keyframes shine {
-    0% {
-        left: -100%;
-    }
-    20% {
-        left: 100%;
-    }
-    100% {
-        left: 100%;
-    }
-}
-
-@keyframes pulsingGlow {
-    0% {
-        box-shadow: 
-            0 0.25rem 0.75rem rgba(0, 0, 0, 0.15),
-            0 0 1.5rem rgba(254, 186, 2, 0.2);
-    }
-    50% {
-        box-shadow: 
-            0 0.25rem 0.75rem rgba(0, 0, 0, 0.15),
-            0 0 2rem rgba(254, 186, 2, 0.4),
-            0 0 3rem rgba(254, 186, 2, 0.2);
-    }
-    100% {
-        box-shadow: 
-            0 0.25rem 0.75rem rgba(0, 0, 0, 0.15),
-            0 0 1.5rem rgba(254, 186, 2, 0.2);
-    }
-}
-
-.service-icon {
-    margin-bottom: var(--xl);
+.service-image {
+    width: 100%;
+    height: 250px;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 80px;
-    height: 80px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: var(--circle);
-    backdrop-filter: blur(10px);
     position: relative;
     z-index: 2;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    overflow: hidden;
+}
+
+.service-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: none;
+    background: none;
+    padding: 0;
 }
 
 .service-title {
-    font-size: var(--large);
-    font-weight: var(--bold);
-    margin-bottom: var(--lg);
-    line-height: var(--tight);
-    position: relative;
-    z-index: 2;
-    transition: var(--transition);
-}
-
-.service-card:hover .service-title {
-    color: var(--accent-light);
+    font-size: 1.5rem !important;
+    font-weight: var(--bold) !important;
+    margin-bottom: var(--lg) !important;
+    margin-top: var(--xl) !important;
+    line-height: 1.3 !important;
+    position: relative !important;
+    z-index: 2 !important;
+    transition: var(--transition) !important;
+    color: var(--white) !important;
+    text-align: center !important;
+    padding: 0 var(--xl) !important;
 }
 
 .service-description {
     font-size: var(--base);
-    line-height: var(--normal);
-    margin-bottom: var(--xl);
+    line-height: 1.6;
+    margin: 0;
     opacity: 0.95;
     position: relative;
     z-index: 2;
-}
-
-.service-features {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    position: relative;
-    z-index: 2;
-}
-
-.service-features li {
-    padding: var(--sm) 0;
-    padding-left: var(--xl);
-    position: relative;
-    font-size: var(--small);
-    opacity: 0.9;
-}
-
-.service-features li::before {
-    content: '✓';
-    position: absolute;
-    left: 0;
-    top: var(--sm);
-    color: var(--accent-color);
-    font-weight: var(--bold);
-    font-size: var(--base);
+    text-align: center;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    padding: 0 var(--xl) var(--xl);
 }
 
 /* Additional Services */
@@ -598,7 +515,21 @@ include 'includes/header.php';
     }
     
     .service-card {
-        padding: var(--xl);
+        min-height: 450px;
+    }
+    
+    .service-image {
+        height: 200px;
+    }
+    
+    .service-title {
+        font-size: 1.3rem !important;
+        padding: 0 var(--lg) !important;
+        margin-top: var(--lg) !important;
+    }
+    
+    .service-description {
+        padding: 0 var(--lg) var(--lg);
     }
     
     .additional-services {
@@ -637,17 +568,23 @@ include 'includes/header.php';
     }
     
     .service-card {
-        padding: var(--lg);
+        min-height: 400px;
     }
     
-    .service-icon {
-        width: 60px;
-        height: 60px;
+    .service-image {
+        height: 180px;
     }
     
-    .service-icon svg {
-        width: 40px;
-        height: 40px;
+    .service-title {
+        font-size: 1.2rem !important;
+        margin-bottom: var(--md) !important;
+        margin-top: var(--md) !important;
+        padding: 0 var(--md) !important;
+    }
+    
+    .service-description {
+        font-size: var(--small);
+        padding: 0 var(--md) var(--md);
     }
     
     .additional-item {
