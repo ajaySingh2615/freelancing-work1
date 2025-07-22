@@ -32,62 +32,70 @@ $page_description = sprintf($page_description, $university['name']);
 ?>
 
 <!-- University Detail Hero Section -->
-<section class="university-detail-hero bg-primary position-relative overflow-hidden py-3">
-    <div class="container">
-        <div class="row align-items-center">
+<section class="university-detail-hero position-relative overflow-hidden">
+    <div class="hero-background"></div>
+    <div class="container position-relative">
+        <div class="row">
             <div class="col-12">
                 <!-- Breadcrumb -->
-                <nav aria-label="breadcrumb" class="mb-3">
-                    <ol class="breadcrumb bg-white bg-opacity-10 border-0 rounded-pill d-inline-flex px-3 py-2">
+                <nav aria-label="breadcrumb" class="hero-breadcrumb">
+                    <ol class="breadcrumb hero-breadcrumb-list">
                         <li class="breadcrumb-item">
-                            <a href="index.php" class="text-white text-decoration-none">
-                                <i class="fas fa-home me-1"></i>Home
+                            <a href="index.php" class="hero-breadcrumb-link">
+                                Home
                             </a>
                         </li>
                         <li class="breadcrumb-item">
-                            <a href="destinations.php" class="text-white text-decoration-none">Countries</a>
+                            <a href="destinations.php" class="hero-breadcrumb-link">Countries</a>
                         </li>
                         <?php if ($country): ?>
                         <li class="breadcrumb-item">
-                            <a href="university-partners.php?country=<?php echo urlencode($country['slug']); ?>" class="text-white text-decoration-none">
+                            <a href="university-partners.php?country=<?php echo urlencode($country['slug']); ?>" class="hero-breadcrumb-link">
                                 <?php echo htmlspecialchars($country['name']); ?>
                             </a>
                         </li>
                         <?php endif; ?>
-                        <li class="breadcrumb-item active text-white-50" aria-current="page">
+                        <li class="breadcrumb-item active hero-breadcrumb-active" aria-current="page">
                             <?php echo htmlspecialchars($university['name']); ?>
                         </li>
                     </ol>
                 </nav>
                 
                 <!-- University Header -->
-                <div class="d-flex align-items-start justify-content-between flex-wrap">
-                    <div class="d-flex align-items-center mb-2">
+                <div class="hero-content">
+                    <div class="hero-main-info">
                         <?php if (!empty($university['logo_image'])): ?>
-                        <div class="university-logo-large me-3">
+                        <div class="hero-university-logo">
                             <img src="<?php echo htmlspecialchars($university['logo_image']); ?>" 
                                  alt="<?php echo htmlspecialchars($university['name']); ?> Logo" 
-                                 class="rounded shadow-sm">
+                                 class="hero-logo-image">
                         </div>
                         <?php endif; ?>
-                        <div>
-                            <h1 class="h3 text-white mb-1"><?php echo htmlspecialchars($university['name']); ?></h1>
-                            <div class="d-flex flex-wrap gap-2 text-white-75 small">
-                                <span><i class="fas fa-map-marker-alt me-1"></i><?php echo htmlspecialchars($university['location']); ?></span>
+                        <div class="hero-university-details">
+                            <h1 class="hero-university-name"><?php echo htmlspecialchars($university['name']); ?></h1>
+                            <div class="hero-university-meta">
+                                <div class="hero-meta-item">
+                                    <i class="fas fa-map-marker-alt hero-meta-icon"></i>
+                                    <span class="hero-meta-text"><?php echo htmlspecialchars($university['location']); ?></span>
+                                </div>
                                 <?php if ($country): ?>
-                                <span><i class="fas fa-flag me-1"></i><?php echo htmlspecialchars($country['name']); ?></span>
+                                <div class="hero-meta-item">
+                                    <i class="fas fa-flag hero-meta-icon"></i>
+                                    <span class="hero-meta-text"><?php echo htmlspecialchars($country['name']); ?></span>
+                                </div>
                                 <?php endif; ?>
                             </div>
                         </div>
                     </div>
                     
                     <!-- Quick Actions -->
-                    <div class="d-flex gap-2">
-                        <a href="#consultation-form" class="btn btn-warning btn-sm smooth-scroll">
-                            <i class="fas fa-phone-alt me-1"></i>Get Info
+                    <div class="hero-actions">
+                        <a href="#consultation-form" class="hero-action-btn hero-action-primary smooth-scroll">
+                            
+                            <span> Get Info</span>
                         </a>
-                        <button class="btn btn-outline-light btn-sm" onclick="window.print()">
-                            <i class="fas fa-print me-1"></i>Print
+                        <button class="hero-action-btn hero-action-secondary" onclick="window.print()">
+                            <span>Print</span>
                         </button>
                     </div>
                 </div>
@@ -457,16 +465,224 @@ $page_description = sprintf($page_description, $university['name']);
 <style>
 /* University Detail Custom Styles */
 .university-detail-hero {
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+    min-height: 220px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 40px 0;
 }
 
-.university-logo-large img {
-    width: 80px;
-    height: 80px;
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+    z-index: 1;
+}
+
+.hero-background::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+    z-index: 2;
+}
+
+.university-detail-hero .container {
+    z-index: 3;
+}
+
+/* Breadcrumb Styles */
+.hero-breadcrumb {
+    margin-bottom: 32px;
+}
+
+.hero-breadcrumb-list {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50px;
+    padding: 12px 24px;
+    margin: 0;
+    display: inline-flex;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.hero-breadcrumb-link {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+}
+
+.hero-breadcrumb-link:hover {
+    color: #ffffff;
+    transform: translateY(-1px);
+}
+
+.hero-breadcrumb-active {
+    color: var(--accent-color) !important;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* Hero Content */
+.hero-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 24px;
+}
+
+.hero-main-info {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex: 1;
+    min-width: 0;
+}
+
+/* University Logo */
+.hero-university-logo {
+    flex-shrink: 0;
+}
+
+.hero-logo-image {
+    width: 90px;
+    height: 90px;
     object-fit: contain;
-    background: white;
-    padding: 8px;
-    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 12px;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.hero-logo-image:hover {
+    transform: scale(1.05);
+}
+
+/* University Details */
+.hero-university-details {
+    flex: 1;
+    min-width: 0;
+}
+
+.hero-university-name {
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0 0 12px 0;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+}
+
+.hero-university-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.hero-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 8px 16px;
+    border-radius: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(5px);
+}
+
+.hero-meta-icon {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 14px;
+    width: 16px;
+    text-align: center;
+}
+
+.hero-meta-text {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 15px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+/* Hero Actions */
+.hero-actions {
+    display: flex;
+    gap: 12px;
+    flex-shrink: 0;
+}
+
+.hero-action-btn {
+    display: flex;
+    align-items: center;
+    padding: 12px 24px;
+    border-radius: 50px;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-action-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.hero-action-btn:hover::before {
+    left: 100%;
+}
+
+.hero-action-primary {
+    background: linear-gradient(135deg, #ffc107 0%, #ff9800 100%);
+    color: #000;
+    border: 2px solid transparent;
+}
+
+.hero-action-primary:hover {
+    background: linear-gradient(135deg, #ffb300 0%, #f57c00 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 193, 7, 0.3);
+    color: #000;
+}
+
+.hero-action-secondary {
+    background: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+.hero-action-secondary:hover {
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 255, 255, 0.1);
+    color: #ffffff;
 }
 
 /* Gallery Styles */
@@ -644,21 +860,160 @@ $page_description = sprintf($page_description, $university['name']);
         height: 300px;
     }
     
-    .university-logo-large img {
-        width: 60px;
-        height: 60px;
+    .hero-content {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        text-align: center;
+    }
+    
+    .hero-main-info {
+        align-items: center;
+        text-align: center;
+    }
+    
+    .hero-university-details {
+        text-align: center;
+    }
+    
+    .hero-actions {
+        align-self: center;
+        justify-content: center;
+        max-width: 400px;
+        width: 100%;
+    }
+    
+    .hero-university-name {
+        font-size: 1.8rem;
+        text-align: center;
+    }
+    
+    .hero-university-meta {
+        justify-content: center;
+    }
+    
+    .hero-logo-image {
+        width: 75px;
+        height: 75px;
     }
 }
 
 @media (max-width: 768px) {
-    .university-detail-hero .d-flex {
-        flex-direction: column;
-        align-items: flex-start !important;
+    .university-detail-hero {
+        min-height: 200px;
+        padding: 30px 0;
+        text-align: center;
     }
     
-    .university-detail-hero .d-flex > div:last-child {
-        margin-top: 1rem;
-        align-self: flex-end;
+    .university-detail-hero .container {
+        padding-left: 15px;
+        padding-right: 15px;
+        max-width: 100%;
+    }
+    
+    .university-detail-hero .row {
+        margin-left: 0;
+        margin-right: 0;
+    }
+    
+    .university-detail-hero .col-12 {
+        padding-left: 0;
+        padding-right: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+    
+    .hero-breadcrumb {
+        margin-bottom: 24px;
+        text-align: center;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .hero-breadcrumb-list {
+        padding: 10px 20px;
+        font-size: 13px;
+        margin: 0 auto;
+    }
+    
+    .hero-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 20px;
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto;
+    }
+    
+    .hero-main-info {
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+        text-align: center;
+        width: 100%;
+        margin: 0 auto;
+    }
+    
+    .hero-university-logo {
+        order: -1;
+        margin-bottom: 8px;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+    
+    .hero-university-details {
+        width: 100%;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .hero-university-name {
+        font-size: 1.6rem;
+        margin-bottom: 16px;
+        text-align: center;
+        line-height: 1.2;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .hero-university-meta {
+        flex-direction: column;
+        gap: 12px;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        margin: 0 auto;
+    }
+    
+    .hero-meta-item {
+        padding: 6px 14px;
+        font-size: 14px;
+        margin: 0 auto;
+    }
+    
+    .hero-actions {
+        width: 100%;
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+        margin: 0 auto;
+        padding: 0 15px;
+    }
+    
+    .hero-action-btn {
+        padding: 14px 20px;
+        justify-content: center;
+        width: 100%;
+        max-width: 280px;
+        margin: 0 auto;
     }
     
     .main-image-container {
@@ -672,6 +1027,108 @@ $page_description = sprintf($page_description, $university['name']);
 }
 
 @media (max-width: 576px) {
+    .university-detail-hero {
+        min-height: 180px;
+        padding: 24px 0;
+        text-align: center;
+    }
+    
+    .university-detail-hero .container {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    
+    .university-detail-hero .col-12 {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    
+    .hero-breadcrumb {
+        margin-bottom: 20px;
+        text-align: center;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .hero-breadcrumb-list {
+        padding: 8px 16px;
+        font-size: 12px;
+        flex-wrap: wrap;
+        gap: 4px;
+        justify-content: center;
+        margin: 0 auto;
+    }
+    
+    .hero-content {
+        align-items: center;
+        text-align: center;
+        width: 100%;
+        margin: 0 auto;
+    }
+    
+    .hero-main-info {
+        gap: 12px;
+        align-items: center;
+        text-align: center;
+        width: 100%;
+        margin: 0 auto;
+    }
+    
+    .hero-logo-image {
+        width: 60px;
+        height: 60px;
+        padding: 8px;
+        margin: 0 auto;
+    }
+    
+    .hero-university-details {
+        text-align: center;
+        width: 100%;
+        margin: 0 auto;
+    }
+    
+    .hero-university-name {
+        font-size: 1.4rem;
+        line-height: 1.3;
+        text-align: center;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .hero-university-meta {
+        gap: 8px;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        margin: 0 auto;
+    }
+    
+    .hero-meta-item {
+        padding: 5px 12px;
+        font-size: 13px;
+        margin: 0 auto;
+    }
+    
+    .hero-meta-text {
+        font-size: 13px;
+    }
+    
+    .hero-actions {
+        align-items: center;
+        width: 100%;
+        margin: 0 auto;
+        padding: 0 10px;
+    }
+    
+    .hero-action-btn {
+        padding: 12px 16px;
+        font-size: 14px;
+        max-width: 250px;
+        margin: 0 auto;
+    }
+    
     .main-image-container {
         height: 200px;
     }
