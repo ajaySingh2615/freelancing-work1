@@ -11,6 +11,11 @@ if (isset($_SESSION['admin_logged_in']) && $_SESSION['admin_logged_in'] === true
 $error = '';
 $success = '';
 
+// Sanitize input function
+function sanitizeInput($input) {
+    return htmlspecialchars(strip_tags(trim($input)));
+}
+
 // Handle login form submission
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = sanitizeInput($_POST['username']);
