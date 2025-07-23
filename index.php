@@ -122,7 +122,7 @@ include('includes/header.php');
 <!-- About Section -->
 <section class="about-section">
     <div class="about-container">
-        <h2 class="about-question">Welcome to <span class="highlight-text">Sunrise Global Education</span></h2>
+        <h2 class="about-question">Welcome to <span class="highlight-text-update">Sunrise Global Education</span></h2>
         
         <div class="about-intro">
             <p>At Sunrise Global Education, we are committed to turning your dream of studying MBBS abroad into reality. As a leading overseas education consultancy, we specialize in MBBS abroad counseling, complete documentation support, and seamless admission guidance.</p>
