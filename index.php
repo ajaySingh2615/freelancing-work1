@@ -169,91 +169,91 @@ include('includes/header.php');
         <div class="destinations-grid">
             <div class="destination-item">
                 <div class="flag-circle">
-                    <img src="https://cdn-icons-png.flaticon.com/128/206/206724.png" alt="Russia" class="flag-img">
+                    <span class="flag-icon flag-icon-ru"></span>
                 </div>
                 <span class="country-label">Russia</span>
             </div>
             
             <div class="destination-item">
                 <div class="flag-circle">
-                    <img src="https://cdn-icons-png.flaticon.com/128/206/206606.png" alt="Georgia" class="flag-img">
+                    <span class="flag-icon flag-icon-ge"></span>
                 </div>
                 <span class="country-label">Georgia</span>
             </div>
             
             <div class="destination-item">
                 <div class="flag-circle">
-                    <img src="https://cdn-icons-png.flaticon.com/128/206/206619.png" alt="Kazakhstan" class="flag-img">
+                    <span class="flag-icon flag-icon-kz"></span>
                 </div>
                 <span class="country-label">Kazakhstan</span>
             </div>
             
             <div class="destination-item">
                 <div class="flag-circle">
-                    <img src="https://cdn-icons-png.flaticon.com/128/206/206853.png" alt="Egypt" class="flag-img">
+                    <span class="flag-icon flag-icon-eg"></span>
                 </div>
                 <span class="country-label">Egypt</span>
             </div>
             
             <div class="destination-item">
                 <div class="flag-circle">
-                    <img src="https://cdn-icons-png.flaticon.com/128/206/206697.png" alt="Nepal" class="flag-img">
+                    <span class="flag-icon flag-icon-np"></span>
                 </div>
                 <span class="country-label">Nepal</span>
             </div>
             
             <div class="destination-item">
                 <div class="flag-circle">
-                    <img src="https://cdn-icons-png.flaticon.com/128/206/206581.png" alt="China" class="flag-img">
+                    <span class="flag-icon flag-icon-cn"></span>
                 </div>
                 <span class="country-label">China</span>
             </div>
             
             <div class="destination-item">
                 <div class="flag-circle">
-                    <img src="https://cdn-icons-png.flaticon.com/128/206/206851.png" alt="Uzbekistan" class="flag-img">
+                    <span class="flag-icon flag-icon-uz"></span>
                 </div>
                 <span class="country-label">Uzbekistan</span>
             </div>
             
             <div class="destination-item">
                 <div class="flag-circle">
-                    <img src="https://cdn-icons-png.flaticon.com/128/206/206618.png" alt="Germany" class="flag-img">
+                    <span class="flag-icon flag-icon-de"></span>
                 </div>
                 <span class="country-label">Germany</span>
             </div>
             
             <div class="destination-item">
                 <div class="flag-circle">
-                    <img src="https://cdn-icons-png.flaticon.com/128/206/206626.png" alt="Italy" class="flag-img">
+                    <span class="flag-icon flag-icon-it"></span>
                 </div>
                 <span class="country-label">Italy</span>
             </div>
             
             <div class="destination-item">
                 <div class="flag-circle">
-                    <img src="https://cdn-icons-png.flaticon.com/128/206/206731.png" alt="Poland" class="flag-img">
+                    <span class="flag-icon flag-icon-pl"></span>
                 </div>
                 <span class="country-label">Poland</span>
             </div>
             
             <div class="destination-item">
                 <div class="flag-circle">
-                    <img src="https://cdn-icons-png.flaticon.com/128/206/206567.png" alt="Belarus" class="flag-img">
+                    <span class="flag-icon flag-icon-by"></span>
                 </div>
                 <span class="country-label">Belarus</span>
             </div>
             
             <div class="destination-item">
                 <div class="flag-circle">
-                    <img src="https://cdn-icons-png.flaticon.com/128/206/206644.png" alt="Latvia" class="flag-img">
+                    <span class="flag-icon flag-icon-lv"></span>
                 </div>
                 <span class="country-label">Latvia</span>
             </div>
         </div>
         
         <div class="view-all-container">
-            <a href="#" class="view-all-link">
+            <a href="destinations.php" class="view-all-link">
                 <span>View All</span>
             </a>
         </div>
