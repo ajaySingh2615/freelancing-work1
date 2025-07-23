@@ -381,18 +381,14 @@ $page_description = sprintf($page_description, $university['name']);
                                     <div class="col-half">
                                         <label for="country" class="modern-form-label">Country <span class="required-star">*</span></label>
                                         <select class="modern-form-select" id="country" name="country" required>
-                                            <option value="">Select</option>
-                                            <option value="IN" selected>India</option>
-                                            <option value="US">USA</option>
-                                            <option value="GB">UK</option>
-                                            <option value="CA">Canada</option>
-                                            <option value="AU">Australia</option>
+                                            <option value="">Select Country</option>
+                                            <option value="India" selected>India</option>
                                         </select>
                                     </div>
                                     <div class="col-half">
                                         <label for="state" class="modern-form-label">State <span class="required-star">*</span></label>
                                         <select class="modern-form-select" id="state" name="state" required>
-                                            <option value="">Select</option>
+                                            <option value="">Select State</option>
                                         </select>
                                     </div>
                                 </div>
@@ -402,6 +398,13 @@ $page_description = sprintf($page_description, $university['name']);
                                     <select class="modern-form-select" id="city" name="city" required>
                                         <option value="">Select City</option>
                                     </select>
+                                    <div class="city-not-found mt-2" id="cityNotFound" style="display: none;">
+                                        <small class="text-muted">City not found? 
+                                            <a href="#" id="addCustomCity" class="text-primary">Add your city manually</a>
+                                        </small>
+                                    </div>
+                                    <input type="text" class="modern-form-input mt-2" id="customCity" name="custom_city" 
+                                           placeholder="Enter your city name" style="display: none;">
                                 </div>
                                 
                                 <div class="form-group">
@@ -416,6 +419,319 @@ $page_description = sprintf($page_description, $university['name']);
                                     </button>
                                 </div>
                             </form>
+
+                            <!-- EmailJS Integration Script -->
+                            <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+                            <script>
+                                // Initialize EmailJS
+                                (function() {
+                                    emailjs.init("Xl2-rb_v5qwA8iJpI"); // Your EmailJS public key
+                                })();
+
+                                // Load Location Data from JSON
+                                let locationData = null;
+                                
+                                // Function to load states for a country
+                                function loadStatesForCountry(countryName) {
+                                    const stateSelect = document.getElementById('state');
+                                    const citySelect = document.getElementById('city');
+                                    
+                                    // Reset dropdowns
+                                    stateSelect.innerHTML = '<option value="">Select State</option>';
+                                    citySelect.innerHTML = '<option value="">Select City</option>';
+                                    document.getElementById('cityNotFound').style.display = 'none';
+                                    
+                                    if (countryName && locationData) {
+                                        console.log('Loading states for:', countryName);
+                                        const country = locationData.countries.find(c => c.name === countryName);
+                                        console.log('Found country:', country);
+                                        
+                                        if (country && country.states) {
+                                            console.log('Number of states:', country.states.length);
+                                            country.states.forEach(state => {
+                                                const option = document.createElement('option');
+                                                option.value = state.name;
+                                                option.textContent = state.name;
+                                                stateSelect.appendChild(option);
+                                            });
+                                        } else {
+                                            console.log('No states found for country');
+                                        }
+                                    }
+                                }
+                                
+                                // Function to load cities for a state
+                                function loadCitiesForState(countryName, stateName) {
+                                    const citySelect = document.getElementById('city');
+                                    
+                                    // Reset city dropdown
+                                    citySelect.innerHTML = '<option value="">Select City</option>';
+                                    document.getElementById('cityNotFound').style.display = 'none';
+                                    
+                                    if (countryName && stateName && locationData) {
+                                        console.log('Loading cities for:', stateName, 'in', countryName);
+                                        const country = locationData.countries.find(c => c.name === countryName);
+                                        if (country && country.states) {
+                                            const state = country.states.find(s => s.name === stateName);
+                                            console.log('Found state:', state);
+                                            
+                                            if (state && state.cities) {
+                                                console.log('Number of cities:', state.cities.length);
+                                                state.cities.forEach(city => {
+                                                    const option = document.createElement('option');
+                                                    option.value = city;
+                                                    option.textContent = city;
+                                                    citySelect.appendChild(option);
+                                                });
+                                                
+                                                // Show "city not found" option after loading cities
+                                                setTimeout(() => {
+                                                    document.getElementById('cityNotFound').style.display = 'block';
+                                                }, 100);
+                                            } else {
+                                                console.log('No cities found for state');
+                                            }
+                                        }
+                                    }
+                                }
+                                
+                                // Function to load location data with multiple attempts
+                                function loadLocationData() {
+                                    const possiblePaths = [
+                                        './Location.json',
+                                        '/Location.json',
+                                        'Location.json',
+                                        '../Location.json'
+                                    ];
+                                    
+                                    let attemptIndex = 0;
+                                    
+                                    function tryPath(pathIndex) {
+                                        if (pathIndex >= possiblePaths.length) {
+                                            console.error('All paths failed, using fallback data');
+                                            useStaticLocationData();
+                                            return;
+                                        }
+                                        
+                                        const currentPath = possiblePaths[pathIndex];
+                                        console.log('Trying path:', currentPath);
+                                        
+                                        fetch(currentPath)
+                                            .then(response => {
+                                                console.log('Response for', currentPath, '- Status:', response.status);
+                                                if (!response.ok) {
+                                                    throw new Error('HTTP ' + response.status);
+                                                }
+                                                return response.json();
+                                            })
+                                            .then(data => {
+                                                console.log('✅ Successfully loaded location data from:', currentPath);
+                                                locationData = data;
+                                                console.log('Countries available:', locationData.countries.map(c => c.name));
+                                                
+                                                // Auto-load states for India (since it's pre-selected)
+                                                const countrySelect = document.getElementById('country');
+                                                if (countrySelect.value === 'India') {
+                                                    loadStatesForCountry('India');
+                                                }
+                                            })
+                                            .catch(error => {
+                                                console.log('❌ Failed to load from', currentPath, ':', error.message);
+                                                tryPath(pathIndex + 1);
+                                            });
+                                    }
+                                    
+                                    tryPath(0);
+                                }
+                                
+                                // Fallback static data (basic states) if JSON fails to load
+                                function useStaticLocationData() {
+                                    console.log('Using fallback static location data');
+                                    locationData = {
+                                        "countries": [
+                                            {
+                                                "name": "India",
+                                                "states": [
+                                                    {"name": "Andhra Pradesh", "cities": ["Visakhapatnam", "Vijayawada", "Guntur", "Nellore", "Kurnool", "Rajahmundry", "Tirupati", "Kadapa", "Anantapur", "Eluru"]},
+                                                    {"name": "Arunachal Pradesh", "cities": ["Itanagar", "Naharlagun", "Pasighat", "Tawang", "Ziro"]},
+                                                    {"name": "Assam", "cities": ["Guwahati", "Silchar", "Dibrugarh", "Jorhat", "Nagaon", "Tinsukia", "Tezpur"]},
+                                                    {"name": "Bihar", "cities": ["Patna", "Gaya", "Bhagalpur", "Muzaffarpur", "Purnia", "Darbhanga", "Bihar Sharif", "Arrah", "Begusarai", "Katihar"]},
+                                                    {"name": "Chhattisgarh", "cities": ["Raipur", "Bhilai", "Bilaspur", "Korba", "Durg", "Rajnandgaon"]},
+                                                    {"name": "Goa", "cities": ["Panaji", "Margao", "Vasco da Gama", "Mapusa", "Ponda"]},
+                                                    {"name": "Gujarat", "cities": ["Ahmedabad", "Surat", "Vadodara", "Rajkot", "Bhavnagar", "Jamnagar", "Gandhinagar", "Junagadh", "Anand", "Bharuch"]},
+                                                    {"name": "Haryana", "cities": ["Gurugram", "Faridabad", "Panipat", "Ambala", "Yamunanagar", "Rohtak", "Hisar", "Karnal", "Sonipat", "Panchkula"]},
+                                                    {"name": "Himachal Pradesh", "cities": ["Shimla", "Dharamshala", "Solan", "Mandi", "Kullu", "Bilaspur", "Hamirpur"]},
+                                                    {"name": "Jharkhand", "cities": ["Ranchi", "Jamshedpur", "Dhanbad", "Bokaro", "Deoghar", "Phusro", "Hazaribagh"]},
+                                                    {"name": "Karnataka", "cities": ["Bengaluru", "Mysuru", "Hubballi", "Mangaluru", "Belagavi", "Davanagere", "Bellary", "Bijapur", "Shimoga", "Tumkur"]},
+                                                    {"name": "Kerala", "cities": ["Thiruvananthapuram", "Kochi", "Kozhikode", "Thrissur", "Kollam", "Palakkad", "Alappuzha", "Malappuram", "Kannur"]},
+                                                    {"name": "Madhya Pradesh", "cities": ["Bhopal", "Indore", "Jabalpur", "Gwalior", "Ujjain", "Sagar", "Dewas", "Satna", "Ratlam", "Rewa"]},
+                                                    {"name": "Maharashtra", "cities": ["Mumbai", "Pune", "Nagpur", "Thane", "Nashik", "Aurangabad", "Solapur", "Amravati", "Kolhapur", "Sangli"]},
+                                                    {"name": "Manipur", "cities": ["Imphal", "Thoubal", "Bishnupur", "Churachandpur"]},
+                                                    {"name": "Meghalaya", "cities": ["Shillong", "Tura", "Jowai"]},
+                                                    {"name": "Mizoram", "cities": ["Aizawl", "Lunglei", "Champhai"]},
+                                                    {"name": "Nagaland", "cities": ["Kohima", "Dimapur", "Mokokchung"]},
+                                                    {"name": "Odisha", "cities": ["Bhubaneswar", "Cuttack", "Rourkela", "Berhampur", "Sambalpur", "Puri", "Balasore", "Bhadrak"]},
+                                                    {"name": "Punjab", "cities": ["Ludhiana", "Amritsar", "Jalandhar", "Patiala", "Bathinda", "Mohali", "Pathankot", "Hoshiarpur", "Batala", "Moga"]},
+                                                    {"name": "Rajasthan", "cities": ["Jaipur", "Jodhpur", "Udaipur", "Kota", "Ajmer", "Bikaner", "Bhilwara", "Alwar", "Bharatpur", "Sikar"]},
+                                                    {"name": "Sikkim", "cities": ["Gangtok", "Namchi", "Geyzing", "Mangan"]},
+                                                    {"name": "Tamil Nadu", "cities": ["Chennai", "Coimbatore", "Madurai", "Tiruchirappalli", "Salem", "Tirunelveli", "Tiruppur", "Vellore", "Erode", "Thoothukkudi"]},
+                                                    {"name": "Telangana", "cities": ["Hyderabad", "Warangal", "Nizamabad", "Khammam", "Karimnagar", "Ramagundam", "Mahbubnagar", "Nalgonda", "Adilabad", "Suryapet"]},
+                                                    {"name": "Tripura", "cities": ["Agartala", "Dharmanagar", "Udaipur", "Kailasahar"]},
+                                                    {"name": "Uttar Pradesh", "cities": ["Lucknow", "Kanpur", "Ghaziabad", "Agra", "Varanasi", "Meerut", "Allahabad", "Bareilly", "Moradabad", "Aligarh", "Gorakhpur", "Saharanpur", "Noida", "Firozabad", "Jhansi", "Muzaffarnagar"]},
+                                                    {"name": "Uttarakhand", "cities": ["Dehradun", "Haridwar", "Roorkee", "Haldwani", "Rudrapur", "Kashipur", "Rishikesh"]},
+                                                    {"name": "West Bengal", "cities": ["Kolkata", "Howrah", "Durgapur", "Asansol", "Siliguri", "Malda", "Bardhaman", "Baharampur", "Habra", "Kharagpur"]},
+                                                    {"name": "Delhi", "cities": ["New Delhi", "Central Delhi", "South Delhi", "East Delhi", "West Delhi", "North Delhi", "North East Delhi", "North West Delhi", "South East Delhi", "South West Delhi", "Shahdara"]},
+                                                    {"name": "Andaman and Nicobar Islands", "cities": ["Port Blair", "Diglipur", "Mayabunder"]},
+                                                    {"name": "Chandigarh", "cities": ["Chandigarh"]},
+                                                    {"name": "Dadra and Nagar Haveli and Daman and Diu", "cities": ["Daman", "Diu", "Silvassa"]},
+                                                    {"name": "Jammu and Kashmir", "cities": ["Srinagar", "Jammu", "Baramulla", "Anantnag", "Udhampur", "Kathua"]},
+                                                    {"name": "Ladakh", "cities": ["Leh", "Kargil"]},
+                                                    {"name": "Lakshadweep", "cities": ["Kavaratti"]},
+                                                    {"name": "Puducherry", "cities": ["Puducherry", "Karaikal", "Mahe", "Yanam"]}
+                                                ]
+                                            }
+                                        ]
+                                    };
+                                    
+                                    console.log('✅ Fallback data loaded with', locationData.countries[0].states.length, 'states');
+                                    
+                                    // Auto-load states for India
+                                    const countrySelect = document.getElementById('country');
+                                    if (countrySelect.value === 'India') {
+                                        loadStatesForCountry('India');
+                                    }
+                                }
+                                
+                                // Start loading location data
+                                loadLocationData();
+
+                                // University Detail Form EmailJS Handler
+                                document.getElementById('universityDetailForm').addEventListener('submit', function(event) {
+                                    event.preventDefault();
+                                    
+                                    const form = event.target;
+                                    const submitBtn = form.querySelector('button[type="submit"]');
+                                    const originalText = submitBtn.innerHTML;
+                                    
+                                    // Show loading state
+                                    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+                                    submitBtn.disabled = true;
+                                    
+                                    // Get university name from page
+                                    const universityName = form.university_name.value || '<?php echo addslashes($university['name']); ?>';
+                                    const universityLocation = '<?php echo addslashes($university['location']); ?>';
+                                    const countryName = '<?php echo addslashes($country['name'] ?? ''); ?>';
+                                    
+                                    // Get city value (either selected or custom)
+                                    const selectedCity = form.city.value;
+                                    const customCity = form.custom_city.value;
+                                    const finalCity = customCity || selectedCity;
+                                    
+                                    // Prepare template parameters
+                                    const templateParams = {
+                                        student_name: form.student_name.value,
+                                        from_name: form.student_name.value,
+                                        from_email: form.email.value,
+                                        phone: form.phone.value,
+                                        country: form.country.value,
+                                        state: form.state.value,
+                                        city: finalCity,
+                                        message: form.message.value || 'No additional message provided.',
+                                        university_name: universityName,
+                                        university_location: universityLocation,
+                                        university_country: countryName,
+                                        to_email: 'ajaysingh261526@gmail.com',
+                                        date: new Date().toLocaleString(),
+                                        subject: 'New University Inquiry: ' + universityName + ' - ' + form.student_name.value,
+                                        inquiry_type: 'University Detail Page Inquiry'
+                                    };
+                                    
+                                    // Send via EmailJS
+                                    emailjs.send('service_igiat6d', 'template_kxu5e1d', templateParams)
+                                        .then(function() {
+                                            alert('Thank you! Your inquiry about ' + universityName + ' has been sent successfully. We will contact you soon with detailed information.');
+                                            form.reset();
+                                            // Reset custom city functionality
+                                            document.getElementById('customCity').style.display = 'none';
+                                            document.getElementById('cityNotFound').style.display = 'none';
+                                            // Reset dropdowns
+                                            document.getElementById('state').innerHTML = '<option value="">Select State</option>';
+                                            document.getElementById('city').innerHTML = '<option value="">Select City</option>';
+                                        }, function(error) {
+                                            console.log('EmailJS Error:', error);
+                                            console.log('Falling back to PHP form submission...');
+                                            alert('Using backup email system...');
+                                            // Fallback to PHP form
+                                            submitUniversityFormViaPhp(form);
+                                        })
+                                        .finally(function() {
+                                            // Restore button
+                                            submitBtn.innerHTML = originalText;
+                                            submitBtn.disabled = false;
+                                        });
+                                });
+                                
+                                // Fallback to PHP submission
+                                function submitUniversityFormViaPhp(form) {
+                                    const formData = new FormData(form);
+                                    
+                                    fetch('process-university-inquiry.php', {
+                                        method: 'POST',
+                                        body: formData
+                                    })
+                                    .then(response => response.json())
+                                    .then(data => {
+                                        if (data.status === 'success' || data.success) {
+                                            alert(data.message);
+                                            form.reset();
+                                        } else {
+                                            alert('Error: ' + data.message);
+                                        }
+                                    })
+                                    .catch(error => {
+                                        console.error('Error:', error);
+                                        alert('There was an error submitting your form. Please try again or contact us directly.');
+                                    });
+                                }
+
+                                // Location Selection Logic using Location.json
+                                document.getElementById('country').addEventListener('change', function() {
+                                    const countryName = this.value;
+                                    console.log('Country changed to:', countryName);
+                                    loadStatesForCountry(countryName);
+                                });
+
+                                document.getElementById('state').addEventListener('change', function() {
+                                    const countryName = document.getElementById('country').value;
+                                    const stateName = this.value;
+                                    console.log('State changed to:', stateName);
+                                    loadCitiesForState(countryName, stateName);
+                                });
+
+                                // Custom city functionality
+                                document.getElementById('addCustomCity').addEventListener('click', function(e) {
+                                    e.preventDefault();
+                                    const customCityInput = document.getElementById('customCity');
+                                    const citySelect = document.getElementById('city');
+                                    
+                                    // Show custom input and hide city select
+                                    customCityInput.style.display = 'block';
+                                    customCityInput.focus();
+                                    citySelect.required = false;
+                                    customCityInput.required = true;
+                                    
+                                    this.textContent = 'Use dropdown instead';
+                                    this.onclick = function(e) {
+                                        e.preventDefault();
+                                        customCityInput.style.display = 'none';
+                                        customCityInput.value = '';
+                                        citySelect.required = true;
+                                        customCityInput.required = false;
+                                        this.textContent = 'Add your city manually';
+                                        this.onclick = arguments.callee;
+                                    };
+                                });
+                            </script>
                         </div>
                     </div>
 
@@ -1705,111 +2021,7 @@ document.addEventListener('DOMContentLoaded', function() {
         currentImageIndex = index;
     };
     
-    // Form handling - same as university-partners page
-    const form = document.getElementById('universityDetailForm');
-    const countrySelect = document.getElementById('country');
-    const stateSelect = document.getElementById('state');
-    const citySelect = document.getElementById('city');
-    
-    // Location dropdowns
-    if (countrySelect) {
-        countrySelect.addEventListener('change', function() {
-            const countryCode = this.value;
-            
-            stateSelect.innerHTML = '<option value="">Select</option>';
-            citySelect.innerHTML = '<option value="">Select City</option>';
-            
-            if (countryCode) {
-                fetch(`api/get-locations.php?type=states&country=${countryCode}`)
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.success) {
-                            data.states.forEach(state => {
-                                const option = document.createElement('option');
-                                option.value = state.code;
-                                option.textContent = state.name;
-                                stateSelect.appendChild(option);
-                            });
-                        }
-                    })
-                    .catch(error => console.error('Error:', error));
-            }
-        });
-    }
-    
-    if (stateSelect) {
-        stateSelect.addEventListener('change', function() {
-            const stateCode = this.value;
-            const countryCode = countrySelect.value;
-            
-            citySelect.innerHTML = '<option value="">Select City</option>';
-            
-            if (stateCode && countryCode) {
-                fetch(`api/get-locations.php?type=cities&country=${countryCode}&state=${stateCode}`)
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.success) {
-                            data.cities.forEach(city => {
-                                const option = document.createElement('option');
-                                option.value = city.name;
-                                option.textContent = city.name;
-                                citySelect.appendChild(option);
-                            });
-                        }
-                    })
-                    .catch(error => console.error('Error:', error));
-            }
-        });
-    }
-    
-    // Form submission
-    if (form) {
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const formData = new FormData(this);
-            const submitBtn = this.querySelector('button[type="submit"]');
-            const originalText = submitBtn.innerHTML;
-            
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Submitting...';
-            submitBtn.disabled = true;
-            
-            fetch('process-university-inquiry.php', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    const alertDiv = document.createElement('div');
-                    alertDiv.className = 'alert alert-success alert-dismissible fade show';
-                    alertDiv.innerHTML = `
-                        <i class="fas fa-check-circle me-2"></i>
-                        ${data.message}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                    `;
-                    form.parentNode.insertBefore(alertDiv, form);
-                    form.reset();
-                } else {
-                    throw new Error(data.message || 'Something went wrong');
-                }
-            })
-            .catch(error => {
-                const alertDiv = document.createElement('div');
-                alertDiv.className = 'alert alert-danger alert-dismissible fade show';
-                alertDiv.innerHTML = `
-                    <i class="fas fa-exclamation-circle me-2"></i>
-                    ${error.message}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                `;
-                form.parentNode.insertBefore(alertDiv, form);
-            })
-            .finally(() => {
-                submitBtn.innerHTML = originalText;
-                submitBtn.disabled = false;
-            });
-        });
-    }
+    // Note: Form handling is now done by EmailJS in the inline script above
     
     // Smooth scrolling
     document.querySelectorAll('.smooth-scroll').forEach(link => {
