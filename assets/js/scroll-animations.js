@@ -32,10 +32,13 @@ class ScrollAnimations {
   }
 
   setupAnimations() {
-    // Check if we're on index page or about page
+    // Check which page we're on
     const isAboutPage =
       window.location.pathname.includes("about.php") ||
       document.body.classList.contains("about-page");
+    const isDestinationsPage =
+      window.location.pathname.includes("destinations.php") ||
+      document.body.classList.contains("destinations-page");
 
     if (isAboutPage) {
       // About page specific animations
@@ -45,6 +48,12 @@ class ScrollAnimations {
       this.addValuesSectionAnimations();
       this.addAboutCtaAnimations();
       this.addMediaHighlightsAnimations();
+    } else if (isDestinationsPage) {
+      // Destinations page specific animations
+      this.addDestinationsHeroAnimations();
+      this.addSearchSectionAnimations();
+      this.addCountriesGridAnimations();
+      this.addDestinationsCtaAnimations();
     } else {
       // Index page animations
       this.addMediaPartnersAnimations();
@@ -633,6 +642,151 @@ class ScrollAnimations {
     });
   }
 
+  // ========== DESTINATIONS PAGE SPECIFIC ANIMATIONS ==========
+
+  // 1. Destinations Hero Section - Breadcrumb and title reveal
+  addDestinationsHeroAnimations() {
+    const section = document.querySelector(".destinations-hero");
+    if (!section) return;
+
+    section.setAttribute("data-animation", "destinations-hero-section");
+
+    // Breadcrumb navigation
+    const breadcrumb = section.querySelector(".breadcrumb");
+    if (breadcrumb) {
+      breadcrumb.setAttribute("data-animation", "destinations-breadcrumb");
+      breadcrumb.style.opacity = "0";
+      breadcrumb.style.transform = "translateY(-20px)";
+    }
+
+    // Hero title
+    const title = section.querySelector(".hero-title");
+    if (title) {
+      title.setAttribute("data-animation", "destinations-hero-title");
+      title.style.opacity = "0";
+      title.style.transform = "translateY(40px)";
+    }
+  }
+
+  // 2. Search Section - Progressive reveal with interactive elements
+  addSearchSectionAnimations() {
+    const section = document.querySelector(".search-section");
+    if (!section) return;
+
+    section.setAttribute("data-animation", "search-section");
+
+    // Search header/subtitle
+    const searchHeader = section.querySelector(".search-header");
+    if (searchHeader) {
+      searchHeader.setAttribute("data-animation", "search-header");
+      searchHeader.style.opacity = "0";
+      searchHeader.style.transform = "translateY(30px)";
+    }
+
+    // Search box with sliding effect
+    const searchBox = section.querySelector(".search-box");
+    if (searchBox) {
+      searchBox.setAttribute("data-animation", "search-box");
+      searchBox.style.opacity = "0";
+      searchBox.style.transform = "translateY(40px) scale(0.95)";
+    }
+
+    // Search stats
+    const searchStats = section.querySelector(".search-stats");
+    if (searchStats) {
+      searchStats.setAttribute("data-animation", "search-stats");
+      searchStats.style.opacity = "0";
+      searchStats.style.transform = "translateY(20px)";
+    }
+
+    // Filter tags with staggered animation
+    const filterTags = section.querySelectorAll(".filter-tag");
+    filterTags.forEach((tag, index) => {
+      tag.setAttribute("data-animation", "search-filter-tag");
+      tag.setAttribute("data-delay", index * 100);
+      tag.style.opacity = "0";
+      tag.style.transform = "translateY(30px) scale(0.9)";
+    });
+  }
+
+  // 3. Countries Grid Section - Dynamic card animations
+  addCountriesGridAnimations() {
+    const section = document.querySelector(".countries-section");
+    if (!section) return;
+
+    section.setAttribute("data-animation", "countries-grid-section");
+
+    // Country cards with masonry-like staggered effect
+    const countryCards = section.querySelectorAll(".country-card");
+    countryCards.forEach((card, index) => {
+      card.setAttribute("data-animation", "country-card");
+      // Calculate stagger based on grid position (assuming 3 columns)
+      const row = Math.floor(index / 3);
+      const col = index % 3;
+      const delay = row * 150 + col * 100;
+      card.setAttribute("data-delay", delay);
+      card.style.opacity = "0";
+      card.style.transform = "translateY(60px) scale(0.95)";
+
+      // Country flag with special animation
+      const flag = card.querySelector(".country-flag");
+      if (flag) {
+        flag.style.transform = "scale(0.8) rotate(5deg)";
+      }
+
+      // Country actions buttons
+      const actions = card.querySelectorAll(".country-actions .btn");
+      actions.forEach((btn, btnIndex) => {
+        btn.style.opacity = "0";
+        btn.style.transform = "translateY(20px)";
+      });
+    });
+
+    // No countries fallback message
+    const noCountries = section.querySelector(".no-countries");
+    if (noCountries) {
+      noCountries.setAttribute("data-animation", "no-countries-message");
+      noCountries.style.opacity = "0";
+      noCountries.style.transform = "translateY(40px) scale(0.95)";
+    }
+  }
+
+  // 4. Destinations CTA Section - Final call to action
+  addDestinationsCtaAnimations() {
+    const section = document.querySelector(".cta-section");
+    if (!section) return;
+
+    section.setAttribute("data-animation", "destinations-cta-section");
+
+    // CTA title
+    const title = section.querySelector(".cta-title");
+    if (title) {
+      title.setAttribute("data-animation", "destinations-cta-title");
+      title.style.opacity = "0";
+      title.style.transform = "translateY(40px)";
+    }
+
+    // CTA description
+    const description = section.querySelector(".cta-description");
+    if (description) {
+      description.setAttribute(
+        "data-animation",
+        "destinations-cta-description"
+      );
+      description.style.opacity = "0";
+      description.style.transform = "translateY(30px)";
+    }
+
+    // CTA buttons
+    const buttons = section.querySelectorAll(".cta-buttons .btn");
+    buttons.forEach((button, index) => {
+      button.setAttribute("data-animation", "destinations-cta-button");
+      button.setAttribute("data-delay", index * 150);
+      button.style.opacity = "0";
+      button.style.transform = "translateY(30px) scale(0.95)";
+    });
+  }
+
   // Intersection Observer Handler
   handleIntersection(entries) {
     entries.forEach((entry) => {
@@ -744,6 +898,41 @@ class ScrollAnimations {
         break;
       case "media-logo":
         this.animateMediaLogo(element);
+        break;
+
+      // Destinations page animations
+      case "destinations-breadcrumb":
+        this.animateDestinationsBreadcrumb(element);
+        break;
+      case "destinations-hero-title":
+        this.animateDestinationsHeroTitle(element);
+        break;
+      case "search-header":
+        this.animateSearchHeader(element);
+        break;
+      case "search-box":
+        this.animateSearchBox(element);
+        break;
+      case "search-stats":
+        this.animateSearchStats(element);
+        break;
+      case "search-filter-tag":
+        this.animateSearchFilterTag(element);
+        break;
+      case "country-card":
+        this.animateCountryCard(element);
+        break;
+      case "no-countries-message":
+        this.animateNoCountriesMessage(element);
+        break;
+      case "destinations-cta-title":
+        this.animateDestinationsCtaTitle(element);
+        break;
+      case "destinations-cta-description":
+        this.animateDestinationsCtaDescription(element);
+        break;
+      case "destinations-cta-button":
+        this.animateDestinationsCtaButton(element);
         break;
 
       default:
@@ -947,6 +1136,94 @@ class ScrollAnimations {
   }
 
   animateMediaLogo(element) {
+    element.style.transition =
+      "all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55)";
+    element.style.opacity = "1";
+    element.style.transform = "translateY(0) scale(1)";
+  }
+
+  // ========== DESTINATIONS PAGE ANIMATION METHODS ==========
+
+  animateDestinationsBreadcrumb(element) {
+    element.style.transition = "all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
+    element.style.opacity = "1";
+    element.style.transform = "translateY(0)";
+  }
+
+  animateDestinationsHeroTitle(element) {
+    element.style.transition = "all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
+    element.style.opacity = "1";
+    element.style.transform = "translateY(0)";
+  }
+
+  animateSearchHeader(element) {
+    element.style.transition = "all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
+    element.style.opacity = "1";
+    element.style.transform = "translateY(0)";
+  }
+
+  animateSearchBox(element) {
+    element.style.transition = "all 1s cubic-bezier(0.34, 1.56, 0.64, 1)";
+    element.style.opacity = "1";
+    element.style.transform = "translateY(0) scale(1)";
+  }
+
+  animateSearchStats(element) {
+    element.style.transition = "all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
+    element.style.opacity = "1";
+    element.style.transform = "translateY(0)";
+  }
+
+  animateSearchFilterTag(element) {
+    element.style.transition =
+      "all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55)";
+    element.style.opacity = "1";
+    element.style.transform = "translateY(0) scale(1)";
+  }
+
+  animateCountryCard(element) {
+    element.style.transition = "all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)";
+    element.style.opacity = "1";
+    element.style.transform = "translateY(0) scale(1)";
+
+    // Special flag animation
+    const flag = element.querySelector(".country-flag");
+    if (flag) {
+      flag.style.transition = "all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55)";
+      flag.style.transform = "scale(1) rotate(0deg)";
+    }
+
+    // Animate action buttons with stagger
+    const actions = element.querySelectorAll(".country-actions .btn");
+    actions.forEach((btn, index) => {
+      setTimeout(() => {
+        btn.style.transition =
+          "all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55)";
+        btn.style.opacity = "1";
+        btn.style.transform = "translateY(0)";
+      }, 200 + index * 100);
+    });
+  }
+
+  animateNoCountriesMessage(element) {
+    element.style.transition = "all 1s cubic-bezier(0.34, 1.56, 0.64, 1)";
+    element.style.opacity = "1";
+    element.style.transform = "translateY(0) scale(1)";
+  }
+
+  animateDestinationsCtaTitle(element) {
+    element.style.transition = "all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
+    element.style.opacity = "1";
+    element.style.transform = "translateY(0)";
+  }
+
+  animateDestinationsCtaDescription(element) {
+    element.style.transition = "all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
+    element.style.opacity = "1";
+    element.style.transform = "translateY(0)";
+  }
+
+  animateDestinationsCtaButton(element) {
     element.style.transition =
       "all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55)";
     element.style.opacity = "1";
