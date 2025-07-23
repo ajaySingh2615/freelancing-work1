@@ -169,86 +169,75 @@ include('includes/header.php');
         <div class="destinations-grid">
             <div class="destination-item">
                 <div class="flag-circle">
+                    <span class="flag-icon flag-icon-in"></span>
+                </div>
+                <span class="country-label">India</span>
+            </div>
+            <div class="destination-item">
+                <div class="flag-circle">
+                    <span class="flag-icon flag-icon-ir"></span>
+                </div>
+                <span class="country-label">Iran</span>
+            </div>
+            <div class="destination-item">
+                <div class="flag-circle">
+                    <span class="flag-icon flag-icon-bd"></span>
+                </div>
+                <span class="country-label">Bangladesh</span>
+            </div>
+            <div class="destination-item">
+                <div class="flag-circle">
                     <span class="flag-icon flag-icon-ru"></span>
                 </div>
                 <span class="country-label">Russia</span>
             </div>
-            
-            <div class="destination-item">
-                <div class="flag-circle">
-                    <span class="flag-icon flag-icon-ge"></span>
-                </div>
-                <span class="country-label">Georgia</span>
-            </div>
-            
             <div class="destination-item">
                 <div class="flag-circle">
                     <span class="flag-icon flag-icon-kz"></span>
                 </div>
                 <span class="country-label">Kazakhstan</span>
             </div>
-            
             <div class="destination-item">
                 <div class="flag-circle">
-                    <span class="flag-icon flag-icon-eg"></span>
+                    <span class="flag-icon flag-icon-kg"></span>
                 </div>
-                <span class="country-label">Egypt</span>
+                <span class="country-label">Kyrgyzstan</span>
             </div>
-            
             <div class="destination-item">
                 <div class="flag-circle">
-                    <span class="flag-icon flag-icon-np"></span>
+                    <span class="flag-icon flag-icon-ge"></span>
                 </div>
-                <span class="country-label">Nepal</span>
+                <span class="country-label">Georgia</span>
             </div>
-            
-            <div class="destination-item">
-                <div class="flag-circle">
-                    <span class="flag-icon flag-icon-cn"></span>
-                </div>
-                <span class="country-label">China</span>
-            </div>
-            
             <div class="destination-item">
                 <div class="flag-circle">
                     <span class="flag-icon flag-icon-uz"></span>
                 </div>
                 <span class="country-label">Uzbekistan</span>
             </div>
-            
             <div class="destination-item">
                 <div class="flag-circle">
-                    <span class="flag-icon flag-icon-de"></span>
+                    <span class="flag-icon flag-icon-np"></span>
                 </div>
-                <span class="country-label">Germany</span>
+                <span class="country-label">Nepal</span>
             </div>
-            
             <div class="destination-item">
                 <div class="flag-circle">
-                    <span class="flag-icon flag-icon-it"></span>
+                    <span class="flag-icon flag-icon-cn"></span>
                 </div>
-                <span class="country-label">Italy</span>
+                <span class="country-label">China</span>
             </div>
-            
             <div class="destination-item">
                 <div class="flag-circle">
-                    <span class="flag-icon flag-icon-pl"></span>
+                    <span class="flag-icon flag-icon-eg"></span>
                 </div>
-                <span class="country-label">Poland</span>
+                <span class="country-label">Egypt</span>
             </div>
-            
             <div class="destination-item">
                 <div class="flag-circle">
                     <span class="flag-icon flag-icon-by"></span>
                 </div>
                 <span class="country-label">Belarus</span>
-            </div>
-            
-            <div class="destination-item">
-                <div class="flag-circle">
-                    <span class="flag-icon flag-icon-lv"></span>
-                </div>
-                <span class="country-label">Latvia</span>
             </div>
         </div>
         
