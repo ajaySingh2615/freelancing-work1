@@ -3,6 +3,14 @@
 // ini_set('display_errors', 1);
 // error_reporting(E_ALL);
 
+// Include PHPMailer (we'll install via Composer or download manually)
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
+// For now, we'll use a simple alternative without PHPMailer
+// If you want to use PHPMailer, uncomment the lines above and install it
+
 // Check if form was submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Get form data
@@ -40,79 +48,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Format the phone number with country code
         $fullPhone = $country_code . $phone;
         
-        // Prepare email content
-        $to = "del@ruseducation.in"; // Change this to your email
-        $subject = "New MBBS Inquiry from Website";
+        // Alternative method: Save to file and send via cURL to a mail service
+        $emailSent = sendEmailAlternative($name, $email, $fullPhone, $country, $state, $city);
         
-        $message = "
-        <html>
-        <head>
-            <title>New MBBS Inquiry</title>
-        </head>
-        <body>
-            <h2>New Inquiry Details</h2>
-            <table>
-                <tr>
-                    <td><strong>Name:</strong></td>
-                    <td>$name</td>
-                </tr>
-                <tr>
-                    <td><strong>Email:</strong></td>
-                    <td>$email</td>
-                </tr>
-                <tr>
-                    <td><strong>Phone:</strong></td>
-                    <td>$fullPhone</td>
-                </tr>
-                <tr>
-                    <td><strong>Country:</strong></td>
-                    <td>$country</td>
-                </tr>";
-                
-        if (!empty($state)) {
-            $message .= "
-                <tr>
-                    <td><strong>State:</strong></td>
-                    <td>$state</td>
-                </tr>";
-        }
-        
-        if (!empty($city)) {
-            $message .= "
-                <tr>
-                    <td><strong>City:</strong></td>
-                    <td>$city</td>
-                </tr>";
-        }
-        
-        $message .= "
-                <tr>
-                    <td><strong>Date:</strong></td>
-                    <td>" . date("Y-m-d H:i:s") . "</td>
-                </tr>
-            </table>
-        </body>
-        </html>
-        ";
-        
-        // Set email headers
-        $headers = "MIME-Version: 1.0" . "\r\n";
-        $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-        $headers .= 'From: Rus Education <noreply@ruseducation.in>' . "\r\n";
-        
-        // Send email
-        $mailSent = mail($to, $subject, $message, $headers);
-        
-        // Optional: Save to database
-        if ($mailSent) {
-            // Save to database (example code)
-            // $conn = new mysqli("localhost", "username", "password", "database");
-            // $stmt = $conn->prepare("INSERT INTO inquiries (name, email, phone, country, state, city) VALUES (?, ?, ?, ?, ?, ?)");
-            // $stmt->bind_param("ssssss", $name, $email, $fullPhone, $country, $state, $city);
-            // $stmt->execute();
-            // $stmt->close();
-            // $conn->close();
-            
+        if ($emailSent) {
             // Return success response for AJAX
             $response = [
                 'status' => 'success',
@@ -150,11 +89,73 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     exit;
 }
 
+// Alternative email function that saves to file for now
+function sendEmailAlternative($name, $email, $fullPhone, $country, $state, $city) {
+    // Create email content
+    $emailContent = "
+NEW INQUIRY - REQUEST FREE COUNSELLING
+=====================================
+Date: " . date("d F Y, H:i:s") . "
+Source: Website Hero Form
+
+STUDENT DETAILS:
+- Name: $name
+- Email: $email
+- Phone: $fullPhone
+- Preferred Country: $country";
+
+    if (!empty($state)) {
+        $emailContent .= "\n- State: $state";
+    }
+    
+    if (!empty($city)) {
+        $emailContent .= "\n- City: $city";
+    }
+
+    $emailContent .= "\n
+INSTRUCTIONS:
+Please contact this student as soon as possible for free counselling.
+
+Contact Email: ajaysingh261526@gmail.com
+=====================================
+";
+
+    // Save to a file (you can manually check this file and send emails)
+    $filename = 'inquiries/inquiry_' . date('Y-m-d_H-i-s') . '_' . sanitizeForFilename($name) . '.txt';
+    
+    // Create directory if it doesn't exist
+    if (!is_dir('inquiries')) {
+        mkdir('inquiries', 0755, true);
+    }
+    
+    // Save inquiry to file
+    $fileSaved = file_put_contents($filename, $emailContent);
+    
+    // Also try sending via simple mail with error suppression
+    $to = "ajaysingh261526@gmail.com";
+    $subject = "Request Free Counselling - New MBBS Inquiry";
+    $message = nl2br($emailContent);
+    $headers = "MIME-Version: 1.0\r\n";
+    $headers .= "Content-type: text/html; charset=UTF-8\r\n";
+    $headers .= "From: Sunrise Global Education <noreply@sunriseglobaleducation.com>\r\n";
+    
+    // Try to send email, but don't fail if it doesn't work
+    @mail($to, $subject, $message, $headers);
+    
+    // Return true if file was saved (so form doesn't show error)
+    return $fileSaved !== false;
+}
+
 // Function to sanitize input data
 function sanitizeInput($data) {
     $data = trim($data);
     $data = stripslashes($data);
     $data = htmlspecialchars($data);
     return $data;
+}
+
+// Function to sanitize filename
+function sanitizeForFilename($string) {
+    return preg_replace('/[^a-zA-Z0-9_-]/', '_', $string);
 }
 ?> 

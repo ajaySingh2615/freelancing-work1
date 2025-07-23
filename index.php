@@ -40,7 +40,7 @@ include('includes/header.php');
             <div class="hero-content-wrapper">
                 <div class="hero-form-wrapper">
                     <h3 class="hero-form-title">Request Free Counselling</h3>
-                    <form class="hero-form" action="process-form.php" method="post">
+                    <form class="hero-form" action="process-form.php" method="post" id="hero-form">
                         <div class="form-group">
                             <input type="text" class="form-control" name="name" placeholder="Full Name*" required>
                         </div>
@@ -53,16 +53,107 @@ include('includes/header.php');
                         <div class="form-group">
                             <select class="form-control" name="country" required>
                                 <option value="">Select Preferred Country*</option>
+                                <option value="India">India</option>
+                                <option value="Iran">Iran</option>
+                                <option value="Bangladesh">Bangladesh</option>
                                 <option value="Russia">Russia</option>
-                                <option value="Ukraine">Ukraine</option>
                                 <option value="Kazakhstan">Kazakhstan</option>
-                                <option value="Georgia">Georgia</option>
-                                <option value="Philippines">Philippines</option>
                                 <option value="Kyrgyzstan">Kyrgyzstan</option>
+                                <option value="Georgia">Georgia</option>
+                                <option value="Uzbekistan">Uzbekistan</option>
+                                <option value="Nepal">Nepal</option>
+                                <option value="China">China</option>
+                                <option value="Egypt">Egypt</option>
+                                <option value="Belarus">Belarus</option>
+                                <option value="Philippines">Philippines</option>
+                                <option value="Armenia">Armenia</option>
+                                <option value="Poland">Poland</option>
+                                <option value="Romania">Romania</option>
+                                <option value="Hungary">Hungary</option>
+                                <option value="Malaysia">Malaysia</option>
+                                <option value="Azerbaijan">Azerbaijan</option>
+                                <option value="Lithuania">Lithuania</option>
+                                <option value="Latvia">Latvia</option>
+                                <option value="Slovakia">Slovakia</option>
+                                <option value="Tajikistan">Tajikistan</option>
                             </select>
                         </div>
                         <button type="submit" class="btn btn-primary">Submit Application</button>
                     </form>
+
+                    <!-- EmailJS Integration Script -->
+                    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+                    <script>
+                        // Initialize EmailJS
+                        (function() {
+                            emailjs.init("Xl2-rb_v5qwA8iJpI"); // Your EmailJS public key
+                        })();
+
+                        // Handle form submission
+                        document.getElementById('hero-form').addEventListener('submit', function(event) {
+                            event.preventDefault();
+                            
+                            const form = event.target;
+                            const submitBtn = form.querySelector('button[type="submit"]');
+                            const originalText = submitBtn.innerHTML;
+                            
+                            // Show loading state
+                            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+                            submitBtn.disabled = true;
+                            
+                            // Prepare template parameters
+                            const templateParams = {
+                                from_name: form.name.value,
+                                from_email: form.email.value,
+                                phone: form.phone.value,
+                                country: form.country.value,
+                                message: `New MBBS inquiry from ${form.name.value}`,
+                                to_email: 'ajaysingh261526@gmail.com',
+                                date: new Date().toLocaleString()
+                            };
+                            
+                            // Send via EmailJS
+                            emailjs.send('service_igiat6d', 'template_5gxtwzk', templateParams)
+                                .then(function() {
+                                    alert('Thank you! Your inquiry has been sent successfully. We will contact you soon.');
+                                    form.reset();
+                                }, function(error) {
+                                    console.log('EmailJS Error:', error);
+                                    console.log('Falling back to PHP form submission...');
+                                    alert('Using backup email system...');
+                                    // Fallback to PHP form
+                                    submitFormViaPhp(form);
+                                })
+                                .finally(function() {
+                                    // Restore button
+                                    submitBtn.innerHTML = originalText;
+                                    submitBtn.disabled = false;
+                                });
+                        });
+                        
+                        // Fallback to PHP submission
+                        function submitFormViaPhp(form) {
+                            const formData = new FormData(form);
+                            
+                            fetch('process-form.php', {
+                                method: 'POST',
+                                body: formData
+                            })
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data.status === 'success') {
+                                    alert(data.message);
+                                    form.reset();
+                                } else {
+                                    alert('Error: ' + data.message);
+                                }
+                            })
+                            .catch(error => {
+                                console.error('Error:', error);
+                                alert('There was an error submitting your form. Please try again.');
+                            });
+                        }
+                    </script>
                 </div>
             </div>
         </div>
@@ -239,6 +330,7 @@ include('includes/header.php');
                 </div>
                 <span class="country-label">Belarus</span>
             </a>
+           
         </div>
         
         <div class="view-all-container">
