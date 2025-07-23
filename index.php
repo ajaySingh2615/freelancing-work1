@@ -265,7 +265,7 @@ include('includes/header.php');
     <div class="services-container">
         <div class="services-header">
             <h2 class="services-title">Services At <span class="highlight-text">SGE</span></h2>
-            <p class="services-description">Study MBBS in Russia: Affordable, WHO-approved universities, English-medium courses, and globally recognized degrees for your medical career.</p>
+            <p class="services-description">Study MBBS: Affordable, WHO-approved universities, English-medium courses, and globally recognized degrees for your medical career.</p>
         </div>
         
         <div class="services-layout">
