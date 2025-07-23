@@ -39,6 +39,9 @@ class ScrollAnimations {
     const isDestinationsPage =
       window.location.pathname.includes("destinations.php") ||
       document.body.classList.contains("destinations-page");
+    const isResourcesPage =
+      window.location.pathname.includes("resources.php") ||
+      document.body.classList.contains("resources-page");
 
     if (isAboutPage) {
       // About page specific animations
@@ -54,6 +57,11 @@ class ScrollAnimations {
       this.addSearchSectionAnimations();
       this.addCountriesGridAnimations();
       this.addDestinationsCtaAnimations();
+    } else if (isResourcesPage) {
+      // Resources page specific animations
+      this.addResourcesHeroAnimations();
+      this.addResourcesSearchFilterAnimations();
+      this.addUniversityCardsGridAnimations();
     } else {
       // Index page animations
       this.addMediaPartnersAnimations();
@@ -787,6 +795,182 @@ class ScrollAnimations {
     });
   }
 
+  // ========== RESOURCES PAGE SPECIFIC ANIMATIONS ==========
+
+  // 1. Resources Hero Section - Hero with decorative elements
+  addResourcesHeroAnimations() {
+    const section = document.querySelector(".university-partners-hero");
+    if (!section) return;
+
+    section.setAttribute("data-animation", "resources-hero-section");
+
+    // Breadcrumb navigation
+    const breadcrumb = section.querySelector(".hero-breadcrumb");
+    if (breadcrumb) {
+      breadcrumb.setAttribute("data-animation", "resources-breadcrumb");
+      breadcrumb.style.opacity = "0";
+      breadcrumb.style.transform = "translateY(-20px)";
+    }
+
+    // Hero title
+    const title = section.querySelector(".hero-title");
+    if (title) {
+      title.setAttribute("data-animation", "resources-hero-title");
+      title.style.opacity = "0";
+      title.style.transform = "translateY(50px)";
+    }
+
+    // Hero subtitle
+    const subtitle = section.querySelector(".hero-subtitle");
+    if (subtitle) {
+      subtitle.setAttribute("data-animation", "resources-hero-subtitle");
+      subtitle.style.opacity = "0";
+      subtitle.style.transform = "translateY(30px)";
+    }
+
+    // Airplane decorations with floating animations
+    const airplanes = section.querySelectorAll(".airplane-icon");
+    airplanes.forEach((airplane, index) => {
+      airplane.setAttribute("data-animation", "resources-airplane");
+      airplane.setAttribute("data-delay", index * 200);
+      airplane.style.opacity = "0";
+      airplane.style.transform = "translateY(40px) scale(0.8) rotate(45deg)";
+    });
+  }
+
+  // 2. Resources Search and Filter Section - Interactive elements
+  addResourcesSearchFilterAnimations() {
+    const section = document.querySelector(".search-filter-section");
+    if (!section) return;
+
+    section.setAttribute("data-animation", "resources-search-filter-section");
+
+    // Search wrapper
+    const searchWrapper = section.querySelector(".search-wrapper");
+    if (searchWrapper) {
+      searchWrapper.setAttribute("data-animation", "resources-search-wrapper");
+      searchWrapper.style.opacity = "0";
+      searchWrapper.style.transform = "translateY(40px) scale(0.95)";
+    }
+
+    // Filter tabs with staggered animation
+    const filterTabs = section.querySelectorAll(".filter-tab");
+    filterTabs.forEach((tab, index) => {
+      tab.setAttribute("data-animation", "resources-filter-tab");
+      tab.setAttribute("data-delay", index * 100);
+      tab.style.opacity = "0";
+      tab.style.transform = "translateY(30px) scale(0.9)";
+    });
+
+    // Filter controls
+    const filterControls = section.querySelector(".filter-controls");
+    if (filterControls) {
+      // Country filter dropdown
+      const countryFilter = filterControls.querySelector(
+        ".country-filter-dropdown"
+      );
+      if (countryFilter) {
+        countryFilter.setAttribute(
+          "data-animation",
+          "resources-country-filter"
+        );
+        countryFilter.style.opacity = "0";
+        countryFilter.style.transform = "translateY(30px)";
+      }
+
+      // Sort dropdown
+      const sortDropdown = filterControls.querySelector(".sort-dropdown");
+      if (sortDropdown) {
+        sortDropdown.setAttribute("data-animation", "resources-sort-dropdown");
+        sortDropdown.style.opacity = "0";
+        sortDropdown.style.transform = "translateY(30px)";
+      }
+
+      // View toggle
+      const viewToggle = filterControls.querySelector(".view-toggle");
+      if (viewToggle) {
+        viewToggle.setAttribute("data-animation", "resources-view-toggle");
+        viewToggle.style.opacity = "0";
+        viewToggle.style.transform = "translateY(30px) scale(0.9)";
+      }
+    }
+
+    // Results info
+    const resultsInfo = section.querySelector(".results-info");
+    if (resultsInfo) {
+      resultsInfo.setAttribute("data-animation", "resources-results-info");
+      resultsInfo.style.opacity = "0";
+      resultsInfo.style.transform = "translateY(30px)";
+    }
+  }
+
+  // 3. University Cards Grid Section - Advanced staggered card reveals
+  addUniversityCardsGridAnimations() {
+    const section = document.querySelector(".universities-grid-section");
+    if (!section) return;
+
+    section.setAttribute("data-animation", "university-cards-grid-section");
+
+    // University cards with intelligent grid staggering
+    const universityCards = section.querySelectorAll(
+      ".university-card-wrapper"
+    );
+    universityCards.forEach((card, index) => {
+      card.setAttribute("data-animation", "university-card");
+      // Calculate stagger based on grid position (3 columns)
+      const row = Math.floor(index / 3);
+      const col = index % 3;
+      const delay = row * 200 + col * 120;
+      card.setAttribute("data-delay", delay);
+      card.style.opacity = "0";
+      card.style.transform = "translateY(80px) scale(0.9)";
+
+      // University image with special effects
+      const universityImage = card.querySelector(
+        ".university-featured-img, .university-placeholder-img"
+      );
+      if (universityImage) {
+        universityImage.style.transform = "scale(1.1)";
+      }
+
+      // University logo badge
+      const logoBadge = card.querySelector(".university-logo-badge");
+      if (logoBadge) {
+        logoBadge.style.transform = "scale(0.7) rotate(-10deg)";
+        logoBadge.style.opacity = "0";
+      }
+
+      // Country flag badge
+      const flagBadge = card.querySelector(".country-flag-badge");
+      if (flagBadge) {
+        flagBadge.style.transform = "scale(0.8) translateX(-20px)";
+        flagBadge.style.opacity = "0";
+      }
+
+      // Duration badge
+      const durationBadge = card.querySelector(".duration-badge");
+      if (durationBadge) {
+        durationBadge.style.transform = "scale(0.8) translateY(20px)";
+        durationBadge.style.opacity = "0";
+      }
+
+      // Action button
+      const actionButton = card.querySelector(".view-details-btn");
+      if (actionButton) {
+        actionButton.style.transform = "translateY(30px) scale(0.95)";
+        actionButton.style.opacity = "0";
+      }
+    });
+
+    // No universities message (fallback)
+    const noUniversities = section.querySelector(".text-center.py-5");
+    if (noUniversities) {
+      noUniversities.setAttribute("data-animation", "no-universities-message");
+      noUniversities.style.opacity = "0";
+      noUniversities.style.transform = "translateY(50px) scale(0.95)";
+    }
+  }
+
   // Intersection Observer Handler
   handleIntersection(entries) {
     entries.forEach((entry) => {
@@ -933,6 +1117,44 @@ class ScrollAnimations {
         break;
       case "destinations-cta-button":
         this.animateDestinationsCtaButton(element);
+        break;
+
+      // Resources page animations
+      case "resources-breadcrumb":
+        this.animateResourcesBreadcrumb(element);
+        break;
+      case "resources-hero-title":
+        this.animateResourcesHeroTitle(element);
+        break;
+      case "resources-hero-subtitle":
+        this.animateResourcesHeroSubtitle(element);
+        break;
+      case "resources-airplane":
+        this.animateResourcesAirplane(element);
+        break;
+      case "resources-search-wrapper":
+        this.animateResourcesSearchWrapper(element);
+        break;
+      case "resources-filter-tab":
+        this.animateResourcesFilterTab(element);
+        break;
+      case "resources-country-filter":
+        this.animateResourcesCountryFilter(element);
+        break;
+      case "resources-sort-dropdown":
+        this.animateResourcesSortDropdown(element);
+        break;
+      case "resources-view-toggle":
+        this.animateResourcesViewToggle(element);
+        break;
+      case "resources-results-info":
+        this.animateResourcesResultsInfo(element);
+        break;
+      case "university-card":
+        this.animateUniversityCard(element);
+        break;
+      case "no-universities-message":
+        this.animateNoUniversitiesMessage(element);
         break;
 
       default:
@@ -1230,6 +1452,138 @@ class ScrollAnimations {
     element.style.transform = "translateY(0) scale(1)";
   }
 
+  // ========== RESOURCES PAGE ANIMATION METHODS ==========
+
+  animateResourcesBreadcrumb(element) {
+    element.style.transition = "all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
+    element.style.opacity = "1";
+    element.style.transform = "translateY(0)";
+  }
+
+  animateResourcesHeroTitle(element) {
+    element.style.transition = "all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
+    element.style.opacity = "1";
+    element.style.transform = "translateY(0)";
+  }
+
+  animateResourcesHeroSubtitle(element) {
+    element.style.transition = "all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
+    element.style.opacity = "1";
+    element.style.transform = "translateY(0)";
+  }
+
+  animateResourcesAirplane(element) {
+    element.style.transition = "all 1.5s cubic-bezier(0.34, 1.56, 0.64, 1)";
+    element.style.opacity = "1";
+    element.style.transform = "translateY(0) scale(1) rotate(45deg)";
+
+    // Add floating animation after initial reveal
+    setTimeout(() => {
+      element.style.animation = "float 6s ease-in-out infinite";
+    }, 800);
+  }
+
+  animateResourcesSearchWrapper(element) {
+    element.style.transition = "all 1s cubic-bezier(0.34, 1.56, 0.64, 1)";
+    element.style.opacity = "1";
+    element.style.transform = "translateY(0) scale(1)";
+  }
+
+  animateResourcesFilterTab(element) {
+    element.style.transition =
+      "all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55)";
+    element.style.opacity = "1";
+    element.style.transform = "translateY(0) scale(1)";
+  }
+
+  animateResourcesCountryFilter(element) {
+    element.style.transition = "all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
+    element.style.opacity = "1";
+    element.style.transform = "translateY(0)";
+  }
+
+  animateResourcesSortDropdown(element) {
+    element.style.transition = "all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
+    element.style.opacity = "1";
+    element.style.transform = "translateY(0)";
+  }
+
+  animateResourcesViewToggle(element) {
+    element.style.transition =
+      "all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55)";
+    element.style.opacity = "1";
+    element.style.transform = "translateY(0) scale(1)";
+  }
+
+  animateResourcesResultsInfo(element) {
+    element.style.transition = "all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
+    element.style.opacity = "1";
+    element.style.transform = "translateY(0)";
+  }
+
+  animateUniversityCard(element) {
+    element.style.transition = "all 1s cubic-bezier(0.34, 1.56, 0.64, 1)";
+    element.style.opacity = "1";
+    element.style.transform = "translateY(0) scale(1)";
+
+    // Animate university image back to normal
+    const universityImage = element.querySelector(
+      ".university-featured-img, .university-placeholder-img"
+    );
+    if (universityImage) {
+      universityImage.style.transition =
+        "all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
+      universityImage.style.transform = "scale(1)";
+    }
+
+    // Animate badges with individual timing
+    const logoBadge = element.querySelector(".university-logo-badge");
+    if (logoBadge) {
+      setTimeout(() => {
+        logoBadge.style.transition =
+          "all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55)";
+        logoBadge.style.transform = "scale(1) rotate(0deg)";
+        logoBadge.style.opacity = "1";
+      }, 300);
+    }
+
+    const flagBadge = element.querySelector(".country-flag-badge");
+    if (flagBadge) {
+      setTimeout(() => {
+        flagBadge.style.transition =
+          "all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55)";
+        flagBadge.style.transform = "scale(1) translateX(0)";
+        flagBadge.style.opacity = "1";
+      }, 200);
+    }
+
+    const durationBadge = element.querySelector(".duration-badge");
+    if (durationBadge) {
+      setTimeout(() => {
+        durationBadge.style.transition =
+          "all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55)";
+        durationBadge.style.transform = "scale(1) translateY(0)";
+        durationBadge.style.opacity = "1";
+      }, 400);
+    }
+
+    const actionButton = element.querySelector(".view-details-btn");
+    if (actionButton) {
+      setTimeout(() => {
+        actionButton.style.transition =
+          "all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55)";
+        actionButton.style.transform = "translateY(0) scale(1)";
+        actionButton.style.opacity = "1";
+      }, 500);
+    }
+  }
+
+  animateNoUniversitiesMessage(element) {
+    element.style.transition = "all 1s cubic-bezier(0.34, 1.56, 0.64, 1)";
+    element.style.opacity = "1";
+    element.style.transform = "translateY(0) scale(1)";
+  }
+
   // Counter animation for stats
   animateCounter(element) {
     const target = parseInt(element.textContent.replace(/\D/g, ""));
@@ -1253,6 +1607,23 @@ class ScrollAnimations {
 
 // Initialize animations when DOM is ready
 document.addEventListener("DOMContentLoaded", () => {
+  // Add floating animation CSS for airplanes
+  if (!document.getElementById("floating-animation-css")) {
+    const style = document.createElement("style");
+    style.id = "floating-animation-css";
+    style.textContent = `
+      @keyframes float {
+        0%, 100% {
+          transform: translateY(0) scale(1) rotate(45deg);
+        }
+        50% {
+          transform: translateY(-10px) scale(1) rotate(45deg);
+        }
+      }
+    `;
+    document.head.appendChild(style);
+  }
+
   new ScrollAnimations();
 });
 

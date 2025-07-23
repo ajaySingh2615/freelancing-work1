@@ -314,10 +314,10 @@ addNewSectionAnimations() {
 
 ## 📝 **Implementation Notes**
 
-The animation system is now fully integrated into your website and includes **ALL THREE PAGES** with custom animations. The scroll animations will:
+The animation system is now fully integrated into your website and includes **ALL FOUR PAGES** with custom animations. The scroll animations will:
 
 1. **Automatically initialize** when the page loads
-2. **Detect which page** you're on (index.php, about.php, or destinations.php)
+2. **Detect which page** you're on (index.php, about.php, destinations.php, or resources.php)
 3. **Load appropriate animations** for each specific page
 4. **Trigger progressively** as users scroll through sections
 5. **Enhance user engagement** without hindering performance
@@ -385,6 +385,9 @@ const isAboutPage =
 const isDestinationsPage =
   window.location.pathname.includes("destinations.php") ||
   document.body.classList.contains("destinations-page");
+const isResourcesPage =
+  window.location.pathname.includes("resources.php") ||
+  document.body.classList.contains("resources-page");
 
 if (isAboutPage) {
   // Load about page animations
@@ -396,6 +399,11 @@ if (isAboutPage) {
   this.addDestinationsHeroAnimations();
   this.addSearchSectionAnimations();
   // ... more destinations animations
+} else if (isResourcesPage) {
+  // Load resources page animations
+  this.addResourcesHeroAnimations();
+  this.addResourcesSearchFilterAnimations();
+  // ... more resources animations
 } else {
   // Load index page animations
   this.addMediaPartnersAnimations();
@@ -485,4 +493,96 @@ const col = index % 3;
 const delay = row * 150 + col * 100; // Staggered timing
 ```
 
-**Test all three pages: index.php, about.php, and destinations.php to see the complete animation system!**
+---
+
+## 📚 **Resources Page Specific Animations**
+
+### **1. Resources Hero Section**
+
+- **Breadcrumb Navigation** → Gentle upward slide with navigation context
+- **Hero Title** → Bold reveal with larger transform (50px) for emphasis
+- **Hero Subtitle** → Supporting text reveal building anticipation
+- **Airplane Decorations** → Staggered reveal with floating animations
+- **Floating Effect** → Continuous gentle floating motion after initial reveal
+
+### **2. Search and Filter Section**
+
+- **Search Wrapper** → Prominent bouncy scale highlighting main search function
+- **Filter Tabs** → Staggered bounce creating interactive selection interface
+- **Country Filter Dropdown** → Professional reveal for country selection
+- **Sort Dropdown** → Clean animation for sorting options
+- **View Toggle** → Bouncy scale for grid/list view switching
+- **Results Info** → Summary information with upward reveal
+- **Progressive Timing** → 100ms stagger for filter tabs creating wave effect
+
+### **3. University Cards Grid Section**
+
+- **University Cards** → Advanced grid-based staggered animations
+- **Grid Intelligence** → 3-column layout with row/column delay calculation
+- **Card Timing** → Row delays (200ms) + column offsets (120ms)
+- **University Images** → Scale normalization from 1.1 to 1.0
+- **University Logo Badge** → Rotation correction (-10° to 0°) with scale
+- **Country Flag Badge** → Horizontal slide with scale correction
+- **Duration Badge** → Vertical slide reveal with timing badges
+- **Action Button** → Final reveal encouraging interaction
+- **Multi-layered Timing** → Sequential badge reveals (200ms, 300ms, 400ms, 500ms)
+
+### **4. Advanced Card Features**
+
+- **Image Effects** → Subtle zoom-out effect on card reveal
+- **Badge Choreography** → Individual timing for each badge type
+- **Button Progression** → Final call-to-action with prominent animation
+- **Fallback States** → "No universities" message with bounce animation
+
+---
+
+## 🎯 **Resources Page User Experience**
+
+### **User Journey:**
+
+1. **Hero Section** → Clear page identification with university focus
+2. **Search Interface** → Comprehensive filtering and discovery tools
+3. **University Grid** → Rich exploration of partner institutions
+4. **Detailed Cards** → In-depth university information and actions
+
+### **Interactive Elements:**
+
+- **Search Box** → Primary interaction with prominent reveal
+- **Filter System** → Comprehensive filtering with engaging animations
+- **University Cards** → Rich information cards with multiple interaction layers
+- **Action Buttons** → Clear progression paths to university details
+
+### **Grid Animation Intelligence:**
+
+```javascript
+// Advanced 3-column grid calculation
+const row = Math.floor(index / 3); // Row position
+const col = index % 3; // Column position
+const delay = row * 200 + col * 120; // Staggered timing
+```
+
+### **Badge Animation Sequencing:**
+
+```javascript
+// Multi-layered timing system
+setTimeout(() => flagBadge.animate(), 200); // Country flag
+setTimeout(() => logoBadge.animate(), 300); // University logo
+setTimeout(() => durationBadge.animate(), 400); // Duration info
+setTimeout(() => actionButton.animate(), 500); // CTA button
+```
+
+### **Floating Airplane Animation:**
+
+```css
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0) scale(1) rotate(45deg);
+  }
+  50% {
+    transform: translateY(-10px) scale(1) rotate(45deg);
+  }
+}
+```
+
+**Test all four pages: index.php, about.php, destinations.php, and resources.php to see the complete animation system!**
