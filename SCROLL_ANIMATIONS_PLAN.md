@@ -314,10 +314,10 @@ addNewSectionAnimations() {
 
 ## 📝 **Implementation Notes**
 
-The animation system is now fully integrated into your website and includes **ALL FOUR PAGES** with custom animations. The scroll animations will:
+The animation system is now fully integrated into your website and includes **ALL FIVE PAGES** with custom animations. The scroll animations will:
 
 1. **Automatically initialize** when the page loads
-2. **Detect which page** you're on (index.php, about.php, destinations.php, or resources.php)
+2. **Detect which page** you're on (index.php, about.php, destinations.php, resources.php, or contact.php)
 3. **Load appropriate animations** for each specific page
 4. **Trigger progressively** as users scroll through sections
 5. **Enhance user engagement** without hindering performance
@@ -388,6 +388,9 @@ const isDestinationsPage =
 const isResourcesPage =
   window.location.pathname.includes("resources.php") ||
   document.body.classList.contains("resources-page");
+const isContactPage =
+  window.location.pathname.includes("contact.php") ||
+  document.body.classList.contains("contact-page");
 
 if (isAboutPage) {
   // Load about page animations
@@ -404,6 +407,12 @@ if (isAboutPage) {
   this.addResourcesHeroAnimations();
   this.addResourcesSearchFilterAnimations();
   // ... more resources animations
+} else if (isContactPage) {
+  // Load contact page animations
+  this.addContactHeaderAnimations();
+  this.addContactInfoAnimations();
+  this.addContactFormAnimations();
+  // ... more contact animations
 } else {
   // Load index page animations
   this.addMediaPartnersAnimations();
@@ -585,4 +594,107 @@ setTimeout(() => actionButton.animate(), 500); // CTA button
 }
 ```
 
-**Test all four pages: index.php, about.php, destinations.php, and resources.php to see the complete animation system!**
+---
+
+## 📞 **Contact Page Specific Animations**
+
+### **1. Contact Header Section**
+
+- **Section Title** → Bold reveal with larger transform (50px) for contact emphasis
+- **Section Description** → Supporting text reveal encouraging engagement
+- **Effect** → Clear page identification with professional contact focus
+
+### **2. Contact Info Section (Left Side)**
+
+- **Decorative Shapes** → Staggered reveals with floating animations (200ms delays)
+- **Info Heading** → "Contact Information" title with upward slide
+- **Info Description** → Supporting text about response time
+- **Contact Detail Items** → Horizontal slide from left with staggered timing (150ms each)
+- **Social Media Icons** → Bouncy scale with vertical slide (100ms stagger)
+- **Shape Animation** → Continuous floating motion with rotation and scale variations
+
+### **3. Contact Form Section (Right Side)**
+
+- **Form Groups** → Progressive reveal with upward slides (100ms stagger)
+- **Form Rows** → Coordinated two-column field animations (150ms delays)
+- **Radio Items** → Horizontal slide with scale for service type selection (80ms each)
+- **Submit Button** → Final prominent reveal with glow effect after animation
+- **Progressive Timing** → Building interaction hierarchy toward submission
+
+### **4. Office Locations Section**
+
+- **Section Heading** → "Our Branch Offices" with upward reveal
+- **Section Description** → Supporting text about in-person consultation
+- **Office Boxes** → Staggered bouncy reveals for each branch (200ms delays)
+- **Hover Enhancement** → Transition optimization for post-animation interactivity
+
+### **5. Google Map Section**
+
+- **Map Iframe** → Clean scale animation (0.95 to 1.0) with longer duration
+- **Professional Reveal** → Smooth integration of embedded map content
+
+### **6. FAQ Section**
+
+- **FAQ Prompt** → "Need more help?" with gentle upward slide
+- **FAQ Title** → "Frequently Asked Questions" with emphasis
+- **FAQ Subheading** → Supporting engagement text
+- **Accordion Cards** → Staggered reveals with scale and shadow effects (150ms each)
+- **Post-Animation** → Subtle shadow enhancement for better visual hierarchy
+
+---
+
+## 🎯 **Contact Page User Experience**
+
+### **User Journey:**
+
+1. **Header Section** → Clear contact page identification and purpose
+2. **Split Layout** → Balanced information and form presentation
+3. **Office Locations** → Multiple contact options and accessibility
+4. **Map Integration** → Visual location context
+5. **FAQ Support** → Common questions and additional help
+
+### **Interactive Elements:**
+
+- **Contact Form** → Progressive reveal building toward submission
+- **Social Media** → Engaging icons with bounce effects
+- **Office Boxes** → Clear branch information with hover-ready states
+- **FAQ Accordion** → Expandable help content with smooth animations
+
+### **Decorative Shape Animation:**
+
+```css
+@keyframes contactShapeFloat {
+  0%,
+  100% {
+    transform: scale(1) rotate(45deg) translateY(0);
+  }
+  33% {
+    transform: scale(1.05) rotate(50deg) translateY(-8px);
+  }
+  66% {
+    transform: scale(0.95) rotate(40deg) translateY(5px);
+  }
+}
+```
+
+### **Form Animation Hierarchy:**
+
+```javascript
+// Progressive form reveal pattern
+FormGroups: 100ms stagger    // Individual fields
+FormRows: 150ms stagger      // Row-based coordination
+RadioItems: 80ms stagger     // Service type options
+SubmitButton: Final emphasis // Call-to-action focus
+```
+
+### **Contact Detail Animation:**
+
+```javascript
+// Left-side slide pattern for contact info
+contactItems.forEach((item, index) => {
+  item.setAttribute("data-delay", index * 150);
+  item.style.transform = "translateX(-40px)"; // From left
+});
+```
+
+**Test all five pages: index.php, about.php, destinations.php, resources.php, and contact.php to see the complete animation system!**

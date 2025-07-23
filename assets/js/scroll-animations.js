@@ -42,6 +42,9 @@ class ScrollAnimations {
     const isResourcesPage =
       window.location.pathname.includes("resources.php") ||
       document.body.classList.contains("resources-page");
+    const isContactPage =
+      window.location.pathname.includes("contact.php") ||
+      document.body.classList.contains("contact-page");
 
     if (isAboutPage) {
       // About page specific animations
@@ -62,6 +65,14 @@ class ScrollAnimations {
       this.addResourcesHeroAnimations();
       this.addResourcesSearchFilterAnimations();
       this.addUniversityCardsGridAnimations();
+    } else if (isContactPage) {
+      // Contact page specific animations
+      this.addContactHeaderAnimations();
+      this.addContactInfoAnimations();
+      this.addContactFormAnimations();
+      this.addOfficeLocationsAnimations();
+      this.addGoogleMapAnimations();
+      this.addFaqSectionAnimations();
     } else {
       // Index page animations
       this.addMediaPartnersAnimations();
@@ -971,6 +982,219 @@ class ScrollAnimations {
     }
   }
 
+  // ========== CONTACT PAGE SPECIFIC ANIMATIONS ==========
+
+  // 1. Contact Header Section - Title and description
+  addContactHeaderAnimations() {
+    const section = document.querySelector(".contact-header-section");
+    if (!section) return;
+
+    section.setAttribute("data-animation", "contact-header-section");
+
+    // Section title
+    const title = section.querySelector(".section-title");
+    if (title) {
+      title.setAttribute("data-animation", "contact-header-title");
+      title.style.opacity = "0";
+      title.style.transform = "translateY(50px)";
+    }
+
+    // Section description
+    const description = section.querySelector(".section-description");
+    if (description) {
+      description.setAttribute("data-animation", "contact-header-description");
+      description.style.opacity = "0";
+      description.style.transform = "translateY(30px)";
+    }
+  }
+
+  // 2. Contact Info Section - Left side with decorative elements
+  addContactInfoAnimations() {
+    const section = document.querySelector(".contact-info-section");
+    if (!section) return;
+
+    section.setAttribute("data-animation", "contact-info-section");
+
+    // Decorative shapes with staggered animation
+    const shapes = section.querySelectorAll(".shape");
+    shapes.forEach((shape, index) => {
+      shape.setAttribute("data-animation", "contact-decorative-shape");
+      shape.setAttribute("data-delay", index * 200);
+      shape.style.opacity = "0";
+      shape.style.transform = "scale(0.5) rotate(45deg)";
+    });
+
+    // Contact info text heading
+    const heading = section.querySelector("h2");
+    if (heading) {
+      heading.setAttribute("data-animation", "contact-info-heading");
+      heading.style.opacity = "0";
+      heading.style.transform = "translateY(40px)";
+    }
+
+    // Contact info description
+    const description = section.querySelector("p");
+    if (description) {
+      description.setAttribute("data-animation", "contact-info-description");
+      description.style.opacity = "0";
+      description.style.transform = "translateY(30px)";
+    }
+
+    // Contact details items
+    const contactItems = section.querySelectorAll(".contact-item");
+    contactItems.forEach((item, index) => {
+      item.setAttribute("data-animation", "contact-detail-item");
+      item.setAttribute("data-delay", index * 150);
+      item.style.opacity = "0";
+      item.style.transform = "translateX(-40px)";
+    });
+
+    // Social media icons
+    const socialIcons = section.querySelectorAll(".social-icon");
+    socialIcons.forEach((icon, index) => {
+      icon.setAttribute("data-animation", "contact-social-icon");
+      icon.setAttribute("data-delay", index * 100);
+      icon.style.opacity = "0";
+      icon.style.transform = "scale(0.7) translateY(20px)";
+    });
+  }
+
+  // 3. Contact Form Section - Right side form
+  addContactFormAnimations() {
+    const section = document.querySelector(".contact-form-section");
+    if (!section) return;
+
+    section.setAttribute("data-animation", "contact-form-section");
+
+    // Form groups with staggered animation
+    const formGroups = section.querySelectorAll(".form-group");
+    formGroups.forEach((group, index) => {
+      group.setAttribute("data-animation", "contact-form-group");
+      group.setAttribute("data-delay", index * 100);
+      group.style.opacity = "0";
+      group.style.transform = "translateY(30px)";
+    });
+
+    // Form rows
+    const formRows = section.querySelectorAll(".form-row");
+    formRows.forEach((row, index) => {
+      row.setAttribute("data-animation", "contact-form-row");
+      row.setAttribute("data-delay", index * 150);
+      row.style.opacity = "0";
+      row.style.transform = "translateY(40px)";
+    });
+
+    // Radio group
+    const radioGroup = section.querySelector(".radio-group");
+    if (radioGroup) {
+      const radioItems = radioGroup.querySelectorAll(".radio-item");
+      radioItems.forEach((item, index) => {
+        item.setAttribute("data-animation", "contact-radio-item");
+        item.setAttribute("data-delay", index * 80);
+        item.style.opacity = "0";
+        item.style.transform = "translateX(30px) scale(0.9)";
+      });
+    }
+
+    // Submit button
+    const submitBtn = section.querySelector(".btn-submit");
+    if (submitBtn) {
+      submitBtn.setAttribute("data-animation", "contact-submit-button");
+      submitBtn.style.opacity = "0";
+      submitBtn.style.transform = "translateY(40px) scale(0.95)";
+    }
+  }
+
+  // 4. Office Locations Section - Branch offices
+  addOfficeLocationsAnimations() {
+    const section = document.querySelector(".office-section");
+    if (!section) return;
+
+    section.setAttribute("data-animation", "office-locations-section");
+
+    // Section heading
+    const heading = section.querySelector("h2");
+    if (heading) {
+      heading.setAttribute("data-animation", "office-section-heading");
+      heading.style.opacity = "0";
+      heading.style.transform = "translateY(40px)";
+    }
+
+    // Section description
+    const description = section.querySelector("p");
+    if (description) {
+      description.setAttribute("data-animation", "office-section-description");
+      description.style.opacity = "0";
+      description.style.transform = "translateY(30px)";
+    }
+
+    // Office boxes
+    const officeBoxes = section.querySelectorAll(".office-box");
+    officeBoxes.forEach((box, index) => {
+      box.setAttribute("data-animation", "office-box");
+      box.setAttribute("data-delay", index * 200);
+      box.style.opacity = "0";
+      box.style.transform = "translateY(50px) scale(0.95)";
+    });
+  }
+
+  // 5. Google Map Section - Map reveal
+  addGoogleMapAnimations() {
+    const mapSection = document.querySelector(".google-map");
+    if (!mapSection) return;
+
+    mapSection.setAttribute("data-animation", "google-map-section");
+
+    // Map iframe
+    const iframe = mapSection.querySelector("iframe");
+    if (iframe) {
+      iframe.setAttribute("data-animation", "google-map-iframe");
+      iframe.style.opacity = "0";
+      iframe.style.transform = "scale(0.95)";
+    }
+  }
+
+  // 6. FAQ Section - Accordion with items
+  addFaqSectionAnimations() {
+    const section = document.querySelector(".faq-section");
+    if (!section) return;
+
+    section.setAttribute("data-animation", "faq-section");
+
+    // FAQ prompt
+    const prompt = section.querySelector(".faq-prompt");
+    if (prompt) {
+      prompt.setAttribute("data-animation", "faq-prompt");
+      prompt.style.opacity = "0";
+      prompt.style.transform = "translateY(30px)";
+    }
+
+    // FAQ title
+    const title = section.querySelector(".faq-title");
+    if (title) {
+      title.setAttribute("data-animation", "faq-title");
+      title.style.opacity = "0";
+      title.style.transform = "translateY(40px)";
+    }
+
+    // FAQ subheading
+    const subheading = section.querySelector(".faq-subheading");
+    if (subheading) {
+      subheading.setAttribute("data-animation", "faq-subheading");
+      subheading.style.opacity = "0";
+      subheading.style.transform = "translateY(30px)";
+    }
+
+    // FAQ accordion cards
+    const faqCards = section.querySelectorAll(".card");
+    faqCards.forEach((card, index) => {
+      card.setAttribute("data-animation", "faq-accordion-card");
+      card.setAttribute("data-delay", index * 150);
+      card.style.opacity = "0";
+      card.style.transform = "translateY(40px) scale(0.98)";
+    });
+  }
+
   // Intersection Observer Handler
   handleIntersection(entries) {
     entries.forEach((entry) => {
@@ -1155,6 +1379,65 @@ class ScrollAnimations {
         break;
       case "no-universities-message":
         this.animateNoUniversitiesMessage(element);
+        break;
+
+      // Contact page animations
+      case "contact-header-title":
+        this.animateContactHeaderTitle(element);
+        break;
+      case "contact-header-description":
+        this.animateContactHeaderDescription(element);
+        break;
+      case "contact-decorative-shape":
+        this.animateContactDecorativeShape(element);
+        break;
+      case "contact-info-heading":
+        this.animateContactInfoHeading(element);
+        break;
+      case "contact-info-description":
+        this.animateContactInfoDescription(element);
+        break;
+      case "contact-detail-item":
+        this.animateContactDetailItem(element);
+        break;
+      case "contact-social-icon":
+        this.animateContactSocialIcon(element);
+        break;
+      case "contact-form-group":
+        this.animateContactFormGroup(element);
+        break;
+      case "contact-form-row":
+        this.animateContactFormRow(element);
+        break;
+      case "contact-radio-item":
+        this.animateContactRadioItem(element);
+        break;
+      case "contact-submit-button":
+        this.animateContactSubmitButton(element);
+        break;
+      case "office-section-heading":
+        this.animateOfficeSectionHeading(element);
+        break;
+      case "office-section-description":
+        this.animateOfficeSectionDescription(element);
+        break;
+      case "office-box":
+        this.animateOfficeBox(element);
+        break;
+      case "google-map-iframe":
+        this.animateGoogleMapIframe(element);
+        break;
+      case "faq-prompt":
+        this.animateFaqPrompt(element);
+        break;
+      case "faq-title":
+        this.animateFaqTitle(element);
+        break;
+      case "faq-subheading":
+        this.animateFaqSubheading(element);
+        break;
+      case "faq-accordion-card":
+        this.animateFaqAccordionCard(element);
         break;
 
       default:
@@ -1584,6 +1867,152 @@ class ScrollAnimations {
     element.style.transform = "translateY(0) scale(1)";
   }
 
+  // ========== CONTACT PAGE ANIMATION METHODS ==========
+
+  animateContactHeaderTitle(element) {
+    element.style.transition = "all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
+    element.style.opacity = "1";
+    element.style.transform = "translateY(0)";
+  }
+
+  animateContactHeaderDescription(element) {
+    element.style.transition = "all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
+    element.style.opacity = "1";
+    element.style.transform = "translateY(0)";
+  }
+
+  animateContactDecorativeShape(element) {
+    element.style.transition = "all 1s cubic-bezier(0.68, -0.55, 0.265, 1.55)";
+    element.style.opacity = "1";
+    element.style.transform = "scale(1) rotate(45deg)";
+
+    // Add floating animation after initial reveal
+    setTimeout(() => {
+      element.style.animation = "contactShapeFloat 4s ease-in-out infinite";
+    }, 600);
+  }
+
+  animateContactInfoHeading(element) {
+    element.style.transition = "all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
+    element.style.opacity = "1";
+    element.style.transform = "translateY(0)";
+  }
+
+  animateContactInfoDescription(element) {
+    element.style.transition = "all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
+    element.style.opacity = "1";
+    element.style.transform = "translateY(0)";
+  }
+
+  animateContactDetailItem(element) {
+    element.style.transition = "all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)";
+    element.style.opacity = "1";
+    element.style.transform = "translateX(0)";
+  }
+
+  animateContactSocialIcon(element) {
+    element.style.transition =
+      "all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55)";
+    element.style.opacity = "1";
+    element.style.transform = "scale(1) translateY(0)";
+
+    // Add hover-ready bounce effect
+    setTimeout(() => {
+      element.style.transition =
+        "all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55)";
+    }, 600);
+  }
+
+  animateContactFormGroup(element) {
+    element.style.transition = "all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
+    element.style.opacity = "1";
+    element.style.transform = "translateY(0)";
+  }
+
+  animateContactFormRow(element) {
+    element.style.transition = "all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
+    element.style.opacity = "1";
+    element.style.transform = "translateY(0)";
+  }
+
+  animateContactRadioItem(element) {
+    element.style.transition =
+      "all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55)";
+    element.style.opacity = "1";
+    element.style.transform = "translateX(0) scale(1)";
+  }
+
+  animateContactSubmitButton(element) {
+    element.style.transition =
+      "all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55)";
+    element.style.opacity = "1";
+    element.style.transform = "translateY(0) scale(1)";
+
+    // Add subtle glow effect after animation
+    setTimeout(() => {
+      element.style.boxShadow = "0 4px 20px rgba(0, 123, 255, 0.3)";
+    }, 800);
+  }
+
+  animateOfficeSectionHeading(element) {
+    element.style.transition = "all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
+    element.style.opacity = "1";
+    element.style.transform = "translateY(0)";
+  }
+
+  animateOfficeSectionDescription(element) {
+    element.style.transition = "all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
+    element.style.opacity = "1";
+    element.style.transform = "translateY(0)";
+  }
+
+  animateOfficeBox(element) {
+    element.style.transition = "all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)";
+    element.style.opacity = "1";
+    element.style.transform = "translateY(0) scale(1)";
+
+    // Add hover-ready effect
+    setTimeout(() => {
+      element.style.transition =
+        "all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
+    }, 800);
+  }
+
+  animateGoogleMapIframe(element) {
+    element.style.transition = "all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
+    element.style.opacity = "1";
+    element.style.transform = "scale(1)";
+  }
+
+  animateFaqPrompt(element) {
+    element.style.transition = "all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
+    element.style.opacity = "1";
+    element.style.transform = "translateY(0)";
+  }
+
+  animateFaqTitle(element) {
+    element.style.transition = "all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
+    element.style.opacity = "1";
+    element.style.transform = "translateY(0)";
+  }
+
+  animateFaqSubheading(element) {
+    element.style.transition = "all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
+    element.style.opacity = "1";
+    element.style.transform = "translateY(0)";
+  }
+
+  animateFaqAccordionCard(element) {
+    element.style.transition = "all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)";
+    element.style.opacity = "1";
+    element.style.transform = "translateY(0) scale(1)";
+
+    // Add subtle shadow effect after animation
+    setTimeout(() => {
+      element.style.boxShadow = "0 2px 10px rgba(0, 0, 0, 0.08)";
+    }, 800);
+  }
+
   // Counter animation for stats
   animateCounter(element) {
     const target = parseInt(element.textContent.replace(/\D/g, ""));
@@ -1607,7 +2036,7 @@ class ScrollAnimations {
 
 // Initialize animations when DOM is ready
 document.addEventListener("DOMContentLoaded", () => {
-  // Add floating animation CSS for airplanes
+  // Add floating animation CSS for airplanes and contact shapes
   if (!document.getElementById("floating-animation-css")) {
     const style = document.createElement("style");
     style.id = "floating-animation-css";
@@ -1618,6 +2047,18 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         50% {
           transform: translateY(-10px) scale(1) rotate(45deg);
+        }
+      }
+      
+      @keyframes contactShapeFloat {
+        0%, 100% {
+          transform: scale(1) rotate(45deg) translateY(0);
+        }
+        33% {
+          transform: scale(1.05) rotate(50deg) translateY(-8px);
+        }
+        66% {
+          transform: scale(0.95) rotate(40deg) translateY(5px);
         }
       }
     `;
