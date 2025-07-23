@@ -11,19 +11,19 @@ include('includes/header.php');
         </div>
         
         <!-- Slide 2 -->
-        <div class="hero-slide">
+        <!-- <div class="hero-slide">
             <img src="assets/images/media/home-page/hero-section/two.webp" alt="MBBS Admission Guidance" class="hero-slide-bg" width="1920" height="600">
-        </div>
+        </div> -->
         
         <!-- Slide 3 -->
-        <div class="hero-slide">
+        <!-- <div class="hero-slide">
             <img src="assets/images/media/home-page/hero-section/three.webp" alt="Medical Education Consultancy" class="hero-slide-bg" width="1920" height="600">
-        </div>
+        </div> -->
         
         <!-- Slide 4 -->
-        <div class="hero-slide">
+        <!-- <div class="hero-slide">
             <img src="assets/images/media/home-page/hero-section/four.webp" alt="Medical Study Abroad" class="hero-slide-bg" width="1920" height="600">
-        </div>
+        </div> -->
         
         <!-- Carousel Dots -->
         <div class="hero-carousel-dots">
