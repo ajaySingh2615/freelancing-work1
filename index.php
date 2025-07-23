@@ -167,78 +167,78 @@ include('includes/header.php');
         <h2 class="destinations-question">Where would you <span class="highlight-text">like to study?</span></h2>
         
         <div class="destinations-grid">
-            <div class="destination-item">
+            <a href="destinations.php" class="destination-item">
                 <div class="flag-circle">
                     <span class="flag-icon flag-icon-in"></span>
                 </div>
                 <span class="country-label">India</span>
-            </div>
-            <div class="destination-item">
+            </a>
+            <a href="destinations.php" class="destination-item">
                 <div class="flag-circle">
                     <span class="flag-icon flag-icon-ir"></span>
                 </div>
                 <span class="country-label">Iran</span>
-            </div>
-            <div class="destination-item">
+            </a>
+            <a href="destinations.php" class="destination-item">
                 <div class="flag-circle">
                     <span class="flag-icon flag-icon-bd"></span>
                 </div>
                 <span class="country-label">Bangladesh</span>
-            </div>
-            <div class="destination-item">
+            </a>
+            <a href="destinations.php" class="destination-item">
                 <div class="flag-circle">
                     <span class="flag-icon flag-icon-ru"></span>
                 </div>
                 <span class="country-label">Russia</span>
-            </div>
-            <div class="destination-item">
+            </a>
+            <a href="destinations.php" class="destination-item">
                 <div class="flag-circle">
                     <span class="flag-icon flag-icon-kz"></span>
                 </div>
                 <span class="country-label">Kazakhstan</span>
-            </div>
-            <div class="destination-item">
+            </a>
+            <a href="destinations.php" class="destination-item">
                 <div class="flag-circle">
                     <span class="flag-icon flag-icon-kg"></span>
                 </div>
                 <span class="country-label">Kyrgyzstan</span>
-            </div>
-            <div class="destination-item">
+            </a>
+            <a href="destinations.php" class="destination-item">
                 <div class="flag-circle">
                     <span class="flag-icon flag-icon-ge"></span>
                 </div>
                 <span class="country-label">Georgia</span>
-            </div>
-            <div class="destination-item">
+            </a>
+            <a href="destinations.php" class="destination-item">
                 <div class="flag-circle">
                     <span class="flag-icon flag-icon-uz"></span>
                 </div>
                 <span class="country-label">Uzbekistan</span>
-            </div>
-            <div class="destination-item">
+            </a>
+            <a href="destinations.php" class="destination-item">
                 <div class="flag-circle">
                     <span class="flag-icon flag-icon-np"></span>
                 </div>
                 <span class="country-label">Nepal</span>
-            </div>
-            <div class="destination-item">
+            </a>
+            <a href="destinations.php" class="destination-item">
                 <div class="flag-circle">
                     <span class="flag-icon flag-icon-cn"></span>
                 </div>
                 <span class="country-label">China</span>
-            </div>
-            <div class="destination-item">
+            </a>
+            <a href="destinations.php" class="destination-item">
                 <div class="flag-circle">
                     <span class="flag-icon flag-icon-eg"></span>
                 </div>
                 <span class="country-label">Egypt</span>
-            </div>
-            <div class="destination-item">
+            </a>
+            <a href="destinations.php" class="destination-item">
                 <div class="flag-circle">
                     <span class="flag-icon flag-icon-by"></span>
                 </div>
                 <span class="country-label">Belarus</span>
-            </div>
+            </a>
         </div>
         
         <div class="view-all-container">
