@@ -147,5 +147,6 @@
     
     <!-- Custom JS -->
     <script src="assets/js/main.js"></script>
+    <script src="assets/js/scroll-animations.js"></script>
 </body>
 </html> 
