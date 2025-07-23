@@ -339,25 +339,25 @@ include('includes/header.php');
                     <img src="assets/images/media/home-page/medical-universities-section/logos/South-Kazakhstan-Medical-Academy.webp" alt="South Kazakhstan Medical Academy">
                 </div>
                 <div class="logo-item">
-                    <img src="assets/images/media/home-page/medical-universities-section/logos/Semey-State-Medical-University.webp" alt="Semey State Medical University">
+                    <img src="assets/images/media/home-page/medical-universities-section/logos/Al-Farabi-Kazakh-National-University.webp" alt="Semey State Medical University">
                 </div>
                 <div class="logo-item">
                     <img src="assets/images/media/home-page/medical-universities-section/logos/Asian-Medical-Institute.webp" alt="Asian Medical Institute">
                 </div>
                 <div class="logo-item">
-                    <img src="assets/images/media/home-page/medical-universities-section/logos/Orel-state-university.webp" alt="Orel State University">
+                    <img src="assets/images/media/home-page/medical-universities-section/logos/Crimea-Federal-University.webp" alt="Orel State University">
                 </div>
                 <div class="logo-item">
                     <img src="assets/images/media/home-page/medical-universities-section/logos/Jalal-Abad-State-Medical.webp" alt="Jalal-Abad State Medical University">
                 </div>
                 <div class="logo-item">
-                    <img src="assets/images/media/home-page/medical-universities-section/logos/International-Higher-School-of-Medicine.webp" alt="International Higher School of Medicine">
+                    <img src="assets/images/media/home-page/medical-universities-section/logos/International-Higher-Schoo.webp" alt="International Higher School of Medicine">
                 </div>
             </div>
         </div>
         
         <div class="universities-actions">
-            <a href="universities.php" class="btn btn-primary">View All Universities</a>
+            <a href="resources.php" class="btn btn-primary">View All Universities</a>
             <a href="contact.php" class="btn btn-outline-primary">Get Admission Guide</a>
         </div>
     </div>
