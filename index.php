@@ -252,6 +252,455 @@ include('includes/header.php');
     </div>
 </section>
 
+<!-- Enhanced Mobile Responsive CSS for About Section -->
+<style>
+/* ===== ENHANCED MOBILE RESPONSIVE STYLES FOR ABOUT SECTION ===== */
+
+/* About Section Base Styles */
+.about-section {
+    padding: 5rem 0;
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.about-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 20% 30%, rgba(0, 53, 133, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(254, 186, 2, 0.05) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.about-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 2;
+    text-align: center;
+}
+
+.about-question {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 2rem;
+    line-height: 1.2;
+}
+
+.about-intro {
+    max-width: 800px;
+    margin: 0 auto 3rem auto;
+}
+
+.about-intro p {
+    font-size: 1.125rem;
+    line-height: 1.6;
+    color: #6c757d;
+}
+
+.about-highlights {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-bottom: 3rem;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.highlight-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    border: 1px solid #e9ecef;
+}
+
+.highlight-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 30px rgba(0, 53, 133, 0.15);
+}
+
+.highlight-icon {
+    width: 4rem;
+    height: 4rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem auto;
+}
+
+.highlight-icon i {
+    font-size: 1.5rem;
+    color: white;
+}
+
+.highlight-card h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 1rem;
+}
+
+.highlight-card p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #6c757d;
+    margin: 0;
+}
+
+.about-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.about-actions .btn {
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    min-width: 200px;
+    justify-content: center;
+}
+
+.btn-primary {
+    background: var(--primary-color);
+    color: white;
+    border: 2px solid var(--primary-color);
+}
+
+.btn-primary:hover {
+    background: var(--primary-dark);
+    border-color: var(--primary-dark);
+    transform: translateY(-2px);
+    color: white;
+}
+
+.btn-outline-primary {
+    background: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+}
+
+.btn-outline-primary:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* ===== TABLET RESPONSIVE (992px and below) ===== */
+@media (max-width: 992px) {
+    .about-section {
+        padding: 4rem 0;
+    }
+    
+    .about-container {
+        padding: 0 30px;
+    }
+    
+    .about-question {
+        font-size: 2.25rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .about-intro {
+        margin-bottom: 2.5rem;
+    }
+    
+    .about-intro p {
+        font-size: 1rem;
+    }
+    
+    .about-highlights {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+        margin-bottom: 2.5rem;
+    }
+    
+    .highlight-card {
+        padding: 1.5rem;
+    }
+    
+    .highlight-icon {
+        width: 3.5rem;
+        height: 3.5rem;
+        margin-bottom: 1rem;
+    }
+    
+    .highlight-icon i {
+        font-size: 1.25rem;
+    }
+    
+    .highlight-card h3 {
+        font-size: 1.125rem;
+    }
+}
+
+/* ===== MOBILE RESPONSIVE (768px and below) ===== */
+@media (max-width: 768px) {
+    .about-section {
+        padding: 3rem 0;
+    }
+    
+    .about-container {
+        padding: 0 20px;
+    }
+    
+    .about-question {
+        font-size: 1.875rem;
+        margin-bottom: 1.25rem;
+        line-height: 1.3;
+    }
+    
+    .about-intro {
+        margin-bottom: 2rem;
+    }
+    
+    .about-intro p {
+        font-size: 0.95rem;
+        line-height: 1.5;
+    }
+    
+    .about-highlights {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+        margin-bottom: 2rem;
+        max-width: 400px;
+    }
+    
+    .highlight-card {
+        padding: 1.25rem;
+        border-radius: 10px;
+    }
+    
+    .highlight-icon {
+        width: 3rem;
+        height: 3rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .highlight-icon i {
+        font-size: 1rem;
+    }
+    
+    .highlight-card h3 {
+        font-size: 1rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .highlight-card p {
+        font-size: 0.875rem;
+        line-height: 1.4;
+    }
+    
+    .about-actions {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.75rem;
+    }
+    
+    .about-actions .btn {
+        min-width: 280px;
+        padding: 14px 20px;
+        font-size: 0.9rem;
+    }
+}
+
+/* ===== SMALL MOBILE (576px and below) ===== */
+@media (max-width: 576px) {
+    .about-section {
+        padding: 2.5rem 0;
+    }
+    
+    .about-container {
+        padding: 0 15px;
+    }
+    
+    .about-question {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        line-height: 1.25;
+    }
+    
+    .about-intro {
+        margin-bottom: 1.5rem;
+    }
+    
+    .about-intro p {
+        font-size: 0.875rem;
+        line-height: 1.4;
+    }
+    
+    .about-highlights {
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+        max-width: 350px;
+    }
+    
+    .highlight-card {
+        padding: 1rem;
+        border-radius: 8px;
+    }
+    
+    .highlight-icon {
+        width: 2.5rem;
+        height: 2.5rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .highlight-icon i {
+        font-size: 0.875rem;
+    }
+    
+    .highlight-card h3 {
+        font-size: 0.9rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .highlight-card p {
+        font-size: 0.8rem;
+        line-height: 1.3;
+    }
+    
+    .about-actions {
+        gap: 0.5rem;
+    }
+    
+    .about-actions .btn {
+        min-width: 260px;
+        padding: 12px 16px;
+        font-size: 0.85rem;
+    }
+}
+
+/* ===== EXTRA SMALL MOBILE (480px and below) ===== */
+@media (max-width: 480px) {
+    .about-section {
+        padding: 2rem 0;
+    }
+    
+    .about-container {
+        padding: 0 10px;
+    }
+    
+    .about-question {
+        font-size: 1.25rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .about-intro {
+        margin-bottom: 1.25rem;
+    }
+    
+    .about-intro p {
+        font-size: 0.8rem;
+        line-height: 1.3;
+    }
+    
+    .about-highlights {
+        gap: 0.75rem;
+        margin-bottom: 1.25rem;
+        max-width: 300px;
+    }
+    
+    .highlight-card {
+        padding: 0.75rem;
+    }
+    
+    .highlight-icon {
+        width: 2rem;
+        height: 2rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .highlight-icon i {
+        font-size: 0.75rem;
+    }
+    
+    .highlight-card h3 {
+        font-size: 0.85rem;
+        margin-bottom: 0.4rem;
+    }
+    
+    .highlight-card p {
+        font-size: 0.75rem;
+        line-height: 1.25;
+    }
+    
+    .about-actions .btn {
+        min-width: 240px;
+        padding: 10px 14px;
+        font-size: 0.8rem;
+    }
+}
+
+/* ===== VERY SMALL MOBILE (360px and below) ===== */
+@media (max-width: 360px) {
+    .about-section {
+        padding: 1.5rem 0;
+    }
+    
+    .about-container {
+        padding: 0 8px;
+    }
+    
+    .about-question {
+        font-size: 1.125rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .about-intro p {
+        font-size: 0.75rem;
+    }
+    
+    .about-highlights {
+        max-width: 280px;
+    }
+    
+    .highlight-card {
+        padding: 0.5rem;
+    }
+    
+    .highlight-icon {
+        width: 1.75rem;
+        height: 1.75rem;
+    }
+    
+    .highlight-icon i {
+        font-size: 0.65rem;
+    }
+    
+    .highlight-card h3 {
+        font-size: 0.75rem;
+    }
+    
+    .highlight-card p {
+        font-size: 0.7rem;
+    }
+    
+    .about-actions .btn {
+        min-width: 220px;
+        padding: 8px 12px;
+        font-size: 0.75rem;
+    }
+}
+</style>
+
 <!-- Study Destinations Section -->
 <section class="study-destinations-section">
     <div class="destinations-container">
