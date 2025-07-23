@@ -45,6 +45,9 @@ class ScrollAnimations {
     const isContactPage =
       window.location.pathname.includes("contact.php") ||
       document.body.classList.contains("contact-page");
+    const isGalleryPage =
+      window.location.pathname.includes("gallery.php") ||
+      document.body.classList.contains("gallery-page");
 
     if (isAboutPage) {
       // About page specific animations
@@ -73,6 +76,11 @@ class ScrollAnimations {
       this.addOfficeLocationsAnimations();
       this.addGoogleMapAnimations();
       this.addFaqSectionAnimations();
+    } else if (isGalleryPage) {
+      // Gallery page specific animations
+      this.addGalleryHeroAnimations();
+      this.addGalleryCarouselAnimations();
+      this.addGalleryGridAnimations();
     } else {
       // Index page animations
       this.addMediaPartnersAnimations();
@@ -1195,6 +1203,117 @@ class ScrollAnimations {
     });
   }
 
+  // ========== GALLERY PAGE SPECIFIC ANIMATIONS ==========
+
+  // 1. Gallery Hero Section - Title and subtitle
+  addGalleryHeroAnimations() {
+    const section = document.querySelector(".gallery-hero-section");
+    if (!section) return;
+
+    section.setAttribute("data-animation", "gallery-hero-section");
+
+    // Hero title
+    const title = section.querySelector(".hero-title");
+    if (title) {
+      title.setAttribute("data-animation", "gallery-hero-title");
+      title.style.opacity = "0";
+      title.style.transform = "translateY(60px) scale(0.95)";
+    }
+
+    // Hero subtitle
+    const subtitle = section.querySelector(".hero-subtitle");
+    if (subtitle) {
+      subtitle.setAttribute("data-animation", "gallery-hero-subtitle");
+      subtitle.style.opacity = "0";
+      subtitle.style.transform = "translateY(40px)";
+    }
+  }
+
+  // 2. Gallery Carousel Section - Horizontal gallery with controls
+  addGalleryCarouselAnimations() {
+    const section = document.querySelector(".horizontal-gallery-section");
+    if (!section) return;
+
+    section.setAttribute("data-animation", "gallery-carousel-section");
+
+    // Carousel wrapper
+    const carouselWrapper = section.querySelector(".gallery-carousel-wrapper");
+    if (carouselWrapper) {
+      carouselWrapper.setAttribute(
+        "data-animation",
+        "gallery-carousel-wrapper"
+      );
+      carouselWrapper.style.opacity = "0";
+      carouselWrapper.style.transform = "scale(0.95) translateY(40px)";
+    }
+
+    // Carousel navigation buttons
+    const prevBtn = section.querySelector(".carousel-control-prev");
+    const nextBtn = section.querySelector(".carousel-control-next");
+    if (prevBtn) {
+      prevBtn.setAttribute("data-animation", "gallery-carousel-prev");
+      prevBtn.style.opacity = "0";
+      prevBtn.style.transform = "translateX(-30px) scale(0.8)";
+    }
+    if (nextBtn) {
+      nextBtn.setAttribute("data-animation", "gallery-carousel-next");
+      nextBtn.style.opacity = "0";
+      nextBtn.style.transform = "translateX(30px) scale(0.8)";
+    }
+
+    // Carousel indicators
+    const indicators = section.querySelectorAll(".carousel-indicators li");
+    indicators.forEach((indicator, index) => {
+      indicator.setAttribute("data-animation", "gallery-carousel-indicator");
+      indicator.setAttribute("data-delay", index * 100);
+      indicator.style.opacity = "0";
+      indicator.style.transform = "scale(0.5) translateY(20px)";
+    });
+  }
+
+  // 3. Gallery Grid Section - Additional gallery images
+  addGalleryGridAnimations() {
+    const section = document.querySelector(".gallery-grid-section");
+    if (!section) return;
+
+    section.setAttribute("data-animation", "gallery-grid-section");
+
+    // Section header
+    const sectionTitle = section.querySelector(".section-title");
+    if (sectionTitle) {
+      sectionTitle.setAttribute("data-animation", "gallery-grid-title");
+      sectionTitle.style.opacity = "0";
+      sectionTitle.style.transform = "translateY(50px)";
+    }
+
+    const sectionSubtitle = section.querySelector(".section-subtitle");
+    if (sectionSubtitle) {
+      sectionSubtitle.setAttribute("data-animation", "gallery-grid-subtitle");
+      sectionSubtitle.style.opacity = "0";
+      sectionSubtitle.style.transform = "translateY(30px)";
+    }
+
+    // Gallery grid items with masonry-style animation
+    const gridItems = section.querySelectorAll(".gallery-grid-item");
+    gridItems.forEach((item, index) => {
+      item.setAttribute("data-animation", "gallery-grid-item");
+      // Calculate stagger based on grid position (assuming 3 columns)
+      const row = Math.floor(index / 3);
+      const col = index % 3;
+      const delay = row * 200 + col * 150;
+      item.setAttribute("data-delay", delay);
+      item.style.opacity = "0";
+      item.style.transform = "translateY(80px) scale(0.8) rotateY(15deg)";
+
+      // Grid overlay
+      const overlay = item.querySelector(".grid-overlay");
+      if (overlay) {
+        overlay.style.opacity = "0";
+        overlay.style.transform = "scale(1.1)";
+      }
+    });
+  }
+
   // Intersection Observer Handler
   handleIntersection(entries) {
     entries.forEach((entry) => {
@@ -1438,6 +1557,35 @@ class ScrollAnimations {
         break;
       case "faq-accordion-card":
         this.animateFaqAccordionCard(element);
+        break;
+
+      // Gallery page animations
+      case "gallery-hero-title":
+        this.animateGalleryHeroTitle(element);
+        break;
+      case "gallery-hero-subtitle":
+        this.animateGalleryHeroSubtitle(element);
+        break;
+      case "gallery-carousel-wrapper":
+        this.animateGalleryCarouselWrapper(element);
+        break;
+      case "gallery-carousel-prev":
+        this.animateGalleryCarouselPrev(element);
+        break;
+      case "gallery-carousel-next":
+        this.animateGalleryCarouselNext(element);
+        break;
+      case "gallery-carousel-indicator":
+        this.animateGalleryCarouselIndicator(element);
+        break;
+      case "gallery-grid-title":
+        this.animateGalleryGridTitle(element);
+        break;
+      case "gallery-grid-subtitle":
+        this.animateGalleryGridSubtitle(element);
+        break;
+      case "gallery-grid-item":
+        this.animateGalleryGridItem(element);
         break;
 
       default:
@@ -2013,6 +2161,109 @@ class ScrollAnimations {
     }, 800);
   }
 
+  // ========== GALLERY PAGE ANIMATION METHODS ==========
+
+  animateGalleryHeroTitle(element) {
+    element.style.transition = "all 1.2s cubic-bezier(0.34, 1.56, 0.64, 1)";
+    element.style.opacity = "1";
+    element.style.transform = "translateY(0) scale(1)";
+  }
+
+  animateGalleryHeroSubtitle(element) {
+    element.style.transition = "all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
+    element.style.opacity = "1";
+    element.style.transform = "translateY(0)";
+  }
+
+  animateGalleryCarouselWrapper(element) {
+    element.style.transition = "all 1.2s cubic-bezier(0.34, 1.56, 0.64, 1)";
+    element.style.opacity = "1";
+    element.style.transform = "scale(1) translateY(0)";
+
+    // Add subtle glow effect after animation
+    setTimeout(() => {
+      element.style.boxShadow = "0 10px 40px rgba(0, 0, 0, 0.1)";
+    }, 1200);
+  }
+
+  animateGalleryCarouselPrev(element) {
+    element.style.transition =
+      "all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55)";
+    element.style.opacity = "1";
+    element.style.transform = "translateX(0) scale(1)";
+
+    // Add hover-ready effect
+    setTimeout(() => {
+      element.style.transition =
+        "all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
+    }, 800);
+  }
+
+  animateGalleryCarouselNext(element) {
+    element.style.transition =
+      "all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55)";
+    element.style.opacity = "1";
+    element.style.transform = "translateX(0) scale(1)";
+
+    // Add hover-ready effect
+    setTimeout(() => {
+      element.style.transition =
+        "all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
+    }, 800);
+  }
+
+  animateGalleryCarouselIndicator(element) {
+    element.style.transition =
+      "all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55)";
+    element.style.opacity = "1";
+    element.style.transform = "scale(1) translateY(0)";
+
+    // Add pulse effect for active indicator
+    setTimeout(() => {
+      if (element.classList.contains("active")) {
+        element.style.animation =
+          "galleryIndicatorPulse 2s ease-in-out infinite";
+      }
+    }, 600);
+  }
+
+  animateGalleryGridTitle(element) {
+    element.style.transition = "all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
+    element.style.opacity = "1";
+    element.style.transform = "translateY(0)";
+  }
+
+  animateGalleryGridSubtitle(element) {
+    element.style.transition = "all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
+    element.style.opacity = "1";
+    element.style.transform = "translateY(0)";
+  }
+
+  animateGalleryGridItem(element) {
+    element.style.transition = "all 1s cubic-bezier(0.34, 1.56, 0.64, 1)";
+    element.style.opacity = "1";
+    element.style.transform = "translateY(0) scale(1) rotateY(0deg)";
+
+    // Animate overlay
+    const overlay = element.querySelector(".grid-overlay");
+    if (overlay) {
+      setTimeout(() => {
+        overlay.style.transition =
+          "all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
+        overlay.style.opacity = "1";
+        overlay.style.transform = "scale(1)";
+      }, 200);
+    }
+
+    // Add hover-ready effects
+    setTimeout(() => {
+      element.style.transition =
+        "all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
+      // Add subtle shadow for depth
+      element.style.boxShadow = "0 8px 25px rgba(0, 0, 0, 0.15)";
+    }, 1000);
+  }
+
   // Counter animation for stats
   animateCounter(element) {
     const target = parseInt(element.textContent.replace(/\D/g, ""));
@@ -2059,6 +2310,17 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         66% {
           transform: scale(0.95) rotate(40deg) translateY(5px);
+        }
+      }
+      
+      @keyframes galleryIndicatorPulse {
+        0%, 100% {
+          transform: scale(1) translateY(0);
+          opacity: 1;
+        }
+        50% {
+          transform: scale(1.2) translateY(0);
+          opacity: 0.8;
         }
       }
     `;

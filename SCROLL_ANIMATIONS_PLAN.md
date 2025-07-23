@@ -314,10 +314,10 @@ addNewSectionAnimations() {
 
 ## 📝 **Implementation Notes**
 
-The animation system is now fully integrated into your website and includes **ALL FIVE PAGES** with custom animations. The scroll animations will:
+The animation system is now fully integrated into your website and includes **ALL SIX PAGES** with custom animations. The scroll animations will:
 
 1. **Automatically initialize** when the page loads
-2. **Detect which page** you're on (index.php, about.php, destinations.php, resources.php, or contact.php)
+2. **Detect which page** you're on (index.php, about.php, destinations.php, resources.php, contact.php, or gallery.php)
 3. **Load appropriate animations** for each specific page
 4. **Trigger progressively** as users scroll through sections
 5. **Enhance user engagement** without hindering performance
@@ -391,6 +391,9 @@ const isResourcesPage =
 const isContactPage =
   window.location.pathname.includes("contact.php") ||
   document.body.classList.contains("contact-page");
+const isGalleryPage =
+  window.location.pathname.includes("gallery.php") ||
+  document.body.classList.contains("gallery-page");
 
 if (isAboutPage) {
   // Load about page animations
@@ -413,6 +416,12 @@ if (isAboutPage) {
   this.addContactInfoAnimations();
   this.addContactFormAnimations();
   // ... more contact animations
+} else if (isGalleryPage) {
+  // Load gallery page animations
+  this.addGalleryHeroAnimations();
+  this.addGalleryCarouselAnimations();
+  this.addGalleryGridAnimations();
+  // ... more gallery animations
 } else {
   // Load index page animations
   this.addMediaPartnersAnimations();
@@ -697,4 +706,92 @@ contactItems.forEach((item, index) => {
 });
 ```
 
-**Test all five pages: index.php, about.php, destinations.php, resources.php, and contact.php to see the complete animation system!**
+---
+
+## 🖼️ **Gallery Page Specific Animations**
+
+### **1. Gallery Hero Section**
+
+- **Hero Title** → Bold bouncy reveal with scale effect (0.95 to 1.0) emphasizing gallery focus
+- **Hero Subtitle** → Supporting text with upward slide encouraging exploration
+- **Effect** → Clean page identification with visual content emphasis
+
+### **2. Gallery Carousel Section**
+
+- **Carousel Wrapper** → Central content with scale and slide combination (0.95 to 1.0)
+- **Navigation Buttons** → Left/right controls with directional slides and scale
+- **Carousel Indicators** → Staggered bottom dots with bounce effects (100ms each)
+- **Post-Animation** → Subtle glow enhancement for carousel prominence
+- **Active Indicator** → Continuous pulse animation for current slide identification
+
+### **3. Gallery Grid Section**
+
+- **Section Title** → "More From Our Gallery" with upward reveal
+- **Section Subtitle** → Supporting exploration text
+- **Grid Items** → Advanced 3D masonry animation with Y-rotation (15° to 0°)
+- **Grid Overlays** → Secondary content reveals with scale normalization
+- **Post-Animation** → Shadow enhancement for depth and hover-ready states
+
+---
+
+## 🎯 **Gallery Page User Experience**
+
+### **User Journey:**
+
+1. **Hero Section** → Clear gallery page identification and purpose
+2. **Carousel Section** → Featured gallery content with interactive navigation
+3. **Grid Section** → Additional exploration with organized image layout
+4. **Interactive Elements** → Navigation controls and image interaction
+
+### **Interactive Elements:**
+
+- **Carousel Navigation** → Prominent controls with directional animation emphasis
+- **Carousel Indicators** → Visual progress with pulse effects for active states
+- **Grid Items** → Rich hover-ready states with depth shadows
+- **Image Overlays** → Content reveals enhancing image context
+
+### **3D Grid Animation Effect:**
+
+```javascript
+// Advanced 3D grid positioning
+gridItems.forEach((item, index) => {
+  const row = Math.floor(index / 3); // 3-column grid
+  const col = index % 3; // Column position
+  const delay = row * 200 + col * 150; // Staggered timing
+  item.style.transform = "translateY(80px) scale(0.8) rotateY(15deg)";
+});
+```
+
+### **Carousel Indicator Animation:**
+
+```css
+@keyframes galleryIndicatorPulse {
+  0%,
+  100% {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2) translateY(0);
+    opacity: 0.8;
+  }
+}
+```
+
+### **Grid Item Animation Sequence:**
+
+```javascript
+// Multi-layered gallery item reveal
+1. Main item: translateY(80px) scale(0.8) rotateY(15deg) → normal
+2. Overlay: scale(1.1) opacity(0) → scale(1) opacity(1) [200ms delay]
+3. Shadow: none → 0 8px 25px rgba(0,0,0,0.15) [1000ms delay]
+```
+
+### **Visual Content Focus:**
+
+- **Carousel Prominence** → Central feature with glow effects and navigation emphasis
+- **3D Grid Effects** → Perspective-based reveals creating depth and engagement
+- **Progressive Content** → From featured carousel to detailed grid exploration
+- **Hover Enhancement** → Post-animation optimization for image interaction
+
+**Test all six pages: index.php, about.php, destinations.php, resources.php, contact.php, and gallery.php to see the complete animation system!**
