@@ -85,6 +85,53 @@ include 'includes/header.php';
                         Assistance Travel Assistance Forex Assistance Loan Assistance.
                     </p>
                 </article>
+
+                <!-- Service Card 4 -->
+                <article class="service-card">
+                    <div class="service-image">
+                        <img src="assets/images/media/service-page/more/Pre-Departure-Guidance.webp" 
+                             alt="Application Assistance" 
+                             class="service-img">
+                    </div>
+                    <h3 class="service-title">Application Assistance</h3>
+                    <p class="service-description">
+                        End to end support filling out application forms, drafting SOPs (Statements of Purpose), 
+                        and compiling transcripts, recommendation letters, and other documents. Our expert team 
+                        ensures your application stands out and meets all university requirements for successful 
+                        admission to your dream medical university.
+                    </p>
+                </article>
+
+                <!-- Service Card 5 -->
+                <article class="service-card">
+                    <div class="service-image">
+                        <img src="assets/images/media/service-page/more/FMGENExT-Coaching.webp" 
+                             alt="Scholarship & Financial Aid Guidance" 
+                             class="service-img">
+                    </div>
+                    <h3 class="service-title">Scholarship & Financial Aid Guidance</h3>
+                    <p class="service-description">
+                        Help identifying and applying for merit based scholarships, grants, and education loans; 
+                        liaising with banks for competitive interest rates. We guide you through various funding 
+                        options to make your medical education abroad more affordable and accessible.
+                    </p>
+                </article>
+
+                <!-- Service Card 6 -->
+                <article class="service-card">
+                    <div class="service-image">
+                        <img src="assets/images/media/service-page/more/On-Arrival-Benefits.webp" 
+                             alt="Visa Consultation & Documentation" 
+                             class="service-img">
+                    </div>
+                    <h3 class="service-title">Visa Consultation & Documentation</h3>
+                    <p class="service-description">
+                        Expert advice on student visa requirements, document verification, appointment scheduling, 
+                        and interview preparation. Our experienced visa consultants ensure your visa application 
+                        process is smooth and successful, with personalized guidance for each country's specific 
+                        requirements.
+                    </p>
+                </article>
             </div>
 
             <!-- Additional Services Section -->

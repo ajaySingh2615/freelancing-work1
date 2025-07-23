@@ -865,14 +865,21 @@ gridItems.forEach((item, index) => {
 - **CTA Buttons** → Differentiated styling with glow effects for engagement
 - **Hover States** → Post-animation optimization for service exploration
 
-### **3D Service Card Animation:**
+### **3D Service Card Animation:** (6 Cards Total)
 
 ```javascript
-// Advanced service card reveal sequence
-1. Card: translateY(80px) scale(0.9) rotateX(15deg) → normal
-2. Image: scale(1.1) opacity(0.8) → scale(1) opacity(1) [200ms delay]
-3. Title: translateY(30px) opacity(0) → normal [400ms delay]
-4. Description: translateY(20px) opacity(0) → normal [600ms delay]
+// Advanced service card reveal sequence with staggered timing
+Card 1 (0ms): translateY(80px) scale(0.9) rotateX(15deg) → normal
+Card 2 (250ms): Same transformation with delay
+Card 3 (500ms): Same transformation with delay
+Card 4 (750ms): Application Assistance - same pattern
+Card 5 (1000ms): Scholarship & Financial Aid - same pattern
+Card 6 (1250ms): Visa Consultation - same pattern
+
+// Each card's internal animation sequence:
+1. Image: scale(1.1) opacity(0.8) → scale(1) opacity(1) [200ms delay]
+2. Title: translateY(30px) opacity(0) → normal [400ms delay]
+3. Description: translateY(20px) opacity(0) → normal [600ms delay]
 ```
 
 ### **Icon Animation with Bounce:**
