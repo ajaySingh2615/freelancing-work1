@@ -676,7 +676,7 @@ include('includes/header.php');
                     <span class="blog-card__meta">by Admin on March 26, 2024</span>
                     <h3 class="blog-card__title">Top Medical Universities in Europe for International Students</h3>
                     <p class="blog-card__excerpt">Discover the leading medical universities in Europe that offer world-class education, state-of-the-art facilities, and diverse cultural experiences for international students...</p>
-                    <a href="#" class="blog-card__link">Read More</a>
+                    <a href="blog.php" class="blog-card__link">Read More</a>
                 </div>
             </article>
 
@@ -687,7 +687,7 @@ include('includes/header.php');
                     <span class="blog-card__meta">by Admin on March 24, 2024</span>
                     <h3 class="blog-card__title">How to Prepare for Medical School Interviews</h3>
                     <p class="blog-card__excerpt">Expert tips and strategies to help you ace your medical school interviews, including common questions, preparation techniques, and what admissions committees look for...</p>
-                    <a href="#" class="blog-card__link">Read More</a>
+                    <a href="blog.php" class="blog-card__link">Read More</a>
                 </div>
             </article>
 
@@ -698,7 +698,7 @@ include('includes/header.php');
                     <span class="blog-card__meta">by Admin on March 22, 2024</span>
                     <h3 class="blog-card__title">Understanding Medical Education Systems Worldwide</h3>
                     <p class="blog-card__excerpt">A comprehensive guide to different medical education systems around the world, including curriculum structures, admission requirements, and career opportunities...</p>
-                    <a href="#" class="blog-card__link">Read More</a>
+                    <a href="blog.php" class="blog-card__link">Read More</a>
                 </div>
             </article>
         </div>
@@ -715,7 +715,7 @@ include('includes/header.php');
             <div class="contact-content">
                 <h2 class="contact-title">Leave us your contact details here!</h2>
                 <p class="contact-description">SGE is a pioneer in facilitating the dreams of young aspirers... Medical Government Universities.</p>
-                <a href="#" class="contact-cta">
+                <a href="contact.php" class="contact-cta">
                     Apply Now
                     <span class="arrow-icon">&#8250;&#8250;</span>
                 </a>
@@ -734,46 +734,46 @@ include('includes/header.php');
         
         <div class="news-grid">
             <article class="news-card">
-                <a href="news-detail.php" class="news-image-link">
+                <a href="blog.php" class="news-image-link">
                     <div class="news-image">
                         <img src="https://images.unsplash.com/20/cambridge.JPG?q=80&w=1147&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="NEET UG 2025 Answer Key Released" loading="lazy">
                     </div>
                 </a>
                 <div class="news-content">
                     <h3 class="news-card-title">
-                        <a href="news-detail.php">NEET UG 2025 Answer Key Released: Last Chance to Raise Objections Today</a>
+                        <a href="blog.php">NEET UG 2025 Answer Key Released: Last Chance to Raise Objections Today</a>
                     </h3>
-                    <a href="news-detail.php" class="news-read-more">READ MORE</a>
+                    <a href="blog.php" class="news-read-more">READ MORE</a>
                     <p class="news-meta">ON JANUARY 22, 2023 BY SHAMMI AKTAR</p>
                 </div>
             </article>
             
             <article class="news-card">
-                <a href="news-detail.php" class="news-image-link">
+                <a href="blog.php" class="news-image-link">
                     <div class="news-image">
                         <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&h=600&q=80" alt="Mari State University Highlights India's Role" loading="lazy">
                     </div>
                 </a>
                 <div class="news-content">
                     <h3 class="news-card-title">
-                        <a href="news-detail.php">Rector of Mari State University Highlights India's Role in World War II During Inspiring Lecture</a>
+                        <a href="blog.php">Rector of Mari State University Highlights India's Role in World War II During Inspiring Lecture</a>
                     </h3>
-                    <a href="news-detail.php" class="news-read-more">READ MORE</a>
+                    <a href="blog.php" class="news-read-more">READ MORE</a>
                     <p class="news-meta">ON JANUARY 18, 2023 BY SHAMMI AKTAR</p>
                 </div>
             </article>
             
             <article class="news-card">
-                <a href="news-detail.php" class="news-image-link">
+                <a href="blog.php" class="news-image-link">
                     <div class="news-image">
                         <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&h=600&q=80" alt="Russian Education Fair 2025 Kicks Off" loading="lazy">
                     </div>
                 </a>
                 <div class="news-content">
                     <h3 class="news-card-title">
-                        <a href="news-detail.php">The 26th Russian Education Fair 2025 Kicks Off Its First Edition in Kolkata</a>
+                        <a href="blog.php">The 26th Russian Education Fair 2025 Kicks Off Its First Edition in Kolkata</a>
                     </h3>
-                    <a href="news-detail.php" class="news-read-more">READ MORE</a>
+                    <a href="blog.php" class="news-read-more">READ MORE</a>
                     <p class="news-meta">ON JANUARY 15, 2023 BY SHAMMI AKTAR</p>
                 </div>
             </article>
