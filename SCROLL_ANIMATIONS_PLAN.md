@@ -314,10 +314,10 @@ addNewSectionAnimations() {
 
 ## 📝 **Implementation Notes**
 
-The animation system is now fully integrated into your website and includes **ALL SIX PAGES** with custom animations. The scroll animations will:
+The animation system is now fully integrated into your website and includes **ALL SEVEN PAGES** with custom animations. The scroll animations will:
 
 1. **Automatically initialize** when the page loads
-2. **Detect which page** you're on (index.php, about.php, destinations.php, resources.php, contact.php, or gallery.php)
+2. **Detect which page** you're on (index.php, about.php, destinations.php, resources.php, contact.php, gallery.php, or services.php)
 3. **Load appropriate animations** for each specific page
 4. **Trigger progressively** as users scroll through sections
 5. **Enhance user engagement** without hindering performance
@@ -394,6 +394,9 @@ const isContactPage =
 const isGalleryPage =
   window.location.pathname.includes("gallery.php") ||
   document.body.classList.contains("gallery-page");
+const isServicesPage =
+  window.location.pathname.includes("services.php") ||
+  document.body.classList.contains("services-page");
 
 if (isAboutPage) {
   // Load about page animations
@@ -422,6 +425,12 @@ if (isAboutPage) {
   this.addGalleryCarouselAnimations();
   this.addGalleryGridAnimations();
   // ... more gallery animations
+} else if (isServicesPage) {
+  // Load services page animations
+  this.addServicesHeroAnimations();
+  this.addServicesContentHeaderAnimations();
+  this.addServicesCardsAnimations();
+  // ... more services animations
 } else {
   // Load index page animations
   this.addMediaPartnersAnimations();
@@ -794,4 +803,112 @@ gridItems.forEach((item, index) => {
 - **Progressive Content** → From featured carousel to detailed grid exploration
 - **Hover Enhancement** → Post-animation optimization for image interaction
 
-**Test all six pages: index.php, about.php, destinations.php, resources.php, contact.php, and gallery.php to see the complete animation system!**
+---
+
+## 🛠️ **Services Page Specific Animations**
+
+### **1. Services Hero Section**
+
+- **Hero Breadcrumb** → Gentle upward slide (-30px to 0) with navigation context
+- **Hero Title** → Bold bouncy reveal with scale effect (0.9 to 1.0) emphasizing services focus
+- **Effect** → Professional page identification with service emphasis
+
+### **2. Services Content Header**
+
+- **Section Subheading** → "How We Help?" with horizontal slide from left (-40px to 0)
+- **Section Heading** → "Services At MedStudy Global" with upward reveal
+- **Section Description** → Supporting text about comprehensive support
+- **Progressive Timing** → Building information hierarchy
+
+### **3. Services Cards Section**
+
+- **Service Cards** → Advanced 3D card animations with X-rotation (15° to 0°)
+- **Card Staggering** → Progressive reveals with 250ms delays between cards
+- **Multi-layered Content** → Sequential image, title, and description animations
+- **Service Images** → Scale normalization from 1.1 to 1.0 with opacity correction
+- **Service Titles** → Upward slide reveals with bouncy easing
+- **Service Descriptions** → Final content reveals completing card animation
+
+### **4. Additional Services Section**
+
+- **Additional Services Title** → "Additional Support Services" with upward reveal
+- **Service Items** → 3D grid layout with masonry-style positioning
+- **Grid Intelligence** → Row/column delay calculation (row*200ms + col*120ms)
+- **Icon Animations** → Y-rotation effect (180° to 0°) with scale normalization
+- **Icon Bounce** → Post-animation bounce effect enhancing personality
+- **Hover Enhancement** → Post-animation optimization for interactivity
+
+### **5. Services CTA Section**
+
+- **CTA Content** → Overall container with scale and slide combination
+- **CTA Title** → "Ready to Start Your Medical Journey?" with emphasis
+- **CTA Description** → Supporting engagement text
+- **CTA Buttons** → Staggered reveals with scale effects (200ms delays)
+- **Button Glow** → Post-animation enhancement with differentiated effects
+
+---
+
+## 🎯 **Services Page User Experience**
+
+### **User Journey:**
+
+1. **Hero Section** → Clear services page identification with professional focus
+2. **Content Header** → Problem identification ("How We Help?") and solution presentation
+3. **Service Cards** → Main service offerings with detailed explanations
+4. **Additional Services** → Comprehensive support ecosystem
+5. **CTA Section** → Clear next steps and engagement opportunities
+
+### **Interactive Elements:**
+
+- **Service Cards** → Rich 3D reveals with multi-layered content progression
+- **Additional Service Items** → Icon-focused animations with bounce personality
+- **CTA Buttons** → Differentiated styling with glow effects for engagement
+- **Hover States** → Post-animation optimization for service exploration
+
+### **3D Service Card Animation:**
+
+```javascript
+// Advanced service card reveal sequence
+1. Card: translateY(80px) scale(0.9) rotateX(15deg) → normal
+2. Image: scale(1.1) opacity(0.8) → scale(1) opacity(1) [200ms delay]
+3. Title: translateY(30px) opacity(0) → normal [400ms delay]
+4. Description: translateY(20px) opacity(0) → normal [600ms delay]
+```
+
+### **Icon Animation with Bounce:**
+
+```css
+@keyframes serviceIconBounce {
+  0%,
+  100% {
+    transform: scale(1) rotateY(0deg);
+  }
+  25% {
+    transform: scale(1.1) rotateY(-5deg);
+  }
+  50% {
+    transform: scale(1.2) rotateY(5deg);
+  }
+  75% {
+    transform: scale(1.05) rotateY(-2deg);
+  }
+}
+```
+
+### **Additional Services Grid Intelligence:**
+
+```javascript
+// 3-column grid with intelligent staggering
+const row = Math.floor(index / 3); // Row position
+const col = index % 3; // Column position
+const delay = row * 200 + col * 120; // Staggered timing
+```
+
+### **Service-Focused Design:**
+
+- **Professional Emphasis** → Clear service identification and capability presentation
+- **Content Hierarchy** → Logical progression from problems to solutions
+- **Engagement Flow** → Building from information to action through animations
+- **Interactive Personality** → Icon bounces and card reveals creating memorable experience
+
+**Test all seven pages: index.php, about.php, destinations.php, resources.php, contact.php, gallery.php, and services.php to see the complete animation system!**

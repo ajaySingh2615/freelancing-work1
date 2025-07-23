@@ -48,6 +48,9 @@ class ScrollAnimations {
     const isGalleryPage =
       window.location.pathname.includes("gallery.php") ||
       document.body.classList.contains("gallery-page");
+    const isServicesPage =
+      window.location.pathname.includes("services.php") ||
+      document.body.classList.contains("services-page");
 
     if (isAboutPage) {
       // About page specific animations
@@ -81,6 +84,13 @@ class ScrollAnimations {
       this.addGalleryHeroAnimations();
       this.addGalleryCarouselAnimations();
       this.addGalleryGridAnimations();
+    } else if (isServicesPage) {
+      // Services page specific animations
+      this.addServicesHeroAnimations();
+      this.addServicesContentHeaderAnimations();
+      this.addServicesCardsAnimations();
+      this.addAdditionalServicesAnimations();
+      this.addServicesCtaAnimations();
     } else {
       // Index page animations
       this.addMediaPartnersAnimations();
@@ -1314,6 +1324,182 @@ class ScrollAnimations {
     });
   }
 
+  // ========== SERVICES PAGE SPECIFIC ANIMATIONS ==========
+
+  // 1. Services Hero Section - Banner with breadcrumb and title
+  addServicesHeroAnimations() {
+    const section = document.querySelector(".services-hero");
+    if (!section) return;
+
+    section.setAttribute("data-animation", "services-hero-section");
+
+    // Hero breadcrumb
+    const breadcrumb = section.querySelector(".hero-breadcrumb");
+    if (breadcrumb) {
+      breadcrumb.setAttribute("data-animation", "services-hero-breadcrumb");
+      breadcrumb.style.opacity = "0";
+      breadcrumb.style.transform = "translateY(-30px)";
+    }
+
+    // Hero title
+    const title = section.querySelector(".hero-title");
+    if (title) {
+      title.setAttribute("data-animation", "services-hero-title");
+      title.style.opacity = "0";
+      title.style.transform = "translateY(60px) scale(0.9)";
+    }
+  }
+
+  // 2. Services Content Header - Section title and description
+  addServicesContentHeaderAnimations() {
+    const section = document.querySelector(".services-content");
+    if (!section) return;
+
+    section.setAttribute("data-animation", "services-content-section");
+
+    // Section subheading
+    const subheading = section.querySelector(".section-subheading");
+    if (subheading) {
+      subheading.setAttribute("data-animation", "services-section-subheading");
+      subheading.style.opacity = "0";
+      subheading.style.transform = "translateX(-40px)";
+    }
+
+    // Section heading
+    const heading = section.querySelector(".section-heading");
+    if (heading) {
+      heading.setAttribute("data-animation", "services-section-heading");
+      heading.style.opacity = "0";
+      heading.style.transform = "translateY(50px)";
+    }
+
+    // Section description
+    const description = section.querySelector(".section-description");
+    if (description) {
+      description.setAttribute(
+        "data-animation",
+        "services-section-description"
+      );
+      description.style.opacity = "0";
+      description.style.transform = "translateY(30px)";
+    }
+  }
+
+  // 3. Services Cards - Main service offerings
+  addServicesCardsAnimations() {
+    const section = document.querySelector(".services-grid");
+    if (!section) return;
+
+    section.setAttribute("data-animation", "services-cards-section");
+
+    // Service cards with staggered animation
+    const serviceCards = section.querySelectorAll(".service-card");
+    serviceCards.forEach((card, index) => {
+      card.setAttribute("data-animation", "services-service-card");
+      card.setAttribute("data-delay", index * 250);
+      card.style.opacity = "0";
+      card.style.transform = "translateY(80px) scale(0.9) rotateX(15deg)";
+
+      // Service image
+      const serviceImage = card.querySelector(".service-image");
+      if (serviceImage) {
+        serviceImage.style.transform = "scale(1.1)";
+        serviceImage.style.opacity = "0.8";
+      }
+
+      // Service title
+      const serviceTitle = card.querySelector(".service-title");
+      if (serviceTitle) {
+        serviceTitle.style.transform = "translateY(30px)";
+        serviceTitle.style.opacity = "0";
+      }
+
+      // Service description
+      const serviceDescription = card.querySelector(".service-description");
+      if (serviceDescription) {
+        serviceDescription.style.transform = "translateY(20px)";
+        serviceDescription.style.opacity = "0";
+      }
+    });
+  }
+
+  // 4. Additional Services - Support services grid
+  addAdditionalServicesAnimations() {
+    const section = document.querySelector(".additional-services");
+    if (!section) return;
+
+    section.setAttribute("data-animation", "additional-services-section");
+
+    // Additional services title
+    const title = section.querySelector(".additional-title");
+    if (title) {
+      title.setAttribute("data-animation", "additional-services-title");
+      title.style.opacity = "0";
+      title.style.transform = "translateY(40px)";
+    }
+
+    // Additional service items
+    const additionalItems = section.querySelectorAll(".additional-item");
+    additionalItems.forEach((item, index) => {
+      item.setAttribute("data-animation", "additional-service-item");
+      // Calculate stagger based on grid position (assuming 3 columns)
+      const row = Math.floor(index / 3);
+      const col = index % 3;
+      const delay = row * 200 + col * 120;
+      item.setAttribute("data-delay", delay);
+      item.style.opacity = "0";
+      item.style.transform = "translateY(50px) scale(0.9)";
+
+      // Icon animation
+      const icon = item.querySelector("i");
+      if (icon) {
+        icon.style.transform = "scale(0.7) rotateY(180deg)";
+        icon.style.opacity = "0";
+      }
+    });
+  }
+
+  // 5. Services CTA Section - Call to action
+  addServicesCtaAnimations() {
+    const section = document.querySelector(".services-cta");
+    if (!section) return;
+
+    section.setAttribute("data-animation", "services-cta-section");
+
+    // CTA content
+    const ctaContent = section.querySelector(".cta-content");
+    if (ctaContent) {
+      ctaContent.setAttribute("data-animation", "services-cta-content");
+      ctaContent.style.opacity = "0";
+      ctaContent.style.transform = "translateY(50px) scale(0.95)";
+    }
+
+    // CTA title
+    const ctaTitle = section.querySelector(".cta-content h3");
+    if (ctaTitle) {
+      ctaTitle.setAttribute("data-animation", "services-cta-title");
+      ctaTitle.style.opacity = "0";
+      ctaTitle.style.transform = "translateY(40px)";
+    }
+
+    // CTA description
+    const ctaDesc = section.querySelector(".cta-content p");
+    if (ctaDesc) {
+      ctaDesc.setAttribute("data-animation", "services-cta-description");
+      ctaDesc.style.opacity = "0";
+      ctaDesc.style.transform = "translateY(30px)";
+    }
+
+    // CTA buttons
+    const ctaButtons = section.querySelectorAll(".cta-buttons .btn");
+    ctaButtons.forEach((button, index) => {
+      button.setAttribute("data-animation", "services-cta-button");
+      button.setAttribute("data-delay", index * 200);
+      button.style.opacity = "0";
+      button.style.transform = "translateY(40px) scale(0.9)";
+    });
+  }
+
   // Intersection Observer Handler
   handleIntersection(entries) {
     entries.forEach((entry) => {
@@ -1586,6 +1772,44 @@ class ScrollAnimations {
         break;
       case "gallery-grid-item":
         this.animateGalleryGridItem(element);
+        break;
+
+      // Services page animations
+      case "services-hero-breadcrumb":
+        this.animateServicesHeroBreadcrumb(element);
+        break;
+      case "services-hero-title":
+        this.animateServicesHeroTitle(element);
+        break;
+      case "services-section-subheading":
+        this.animateServicesSectionSubheading(element);
+        break;
+      case "services-section-heading":
+        this.animateServicesSectionHeading(element);
+        break;
+      case "services-section-description":
+        this.animateServicesSectionDescription(element);
+        break;
+      case "services-service-card":
+        this.animateServicesServiceCard(element);
+        break;
+      case "additional-services-title":
+        this.animateAdditionalServicesTitle(element);
+        break;
+      case "additional-service-item":
+        this.animateAdditionalServiceItem(element);
+        break;
+      case "services-cta-content":
+        this.animateServicesCtaContent(element);
+        break;
+      case "services-cta-title":
+        this.animateServicesCtaTitle(element);
+        break;
+      case "services-cta-description":
+        this.animateServicesCtaDescription(element);
+        break;
+      case "services-cta-button":
+        this.animateServicesCtaButton(element);
         break;
 
       default:
@@ -2264,6 +2488,151 @@ class ScrollAnimations {
     }, 1000);
   }
 
+  // ========== SERVICES PAGE ANIMATION METHODS ==========
+
+  animateServicesHeroBreadcrumb(element) {
+    element.style.transition = "all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
+    element.style.opacity = "1";
+    element.style.transform = "translateY(0)";
+  }
+
+  animateServicesHeroTitle(element) {
+    element.style.transition = "all 1.2s cubic-bezier(0.34, 1.56, 0.64, 1)";
+    element.style.opacity = "1";
+    element.style.transform = "translateY(0) scale(1)";
+  }
+
+  animateServicesSectionSubheading(element) {
+    element.style.transition = "all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)";
+    element.style.opacity = "1";
+    element.style.transform = "translateX(0)";
+  }
+
+  animateServicesSectionHeading(element) {
+    element.style.transition = "all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
+    element.style.opacity = "1";
+    element.style.transform = "translateY(0)";
+  }
+
+  animateServicesSectionDescription(element) {
+    element.style.transition = "all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
+    element.style.opacity = "1";
+    element.style.transform = "translateY(0)";
+  }
+
+  animateServicesServiceCard(element) {
+    element.style.transition = "all 1s cubic-bezier(0.34, 1.56, 0.64, 1)";
+    element.style.opacity = "1";
+    element.style.transform = "translateY(0) scale(1) rotateX(0deg)";
+
+    // Animate service image
+    const serviceImage = element.querySelector(".service-image");
+    if (serviceImage) {
+      setTimeout(() => {
+        serviceImage.style.transition =
+          "all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
+        serviceImage.style.transform = "scale(1)";
+        serviceImage.style.opacity = "1";
+      }, 200);
+    }
+
+    // Animate service title
+    const serviceTitle = element.querySelector(".service-title");
+    if (serviceTitle) {
+      setTimeout(() => {
+        serviceTitle.style.transition =
+          "all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55)";
+        serviceTitle.style.transform = "translateY(0)";
+        serviceTitle.style.opacity = "1";
+      }, 400);
+    }
+
+    // Animate service description
+    const serviceDescription = element.querySelector(".service-description");
+    if (serviceDescription) {
+      setTimeout(() => {
+        serviceDescription.style.transition =
+          "all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
+        serviceDescription.style.transform = "translateY(0)";
+        serviceDescription.style.opacity = "1";
+      }, 600);
+    }
+
+    // Add hover-ready effects
+    setTimeout(() => {
+      element.style.transition =
+        "all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
+    }, 1000);
+  }
+
+  animateAdditionalServicesTitle(element) {
+    element.style.transition = "all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
+    element.style.opacity = "1";
+    element.style.transform = "translateY(0)";
+  }
+
+  animateAdditionalServiceItem(element) {
+    element.style.transition = "all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)";
+    element.style.opacity = "1";
+    element.style.transform = "translateY(0) scale(1)";
+
+    // Animate icon with special effect
+    const icon = element.querySelector("i");
+    if (icon) {
+      setTimeout(() => {
+        icon.style.transition =
+          "all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55)";
+        icon.style.transform = "scale(1) rotateY(0deg)";
+        icon.style.opacity = "1";
+      }, 200);
+
+      // Add icon bounce effect after reveal
+      setTimeout(() => {
+        icon.style.animation = "serviceIconBounce 1s ease-out";
+      }, 800);
+    }
+
+    // Add hover-ready effects
+    setTimeout(() => {
+      element.style.transition =
+        "all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
+    }, 800);
+  }
+
+  animateServicesCtaContent(element) {
+    element.style.transition = "all 1s cubic-bezier(0.34, 1.56, 0.64, 1)";
+    element.style.opacity = "1";
+    element.style.transform = "translateY(0) scale(1)";
+  }
+
+  animateServicesCtaTitle(element) {
+    element.style.transition = "all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
+    element.style.opacity = "1";
+    element.style.transform = "translateY(0)";
+  }
+
+  animateServicesCtaDescription(element) {
+    element.style.transition = "all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
+    element.style.opacity = "1";
+    element.style.transform = "translateY(0)";
+  }
+
+  animateServicesCtaButton(element) {
+    element.style.transition =
+      "all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55)";
+    element.style.opacity = "1";
+    element.style.transform = "translateY(0) scale(1)";
+
+    // Add subtle glow effect after animation
+    setTimeout(() => {
+      if (element.classList.contains("btn-primary")) {
+        element.style.boxShadow = "0 4px 20px rgba(255, 255, 255, 0.2)";
+      } else {
+        element.style.boxShadow = "0 4px 20px rgba(255, 255, 255, 0.1)";
+      }
+    }, 800);
+  }
+
   // Counter animation for stats
   animateCounter(element) {
     const target = parseInt(element.textContent.replace(/\D/g, ""));
@@ -2321,6 +2690,21 @@ document.addEventListener("DOMContentLoaded", () => {
         50% {
           transform: scale(1.2) translateY(0);
           opacity: 0.8;
+        }
+      }
+      
+      @keyframes serviceIconBounce {
+        0%, 100% {
+          transform: scale(1) rotateY(0deg);
+        }
+        25% {
+          transform: scale(1.1) rotateY(-5deg);
+        }
+        50% {
+          transform: scale(1.2) rotateY(5deg);
+        }
+        75% {
+          transform: scale(1.05) rotateY(-2deg);
         }
       }
     `;
