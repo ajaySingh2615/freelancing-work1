@@ -807,11 +807,12 @@ gridItems.forEach((item, index) => {
 
 ## 🛠️ **Services Page Specific Animations**
 
-### **1. Services Hero Section**
+### **1. Services Hero Section** (Simplified)
 
-- **Hero Breadcrumb** → Gentle upward slide (-30px to 0) with navigation context
-- **Hero Title** → Bold bouncy reveal with scale effect (0.9 to 1.0) emphasizing services focus
-- **Effect** → Professional page identification with service emphasis
+- **Clean Banner Design** → Pure background image without overlay or text content
+- **Professional Visual Impact** → Focus on high-quality banner image for brand impression
+- **Responsive Sizing** → Adaptive heights (40vh desktop, 30vh tablet, 25vh mobile)
+- **Effect** → Clean, modern design emphasizing visual appeal over text content
 
 ### **2. Services Content Header**
 

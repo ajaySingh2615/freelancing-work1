@@ -9,17 +9,6 @@ include 'includes/header.php';
 <main class="services-page">
     <!-- Hero Section (Banner) -->
     <section class="services-hero">
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <div class="container">
-                <nav class="hero-breadcrumb">
-                    <a href="index.php">MedStudy Global</a>
-                    <span class="breadcrumb-separator">></span>
-                    <span class="breadcrumb-current">Services</span>
-                </nav>
-                <h1 class="hero-title">OUR SERVICES</h1>
-            </div>
-        </div>
     </section>
 
     <!-- Main Content Section -->
@@ -168,16 +157,6 @@ include 'includes/header.php';
                         <h4>Student Insurance & Health Services</h4>
                         <p>Advising on mandatory health insurance plans, travel insurance, and local medical facility orientation.</p>
                     </div>
-                    <div class="additional-item">
-                        <i class="fas fa-user-graduate"></i>
-                        <h4>Ongoing Academic Support</h4>
-                        <p>Check ins throughout the semester, help with course registration, and troubleshooting academic or administrative issues.</p>
-                    </div>
-                    <div class="additional-item">
-                        <i class="fas fa-users"></i>
-                        <h4>Group Counseling & Webinars</h4>
-                        <p>Regular webinars on "Life as an MBBS student abroad," country specific Q&A sessions, and group workshops on study techniques.</p>
-                    </div>
                 </div>
             </div>
 
@@ -188,7 +167,7 @@ include 'includes/header.php';
                     <p>Get in touch with our expert counselors for personalized guidance and support.</p>
                     <div class="cta-buttons">
                         <a href="contact.php" class="btn btn-primary">Get Free Consultation</a>
-                        <a href="university-partners.php" class="btn btn-secondary">Explore Universities</a>
+                        <a href="resources.php" class="btn btn-secondary">Explore Universities</a>
                     </div>
                 </div>
             </div>
@@ -202,86 +181,11 @@ include 'includes/header.php';
 
 /* Hero Section (Banner) */
 .services-hero {
-    position: relative;
-    min-height: 60vh;
-    background-image: url('assets/images/media/destinations/hero-banner1.webp');
+    min-height: 40vh;
+    background-image: url('assets/images/media/service-page/banner/banner.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.services-hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(
-        135deg,
-        rgba(0, 53, 133, 0.8) 0%,
-        rgba(229, 9, 20, 0.7) 100%
-    );
-    z-index: 1;
-}
-
-.hero-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.3);
-    z-index: 2;
-}
-
-.hero-content {
-    position: relative;
-    z-index: 3;
-    text-align: center;
-    color: var(--white);
-    width: 100%;
-}
-
-.hero-breadcrumb {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: var(--sm);
-    margin-bottom: var(--xl);
-    font-size: var(--small);
-    opacity: 0.9;
-}
-
-.hero-breadcrumb a {
-    color: rgba(255, 255, 255, 0.9);
-    text-decoration: none;
-    transition: var(--transition);
-}
-
-.hero-breadcrumb a:hover {
-    color: var(--white);
-}
-
-.breadcrumb-separator {
-    color: rgba(255, 255, 255, 0.7);
-}
-
-.breadcrumb-current {
-    color: var(--white);
-    font-weight: var(--medium-weight);
-}
-
-.hero-title {
-    font-size: clamp(2.5rem, 6vw, var(--xxxlarge));
-    font-weight: var(--bold);
-    letter-spacing: 2px;
-    margin: 0;
-    text-transform: uppercase;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 /* Services Content Section */
@@ -352,7 +256,7 @@ include 'includes/header.php';
 /* Enhanced hover effects */
 .service-card:hover {
     transform: translateY(-8px);
-    background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+    background: linear-gradient(135deg,rgb(55, 52, 31) 0%,rgb(39, 39, 17) 100%);
     box-shadow: 0 20px 40px rgba(31, 41, 55, 0.4);
 }
 
@@ -465,8 +369,8 @@ include 'includes/header.php';
 
 /* Call to Action */
 .services-cta {
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-    color: var(--white);
+    background: var(--accent-color);
+    color: var(--text-color);
     padding: var(--xxl);
     border-radius: var(--large);
     text-align: center;
@@ -550,12 +454,7 @@ include 'includes/header.php';
 /* Responsive Design */
 @media (max-width: 768px) {
     .services-hero {
-        min-height: 40vh;
-    }
-    
-    .hero-title {
-        font-size: var(--xxlarge);
-        letter-spacing: 1px;
+        min-height: 30vh;
     }
     
     .services-content {
@@ -616,9 +515,8 @@ include 'includes/header.php';
 }
 
 @media (max-width: 576px) {
-    .hero-breadcrumb {
-        flex-direction: column;
-        gap: var(--xs);
+    .services-hero {
+        min-height: 25vh;
     }
     
     .section-subheading {

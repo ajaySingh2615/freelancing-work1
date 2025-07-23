@@ -1326,28 +1326,14 @@ class ScrollAnimations {
 
   // ========== SERVICES PAGE SPECIFIC ANIMATIONS ==========
 
-  // 1. Services Hero Section - Banner with breadcrumb and title
+  // 1. Services Hero Section - Clean banner image only
   addServicesHeroAnimations() {
     const section = document.querySelector(".services-hero");
     if (!section) return;
 
+    // Hero section is now simplified with just background image
+    // No text elements to animate - clean visual design approach
     section.setAttribute("data-animation", "services-hero-section");
-
-    // Hero breadcrumb
-    const breadcrumb = section.querySelector(".hero-breadcrumb");
-    if (breadcrumb) {
-      breadcrumb.setAttribute("data-animation", "services-hero-breadcrumb");
-      breadcrumb.style.opacity = "0";
-      breadcrumb.style.transform = "translateY(-30px)";
-    }
-
-    // Hero title
-    const title = section.querySelector(".hero-title");
-    if (title) {
-      title.setAttribute("data-animation", "services-hero-title");
-      title.style.opacity = "0";
-      title.style.transform = "translateY(60px) scale(0.9)";
-    }
   }
 
   // 2. Services Content Header - Section title and description
@@ -1775,12 +1761,6 @@ class ScrollAnimations {
         break;
 
       // Services page animations
-      case "services-hero-breadcrumb":
-        this.animateServicesHeroBreadcrumb(element);
-        break;
-      case "services-hero-title":
-        this.animateServicesHeroTitle(element);
-        break;
       case "services-section-subheading":
         this.animateServicesSectionSubheading(element);
         break;
@@ -2489,18 +2469,6 @@ class ScrollAnimations {
   }
 
   // ========== SERVICES PAGE ANIMATION METHODS ==========
-
-  animateServicesHeroBreadcrumb(element) {
-    element.style.transition = "all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
-    element.style.opacity = "1";
-    element.style.transform = "translateY(0)";
-  }
-
-  animateServicesHeroTitle(element) {
-    element.style.transition = "all 1.2s cubic-bezier(0.34, 1.56, 0.64, 1)";
-    element.style.opacity = "1";
-    element.style.transform = "translateY(0) scale(1)";
-  }
 
   animateServicesSectionSubheading(element) {
     element.style.transition = "all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)";
