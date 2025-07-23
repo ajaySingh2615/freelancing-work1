@@ -97,29 +97,6 @@ include('includes/header.php');
                                 <input type="tel" class="form-control" id="phone" name="phone" required>
                             </div>
                         </div>
-                        
-                        <div class="form-group">
-                            <label>What type of website do you need?</label>
-                            <div class="radio-group">
-                                <div class="radio-item">
-                                    <input type="radio" id="web-design" name="service_type" value="Web Design">
-                                    <label for="web-design">Web Design</label>
-                                </div>
-                                <div class="radio-item">
-                                    <input type="radio" id="web-development" name="service_type" value="Web Development" checked>
-                                    <label for="web-development">Web Development</label>
-                                </div>
-                                <div class="radio-item">
-                                    <input type="radio" id="logo-design" name="service_type" value="Logo Design">
-                                    <label for="logo-design">Logo Design</label>
-                                </div>
-                                <div class="radio-item">
-                                    <input type="radio" id="other" name="service_type" value="Other">
-                                    <label for="other">Other</label>
-                                </div>
-                            </div>
-                        </div>
-                        
                         <div class="form-group">
                             <label for="message">Message</label>
                             <textarea class="form-control" id="message" name="message" rows="5" placeholder="Write your message..." required></textarea>
@@ -127,6 +104,82 @@ include('includes/header.php');
                         
                         <button type="submit" class="btn-submit">Send Message</button>
                     </form>
+
+                    <!-- EmailJS Integration Script -->
+                    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+                    <script>
+                        // Initialize EmailJS
+                        (function() {
+                            emailjs.init("Xl2-rb_v5qwA8iJpI"); // Your EmailJS public key
+                        })();
+
+                        // Handle contact form submission
+                        document.getElementById('contact-form').addEventListener('submit', function(event) {
+                            event.preventDefault();
+                            
+                            const form = event.target;
+                            const submitBtn = form.querySelector('button[type="submit"]');
+                            const originalText = submitBtn.innerHTML;
+                            
+                            // Show loading state
+                            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+                            submitBtn.disabled = true;
+                            
+                            // Prepare template parameters
+                            const templateParams = {
+                                first_name: form.first_name.value,
+                                last_name: form.last_name.value,
+                                from_name: form.first_name.value + ' ' + form.last_name.value,
+                                from_email: form.email.value,
+                                phone: form.phone.value,
+                                message: form.message.value,
+                                to_email: 'ajaysingh261526@gmail.com',
+                                date: new Date().toLocaleString(),
+                                subject: 'New Contact Form Submission from ' + form.first_name.value + ' ' + form.last_name.value
+                            };
+                            
+                            // Send via EmailJS
+                            emailjs.send('service_igiat6d', 'template_kxu5e1d', templateParams)
+                                .then(function() {
+                                    alert('Thank you! Your message has been sent successfully. We will get back to you within 24 hours.');
+                                    form.reset();
+                                }, function(error) {
+                                    console.log('EmailJS Error:', error);
+                                    console.log('Falling back to PHP form submission...');
+                                    alert('Using backup email system...');
+                                    // Fallback to PHP form
+                                    submitContactFormViaPhp(form);
+                                })
+                                .finally(function() {
+                                    // Restore button
+                                    submitBtn.innerHTML = originalText;
+                                    submitBtn.disabled = false;
+                                });
+                        });
+                        
+                        // Fallback to PHP submission
+                        function submitContactFormViaPhp(form) {
+                            const formData = new FormData(form);
+                            
+                            fetch('process-contact.php', {
+                                method: 'POST',
+                                body: formData
+                            })
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data.status === 'success') {
+                                    alert(data.message);
+                                    form.reset();
+                                } else {
+                                    alert('Error: ' + data.message);
+                                }
+                            })
+                            .catch(error => {
+                                console.error('Error:', error);
+                                alert('There was an error submitting your form. Please try again or contact us directly.');
+                            });
+                        }
+                    </script>
                 </div>
             </div>
         </div>
