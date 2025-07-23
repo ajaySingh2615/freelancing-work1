@@ -32,16 +32,33 @@ class ScrollAnimations {
   }
 
   setupAnimations() {
-    this.addMediaPartnersAnimations();
-    this.addAboutSectionAnimations();
-    this.addDestinationsAnimations();
-    this.addServicesAnimations();
-    this.addUniversitiesAnimations();
-    this.addWhyChooseUsAnimations();
-    this.addWorkingProcessAnimations();
-    this.addTestimonialAnimations();
-    this.addBlogSectionAnimations();
-    this.addContactSectionAnimations();
+    // Check if we're on index page or about page
+    const isAboutPage =
+      window.location.pathname.includes("about.php") ||
+      document.body.classList.contains("about-page");
+
+    if (isAboutPage) {
+      // About page specific animations
+      this.addAboutHeroAnimations();
+      this.addCompanyStoryAnimations();
+      this.addTeamSectionAnimations();
+      this.addValuesSectionAnimations();
+      this.addAboutCtaAnimations();
+      this.addMediaHighlightsAnimations();
+    } else {
+      // Index page animations
+      this.addMediaPartnersAnimations();
+      this.addAboutSectionAnimations();
+      this.addDestinationsAnimations();
+      this.addServicesAnimations();
+      this.addUniversitiesAnimations();
+      this.addWhyChooseUsAnimations();
+      this.addWorkingProcessAnimations();
+      this.addTestimonialAnimations();
+      this.addBlogSectionAnimations();
+      this.addContactSectionAnimations();
+    }
+
     this.addStickyButtonAnimation();
     this.startObserving();
   }
@@ -382,6 +399,240 @@ class ScrollAnimations {
     }
   }
 
+  // ========== ABOUT PAGE SPECIFIC ANIMATIONS ==========
+
+  // 1. About Hero Section - Multi-stage reveal with counter animations
+  addAboutHeroAnimations() {
+    const section = document.querySelector(".about-hero");
+    if (!section) return;
+
+    section.setAttribute("data-animation", "about-hero-section");
+
+    // Tagline
+    const tagline = section.querySelector(".about-hero-tagline");
+    if (tagline) {
+      tagline.setAttribute("data-animation", "hero-tagline");
+      tagline.style.opacity = "0";
+      tagline.style.transform = "translateY(20px)";
+    }
+
+    // Title
+    const title = section.querySelector(".about-hero-title");
+    if (title) {
+      title.setAttribute("data-animation", "hero-title");
+      title.style.opacity = "0";
+      title.style.transform = "translateY(40px)";
+    }
+
+    // Hero Image
+    const heroImage = section.querySelector(".hero-image");
+    if (heroImage) {
+      heroImage.setAttribute("data-animation", "hero-image");
+      heroImage.style.opacity = "0";
+      heroImage.style.transform = "scale(0.9) translateY(30px)";
+    }
+
+    // Stats with counter animation
+    const stats = section.querySelectorAll(".hero-stat-item");
+    stats.forEach((stat, index) => {
+      stat.setAttribute("data-animation", "hero-stat-counter");
+      stat.setAttribute("data-delay", index * 150);
+      stat.style.opacity = "0";
+      stat.style.transform = "translateY(30px) scale(0.95)";
+    });
+  }
+
+  // 2. Company Story Section - Alternating content with images
+  addCompanyStoryAnimations() {
+    const section = document.querySelector(".company-story-section");
+    if (!section) return;
+
+    section.setAttribute("data-animation", "company-story-section");
+
+    // Story Header
+    const header = section.querySelector(".story-header");
+    if (header) {
+      header.setAttribute("data-animation", "story-header");
+      header.style.opacity = "0";
+      header.style.transform = "translateY(40px)";
+    }
+
+    // Story Content blocks
+    const storyContents = section.querySelectorAll(".story-content");
+    storyContents.forEach((content, index) => {
+      content.setAttribute("data-animation", "story-content");
+      content.setAttribute("data-delay", index * 300);
+
+      const textContent = content.querySelector(".story-text");
+      const imageContent = content.querySelector(".story-image");
+
+      if (textContent) {
+        textContent.style.opacity = "0";
+        textContent.style.transform = content.classList.contains("reverse")
+          ? "translateX(60px)"
+          : "translateX(-60px)";
+      }
+
+      if (imageContent) {
+        imageContent.style.opacity = "0";
+        imageContent.style.transform = content.classList.contains("reverse")
+          ? "translateX(-60px)"
+          : "translateX(60px)";
+      }
+    });
+
+    // MVV Cards (Mission, Vision, Values)
+    const mvvCards = section.querySelectorAll(".mvv-card");
+    mvvCards.forEach((card, index) => {
+      card.setAttribute("data-animation", "mvv-card");
+      card.setAttribute("data-delay", index * 200);
+      card.style.opacity = "0";
+      card.style.transform = "translateY(50px) rotateX(20deg)";
+    });
+  }
+
+  // 3. Team Section - Profile card animations
+  addTeamSectionAnimations() {
+    const section = document.querySelector(".team-section");
+    if (!section) return;
+
+    section.setAttribute("data-animation", "team-section");
+
+    // Team Header
+    const header = section.querySelector(".team-header");
+    if (header) {
+      header.setAttribute("data-animation", "team-header");
+      header.style.opacity = "0";
+      header.style.transform = "translateY(40px)";
+    }
+
+    // Team Members with staggered entrance
+    const teamMembers = section.querySelectorAll(".team-member");
+    teamMembers.forEach((member, index) => {
+      member.setAttribute("data-animation", "team-member");
+      member.setAttribute("data-delay", index * 250);
+      member.style.opacity = "0";
+      member.style.transform = "translateY(60px) scale(0.9)";
+
+      // Member image specific animation
+      const memberImage = member.querySelector(".member-image");
+      if (memberImage) {
+        memberImage.style.transform = "scale(1.1)";
+      }
+    });
+  }
+
+  // 4. Values Section - Grid animations with culture cards
+  addValuesSectionAnimations() {
+    const section = document.querySelector(".values-section");
+    if (!section) return;
+
+    section.setAttribute("data-animation", "values-section");
+
+    // Values Header
+    const header = section.querySelector(".values-header");
+    if (header) {
+      header.setAttribute("data-animation", "values-header");
+      header.style.opacity = "0";
+      header.style.transform = "translateY(40px)";
+    }
+
+    // Value Cards with dynamic grid animation
+    const valueCards = section.querySelectorAll(".value-card");
+    valueCards.forEach((card, index) => {
+      card.setAttribute("data-animation", "value-card");
+      card.setAttribute(
+        "data-delay",
+        Math.floor(index / 3) * 200 + (index % 3) * 150
+      );
+      card.style.opacity = "0";
+      card.style.transform = "translateY(50px) rotateY(15deg)";
+    });
+
+    // Culture Section
+    const cultureSection = section.querySelector(".culture-section");
+    if (cultureSection) {
+      const cultureHeader = cultureSection.querySelector(".culture-header");
+      if (cultureHeader) {
+        cultureHeader.setAttribute("data-animation", "culture-header");
+        cultureHeader.style.opacity = "0";
+        cultureHeader.style.transform = "translateY(40px)";
+      }
+
+      // Culture Cards
+      const cultureCards = cultureSection.querySelectorAll(".culture-card");
+      cultureCards.forEach((card, index) => {
+        card.setAttribute("data-animation", "culture-card");
+        card.setAttribute("data-delay", index * 200);
+        card.style.opacity = "0";
+        card.style.transform = "translateY(50px) scale(0.95)";
+      });
+    }
+  }
+
+  // 5. About CTA Section - Split animation with illustration
+  addAboutCtaAnimations() {
+    const section = document.querySelector(".about-cta-section");
+    if (!section) return;
+
+    section.setAttribute("data-animation", "about-cta-section");
+
+    // CTA Image/Illustration
+    const ctaImage = section.querySelector(".cta-image");
+    if (ctaImage) {
+      ctaImage.setAttribute("data-animation", "cta-image");
+      ctaImage.style.opacity = "0";
+      ctaImage.style.transform = "translateX(-50px) scale(0.95)";
+    }
+
+    // CTA Content
+    const ctaContent = section.querySelector(".cta-content");
+    if (ctaContent) {
+      ctaContent.setAttribute("data-animation", "cta-content");
+      ctaContent.style.opacity = "0";
+      ctaContent.style.transform = "translateX(50px)";
+    }
+
+    // CTA Buttons
+    const ctaButtons = section.querySelectorAll(
+      ".cta-btn-primary, .cta-btn-secondary"
+    );
+    ctaButtons.forEach((button, index) => {
+      button.setAttribute("data-animation", "cta-button");
+      button.setAttribute("data-delay", index * 150);
+      button.style.opacity = "0";
+      button.style.transform = "translateY(20px)";
+    });
+  }
+
+  // 6. Media Highlights Section - Logo wall with wave animation
+  addMediaHighlightsAnimations() {
+    const section = document.querySelector(".media-highlights-section");
+    if (!section) return;
+
+    section.setAttribute("data-animation", "media-highlights-section");
+
+    // Media Header
+    const header = section.querySelector(".media-highlights-header");
+    if (header) {
+      header.setAttribute("data-animation", "media-header");
+      header.style.opacity = "0";
+      header.style.transform = "translateY(40px)";
+    }
+
+    // Media Logo Items with wave effect
+    const logoItems = section.querySelectorAll(".media-logo-item");
+    logoItems.forEach((logo, index) => {
+      logo.setAttribute("data-animation", "media-logo");
+      logo.setAttribute(
+        "data-delay",
+        Math.floor(index / 5) * 100 + (index % 5) * 120
+      );
+      logo.style.opacity = "0";
+      logo.style.transform = "translateY(40px) scale(0.8)";
+    });
+  }
+
   // Intersection Observer Handler
   handleIntersection(entries) {
     entries.forEach((entry) => {
@@ -416,6 +667,7 @@ class ScrollAnimations {
   // Trigger specific animations based on type
   triggerSpecificAnimation(element, type) {
     switch (type) {
+      // Index page animations
       case "partner-item":
         this.animatePartnerItem(element);
         break;
@@ -452,6 +704,48 @@ class ScrollAnimations {
       case "blog-card":
         this.animateBlogCard(element);
         break;
+
+      // About page animations
+      case "hero-tagline":
+        this.animateHeroTagline(element);
+        break;
+      case "hero-title":
+        this.animateHeroTitle(element);
+        break;
+      case "hero-image":
+        this.animateHeroImage(element);
+        break;
+      case "hero-stat-counter":
+        this.animateHeroStatCounter(element);
+        break;
+      case "story-content":
+        this.animateStoryContent(element);
+        break;
+      case "mvv-card":
+        this.animateMvvCard(element);
+        break;
+      case "team-member":
+        this.animateTeamMember(element);
+        break;
+      case "value-card":
+        this.animateValueCard(element);
+        break;
+      case "culture-card":
+        this.animateCultureCard(element);
+        break;
+      case "cta-image":
+        this.animateCtaImage(element);
+        break;
+      case "cta-content":
+        this.animateCtaContent(element);
+        break;
+      case "cta-button":
+        this.animateCtaButton(element);
+        break;
+      case "media-logo":
+        this.animateMediaLogo(element);
+        break;
+
       default:
         this.animateDefault(element);
     }
@@ -541,6 +835,120 @@ class ScrollAnimations {
 
   animateDefault(element) {
     element.style.transition = "all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
+    element.style.opacity = "1";
+    element.style.transform = "translateY(0) scale(1)";
+  }
+
+  // ========== ABOUT PAGE ANIMATION METHODS ==========
+
+  animateHeroTagline(element) {
+    element.style.transition = "all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
+    element.style.opacity = "1";
+    element.style.transform = "translateY(0)";
+  }
+
+  animateHeroTitle(element) {
+    element.style.transition = "all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
+    element.style.opacity = "1";
+    element.style.transform = "translateY(0)";
+  }
+
+  animateHeroImage(element) {
+    element.style.transition = "all 1s cubic-bezier(0.34, 1.56, 0.64, 1)";
+    element.style.opacity = "1";
+    element.style.transform = "scale(1) translateY(0)";
+  }
+
+  animateHeroStatCounter(element) {
+    element.style.transition =
+      "all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55)";
+    element.style.opacity = "1";
+    element.style.transform = "translateY(0) scale(1)";
+
+    // Add counter animation for stats
+    const numberElement = element.querySelector(".stat-number");
+    if (numberElement) {
+      this.animateCounter(numberElement);
+    }
+  }
+
+  animateStoryContent(element) {
+    element.style.transition = "all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
+
+    const textContent = element.querySelector(".story-text");
+    const imageContent = element.querySelector(".story-image");
+
+    if (textContent) {
+      textContent.style.transition =
+        "all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
+      textContent.style.opacity = "1";
+      textContent.style.transform = "translateX(0)";
+    }
+
+    if (imageContent) {
+      imageContent.style.transition =
+        "all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
+      imageContent.style.opacity = "1";
+      imageContent.style.transform = "translateX(0)";
+    }
+  }
+
+  animateMvvCard(element) {
+    element.style.transition =
+      "all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55)";
+    element.style.opacity = "1";
+    element.style.transform = "translateY(0) rotateX(0)";
+  }
+
+  animateTeamMember(element) {
+    element.style.transition = "all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)";
+    element.style.opacity = "1";
+    element.style.transform = "translateY(0) scale(1)";
+
+    // Special image animation for team members
+    const memberImage = element.querySelector(".member-image");
+    if (memberImage) {
+      memberImage.style.transition =
+        "all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
+      memberImage.style.transform = "scale(1)";
+    }
+  }
+
+  animateValueCard(element) {
+    element.style.transition =
+      "all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55)";
+    element.style.opacity = "1";
+    element.style.transform = "translateY(0) rotateY(0)";
+  }
+
+  animateCultureCard(element) {
+    element.style.transition = "all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)";
+    element.style.opacity = "1";
+    element.style.transform = "translateY(0) scale(1)";
+  }
+
+  animateCtaImage(element) {
+    element.style.transition = "all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
+    element.style.opacity = "1";
+    element.style.transform = "translateX(0) scale(1)";
+  }
+
+  animateCtaContent(element) {
+    element.style.transition = "all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
+    element.style.opacity = "1";
+    element.style.transform = "translateX(0)";
+  }
+
+  animateCtaButton(element) {
+    element.style.transition =
+      "all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55)";
+    element.style.opacity = "1";
+    element.style.transform = "translateY(0)";
+  }
+
+  animateMediaLogo(element) {
+    element.style.transition =
+      "all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55)";
     element.style.opacity = "1";
     element.style.transform = "translateY(0) scale(1)";
   }

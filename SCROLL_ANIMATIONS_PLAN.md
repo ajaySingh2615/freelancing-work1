@@ -314,11 +314,106 @@ addNewSectionAnimations() {
 
 ## 📝 **Implementation Notes**
 
-The animation system is now fully integrated into your website. The scroll animations will:
+The animation system is now fully integrated into your website and includes **BOTH index page and about page animations**. The scroll animations will:
 
 1. **Automatically initialize** when the page loads
-2. **Trigger progressively** as users scroll
-3. **Enhance user engagement** without hindering performance
-4. **Work seamlessly** with your existing design
+2. **Detect which page** you're on (index.php or about.php)
+3. **Load appropriate animations** for each page
+4. **Trigger progressively** as users scroll
+5. **Enhance user engagement** without hindering performance
+6. **Work seamlessly** with your existing design
 
-**Test your website now to see the animations in action!**
+---
+
+## 🎨 **About Page Specific Animations**
+
+### **1. About Hero Section**
+
+- **Tagline:** Gentle upward fade
+- **Title:** Bold reveal with longer duration
+- **Hero Image:** Scale + slide combination
+- **Stats:** Counter animations with bounce effect
+- **Timing:** Sequential 150ms delays for stats
+
+### **2. Company Story Section**
+
+- **Story Header:** Standard upward reveal
+- **Story Content:** Alternating slide animations (left/right based on layout)
+- **MVV Cards:** 3D flip effect with X-axis rotation
+- **Timing:** 300ms delays for content blocks, 200ms for MVV cards
+
+### **3. Team Section**
+
+- **Team Header:** Upward fade reveal
+- **Team Members:** Bouncy scale animation with stagger
+- **Member Images:** Special scale effect for portraits
+- **Timing:** 250ms stagger for member cards
+
+### **4. Values Section**
+
+- **Values Header:** Standard upward reveal
+- **Value Cards:** 3D rotation with Y-axis perspective
+- **Culture Cards:** Scale animation with bounce
+- **Grid Pattern:** Smart delay calculation based on position
+- **Timing:** Row-based delays (200ms) + column offsets (150ms)
+
+### **5. About CTA Section**
+
+- **CTA Image:** Slide from left with scale
+- **CTA Content:** Slide from right
+- **CTA Buttons:** Staggered upward bounce
+- **Effect:** Split reveal creating visual balance
+
+### **6. Media Highlights Section**
+
+- **Media Header:** Standard upward reveal
+- **Logo Items:** Wave-like grid animation
+- **Pattern:** 5-column grid with wave timing
+- **Timing:** Row delays (100ms) + column offsets (120ms)
+
+---
+
+## 🔄 **Page Detection System**
+
+The animation system automatically detects which page you're viewing:
+
+```javascript
+// Automatic page detection
+const isAboutPage =
+  window.location.pathname.includes("about.php") ||
+  document.body.classList.contains("about-page");
+
+if (isAboutPage) {
+  // Load about page animations
+  this.addAboutHeroAnimations();
+  this.addCompanyStoryAnimations();
+  // ... more about animations
+} else {
+  // Load index page animations
+  this.addMediaPartnersAnimations();
+  this.addAboutSectionAnimations();
+  // ... more index animations
+}
+```
+
+---
+
+## 🎯 **About Page User Experience**
+
+### **User Journey:**
+
+1. **Hero Section:** Professional introduction with impressive stats
+2. **Company Story:** Trust building through narrative and visuals
+3. **Team Section:** Personal connection with team members
+4. **Values Section:** Company culture and principles showcase
+5. **CTA Section:** Call-to-action with engaging illustration
+6. **Media Highlights:** Credibility through media presence
+
+### **Emotional Impact:**
+
+- **Trustworthy** and **professional** first impression
+- **Personal** connection through team introductions
+- **Confident** messaging through values presentation
+- **Credible** through media highlights
+
+**Test both index.php and about.php to see all animations in action!**
