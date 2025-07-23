@@ -621,7 +621,7 @@ include('includes/header.php');
                         <i class="fas fa-university"></i>
                     </div>
                     <div class="stat-content">
-                        <h3 class="stat-number">25+</h3>
+                        <h3 class="stat-number">500+</h3>
                         <p class="stat-label">Universities</p>
                     </div>
                 </div>
@@ -633,7 +633,7 @@ include('includes/header.php');
                         <i class="fas fa-graduation-cap"></i>
                     </div>
                     <div class="stat-content">
-                        <h3 class="stat-number">5000+</h3>
+                        <h3 class="stat-number">10000+</h3>
                         <p class="stat-label">Current Students</p>
                     </div>
                 </div>
