@@ -195,34 +195,24 @@ include('includes/header.php');
                 <p class="mb-5">Visit our branch offices across the country for in-person consultation.</p>
             </div>
         </div>
-        <div class="row">
-            <div class="col-lg-4 col-md-6">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 col-md-6">
                 <div class="office-box">
-                    <h3>New Delhi (Head Office)</h3>
-                    <p>123 Education Street, Central Plaza,<br> New Delhi - 110001.</p>
+                    <h3>Headquarter</h3>
+                    <p>Unit-828, Tower B3, Spaze i-Tech Park,<br> Sector 49, Gurugram, Haryana 122018</p>
                     <ul class="office-contact">
-                        <li><i class="fas fa-phone-alt"></i> <a href="tel:1800-123-4567">1800 123 4567</a></li>
-                        <li><i class="fas fa-envelope"></i> <a href="mailto:delhi@medstudy.global">delhi@medstudy.global</a></li>
+                        <li><i class="fas fa-phone-alt"></i> <a href="tel:+91-9996817513">+91-9996817513</a></li>
+                        <li><i class="fas fa-envelope"></i> <a href="mailto:sunriseglobaleducationgurgaon@gmail.com">sunriseglobaleducationgurgaon@gmail.com</a></li>
                     </ul>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6">
+            <div class="col-lg-6 col-md-6">
                 <div class="office-box">
-                    <h3>Mumbai Office</h3>
-                    <p>305, 3rd Floor, Business Center,<br> Andheri East, Mumbai - 400069.</p>
+                    <h3>Branch Office</h3>
+                    <p>New Anaj Mandi, Nuh Hodal Rd,<br> above JJP office, Nuh, Haryana 122107</p>
                     <ul class="office-contact">
-                        <li><i class="fas fa-phone-alt"></i> <a href="tel:022-28123456">022-28123456</a></li>
-                        <li><i class="fas fa-envelope"></i> <a href="mailto:mumbai@medstudy.global">mumbai@medstudy.global</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="office-box">
-                    <h3>Bangalore Office</h3>
-                    <p>201, 2nd Floor, Tech Park,<br> MG Road, Bangalore - 560001.</p>
-                    <ul class="office-contact">
-                        <li><i class="fas fa-phone-alt"></i> <a href="tel:080-42123456">080-42123456</a></li>
-                        <li><i class="fas fa-envelope"></i> <a href="mailto:bangalore@medstudy.global">bangalore@medstudy.global</a></li>
+                        <li><i class="fas fa-phone-alt"></i> <a href="tel:+91-8059782607">+91-8059782607</a></li>
+                        <li><i class="fas fa-map-marker-alt"></i> <span>Nuh, Haryana</span></li>
                     </ul>
                 </div>
             </div>
