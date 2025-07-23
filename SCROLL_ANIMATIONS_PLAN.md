@@ -829,14 +829,16 @@ gridItems.forEach((item, index) => {
 - **Service Titles** → Upward slide reveals with bouncy easing
 - **Service Descriptions** → Final content reveals completing card animation
 
-### **4. Additional Services Section**
+### **4. Additional Services Section** (8 Individual Service Cards)
 
 - **Additional Services Title** → "Additional Support Services" with upward reveal
-- **Service Items** → 3D grid layout with masonry-style positioning
-- **Grid Intelligence** → Row/column delay calculation (row*200ms + col*120ms)
-- **Icon Animations** → Y-rotation effect (180° to 0°) with scale normalization
-- **Icon Bounce** → Post-animation bounce effect enhancing personality
-- **Hover Enhancement** → Post-animation optimization for interactivity
+- **Individual Service Cards** → 8 standalone service cards (no wrapper container) with individual card styling
+- **Card Design** → Each service as independent card with white background, subtle border, and shadow
+- **Grid Intelligence** → Row/column delay calculation (row*200ms + col*120ms) - supports all 8 items
+- **Icon Animations** → Y-rotation effect (180° to 0°) with scale normalization for all service icons
+- **Icon Bounce** → Post-animation bounce effect enhancing personality across all 8 services
+- **Enhanced Hover** → Individual card elevation (-6px) with primary border and medium shadow
+- **Enhanced Services** → Complete student journey coverage from pre-departure to ongoing support
 
 ### **5. Services CTA Section**
 
@@ -902,20 +904,51 @@ Card 6 (1250ms): Visa Consultation - same pattern
 }
 ```
 
-### **Additional Services Grid Intelligence:**
+### **Additional Services Grid Intelligence:** (8 Services)
 
 ```javascript
-// 3-column grid with intelligent staggering
-const row = Math.floor(index / 3); // Row position
-const col = index % 3; // Column position
+// 3-column grid with intelligent staggering for 8 services
+const row = Math.floor(index / 3); // Row position (0, 1, 2)
+const col = index % 3; // Column position (0, 1, 2)
 const delay = row * 200 + col * 120; // Staggered timing
+
+// Service timing breakdown:
+// Row 0: Pre-Departure (0ms), Travel & Accommodation (120ms), Post Arrival (240ms)
+// Row 1: Career & Internships (200ms), Test Re-appeal (320ms), Insurance (440ms)
+// Row 2: Academic Support (400ms), Group Counseling (520ms)
 ```
+
+### **Complete Service Ecosystem:** (6 Main + 8 Additional = 14 Total Services)
+
+**Main Service Cards (6):**
+
+1. Personalized Guidance & Counseling
+2. University Selection
+3. 100% Admission Assistance
+4. Application Assistance ✨ NEW
+5. Scholarship & Financial Aid Guidance ✨ NEW
+6. Visa Consultation & Documentation ✨ NEW
+
+**Additional Support Services (8):**
+
+1. Pre Departure Orientation ✨ NEW
+2. Travel & Accommodation Assistance ✨ NEW
+3. Post Arrival Support ✨ NEW
+4. Career & Internships Counseling ✨ NEW
+5. Test Re-appeal & Licensing Exam Support ✨ NEW
+6. Student Insurance & Health Services ✨ NEW
+7. Ongoing Academic Support ✨ NEW
+8. Group Counseling & Webinars ✨ NEW
 
 ### **Service-Focused Design:**
 
 - **Professional Emphasis** → Clear service identification and capability presentation
+- **Individual Card Architecture** → Each service as standalone card for better visual separation and focus
+- **Complete Journey Coverage** → From initial consultation to ongoing support throughout studies
 - **Content Hierarchy** → Logical progression from problems to solutions
 - **Engagement Flow** → Building from information to action through animations
-- **Interactive Personality** → Icon bounces and card reveals creating memorable experience
+- **Interactive Personality** → Icon bounces and individual card elevations creating memorable experience
+- **Enhanced Visual Clarity** → No wrapper container allows each service to stand out independently
+- **Comprehensive Support** → 14 total services covering every aspect of studying abroad
 
 **Test all seven pages: index.php, about.php, destinations.php, resources.php, contact.php, gallery.php, and services.php to see the complete animation system!**

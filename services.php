@@ -139,34 +139,44 @@ include 'includes/header.php';
                 <h3 class="additional-title">Additional Support Services</h3>
                 <div class="additional-grid">
                     <div class="additional-item">
-                        <i class="fas fa-passport"></i>
-                        <h4>Visa Assistance</h4>
-                        <p>Complete visa guidance and documentation support</p>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <h4>Pre Departure Orientation</h4>
+                        <p>Workshops covering cultural adaptation, academic expectations abroad, budgeting & expenses, accommodation options, and health & safety guidelines.</p>
                     </div>
                     <div class="additional-item">
-                        <i class="fas fa-plane"></i>
-                        <h4>Travel Arrangements</h4>
-                        <p>Flight booking and travel planning assistance</p>
+                        <i class="fas fa-plane-departure"></i>
+                        <h4>Travel & Accommodation Assistance</h4>
+                        <p>Booking flights, arranging airport pickups, and helping you secure affordable on campus or off campus housing.</p>
                     </div>
                     <div class="additional-item">
-                        <i class="fas fa-home"></i>
-                        <h4>Accommodation</h4>
-                        <p>Hostel and accommodation booking services</p>
+                        <i class="fas fa-hands-helping"></i>
+                        <h4>Post Arrival Support</h4>
+                        <p>Local assistance with registration at university, opening bank accounts, SIM cards, and settling-in services in the destination country.</p>
                     </div>
                     <div class="additional-item">
-                        <i class="fas fa-language"></i>
-                        <h4>Language Support</h4>
-                        <p>Language training and cultural orientation</p>
+                        <i class="fas fa-briefcase"></i>
+                        <h4>Career & Internships Counseling</h4>
+                        <p>Guidance on internships, research opportunities, part time job norms, and long term career planning in the medical field.</p>
                     </div>
                     <div class="additional-item">
-                        <i class="fas fa-headset"></i>
-                        <h4>24/7 Support</h4>
-                        <p>Round-the-clock assistance during your studies</p>
+                        <i class="fas fa-clipboard-check"></i>
+                        <h4>Test Re-appeal & Licensing Exam Support</h4>
+                        <p>If required, assistance with FMGE (Foreign Medical Graduate Examination) re appeal procedures and preparation resources.</p>
                     </div>
                     <div class="additional-item">
-                        <i class="fas fa-graduation-cap"></i>
-                        <h4>Career Guidance</h4>
-                        <p>Post-graduation career planning and support</p>
+                        <i class="fas fa-shield-alt"></i>
+                        <h4>Student Insurance & Health Services</h4>
+                        <p>Advising on mandatory health insurance plans, travel insurance, and local medical facility orientation.</p>
+                    </div>
+                    <div class="additional-item">
+                        <i class="fas fa-user-graduate"></i>
+                        <h4>Ongoing Academic Support</h4>
+                        <p>Check ins throughout the semester, help with course registration, and troubleshooting academic or administrative issues.</p>
+                    </div>
+                    <div class="additional-item">
+                        <i class="fas fa-users"></i>
+                        <h4>Group Counseling & Webinars</h4>
+                        <p>Regular webinars on "Life as an MBBS student abroad," country specific Q&A sessions, and group workshops on study techniques.</p>
                     </div>
                 </div>
             </div>
@@ -398,10 +408,7 @@ include 'includes/header.php';
 
 /* Additional Services */
 .additional-services {
-    background: var(--white);
-    padding: var(--xxl);
-    border-radius: var(--large);
-    box-shadow: var(--medium-shadow);
+    padding: var(--xxl) 0;
     margin-bottom: var(--xxl);
 }
 
@@ -415,7 +422,7 @@ include 'includes/header.php';
 
 .additional-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: var(--xl);
 }
 
@@ -424,12 +431,16 @@ include 'includes/header.php';
     padding: var(--xl);
     transition: var(--transition);
     border-radius: var(--medium-radius);
+    background: var(--white);
+    border: 1px solid var(--light-border);
+    box-shadow: var(--small-shadow);
 }
 
 .additional-item:hover {
     background: var(--light-bg);
-    transform: translateY(-4px);
-    box-shadow: var(--small-shadow);
+    transform: translateY(-6px);
+    box-shadow: var(--medium-shadow);
+    border-color: var(--primary-color);
 }
 
 .additional-item i {
@@ -580,13 +591,13 @@ include 'includes/header.php';
     }
     
     .additional-services {
-        padding: var(--xl);
+        padding: var(--xl) 0;
         margin-bottom: var(--xxl);
     }
     
     .additional-grid {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: var(--xl);
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: var(--lg);
     }
     
     .services-cta {
