@@ -103,15 +103,11 @@ $countries = getAllCountries();
                     <div class="sort-dropdown">
                         <button class="sort-btn" id="sortButton">
                             <i class="fas fa-sort"></i>
-                            <span>Sort by Name</span>
+                            <span>By Country</span>
                             <i class="fas fa-chevron-down"></i>
                         </button>
                         <div class="sort-options" id="sortOptions">
-                            <div class="sort-option active" data-sort="name">
-                                <i class="fas fa-font"></i>
-                                <span>Alphabetical</span>
-                            </div>
-                            <div class="sort-option" data-sort="country">
+                            <div class="sort-option active" data-sort="country">
                                 <i class="fas fa-globe"></i>
                                 <span>By Country</span>
                             </div>
@@ -121,15 +117,7 @@ $countries = getAllCountries();
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="view-toggle">
-                        <button class="view-btn active" data-view="grid" title="Grid View">
-                            <i class="fas fa-th-large"></i>
-                        </button>
-                        <button class="view-btn" data-view="list" title="List View">
-                            <i class="fas fa-list"></i>
-                        </button>
-                    </div>
+
                 </div>
             </div>
             
@@ -783,36 +771,7 @@ $countries = getAllCountries();
     font-weight: 500;
 }
 
-/* View Toggle */
-.view-toggle {
-    display: flex;
-    gap: 0.25rem;
-    background: white;
-    border: 2px solid #e5e7eb;
-    border-radius: 8px;
-    padding: 0.25rem;
-}
 
-.view-btn {
-    padding: 0.5rem;
-    background: transparent;
-    border: none;
-    border-radius: 6px;
-    color: #6b7280;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.view-btn:hover {
-    background: #f3f4f6;
-    color: #374151;
-}
-
-.view-btn.active {
-    background: #003585;
-    color: white;
-    box-shadow: 0 2px 4px rgba(0, 53, 133, 0.2);
-}
 
 /* Results Info */
 .results-info {
@@ -1142,43 +1101,7 @@ $countries = getAllCountries();
     }
 }
 
-/* List View Styling */
-#universitiesGrid.list-view {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
 
-#universitiesGrid.list-view .university-card-wrapper {
-    margin-bottom: 0;
-}
-
-#universitiesGrid.list-view .modern-university-card {
-    flex-direction: row;
-    max-width: 100%;
-    border-radius: 12px;
-}
-
-#universitiesGrid.list-view .university-image-section {
-    width: 200px;
-    height: 150px;
-    flex-shrink: 0;
-    border-radius: 12px 0 0 12px;
-}
-
-#universitiesGrid.list-view .university-content {
-    flex: 1;
-    padding: 1.25rem;
-}
-
-#universitiesGrid.list-view .university-action {
-    width: 200px;
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 1rem;
-}
 
 /* Responsive Design */
 @media (max-width: 768px) {
@@ -1217,21 +1140,7 @@ $countries = getAllCountries();
         text-align: center;
     }
     
-    #universitiesGrid.list-view .modern-university-card {
-        flex-direction: column;
-        border-radius: 16px;
-    }
-    
-    #universitiesGrid.list-view .university-image-section {
-        width: 100%;
-        height: 180px;
-        border-radius: 16px 16px 0 0;
-    }
-    
-    #universitiesGrid.list-view .university-action {
-        width: 100%;
-        padding: 0 1.5rem 1.5rem 1.5rem;
-    }
+
 }
 
 @media (max-width: 576px) {
@@ -1271,7 +1180,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const sortButton = document.getElementById('sortButton');
     const sortOptions = document.getElementById('sortOptions');
     const sortOptionItems = document.querySelectorAll('.sort-option');
-    const viewButtons = document.querySelectorAll('.view-btn');
     const resetButton = document.querySelector('.reset-btn');
     const filterReset = document.getElementById('filterReset');
     const universityCards = document.querySelectorAll('.university-card-wrapper');
@@ -1279,8 +1187,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const universitiesGrid = document.getElementById('universitiesGrid');
     
     let currentFilter = 'all';
-    let currentSort = 'name';
-    let currentView = 'grid';
+    let currentSort = 'country';
     let currentCountry = '';
     
     // Enhanced search functionality with clear button
@@ -1360,16 +1267,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // View toggle functionality
-    viewButtons.forEach(btn => {
-        btn.addEventListener('click', function() {
-            viewButtons.forEach(b => b.classList.remove('active'));
-            this.classList.add('active');
-            
-            currentView = this.getAttribute('data-view');
-            toggleView();
-        });
-    });
+
     
     // Reset filters functionality
     if (resetButton) {
@@ -1388,11 +1286,11 @@ document.addEventListener('DOMContentLoaded', function() {
             // Reset sort
             sortOptionItems.forEach(opt => opt.classList.remove('active'));
             sortOptionItems[0].classList.add('active'); // Set first option as active
-            sortButton.querySelector('span').textContent = 'Sort by Name';
+            sortButton.querySelector('span').textContent = 'By Country';
             
             // Reset variables
             currentFilter = 'all';
-            currentSort = 'name';
+            currentSort = 'country';
             currentCountry = '';
             
             // Apply reset
@@ -1408,10 +1306,11 @@ document.addEventListener('DOMContentLoaded', function() {
         let visibleCount = 0;
         
         universityCards.forEach(card => {
-            const universityName = card.getAttribute('data-university-name');
-            const location = card.getAttribute('data-location');
-            const countryName = card.getAttribute('data-country-name');
-            const cardText = card.querySelector('.university-description').textContent.toLowerCase();
+            const universityName = card.getAttribute('data-university-name') || '';
+            const location = card.getAttribute('data-location') || '';
+            const countryName = card.getAttribute('data-country-name') || '';
+            const descriptionElement = card.querySelector('.university-description');
+            const cardText = descriptionElement ? descriptionElement.textContent.toLowerCase() : '';
             
             const matches = universityName.includes(query) || 
                           location.includes(query) ||
@@ -1419,7 +1318,7 @@ document.addEventListener('DOMContentLoaded', function() {
                           cardText.includes(query) || 
                           query === '';
             
-            if (matches && card.style.display !== 'none') {
+            if (matches && !card.classList.contains('filtered-out')) {
                 card.style.display = 'block';
                 visibleCount++;
             } else if (!matches) {
@@ -1474,17 +1373,13 @@ document.addEventListener('DOMContentLoaded', function() {
         const cardsArray = Array.from(universityCards);
         
         cardsArray.sort((a, b) => {
-            if (currentSort === 'name') {
-                const nameA = a.getAttribute('data-university-name');
-                const nameB = b.getAttribute('data-university-name');
-                return nameA.localeCompare(nameB);
-            } else if (currentSort === 'country') {
-                const countryA = a.getAttribute('data-country-name');
-                const countryB = b.getAttribute('data-country-name');
+            if (currentSort === 'country') {
+                const countryA = a.getAttribute('data-country-name') || '';
+                const countryB = b.getAttribute('data-country-name') || '';
                 return countryA.localeCompare(countryB);
             } else if (currentSort === 'location') {
-                const locationA = a.getAttribute('data-location');
-                const locationB = b.getAttribute('data-location');
+                const locationA = a.getAttribute('data-location') || '';
+                const locationB = b.getAttribute('data-location') || '';
                 return locationA.localeCompare(locationB);
             }
             return 0;
@@ -1496,16 +1391,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Toggle view function
-    function toggleView() {
-        if (currentView === 'list') {
-            universitiesGrid.classList.add('list-view');
-            universitiesGrid.classList.remove('row');
-        } else {
-            universitiesGrid.classList.remove('list-view');
-            universitiesGrid.classList.add('row');
-        }
-    }
+
     
     // Update count function
     function updateCount(count) {
@@ -1517,7 +1403,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Update reset button visibility
     function updateResetButton() {
         const hasActiveFilters = currentFilter !== 'all' || 
-                                currentSort !== 'name' || 
+                                currentSort !== 'country' || 
                                 currentCountry !== '' ||
                                 searchInput.value.trim() !== '';
         
