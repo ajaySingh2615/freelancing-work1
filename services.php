@@ -9,6 +9,22 @@ include 'includes/header.php';
 <main class="services-page">
     <!-- Hero Section (Banner) -->
     <section class="services-hero">
+        <div class="container">
+            <div class="hero-content">
+                <nav class="breadcrumb">
+                    <a href="index.php">Home</a>
+                    <span>></span>
+                    <span>Services</span>
+                </nav>
+                <h1 class="hero-title">Our Services</h1>
+                <p class="hero-subtitle">Comprehensive support for your MBBS abroad journey</p>
+            </div>
+        </div>
+        <div class="hero-decorations">
+            <div class="decoration-star" style="top: 15%; right: 10%;"></div>
+            <div class="decoration-star" style="top: 70%; right: 20%; transform: rotate(45deg) scale(0.8);"></div>
+            <div class="decoration-star" style="top: 30%; right: 5%; transform: rotate(45deg) scale(1.2);"></div>
+        </div>
     </section>
 
     <!-- Main Content Section -->
@@ -186,6 +202,38 @@ include 'includes/header.php';
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Black Overlay */
+.services-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+/* Ensure content appears above overlay */
+.services-hero .container {
+    position: relative;
+    z-index: 2;
+}
+
+.services-hero .hero-decorations {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    pointer-events: none;
 }
 
 /* Services Content Section */
@@ -237,7 +285,7 @@ include 'includes/header.php';
 }
 
 .service-card {
-    background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+    background: linear-gradient(135deg, #003585 0%, #003585 100%);
     color: var(--white);
     padding: 0;
     border-radius: 20px;
