@@ -35,7 +35,7 @@ include('includes/header.php');
                                 <div class="contact-icon">
                                     <i class="fas fa-phone-alt"></i>
                                 </div>
-                                <span>+91-9996817513</span>
+                                <span>+91-9729317513</span>
                             </div>
                             
                             <div class="contact-item">
@@ -203,7 +203,7 @@ include('includes/header.php');
                     <h3>Headquarter</h3>
                     <p>Unit-828, Tower B3, Spaze i-Tech Park,<br> Sector 49, Gurugram, Haryana 122018</p>
                     <ul class="office-contact">
-                        <li><i class="fas fa-phone-alt"></i> <a href="tel:+91-9996817513">+91-9996817513</a></li>
+                        <li><i class="fas fa-phone-alt"></i> <a href="tel:+91-9729317513">+91-9729317513</a></li>
                         <li><i class="fas fa-envelope"></i> <a href="mailto:sunriseglobaleducationgurgaon@gmail.com">sunriseglobaleducationgurgaon@gmail.com</a></li>
                     </ul>
                 </div>

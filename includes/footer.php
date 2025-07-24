@@ -44,7 +44,7 @@
                             </li>
                             <li>
                                 <i class="fas fa-phone-alt"></i>
-                                <a href="tel:+91-9996817513">+91-9996817513</a>
+                                <a href="tel:+91-9729317513">+91-9729317513</a>
                             </li>
                             <li>
                                 <i class="fas fa-envelope"></i>
@@ -76,7 +76,7 @@
     </a>
     
     <!-- WhatsApp Float -->
-    <a href="https://api.whatsapp.com/send?phone=919311246058&text=Hi! I'm interested in studying MBBS abroad. Can you help me?" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
+    <a href="https://api.whatsapp.com/send?phone=919729317513&text=Hi! I'm interested in studying MBBS abroad. Can you help me?" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
         <div class="whatsapp-icon">
             <i class="fab fa-whatsapp"></i>
         </div>

@@ -313,8 +313,8 @@ $headerPopularCountries = [
                         <div class="top-contact">
                             <ul>
                                 <li>
-                                    <a href="tel:+91-9996817513">
-                                        <i class="fas fa-phone-alt pulse"></i> Student Helpline: +91-9996817513
+                                    <a href="tel:+91-9729317513">
+                                        <i class="fas fa-phone-alt pulse"></i> Student Helpline: +91-9729317513
                                     </a>
                                 </li>
                                 <li>
