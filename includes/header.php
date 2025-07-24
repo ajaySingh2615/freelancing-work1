@@ -407,7 +407,7 @@ $headerPopularCountries = [
                                     </button>
                                 </li>
                                 <li>
-                                    <a href="apply-online.php" class="apply-btn-small">
+                                    <a href="destinations.php" class="apply-btn-small">
                                         APPLY NOW
                                     </a>
                                 </li>
