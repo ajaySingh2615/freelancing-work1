@@ -1183,12 +1183,7 @@ include('includes/header.php');
     </div>
 </section>
 
-<!-- Sticky Consultation Button -->
-<div class="sticky-consultation">
-    <a href="contact.php" class="consultation-sticky-btn">
-        <span>Book Free Consultation Now</span>
-    </a>
-</div>
+
 
 <!-- News Section -->
 <section class="blog-section">
@@ -1358,10 +1353,7 @@ include('includes/header.php');
     </div>
 </div>
 
-<!-- WhatsApp Float Button -->
-<a href="https://api.whatsapp.com/send?phone=919311246058" class="whatsapp-float" target="_blank">
-    <i class="fab fa-whatsapp"></i>
-</a>
+
 
 <!-- Back to Top Button -->
 <a href="#" class="back-to-top">
