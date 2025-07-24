@@ -313,13 +313,13 @@ $headerPopularCountries = [
                         <div class="top-contact">
                             <ul>
                                 <li>
-                                    <a href="tel:1800-123-4567">
-                                        <i class="fas fa-phone-alt pulse"></i> Student Helpline: 1800-123-4567
+                                    <a href="tel:+91-9996817513">
+                                        <i class="fas fa-phone-alt pulse"></i> Student Helpline: +91-9996817513
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="mailto:info@medstudy.global">
-                                        <i class="fas fa-envelope pulse"></i> E-mail: info@medstudy.global
+                                    <a href="mailto:sunriseglobaleducationgurgaon@gmail.com">
+                                        <i class="fas fa-envelope pulse"></i> E-mail: sunriseglobaleducationgurgaon@gmail.com
                                     </a>
                                 </li>
                             </ul>
@@ -328,11 +328,11 @@ $headerPopularCountries = [
                     <div class="col-lg-6 col-md-6">
                         <div class="top-right">
                             <ul class="social-icons">
-                                <li><a href="#" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a></li>
-                                <li><a href="#" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a></li>
-                                <li><a href="#" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a></li>
-                                <li><a href="#" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a></li>
-                                <li><a href="#" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a></li>
+                                <li><a href="https://www.facebook.com/people/Sunrise-Global-Education-Pvt-Ltd/61577444481874/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="https://x.com/sge_ggn" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a></li>
+                                <li><a href="https://www.linkedin.com/company/sunrise-global-education-ggn/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a></li>
+                                <li><a href="https://www.youtube.com/@sunriseglobaleducationggn" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a></li>
+                                <li><a href="https://www.instagram.com/sunriseglobaleducation_ggn/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a></li>
                             </ul>
                         </div>
                     </div>
@@ -443,17 +443,18 @@ $headerPopularCountries = [
                 <div class="menu-contact">
                     <h4>Contact Info</h4>
                     <ul>
-                        <li><a href="tel:1800-123-4567"><i class="fas fa-phone-alt"></i> 1800-123-4567</a></li>
-                        <li><a href="mailto:info@medstudy.global"><i class="fas fa-envelope"></i> info@medstudy.global</a></li>
+                        <li><a href="tel:+91-9996817513"><i class="fas fa-phone-alt"></i> +91-9996817513</a></li>
+                        <li><a href="mailto:sunriseglobaleducationgurgaon@gmail.com"><i class="fas fa-envelope"></i> sunriseglobaleducationgurgaon@gmail.com</a></li>
                     </ul>
                 </div>
                 <div class="menu-social">
                     <h4>Follow Us</h4>
                     <ul class="social-icons">
-                        <li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-                        <li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
-                        <li><a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
-                        <li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                        <li><a href="https://www.facebook.com/people/Sunrise-Global-Education-Pvt-Ltd/61577444481874/" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="https://x.com/sge_ggn" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="https://www.linkedin.com/company/sunrise-global-education-ggn/" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
+                        <li><a href="https://www.youtube.com/@sunriseglobaleducationggn" target="_blank"><i class="fab fa-youtube"></i></a></li>
+                        <li><a href="https://www.instagram.com/sunriseglobaleducation_ggn/" target="_blank"><i class="fab fa-instagram"></i></a></li>
                     </ul>
                 </div>
             </div>

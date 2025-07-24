@@ -11,19 +11,19 @@ include('includes/header.php');
         </div>
         
         <!-- Slide 2 -->
-        <div class="hero-slide">
+        <!-- <div class="hero-slide">
             <img src="assets/images/media/home-page/hero-section/two.webp" alt="MBBS Admission Guidance" class="hero-slide-bg" width="1920" height="600">
-        </div>
+        </div> -->
         
         <!-- Slide 3 -->
-        <div class="hero-slide">
+        <!-- <div class="hero-slide">
             <img src="assets/images/media/home-page/hero-section/three.webp" alt="Medical Education Consultancy" class="hero-slide-bg" width="1920" height="600">
-        </div>
+        </div> -->
         
         <!-- Slide 4 -->
-        <div class="hero-slide">
+        <!-- <div class="hero-slide">
             <img src="assets/images/media/home-page/hero-section/four.webp" alt="Medical Study Abroad" class="hero-slide-bg" width="1920" height="600">
-        </div>
+        </div> -->
         
         <!-- Carousel Dots -->
         <div class="hero-carousel-dots">
@@ -40,7 +40,7 @@ include('includes/header.php');
             <div class="hero-content-wrapper">
                 <div class="hero-form-wrapper">
                     <h3 class="hero-form-title">Request Free Counselling</h3>
-                    <form class="hero-form" action="process-form.php" method="post">
+                    <form class="hero-form" action="process-form.php" method="post" id="hero-form">
                         <div class="form-group">
                             <input type="text" class="form-control" name="name" placeholder="Full Name*" required>
                         </div>
@@ -53,16 +53,107 @@ include('includes/header.php');
                         <div class="form-group">
                             <select class="form-control" name="country" required>
                                 <option value="">Select Preferred Country*</option>
+                                <option value="India">India</option>
+                                <option value="Iran">Iran</option>
+                                <option value="Bangladesh">Bangladesh</option>
                                 <option value="Russia">Russia</option>
-                                <option value="Ukraine">Ukraine</option>
                                 <option value="Kazakhstan">Kazakhstan</option>
-                                <option value="Georgia">Georgia</option>
-                                <option value="Philippines">Philippines</option>
                                 <option value="Kyrgyzstan">Kyrgyzstan</option>
+                                <option value="Georgia">Georgia</option>
+                                <option value="Uzbekistan">Uzbekistan</option>
+                                <option value="Nepal">Nepal</option>
+                                <option value="China">China</option>
+                                <option value="Egypt">Egypt</option>
+                                <option value="Belarus">Belarus</option>
+                                <option value="Philippines">Philippines</option>
+                                <option value="Armenia">Armenia</option>
+                                <option value="Poland">Poland</option>
+                                <option value="Romania">Romania</option>
+                                <option value="Hungary">Hungary</option>
+                                <option value="Malaysia">Malaysia</option>
+                                <option value="Azerbaijan">Azerbaijan</option>
+                                <option value="Lithuania">Lithuania</option>
+                                <option value="Latvia">Latvia</option>
+                                <option value="Slovakia">Slovakia</option>
+                                <option value="Tajikistan">Tajikistan</option>
                             </select>
                         </div>
                         <button type="submit" class="btn btn-primary">Submit Application</button>
                     </form>
+
+                    <!-- EmailJS Integration Script -->
+                    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+                    <script>
+                        // Initialize EmailJS
+                        (function() {
+                            emailjs.init("Xl2-rb_v5qwA8iJpI"); // Your EmailJS public key
+                        })();
+
+                        // Handle form submission
+                        document.getElementById('hero-form').addEventListener('submit', function(event) {
+                            event.preventDefault();
+                            
+                            const form = event.target;
+                            const submitBtn = form.querySelector('button[type="submit"]');
+                            const originalText = submitBtn.innerHTML;
+                            
+                            // Show loading state
+                            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+                            submitBtn.disabled = true;
+                            
+                            // Prepare template parameters
+                            const templateParams = {
+                                from_name: form.name.value,
+                                from_email: form.email.value,
+                                phone: form.phone.value,
+                                country: form.country.value,
+                                message: `New MBBS inquiry from ${form.name.value}`,
+                                to_email: 'ajaysingh261526@gmail.com',
+                                date: new Date().toLocaleString()
+                            };
+                            
+                            // Send via EmailJS
+                            emailjs.send('service_igiat6d', 'template_5gxtwzk', templateParams)
+                                .then(function() {
+                                    alert('Thank you! Your inquiry has been sent successfully. We will contact you soon.');
+                                    form.reset();
+                                }, function(error) {
+                                    console.log('EmailJS Error:', error);
+                                    console.log('Falling back to PHP form submission...');
+                                    alert('Using backup email system...');
+                                    // Fallback to PHP form
+                                    submitFormViaPhp(form);
+                                })
+                                .finally(function() {
+                                    // Restore button
+                                    submitBtn.innerHTML = originalText;
+                                    submitBtn.disabled = false;
+                                });
+                        });
+                        
+                        // Fallback to PHP submission
+                        function submitFormViaPhp(form) {
+                            const formData = new FormData(form);
+                            
+                            fetch('process-form.php', {
+                                method: 'POST',
+                                body: formData
+                            })
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data.status === 'success') {
+                                    alert(data.message);
+                                    form.reset();
+                                } else {
+                                    alert('Error: ' + data.message);
+                                }
+                            })
+                            .catch(error => {
+                                console.error('Error:', error);
+                                alert('There was an error submitting your form. Please try again.');
+                            });
+                        }
+                    </script>
                 </div>
             </div>
         </div>
@@ -122,7 +213,7 @@ include('includes/header.php');
 <!-- About Section -->
 <section class="about-section">
     <div class="about-container">
-        <h2 class="about-question">Welcome to <span class="highlight-text">Sunrise Global Education</span></h2>
+        <h2 class="about-question">Welcome to <span class="highlight-text-update">Sunrise Global Education</span></h2>
         
         <div class="about-intro">
             <p>At Sunrise Global Education, we are committed to turning your dream of studying MBBS abroad into reality. As a leading overseas education consultancy, we specialize in MBBS abroad counseling, complete documentation support, and seamless admission guidance.</p>
@@ -161,99 +252,538 @@ include('includes/header.php');
     </div>
 </section>
 
+<!-- Enhanced Mobile Responsive CSS for About Section -->
+<style>
+/* ===== ENHANCED MOBILE RESPONSIVE STYLES FOR ABOUT SECTION ===== */
+
+/* About Section Base Styles */
+.about-section {
+    padding: 5rem 0;
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.about-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 20% 30%, rgba(0, 53, 133, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(254, 186, 2, 0.05) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.about-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 2;
+    text-align: center;
+}
+
+.about-question {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 2rem;
+    line-height: 1.2;
+}
+
+.about-intro {
+    max-width: 800px;
+    margin: 0 auto 3rem auto;
+}
+
+.about-intro p {
+    font-size: 1.125rem;
+    line-height: 1.6;
+    color: #6c757d;
+}
+
+.about-highlights {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-bottom: 3rem;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.highlight-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    border: 1px solid #e9ecef;
+}
+
+.highlight-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 30px rgba(0, 53, 133, 0.15);
+}
+
+.highlight-icon {
+    width: 4rem;
+    height: 4rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem auto;
+}
+
+.highlight-icon i {
+    font-size: 1.5rem;
+    color: white;
+}
+
+.highlight-card h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 1rem;
+}
+
+.highlight-card p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #6c757d;
+    margin: 0;
+}
+
+.about-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.about-actions .btn {
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    min-width: 200px;
+    justify-content: center;
+}
+
+.btn-primary {
+    background: var(--primary-color);
+    color: white;
+    border: 2px solid var(--primary-color);
+}
+
+.btn-primary:hover {
+    background: var(--primary-dark);
+    border-color: var(--primary-dark);
+    transform: translateY(-2px);
+    color: white;
+}
+
+.btn-outline-primary {
+    background: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+}
+
+.btn-outline-primary:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* ===== TABLET RESPONSIVE (992px and below) ===== */
+@media (max-width: 992px) {
+    .about-section {
+        padding: 4rem 0;
+    }
+    
+    .about-container {
+        padding: 0 30px;
+    }
+    
+    .about-question {
+        font-size: 2.25rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .about-intro {
+        margin-bottom: 2.5rem;
+    }
+    
+    .about-intro p {
+        font-size: 1rem;
+    }
+    
+    .about-highlights {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+        margin-bottom: 2.5rem;
+    }
+    
+    .highlight-card {
+        padding: 1.5rem;
+    }
+    
+    .highlight-icon {
+        width: 3.5rem;
+        height: 3.5rem;
+        margin-bottom: 1rem;
+    }
+    
+    .highlight-icon i {
+        font-size: 1.25rem;
+    }
+    
+    .highlight-card h3 {
+        font-size: 1.125rem;
+    }
+}
+
+/* ===== MOBILE RESPONSIVE (768px and below) ===== */
+@media (max-width: 768px) {
+    .about-section {
+        padding: 3rem 0;
+    }
+    
+    .about-container {
+        padding: 0 20px;
+    }
+    
+    .about-question {
+        font-size: 1.875rem;
+        margin-bottom: 1.25rem;
+        line-height: 1.3;
+    }
+    
+    .about-intro {
+        margin-bottom: 2rem;
+    }
+    
+    .about-intro p {
+        font-size: 0.95rem;
+        line-height: 1.5;
+    }
+    
+    .about-highlights {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+        margin-bottom: 2rem;
+        max-width: 400px;
+    }
+    
+    .highlight-card {
+        padding: 1.25rem;
+        border-radius: 10px;
+    }
+    
+    .highlight-icon {
+        width: 3rem;
+        height: 3rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .highlight-icon i {
+        font-size: 1rem;
+    }
+    
+    .highlight-card h3 {
+        font-size: 1rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .highlight-card p {
+        font-size: 0.875rem;
+        line-height: 1.4;
+    }
+    
+    .about-actions {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.75rem;
+    }
+    
+    .about-actions .btn {
+        min-width: 280px;
+        padding: 14px 20px;
+        font-size: 0.9rem;
+    }
+}
+
+/* ===== SMALL MOBILE (576px and below) ===== */
+@media (max-width: 576px) {
+    .about-section {
+        padding: 2.5rem 0;
+    }
+    
+    .about-container {
+        padding: 0 15px;
+    }
+    
+    .about-question {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        line-height: 1.25;
+    }
+    
+    .about-intro {
+        margin-bottom: 1.5rem;
+    }
+    
+    .about-intro p {
+        font-size: 0.875rem;
+        line-height: 1.4;
+    }
+    
+    .about-highlights {
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+        max-width: 350px;
+    }
+    
+    .highlight-card {
+        padding: 1rem;
+        border-radius: 8px;
+    }
+    
+    .highlight-icon {
+        width: 2.5rem;
+        height: 2.5rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .highlight-icon i {
+        font-size: 0.875rem;
+    }
+    
+    .highlight-card h3 {
+        font-size: 0.9rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .highlight-card p {
+        font-size: 0.8rem;
+        line-height: 1.3;
+    }
+    
+    .about-actions {
+        gap: 0.5rem;
+    }
+    
+    .about-actions .btn {
+        min-width: 260px;
+        padding: 12px 16px;
+        font-size: 0.85rem;
+    }
+}
+
+/* ===== EXTRA SMALL MOBILE (480px and below) ===== */
+@media (max-width: 480px) {
+    .about-section {
+        padding: 2rem 0;
+    }
+    
+    .about-container {
+        padding: 0 10px;
+    }
+    
+    .about-question {
+        font-size: 1.25rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .about-intro {
+        margin-bottom: 1.25rem;
+    }
+    
+    .about-intro p {
+        font-size: 0.8rem;
+        line-height: 1.3;
+    }
+    
+    .about-highlights {
+        gap: 0.75rem;
+        margin-bottom: 1.25rem;
+        max-width: 300px;
+    }
+    
+    .highlight-card {
+        padding: 0.75rem;
+    }
+    
+    .highlight-icon {
+        width: 2rem;
+        height: 2rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .highlight-icon i {
+        font-size: 0.75rem;
+    }
+    
+    .highlight-card h3 {
+        font-size: 0.85rem;
+        margin-bottom: 0.4rem;
+    }
+    
+    .highlight-card p {
+        font-size: 0.75rem;
+        line-height: 1.25;
+    }
+    
+    .about-actions .btn {
+        min-width: 240px;
+        padding: 10px 14px;
+        font-size: 0.8rem;
+    }
+}
+
+/* ===== VERY SMALL MOBILE (360px and below) ===== */
+@media (max-width: 360px) {
+    .about-section {
+        padding: 1.5rem 0;
+    }
+    
+    .about-container {
+        padding: 0 8px;
+    }
+    
+    .about-question {
+        font-size: 1.125rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .about-intro p {
+        font-size: 0.75rem;
+    }
+    
+    .about-highlights {
+        max-width: 280px;
+    }
+    
+    .highlight-card {
+        padding: 0.5rem;
+    }
+    
+    .highlight-icon {
+        width: 1.75rem;
+        height: 1.75rem;
+    }
+    
+    .highlight-icon i {
+        font-size: 0.65rem;
+    }
+    
+    .highlight-card h3 {
+        font-size: 0.75rem;
+    }
+    
+    .highlight-card p {
+        font-size: 0.7rem;
+    }
+    
+    .about-actions .btn {
+        min-width: 220px;
+        padding: 8px 12px;
+        font-size: 0.75rem;
+    }
+}
+</style>
+
 <!-- Study Destinations Section -->
 <section class="study-destinations-section">
     <div class="destinations-container">
         <h2 class="destinations-question">Where would you <span class="highlight-text">like to study?</span></h2>
         
         <div class="destinations-grid">
-            <div class="destination-item">
+            <a href="destinations.php" class="destination-item">
                 <div class="flag-circle">
-                    <img src="https://cdn-icons-png.flaticon.com/128/206/206724.png" alt="Russia" class="flag-img">
+                    <span class="flag-icon flag-icon-in"></span>
+                </div>
+                <span class="country-label">India</span>
+            </a>
+            <a href="destinations.php" class="destination-item">
+                <div class="flag-circle">
+                    <span class="flag-icon flag-icon-ir"></span>
+                </div>
+                <span class="country-label">Iran</span>
+            </a>
+            <a href="destinations.php" class="destination-item">
+                <div class="flag-circle">
+                    <span class="flag-icon flag-icon-bd"></span>
+                </div>
+                <span class="country-label">Bangladesh</span>
+            </a>
+            <a href="destinations.php" class="destination-item">
+                <div class="flag-circle">
+                    <span class="flag-icon flag-icon-ru"></span>
                 </div>
                 <span class="country-label">Russia</span>
-            </div>
-            
-            <div class="destination-item">
+            </a>
+            <a href="destinations.php" class="destination-item">
                 <div class="flag-circle">
-                    <img src="https://cdn-icons-png.flaticon.com/128/206/206606.png" alt="Georgia" class="flag-img">
-                </div>
-                <span class="country-label">Georgia</span>
-            </div>
-            
-            <div class="destination-item">
-                <div class="flag-circle">
-                    <img src="https://cdn-icons-png.flaticon.com/128/206/206619.png" alt="Kazakhstan" class="flag-img">
+                    <span class="flag-icon flag-icon-kz"></span>
                 </div>
                 <span class="country-label">Kazakhstan</span>
-            </div>
-            
-            <div class="destination-item">
+            </a>
+            <a href="destinations.php" class="destination-item">
                 <div class="flag-circle">
-                    <img src="https://cdn-icons-png.flaticon.com/128/206/206853.png" alt="Egypt" class="flag-img">
+                    <span class="flag-icon flag-icon-kg"></span>
                 </div>
-                <span class="country-label">Egypt</span>
-            </div>
-            
-            <div class="destination-item">
+                <span class="country-label">Kyrgyzstan</span>
+            </a>
+            <a href="destinations.php" class="destination-item">
                 <div class="flag-circle">
-                    <img src="https://cdn-icons-png.flaticon.com/128/206/206697.png" alt="Nepal" class="flag-img">
+                    <span class="flag-icon flag-icon-ge"></span>
                 </div>
-                <span class="country-label">Nepal</span>
-            </div>
-            
-            <div class="destination-item">
+                <span class="country-label">Georgia</span>
+            </a>
+            <a href="destinations.php" class="destination-item">
                 <div class="flag-circle">
-                    <img src="https://cdn-icons-png.flaticon.com/128/206/206581.png" alt="China" class="flag-img">
-                </div>
-                <span class="country-label">China</span>
-            </div>
-            
-            <div class="destination-item">
-                <div class="flag-circle">
-                    <img src="https://cdn-icons-png.flaticon.com/128/206/206851.png" alt="Uzbekistan" class="flag-img">
+                    <span class="flag-icon flag-icon-uz"></span>
                 </div>
                 <span class="country-label">Uzbekistan</span>
-            </div>
-            
-            <div class="destination-item">
+            </a>
+            <a href="destinations.php" class="destination-item">
                 <div class="flag-circle">
-                    <img src="https://cdn-icons-png.flaticon.com/128/206/206618.png" alt="Germany" class="flag-img">
+                    <span class="flag-icon flag-icon-np"></span>
                 </div>
-                <span class="country-label">Germany</span>
-            </div>
-            
-            <div class="destination-item">
+                <span class="country-label">Nepal</span>
+            </a>
+            <a href="destinations.php" class="destination-item">
                 <div class="flag-circle">
-                    <img src="https://cdn-icons-png.flaticon.com/128/206/206626.png" alt="Italy" class="flag-img">
+                    <span class="flag-icon flag-icon-cn"></span>
                 </div>
-                <span class="country-label">Italy</span>
-            </div>
-            
-            <div class="destination-item">
+                <span class="country-label">China</span>
+            </a>
+            <a href="destinations.php" class="destination-item">
                 <div class="flag-circle">
-                    <img src="https://cdn-icons-png.flaticon.com/128/206/206731.png" alt="Poland" class="flag-img">
+                    <span class="flag-icon flag-icon-eg"></span>
                 </div>
-                <span class="country-label">Poland</span>
-            </div>
-            
-            <div class="destination-item">
+                <span class="country-label">Egypt</span>
+            </a>
+            <a href="destinations.php" class="destination-item">
                 <div class="flag-circle">
-                    <img src="https://cdn-icons-png.flaticon.com/128/206/206567.png" alt="Belarus" class="flag-img">
+                    <span class="flag-icon flag-icon-by"></span>
                 </div>
                 <span class="country-label">Belarus</span>
-            </div>
-            
-            <div class="destination-item">
-                <div class="flag-circle">
-                    <img src="https://cdn-icons-png.flaticon.com/128/206/206644.png" alt="Latvia" class="flag-img">
-                </div>
-                <span class="country-label">Latvia</span>
-            </div>
+            </a>
+           
         </div>
         
         <div class="view-all-container">
-            <a href="#" class="view-all-link">
+            <a href="destinations.php" class="view-all-link">
                 <span>View All</span>
             </a>
         </div>
@@ -265,7 +795,7 @@ include('includes/header.php');
     <div class="services-container">
         <div class="services-header">
             <h2 class="services-title">Services At <span class="highlight-text">SGE</span></h2>
-            <p class="services-description">Study MBBS in Russia: Affordable, WHO-approved universities, English-medium courses, and globally recognized degrees for your medical career.</p>
+            <p class="services-description">Study MBBS: Affordable, WHO-approved universities, English-medium courses, and globally recognized degrees for your medical career.</p>
         </div>
         
         <div class="services-layout">
@@ -339,25 +869,25 @@ include('includes/header.php');
                     <img src="assets/images/media/home-page/medical-universities-section/logos/South-Kazakhstan-Medical-Academy.webp" alt="South Kazakhstan Medical Academy">
                 </div>
                 <div class="logo-item">
-                    <img src="assets/images/media/home-page/medical-universities-section/logos/Semey-State-Medical-University.webp" alt="Semey State Medical University">
+                    <img src="assets/images/media/home-page/medical-universities-section/logos/Al-Farabi-Kazakh-National-University.webp" alt="Semey State Medical University">
                 </div>
                 <div class="logo-item">
                     <img src="assets/images/media/home-page/medical-universities-section/logos/Asian-Medical-Institute.webp" alt="Asian Medical Institute">
                 </div>
                 <div class="logo-item">
-                    <img src="assets/images/media/home-page/medical-universities-section/logos/Orel-state-university.webp" alt="Orel State University">
+                    <img src="assets/images/media/home-page/medical-universities-section/logos/Crimea-Federal-University.webp" alt="Orel State University">
                 </div>
                 <div class="logo-item">
                     <img src="assets/images/media/home-page/medical-universities-section/logos/Jalal-Abad-State-Medical.webp" alt="Jalal-Abad State Medical University">
                 </div>
                 <div class="logo-item">
-                    <img src="assets/images/media/home-page/medical-universities-section/logos/International-Higher-School-of-Medicine.webp" alt="International Higher School of Medicine">
+                    <img src="assets/images/media/home-page/medical-universities-section/logos/International-Higher-Schoo.webp" alt="International Higher School of Medicine">
                 </div>
             </div>
         </div>
         
         <div class="universities-actions">
-            <a href="universities.php" class="btn btn-primary">View All Universities</a>
+            <a href="resources.php" class="btn btn-primary">View All Universities</a>
             <a href="contact.php" class="btn btn-outline-primary">Get Admission Guide</a>
         </div>
     </div>
@@ -621,7 +1151,7 @@ include('includes/header.php');
                         <i class="fas fa-university"></i>
                     </div>
                     <div class="stat-content">
-                        <h3 class="stat-number">25+</h3>
+                        <h3 class="stat-number">500+</h3>
                         <p class="stat-label">Universities</p>
                     </div>
                 </div>
@@ -633,7 +1163,7 @@ include('includes/header.php');
                         <i class="fas fa-graduation-cap"></i>
                     </div>
                     <div class="stat-content">
-                        <h3 class="stat-number">5000+</h3>
+                        <h3 class="stat-number">10000+</h3>
                         <p class="stat-label">Current Students</p>
                     </div>
                 </div>
@@ -676,7 +1206,7 @@ include('includes/header.php');
                     <span class="blog-card__meta">by Admin on March 26, 2024</span>
                     <h3 class="blog-card__title">Top Medical Universities in Europe for International Students</h3>
                     <p class="blog-card__excerpt">Discover the leading medical universities in Europe that offer world-class education, state-of-the-art facilities, and diverse cultural experiences for international students...</p>
-                    <a href="#" class="blog-card__link">Read More</a>
+                    <a href="blog.php" class="blog-card__link">Read More</a>
                 </div>
             </article>
 
@@ -687,7 +1217,7 @@ include('includes/header.php');
                     <span class="blog-card__meta">by Admin on March 24, 2024</span>
                     <h3 class="blog-card__title">How to Prepare for Medical School Interviews</h3>
                     <p class="blog-card__excerpt">Expert tips and strategies to help you ace your medical school interviews, including common questions, preparation techniques, and what admissions committees look for...</p>
-                    <a href="#" class="blog-card__link">Read More</a>
+                    <a href="blog.php" class="blog-card__link">Read More</a>
                 </div>
             </article>
 
@@ -698,7 +1228,7 @@ include('includes/header.php');
                     <span class="blog-card__meta">by Admin on March 22, 2024</span>
                     <h3 class="blog-card__title">Understanding Medical Education Systems Worldwide</h3>
                     <p class="blog-card__excerpt">A comprehensive guide to different medical education systems around the world, including curriculum structures, admission requirements, and career opportunities...</p>
-                    <a href="#" class="blog-card__link">Read More</a>
+                    <a href="blog.php" class="blog-card__link">Read More</a>
                 </div>
             </article>
         </div>
@@ -715,7 +1245,7 @@ include('includes/header.php');
             <div class="contact-content">
                 <h2 class="contact-title">Leave us your contact details here!</h2>
                 <p class="contact-description">SGE is a pioneer in facilitating the dreams of young aspirers... Medical Government Universities.</p>
-                <a href="#" class="contact-cta">
+                <a href="contact.php" class="contact-cta">
                     Apply Now
                     <span class="arrow-icon">&#8250;&#8250;</span>
                 </a>
@@ -734,46 +1264,46 @@ include('includes/header.php');
         
         <div class="news-grid">
             <article class="news-card">
-                <a href="news-detail.php" class="news-image-link">
+                <a href="blog.php" class="news-image-link">
                     <div class="news-image">
                         <img src="https://images.unsplash.com/20/cambridge.JPG?q=80&w=1147&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="NEET UG 2025 Answer Key Released" loading="lazy">
                     </div>
                 </a>
                 <div class="news-content">
                     <h3 class="news-card-title">
-                        <a href="news-detail.php">NEET UG 2025 Answer Key Released: Last Chance to Raise Objections Today</a>
+                        <a href="blog.php">NEET UG 2025 Answer Key Released: Last Chance to Raise Objections Today</a>
                     </h3>
-                    <a href="news-detail.php" class="news-read-more">READ MORE</a>
+                    <a href="blog.php" class="news-read-more">READ MORE</a>
                     <p class="news-meta">ON JANUARY 22, 2023 BY SHAMMI AKTAR</p>
                 </div>
             </article>
             
             <article class="news-card">
-                <a href="news-detail.php" class="news-image-link">
+                <a href="blog.php" class="news-image-link">
                     <div class="news-image">
                         <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&h=600&q=80" alt="Mari State University Highlights India's Role" loading="lazy">
                     </div>
                 </a>
                 <div class="news-content">
                     <h3 class="news-card-title">
-                        <a href="news-detail.php">Rector of Mari State University Highlights India's Role in World War II During Inspiring Lecture</a>
+                        <a href="blog.php">Rector of Mari State University Highlights India's Role in World War II During Inspiring Lecture</a>
                     </h3>
-                    <a href="news-detail.php" class="news-read-more">READ MORE</a>
+                    <a href="blog.php" class="news-read-more">READ MORE</a>
                     <p class="news-meta">ON JANUARY 18, 2023 BY SHAMMI AKTAR</p>
                 </div>
             </article>
             
             <article class="news-card">
-                <a href="news-detail.php" class="news-image-link">
+                <a href="blog.php" class="news-image-link">
                     <div class="news-image">
                         <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&h=600&q=80" alt="Russian Education Fair 2025 Kicks Off" loading="lazy">
                     </div>
                 </a>
                 <div class="news-content">
                     <h3 class="news-card-title">
-                        <a href="news-detail.php">The 26th Russian Education Fair 2025 Kicks Off Its First Edition in Kolkata</a>
+                        <a href="blog.php">The 26th Russian Education Fair 2025 Kicks Off Its First Edition in Kolkata</a>
                     </h3>
-                    <a href="news-detail.php" class="news-read-more">READ MORE</a>
+                    <a href="blog.php" class="news-read-more">READ MORE</a>
                     <p class="news-meta">ON JANUARY 15, 2023 BY SHAMMI AKTAR</p>
                 </div>
             </article>

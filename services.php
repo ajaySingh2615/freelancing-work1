@@ -9,17 +9,6 @@ include 'includes/header.php';
 <main class="services-page">
     <!-- Hero Section (Banner) -->
     <section class="services-hero">
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <div class="container">
-                <nav class="hero-breadcrumb">
-                    <a href="index.php">MedStudy Global</a>
-                    <span class="breadcrumb-separator">></span>
-                    <span class="breadcrumb-current">Services</span>
-                </nav>
-                <h1 class="hero-title">OUR SERVICES</h1>
-            </div>
-        </div>
     </section>
 
     <!-- Main Content Section -->
@@ -85,6 +74,53 @@ include 'includes/header.php';
                         Assistance Travel Assistance Forex Assistance Loan Assistance.
                     </p>
                 </article>
+
+                <!-- Service Card 4 -->
+                <article class="service-card">
+                    <div class="service-image">
+                        <img src="assets/images/media/service-page/more/Pre-Departure-Guidance.webp" 
+                             alt="Application Assistance" 
+                             class="service-img">
+                    </div>
+                    <h3 class="service-title">Application Assistance</h3>
+                    <p class="service-description">
+                        End to end support filling out application forms, drafting SOPs (Statements of Purpose), 
+                        and compiling transcripts, recommendation letters, and other documents. Our expert team 
+                        ensures your application stands out and meets all university requirements for successful 
+                        admission to your dream medical university.
+                    </p>
+                </article>
+
+                <!-- Service Card 5 -->
+                <article class="service-card">
+                    <div class="service-image">
+                        <img src="assets/images/media/service-page/more/FMGENExT-Coaching.webp" 
+                             alt="Scholarship & Financial Aid Guidance" 
+                             class="service-img">
+                    </div>
+                    <h3 class="service-title">Scholarship & Financial Aid Guidance</h3>
+                    <p class="service-description">
+                        Help identifying and applying for merit based scholarships, grants, and education loans; 
+                        liaising with banks for competitive interest rates. We guide you through various funding 
+                        options to make your medical education abroad more affordable and accessible.
+                    </p>
+                </article>
+
+                <!-- Service Card 6 -->
+                <article class="service-card">
+                    <div class="service-image">
+                        <img src="assets/images/media/service-page/more/On-Arrival-Benefits.webp" 
+                             alt="Visa Consultation & Documentation" 
+                             class="service-img">
+                    </div>
+                    <h3 class="service-title">Visa Consultation & Documentation</h3>
+                    <p class="service-description">
+                        Expert advice on student visa requirements, document verification, appointment scheduling, 
+                        and interview preparation. Our experienced visa consultants ensure your visa application 
+                        process is smooth and successful, with personalized guidance for each country's specific 
+                        requirements.
+                    </p>
+                </article>
             </div>
 
             <!-- Additional Services Section -->
@@ -92,34 +128,34 @@ include 'includes/header.php';
                 <h3 class="additional-title">Additional Support Services</h3>
                 <div class="additional-grid">
                     <div class="additional-item">
-                        <i class="fas fa-passport"></i>
-                        <h4>Visa Assistance</h4>
-                        <p>Complete visa guidance and documentation support</p>
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <h4>Pre Departure Orientation</h4>
+                        <p>Workshops covering cultural adaptation, academic expectations abroad, budgeting & expenses, accommodation options, and health & safety guidelines.</p>
                     </div>
                     <div class="additional-item">
-                        <i class="fas fa-plane"></i>
-                        <h4>Travel Arrangements</h4>
-                        <p>Flight booking and travel planning assistance</p>
+                        <i class="fas fa-plane-departure"></i>
+                        <h4>Travel & Accommodation Assistance</h4>
+                        <p>Booking flights, arranging airport pickups, and helping you secure affordable on campus or off campus housing.</p>
                     </div>
                     <div class="additional-item">
-                        <i class="fas fa-home"></i>
-                        <h4>Accommodation</h4>
-                        <p>Hostel and accommodation booking services</p>
+                        <i class="fas fa-hands-helping"></i>
+                        <h4>Post Arrival Support</h4>
+                        <p>Local assistance with registration at university, opening bank accounts, SIM cards, and settling-in services in the destination country.</p>
                     </div>
                     <div class="additional-item">
-                        <i class="fas fa-language"></i>
-                        <h4>Language Support</h4>
-                        <p>Language training and cultural orientation</p>
+                        <i class="fas fa-briefcase"></i>
+                        <h4>Career & Internships Counseling</h4>
+                        <p>Guidance on internships, research opportunities, part time job norms, and long term career planning in the medical field.</p>
                     </div>
                     <div class="additional-item">
-                        <i class="fas fa-headset"></i>
-                        <h4>24/7 Support</h4>
-                        <p>Round-the-clock assistance during your studies</p>
+                        <i class="fas fa-clipboard-check"></i>
+                        <h4>Test Re-appeal & Licensing Exam Support</h4>
+                        <p>If required, assistance with FMGE (Foreign Medical Graduate Examination) re appeal procedures and preparation resources.</p>
                     </div>
                     <div class="additional-item">
-                        <i class="fas fa-graduation-cap"></i>
-                        <h4>Career Guidance</h4>
-                        <p>Post-graduation career planning and support</p>
+                        <i class="fas fa-shield-alt"></i>
+                        <h4>Student Insurance & Health Services</h4>
+                        <p>Advising on mandatory health insurance plans, travel insurance, and local medical facility orientation.</p>
                     </div>
                 </div>
             </div>
@@ -131,7 +167,7 @@ include 'includes/header.php';
                     <p>Get in touch with our expert counselors for personalized guidance and support.</p>
                     <div class="cta-buttons">
                         <a href="contact.php" class="btn btn-primary">Get Free Consultation</a>
-                        <a href="university-partners.php" class="btn btn-secondary">Explore Universities</a>
+                        <a href="resources.php" class="btn btn-secondary">Explore Universities</a>
                     </div>
                 </div>
             </div>
@@ -145,86 +181,11 @@ include 'includes/header.php';
 
 /* Hero Section (Banner) */
 .services-hero {
-    position: relative;
-    min-height: 60vh;
-    background-image: url('assets/images/media/destinations/hero-banner1.webp');
+    min-height: 40vh;
+    background-image: url('assets/images/media/service-page/banner/banner.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.services-hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(
-        135deg,
-        rgba(0, 53, 133, 0.8) 0%,
-        rgba(229, 9, 20, 0.7) 100%
-    );
-    z-index: 1;
-}
-
-.hero-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.3);
-    z-index: 2;
-}
-
-.hero-content {
-    position: relative;
-    z-index: 3;
-    text-align: center;
-    color: var(--white);
-    width: 100%;
-}
-
-.hero-breadcrumb {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: var(--sm);
-    margin-bottom: var(--xl);
-    font-size: var(--small);
-    opacity: 0.9;
-}
-
-.hero-breadcrumb a {
-    color: rgba(255, 255, 255, 0.9);
-    text-decoration: none;
-    transition: var(--transition);
-}
-
-.hero-breadcrumb a:hover {
-    color: var(--white);
-}
-
-.breadcrumb-separator {
-    color: rgba(255, 255, 255, 0.7);
-}
-
-.breadcrumb-current {
-    color: var(--white);
-    font-weight: var(--medium-weight);
-}
-
-.hero-title {
-    font-size: clamp(2.5rem, 6vw, var(--xxxlarge));
-    font-weight: var(--bold);
-    letter-spacing: 2px;
-    margin: 0;
-    text-transform: uppercase;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 /* Services Content Section */
@@ -295,7 +256,7 @@ include 'includes/header.php';
 /* Enhanced hover effects */
 .service-card:hover {
     transform: translateY(-8px);
-    background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+    background: linear-gradient(135deg,rgb(55, 52, 31) 0%,rgb(39, 39, 17) 100%);
     box-shadow: 0 20px 40px rgba(31, 41, 55, 0.4);
 }
 
@@ -351,10 +312,7 @@ include 'includes/header.php';
 
 /* Additional Services */
 .additional-services {
-    background: var(--white);
-    padding: var(--xxl);
-    border-radius: var(--large);
-    box-shadow: var(--medium-shadow);
+    padding: var(--xxl) 0;
     margin-bottom: var(--xxl);
 }
 
@@ -368,7 +326,7 @@ include 'includes/header.php';
 
 .additional-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: var(--xl);
 }
 
@@ -377,12 +335,16 @@ include 'includes/header.php';
     padding: var(--xl);
     transition: var(--transition);
     border-radius: var(--medium-radius);
+    background: var(--white);
+    border: 1px solid var(--light-border);
+    box-shadow: var(--small-shadow);
 }
 
 .additional-item:hover {
     background: var(--light-bg);
-    transform: translateY(-4px);
-    box-shadow: var(--small-shadow);
+    transform: translateY(-6px);
+    box-shadow: var(--medium-shadow);
+    border-color: var(--primary-color);
 }
 
 .additional-item i {
@@ -407,8 +369,8 @@ include 'includes/header.php';
 
 /* Call to Action */
 .services-cta {
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-    color: var(--white);
+    background: var(--accent-color);
+    color: var(--text-color);
     padding: var(--xxl);
     border-radius: var(--large);
     text-align: center;
@@ -492,12 +454,7 @@ include 'includes/header.php';
 /* Responsive Design */
 @media (max-width: 768px) {
     .services-hero {
-        min-height: 40vh;
-    }
-    
-    .hero-title {
-        font-size: var(--xxlarge);
-        letter-spacing: 1px;
+        min-height: 30vh;
     }
     
     .services-content {
@@ -533,13 +490,13 @@ include 'includes/header.php';
     }
     
     .additional-services {
-        padding: var(--xl);
+        padding: var(--xl) 0;
         margin-bottom: var(--xxl);
     }
     
     .additional-grid {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: var(--xl);
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: var(--lg);
     }
     
     .services-cta {
@@ -558,9 +515,8 @@ include 'includes/header.php';
 }
 
 @media (max-width: 576px) {
-    .hero-breadcrumb {
-        flex-direction: column;
-        gap: var(--xs);
+    .services-hero {
+        min-height: 25vh;
     }
     
     .section-subheading {
