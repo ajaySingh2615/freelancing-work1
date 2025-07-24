@@ -62,7 +62,7 @@
                 <div class="story-text-content">
                     <h3>Our Foundation</h3>
                     <p>MedStudy Global was founded with a simple yet powerful vision: to make quality medical education accessible to deserving students worldwide. What started as a small consultancy has grown into a comprehensive educational service provider.</p>
-                    <p>Our founders, Dr. Rajesh Kumar and Mrs. Priya Sharma, both having experienced the challenges of pursuing medical education abroad, were determined to create a bridge between ambitious students and world-class medical institutions.</p>
+                    <p>Our founders, Dr. Azaz Ahamad and Mohd Irshad, both having experienced the challenges of pursuing medical education abroad, were determined to create a bridge between ambitious students and world-class medical institutions.</p>
                 </div>
                 
 
@@ -135,11 +135,11 @@
             </p>
         </div>
 
-        <div class="team-grid">
+        <div class="team-grid team-grid-two-cards">
             <!-- Team Member 1 -->
             <div class="team-member">
                 <div class="member-image-wrapper">
-                    <img src="assets/images/media/about-page/our-team/mohd irshad.webp" alt="Dr. Azaz Ahamad" class="member-image">
+                    <img src="assets/images/media/about-page/our-team/azaz_ahamad.webp" alt="Dr. Azaz Ahamad" class="member-image">
                 </div>
                 <div class="member-content">
                     <h4 class="member-name">Dr. Azaz Ahamad</h4>
@@ -164,20 +164,40 @@
                 </div>
             </div>
 
-            <!-- Team Member 3 -->
-            <div class="team-member">
-                <div class="member-image-wrapper">
-                    <img src="assets/images/media/about-page/our-team/mohd irshad.webp" alt="Priya Choudhary" class="member-image">
-                </div>
-                <div class="member-content">
-                    <h4 class="member-name">Priya Choudhary</h4>
-                    <span class="member-position">Senior Counsellor</span>
-                    <p class="member-bio">
-                        Expert counsellor with deep knowledge of international medical universities and admission processes across multiple countries.
-                    </p>
-                </div>
-            </div>
         </div>
+
+        <!-- Custom CSS for Two Cards Layout -->
+        <style>
+        .team-grid-two-cards {
+            display: grid !important;
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 3rem !important;
+            max-width: 800px !important;
+            margin: 0 auto !important;
+            justify-content: center !important;
+        }
+
+        .team-grid-two-cards .team-member {
+            max-width: 100% !important;
+            margin: 0 auto !important;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .team-grid-two-cards {
+                grid-template-columns: 1fr !important;
+                gap: 2rem !important;
+                max-width: 400px !important;
+            }
+        }
+
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .team-grid-two-cards {
+                gap: 2.5rem !important;
+                max-width: 700px !important;
+            }
+        }
+        </style>
 
 
     </div>
@@ -338,9 +358,9 @@
                     <p class="culture-card-description">
                         We maintain the highest ethical standards in all our interactions, providing honest guidance and transparent processes to build lasting trust.
                     </p>
-                    <a href="#" class="culture-cta">
+                    <!-- <a href="#" class="culture-cta">
                         Read more <i class="fas fa-arrow-right"></i>
-                    </a>
+                    </a> -->
                 </div>
 
                 <!-- Excellence Card -->
@@ -355,9 +375,9 @@
                     <p class="culture-card-description">
                         We strive for excellence in every aspect of our service delivery, continuously improving our processes and exceeding expectations.
                     </p>
-                    <a href="#" class="culture-cta">
+                    <!-- <a href="#" class="culture-cta">
                         Read more <i class="fas fa-arrow-right"></i>
-                    </a>
+                    </a> -->
                 </div>
 
                 <!-- Collaboration Card -->
@@ -376,9 +396,9 @@
                     <p class="culture-card-description">
                         We work together as a unified team, sharing knowledge and supporting each other's growth to achieve common goals.
                     </p>
-                    <a href="#" class="culture-cta">
+                    <!-- <a href="#" class="culture-cta">
                         Read more <i class="fas fa-arrow-right"></i>
-                    </a>
+                    </a> -->
                 </div>
 
                 <!-- Innovation Card -->
@@ -402,9 +422,9 @@
                     <p class="culture-card-description">
                         We embrace creative thinking and innovative solutions to continuously improve our services and student experiences.
                     </p>
-                    <a href="#" class="culture-cta">
+                    <!-- <a href="#" class="culture-cta">
                         Read more <i class="fas fa-arrow-right"></i>
-                    </a>
+                    </a> -->
                 </div>
             </div>
         </div>

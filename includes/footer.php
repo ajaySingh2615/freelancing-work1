@@ -31,6 +31,8 @@
                             <li><a href="universities.php">University Partners</a></li>
                             <li><a href="blog.php">Blog & Resources</a></li>
                             <li><a href="contact.php">Contact Us</a></li>
+                            <li><a href="/admin/dashboard.php">Admin Login</a></li>
+                            <li><a href="privacy-policy.php">Privacy Policy</a></li>
                         </ul>
                     </div>
                 </div>
@@ -44,7 +46,7 @@
                             </li>
                             <li>
                                 <i class="fas fa-phone-alt"></i>
-                                <a href="tel:+91-9996817513">+91-9996817513</a>
+                                <a href="tel:+91-9729317513">+91-9729317513</a>
                             </li>
                             <li>
                                 <i class="fas fa-envelope"></i>
@@ -76,8 +78,14 @@
     </a>
     
     <!-- WhatsApp Float -->
-    <a href="https://api.whatsapp.com/send?phone=123456789" class="whatsapp-float" target="_blank">
-        <img src="assets/images/whatsapp-icon.png" alt="WhatsApp">
+    <a href="https://api.whatsapp.com/send?phone=919729317513&text=Hi! I'm interested in studying MBBS abroad. Can you help me?" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
+        <div class="whatsapp-icon">
+            <i class="fab fa-whatsapp"></i>
+        </div>
+        <div class="whatsapp-tooltip">
+            <span>Chat with us on WhatsApp!</span>
+        </div>
+        <div class="whatsapp-pulse"></div>
     </a>
     
     <!-- Apply Modal -->

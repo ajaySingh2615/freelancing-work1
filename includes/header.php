@@ -1,21 +1,18 @@
 <?php 
 // Static popular countries for header dropdown (no database needed)
 $headerPopularCountries = [
+    ['name' => 'India', 'slug' => 'india', 'flag_code' => 'in'],
+    ['name' => 'Iran', 'slug' => 'iran', 'flag_code' => 'ir'],
+    ['name' => 'Bangladesh', 'slug' => 'bangladesh', 'flag_code' => 'bd'],
     ['name' => 'Russia', 'slug' => 'russia', 'flag_code' => 'ru'],
-    ['name' => 'Georgia', 'slug' => 'georgia', 'flag_code' => 'ge'],
     ['name' => 'Kazakhstan', 'slug' => 'kazakhstan', 'flag_code' => 'kz'],
-    ['name' => 'Egypt', 'slug' => 'egypt', 'flag_code' => 'eg'],
+    ['name' => 'Kyrgyzstan', 'slug' => 'kyrgyzstan', 'flag_code' => 'kg'],
+    ['name' => 'Georgia', 'slug' => 'georgia', 'flag_code' => 'ge'],
+    ['name' => 'Uzbekistan', 'slug' => 'uzbekistan', 'flag_code' => 'uz'],
     ['name' => 'Nepal', 'slug' => 'nepal', 'flag_code' => 'np'],
     ['name' => 'China', 'slug' => 'china', 'flag_code' => 'cn'],
-    ['name' => 'Uzbekistan', 'slug' => 'uzbekistan', 'flag_code' => 'uz'],
-    ['name' => 'Germany', 'slug' => 'germany', 'flag_code' => 'de'],
-    ['name' => 'Italy', 'slug' => 'italy', 'flag_code' => 'it'],
-    ['name' => 'Poland', 'slug' => 'poland', 'flag_code' => 'pl'],
-    ['name' => 'Belarus', 'slug' => 'belarus', 'flag_code' => 'by'],
-    ['name' => 'Latvia', 'slug' => 'latvia', 'flag_code' => 'lv'],
-    ['name' => 'Lithuania', 'slug' => 'lithuania', 'flag_code' => 'lt'],
-    ['name' => 'Romania', 'slug' => 'romania', 'flag_code' => 'ro'],
-    ['name' => 'Hungary', 'slug' => 'hungary', 'flag_code' => 'hu']
+    ['name' => 'Egypt', 'slug' => 'egypt', 'flag_code' => 'eg'],
+    ['name' => 'Belarus', 'slug' => 'belarus', 'flag_code' => 'by']
 ];
 ?>
 <!DOCTYPE html>
@@ -313,8 +310,8 @@ $headerPopularCountries = [
                         <div class="top-contact">
                             <ul>
                                 <li>
-                                    <a href="tel:+91-9996817513">
-                                        <i class="fas fa-phone-alt pulse"></i> Student Helpline: +91-9996817513
+                                    <a href="tel:+91-9729317513">
+                                        <i class="fas fa-phone-alt pulse"></i> Student Helpline: +91-9729317513
                                     </a>
                                 </li>
                                 <li>
@@ -407,7 +404,7 @@ $headerPopularCountries = [
                                     </button>
                                 </li>
                                 <li>
-                                    <a href="apply-online.php" class="apply-btn-small">
+                                    <a href="destinations.php" class="apply-btn-small">
                                         APPLY NOW
                                     </a>
                                 </li>
