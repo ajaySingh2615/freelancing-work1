@@ -31,6 +31,8 @@
                             <li><a href="universities.php">University Partners</a></li>
                             <li><a href="blog.php">Blog & Resources</a></li>
                             <li><a href="contact.php">Contact Us</a></li>
+                            <li><a href="/admin/dashboard.php">Admin Login</a></li>
+                            <li><a href="privacy-policy.php">Privacy Policy</a></li>
                         </ul>
                     </div>
                 </div>
